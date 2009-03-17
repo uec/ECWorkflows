@@ -12,18 +12,11 @@ import java.io.StringReader;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.ADAG;
-import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -131,7 +124,6 @@ public class ECDax extends ADAG
 							jobCmdLine += argFrag.getNodeValue();
 					}
 					hasCmdLine.put(jobName, jobCmdLine);
-
 				}
 			}
 
@@ -180,7 +172,6 @@ public class ECDax extends ADAG
 		// define node contents
 		for (String parent : hasChildren.keySet())
 		{
-
 			dotGraph += "\"" + parent + "\" [\nshape = \"Mrecord\"\n"
 					+ "label =<<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" cellpadding=\"4\"><tr><td bgcolor=\"navy\"><font color=\"white\">"
 					+ hasExecName.get(parent) + "</font></td></tr>";
@@ -223,15 +214,11 @@ public class ECDax extends ADAG
 		{
 			e.printStackTrace();
 		}
-
 	}
 
 	public void runWorkflow(Boolean isDryrun)
 	{
 		parseDAX();
-		
-
-		
 		while (!checkAllProcessed())
 		{
 			for (String job : hasParents.keySet())
@@ -242,7 +229,6 @@ public class ECDax extends ADAG
 					{
 						for(String inputFile : hasInputs.get(job))
 						{
-							
 							try
 							{
 								File fromFile = new File(inputFile);
@@ -250,9 +236,9 @@ public class ECDax extends ADAG
 								outPath.mkdirs();
 								File toFile = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), fromFile.getName());
 								ECDax.copyFile(fromFile, toFile);
-							} catch (IOException e)
+							} 
+							catch (IOException e)
 							{
-								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 						}
@@ -267,7 +253,6 @@ public class ECDax extends ADAG
 					hasParents.remove(job);
 					break;
 				}
-
 			}
 		}
 	}
@@ -350,7 +335,6 @@ public class ECDax extends ADAG
 				while ((processLine = input.readLine()) != null)
 				{
 					if (processLine.matches("\\d+.+"))
-						;
 					{
 						jobIDs.put(job, processLine.trim());
 					}
@@ -372,7 +356,6 @@ public class ECDax extends ADAG
 				return false;
 		}
 		return true;
-
 	}
 
 	private Boolean checkAllProcessed()
@@ -395,57 +378,8 @@ public class ECDax extends ADAG
 			daxFw.close();
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * A convenience method to get the output files of a job.
-	 */
-	/**
-	 * @param job
-	 *            the job you want to retrieve a list of output fileName for
-	 * @return List<Filename> a list of all output filenames for the job
-	 */
-	protected List<Filename> getOutputFiles(Job job)
-	{
-		List<Filename> o = new LinkedList<Filename>();
-
-		for (Iterator it = job.listIterateUses(); it.hasNext();)
-		{
-			Filename f = (Filename) it.next();
-			if (f.getLink() == LFN.OUTPUT)
-				o.add(f);
-		}
-		return o;
-	}
-
-	/**
-	 * A convenience method to get the output file of a job and endsure that it
-	 * is the one and only output
-	 */
-	/**
-	 * @param job
-	 *            the job you want to retrieve output fileName for
-	 * @return Filename A single file that is the output of the job
-	 * @throws Exception
-	 *             number of outputs for job is NOT EQUAL to 1
-	 */
-	protected Filename getSingleOutputFile(Job job) throws Exception
-	{
-		List<Filename> o = new LinkedList<Filename>();
-
-		for (Iterator it = job.listIterateUses(); it.hasNext();)
-		{
-			Filename f = (Filename) it.next();
-			if (f.getLink() == LFN.OUTPUT)
-				o.add(f);
-		}
-
-		if (o.size() != 1)
-			throw new Exception("Single-file output check failed, There was not only 1 output!");
-		return o.get(0);
 	}
 
 	public static void copyFile(File in, File out) throws IOException

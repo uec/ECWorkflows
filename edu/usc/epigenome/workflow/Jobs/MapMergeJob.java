@@ -1,16 +1,15 @@
 package edu.usc.epigenome.workflow.Jobs;
 
-import java.util.Iterator;
-import java.util.List;
 
+import java.util.List;
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class MapMergeJob extends Job
+public class MapMergeJob extends ECJob
 {
 
 	public MapMergeJob(List<MapJob> mapJobs, String flowcellName, int laneNumber)
@@ -27,17 +26,14 @@ public class MapMergeJob extends Job
 		this.addArgument(new PseudoText(" "));
 		// iterate through all the map jobs
 
-		for (Job j : mapJobs)
+		for (ECJob j : mapJobs)
 		{
-			for (Iterator it = j.listIterateUses(); it.hasNext();)
+			for (Filename f : j.getOutputFiles())
 			{
-				Filename f = (Filename) it.next();
-				if (f.getLink() == LFN.OUTPUT)
-				{
 					Filename input = new Filename(f.getFilename(), LFN.INPUT);
 					input.setRegister(false);
 					this.addUses(input);
-				}
+				
 			}
 		}
 	}	

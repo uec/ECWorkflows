@@ -2,12 +2,12 @@ package edu.usc.epigenome.workflow.Jobs;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class MapJob extends Job
+public class MapJob extends ECJob
 {
 
 	public MapJob(String inputFile, String referenceGenomeFile, int minMismatches, int firstReadLength, boolean methylationMode)
