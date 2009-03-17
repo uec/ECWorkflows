@@ -2,12 +2,12 @@ package edu.usc.epigenome.workflow.Jobs;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class PileupJob extends Job
+public class PileupJob extends ECJob
 {
 
 	public PileupJob(String inputFileName, String referenceGenomeFileName, int minPileUpQ)

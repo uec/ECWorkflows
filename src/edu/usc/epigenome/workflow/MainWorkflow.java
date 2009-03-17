@@ -1,14 +1,10 @@
 package edu.usc.epigenome.workflow;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
-
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.DAX.WorkFlowArgs;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
@@ -49,7 +45,7 @@ public class MainWorkflow
 				dax.addJob(fastqSplitJob);
 
 				// iterate through the output files of fastQsplit jobs to create pipeline
-				for (Filename f : getOutputFiles(fastqSplitJob))
+				for (Filename f : fastqSplitJob.getOutputFiles())
 				{
 					//filter contam job
 					String splitFastqOutputFile = f.getFilename();
@@ -58,17 +54,17 @@ public class MainWorkflow
 					dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
 
 					// sol2sanger job
-					Sol2SangerJob sol2sangerJob = new Sol2SangerJob(getSingleOutputFile(filterContamJob).getFilename());
+					Sol2SangerJob sol2sangerJob = new Sol2SangerJob(filterContamJob.getSingleOutputFile().getFilename());
 					dax.addJob(sol2sangerJob);
 					dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
 
 					// fastq2bfq job
-					FastQ2BFQJob fastq2bfqJob = new FastQ2BFQJob(getSingleOutputFile(sol2sangerJob).getFilename());
+					FastQ2BFQJob fastq2bfqJob = new FastQ2BFQJob(sol2sangerJob.getSingleOutputFile().getFilename());
 					dax.addJob(fastq2bfqJob);
 					dax.addChild(fastq2bfqJob.getID(), sol2sangerJob.getID());
 
 					// map job. additional input grabbed from hg18.BS.bfa
-					MapJob mapJob = new MapJob(getSingleOutputFile(fastq2bfqJob).getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer
+					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer
 							.parseInt(workFlowParams.getSetting("MinMismatches")), Integer.parseInt(workFlowParams.getSetting("FirstReadLength")),
 							workFlowParams.laneIsBisulfite(i));
 					dax.addJob(mapJob);
@@ -88,87 +84,37 @@ public class MainWorkflow
 				mapMergeJobs.add(mapMergeJob);
 
 				// crate mapview job, child of mapmerge
-				MapViewJob mapViewJob =  new MapViewJob(getSingleOutputFile(mapMergeJob).getFilename(), Integer.parseInt(workFlowParams.getSetting("MaqPileupQ")));;
+				MapViewJob mapViewJob =  new MapViewJob(mapMergeJob.getSingleOutputFile().getFilename(), Integer.parseInt(workFlowParams.getSetting("MaqPileupQ")));;
 				dax.addJob(mapViewJob);
 				dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
 
 				//create pileup job, child of mapview
-				PileupJob pileupJob = new PileupJob(getSingleOutputFile(mapViewJob).getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer.parseInt(workFlowParams
+				PileupJob pileupJob = new PileupJob(mapViewJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer.parseInt(workFlowParams
 						.getSetting("MaqPileupQ")));;
 				dax.addJob(pileupJob);
 				dax.addChild(pileupJob.getID(), mapViewJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countMonoPileupJob = new CountPileupJob(getSingleOutputFile(pileupJob).getFilename(),WorkflowConstants.Mononucleotide);
+				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.Mononucleotide);
 				dax.addJob(countMonoPileupJob);
 				dax.addChild(countMonoPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countCGPileupJob = new CountPileupJob(getSingleOutputFile(pileupJob).getFilename(),WorkflowConstants.CGdinucleotide);
+				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.CGdinucleotide);
 				dax.addJob(countCGPileupJob);
 				dax.addChild(countCGPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countCHPileupJob = new CountPileupJob(getSingleOutputFile(pileupJob).getFilename(),WorkflowConstants.CHdinucleotide);
+				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.CHdinucleotide);
 				dax.addJob(countCHPileupJob);
-				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
-				
-				
+				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());				
 			}
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-	}
+	}	
 	
-	
-	/**
-	 * A convenience method to get the output files of a job.
-	 */
-	/**
-	 * @param job the job you want to retrieve a list of output fileName for
-	 * @return List<Filename> a list of all output filenames for the job
-	 */
-	public static List<Filename> getOutputFiles(Job job)
-	{
-		List<Filename> o = new LinkedList<Filename>();
-
-		for (Iterator it = job.listIterateUses(); it.hasNext();)
-		{
-			Filename f = (Filename) it.next();
-			if (f.getLink() == LFN.OUTPUT)
-				o.add(f);
-		}
-		return o;
-	}
-	
-	/**
-	 * A convenience method to get the output file of a job and 
-	 * endsure that it is the one and only output
-	 */
-	/**
-	 * @param job the job you want to retrieve output fileName for
-	 * @return Filename	A single file that is the output of the job
-	 * @throws Exception number of outputs for job is NOT EQUAL to 1
-	 */
-	public static Filename getSingleOutputFile(Job job) throws Exception
-	{
-		List<Filename> o = new LinkedList<Filename>();
-
-		for (Iterator it = job.listIterateUses(); it.hasNext();)
-		{
-			Filename f = (Filename) it.next();
-			if (f.getLink() == LFN.OUTPUT)
-				o.add(f);
-		}
-
-		if (o.size() != 1)
-			throw new Exception("Single-file output check failed, There was not only 1 output!");
-		return o.get(0);
-	}
-	/**
-	 * @param args
-	 */
 	public static void usage()
 	{
 		System.out.println("Usage: program [-dryrun] workflowParameterFile.txt");

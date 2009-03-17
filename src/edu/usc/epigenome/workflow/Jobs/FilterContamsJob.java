@@ -2,11 +2,11 @@ package edu.usc.epigenome.workflow.Jobs;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class FilterContamsJob extends Job
+public class FilterContamsJob extends ECJob
 {
 	public FilterContamsJob(String inputFile)
 	{

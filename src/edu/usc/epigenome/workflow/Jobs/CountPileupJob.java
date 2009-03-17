@@ -2,12 +2,12 @@ package edu.usc.epigenome.workflow.Jobs;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class CountPileupJob extends Job 
+public class CountPileupJob extends ECJob 
 {
 
 	public CountPileupJob(String inputFileName, String chartType) throws Exception

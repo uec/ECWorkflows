@@ -7,12 +7,12 @@ import java.io.LineNumberReader;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
+import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
-public class FastQSplitJob extends Job
+public class FastQSplitJob extends ECJob
 {
 	public FastQSplitJob(String inputFile, int binSize)
 	{
