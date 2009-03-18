@@ -33,7 +33,8 @@ public class MapMergeJob extends ECJob
 					Filename input = new Filename(f.getFilename(), LFN.INPUT);
 					input.setRegister(false);
 					this.addUses(input);
-				
+					this.addArgument(input);
+					this.addArgument(new PseudoText(" "));				
 			}
 		}
 	}	

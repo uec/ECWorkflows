@@ -89,10 +89,10 @@ public class MainWorkflow
 				dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
 
 				//create pileup job, child of mapview
-				PileupJob pileupJob = new PileupJob(mapViewJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer.parseInt(workFlowParams
+				PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer.parseInt(workFlowParams
 						.getSetting("MaqPileupQ")));;
 				dax.addJob(pileupJob);
-				dax.addChild(pileupJob.getID(), mapViewJob.getID());
+				dax.addChild(pileupJob.getID(), mapMergeJob.getID());
 				
 				//create countPileupJob, child of pileupJob
 				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.Mononucleotide);

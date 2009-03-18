@@ -25,7 +25,7 @@ public class PileupJob extends ECJob
 		// only one output file
 		// construct the output filenames for job
 		String outputFileName = inputFileName;
-		outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "pileup.gz");
+		outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "pileup");
 		Filename outputFile = new Filename(outputFileName, LFN.OUTPUT);
 		// output.setType(LFN.OUTPUT);
 		outputFile.setRegister(true);
