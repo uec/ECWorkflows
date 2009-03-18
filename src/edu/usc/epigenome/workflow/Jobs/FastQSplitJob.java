@@ -41,7 +41,11 @@ public class FastQSplitJob extends ECJob
 		}
 
 		// TODO rounding errors?
-		long numOfOutputs = ((lineCount / 4) / binSize) + 1;
+		long numOfOutputs;
+		if(((lineCount / 4) % binSize) == 0)
+			numOfOutputs = ((lineCount / 4) / binSize);
+		else
+			numOfOutputs = ((lineCount / 4) / binSize) + 1;
 		//System.out.println("Number of outputs for fastqsplit are " + numOfOutputs);
 		for (int i = 1; i <= numOfOutputs; i++)
 		{

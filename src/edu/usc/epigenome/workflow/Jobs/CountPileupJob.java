@@ -25,7 +25,7 @@ public class CountPileupJob extends ECJob
 		if(chartType == WorkflowConstants.Mononucleotide)
 		{
 			outputFileName = new String(inputFileName);
-			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+\\.gz)$", "$1\\_maq_mononucleotide" + ".csv");
+			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_maq_mononucleotide" + ".csv");
 			Filename outputmono = new Filename(outputFileName, LFN.OUTPUT);
 			outputmono.setRegister(true);
 			this.addUses(outputmono);
@@ -33,7 +33,7 @@ public class CountPileupJob extends ECJob
 		else if(chartType == WorkflowConstants.CGdinucleotide)
 		{
 			outputFileName = new String(inputFileName);
-			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+\\.gz)$", "$1\\_cg_dinucleotide" + ".csv");
+			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_cg_dinucleotide" + ".csv");
 			Filename outputcg = new Filename(outputFileName, LFN.OUTPUT);
 			outputcg.setRegister(true);
 			this.addUses(outputcg);
@@ -42,7 +42,7 @@ public class CountPileupJob extends ECJob
 		else if(chartType == WorkflowConstants.CHdinucleotide)
 		{
 			outputFileName = new String(inputFileName);
-			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+\\.gz)$", "$1\\_ch_dinucleotide" + ".csv");
+			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_ch_dinucleotide" + ".csv");
 			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
 			outputch.setRegister(true);
 			this.addUses(outputch);
@@ -52,7 +52,7 @@ public class CountPileupJob extends ECJob
 			throw new Exception("unknown chart type requested");
 		}
 		String prefix = new String(inputFileName);
-		prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+\\.gz)$", "$1");
+		prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+)$", "$1");
 
 		// add the arguments to the job
 		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToBaseComposition"));

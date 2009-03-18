@@ -276,7 +276,7 @@ public class ECDax extends ADAG
 		jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
 
 		// PREPARE DEPS
-		String deps = new String("#PBS -W depend=afterok");
+		String deps = new String("#PBS -W depend=afterany");
 		for (String s : hasParents.get(job))
 		{
 			deps += ":" + jobIDs.get(s);
