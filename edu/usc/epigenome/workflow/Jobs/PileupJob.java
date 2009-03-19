@@ -35,7 +35,7 @@ public class PileupJob extends ECJob
 		this.addArgument(outputFile);
 		this.addArgument(new PseudoText(" -m 100"));
 		this.addArgument(new PseudoText(" -q " + minPileUpQ + " -v"));
-		this.addArgument(new PseudoText(" -p " + referenceGenomeFileName + " "));
+		this.addArgument(new PseudoText(" -P " + referenceGenomeFileName + " "));
 		this.addArgument(input);
 	}
 }
