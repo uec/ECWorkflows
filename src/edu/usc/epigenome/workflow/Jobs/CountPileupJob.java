@@ -21,17 +21,20 @@ public class CountPileupJob extends ECJob
 		// only one output file
 		// construct the output filenames for job
 		String outputFileName;
-		
+		String graphDesc = "";
 		if(chartType == WorkflowConstants.Mononucleotide)
 		{
+			graphDesc = "postAlignment";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_maq_mononucleotide" + ".csv");
 			Filename outputmono = new Filename(outputFileName, LFN.OUTPUT);
 			outputmono.setRegister(true);
 			this.addUses(outputmono);
+			
 		}
 		else if(chartType == WorkflowConstants.CGdinucleotide)
 		{
+			graphDesc = "postAlignment.CpG";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_cg_dinucleotide" + ".csv");
 			Filename outputcg = new Filename(outputFileName, LFN.OUTPUT);
@@ -41,6 +44,7 @@ public class CountPileupJob extends ECJob
 		
 		else if(chartType == WorkflowConstants.CHdinucleotide)
 		{
+			graphDesc = "postAlignment.CpH";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_ch_dinucleotide" + ".csv");
 			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
@@ -51,16 +55,16 @@ public class CountPileupJob extends ECJob
 		{
 			throw new Exception("unknown chart type requested");
 		}
-		String prefix = new String(inputFileName);
-		prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+)$", "$1");
+		//String prefix = new String(inputFileName);
+		//prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+)$", "$1");
 
 		// add the arguments to the job
 		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToBaseComposition"));
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(chartType));
 		this.addArgument(new PseudoText(" "));
-		this.addArgument(new PseudoText("-additionalDesc " + prefix));
-		this.addArgument(new PseudoText(" "));		
+		this.addArgument(new PseudoText("-additionalDesc " + graphDesc));
+		this.addArgument(new PseudoText(" -cycles -quals "));		
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" >" + outputFileName));
 	}

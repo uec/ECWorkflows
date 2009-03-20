@@ -9,3 +9,4 @@ hpc 	uscec::mapMerge:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils
 hpc 	uscec::pileup:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl	INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"
 hpc 	uscec::sol2sanger:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl	INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc 	uscec::countpileup:1.0 	  	/usr/bin/java									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc 	uscec::countfastq:1.0 	  	/usr/bin/java									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"

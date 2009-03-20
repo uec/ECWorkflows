@@ -8,6 +8,7 @@ import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.DAX.WorkFlowArgs;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
+import edu.usc.epigenome.workflow.Jobs.CountFastQJob;
 import edu.usc.epigenome.workflow.Jobs.CountPileupJob;
 import edu.usc.epigenome.workflow.Jobs.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.Jobs.FastQSplitJob;
@@ -32,6 +33,8 @@ public class MainWorkflow
 			for (int i : workFlowParams.getAvailableLanes())
 			{
 				List<MapJob> mapJobs = new LinkedList<MapJob>();
+				List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
+				
 				String laneInputFile = workFlowParams.getSetting(i);
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFile);
 
@@ -57,7 +60,8 @@ public class MainWorkflow
 					Sol2SangerJob sol2sangerJob = new Sol2SangerJob(filterContamJob.getSingleOutputFile().getFilename());
 					dax.addJob(sol2sangerJob);
 					dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
-
+					fastqJobs.add(sol2sangerJob);
+					
 					// fastq2bfq job
 					FastQ2BFQJob fastq2bfqJob = new FastQ2BFQJob(sol2sangerJob.getSingleOutputFile().getFilename());
 					dax.addJob(fastq2bfqJob);
@@ -71,6 +75,14 @@ public class MainWorkflow
 					dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
 					mapJobs.add(mapJob);
 
+				}
+				//for each lane create a countfastq job
+				CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i);
+				dax.addJob(countFastQJob);
+				// mapmerge is child to all the map jobs
+				for (Job fastqjob : fastqJobs)
+				{
+					dax.addChild(countFastQJob.getID(), fastqjob.getID());
 				}
 				
 				// for each lane create a map merge job
