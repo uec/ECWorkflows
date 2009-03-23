@@ -31,7 +31,7 @@ public class MapJob extends ECJob
 
 		// add the arguments to the job
 		// job.addArgument(new PseudoText("map "));
-		this.addArgument(new PseudoText(" -n " + minMismatches));
+		this.addArgument(new PseudoText(" -n " + minMismatches + " "));
 		if (isBisulfite)
 		{
 			this.addArgument(new PseudoText(" -M c "));
