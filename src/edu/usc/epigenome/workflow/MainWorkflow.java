@@ -68,8 +68,7 @@ public class MainWorkflow
 					dax.addChild(fastq2bfqJob.getID(), sol2sangerJob.getID());
 
 					// map job. additional input grabbed from hg18.BS.bfa
-					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer
-							.parseInt(workFlowParams.getSetting("MinMismatches")), Integer.parseInt(workFlowParams.getSetting("FirstReadLength")),
+					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
 							workFlowParams.laneIsBisulfite(i));
 					dax.addJob(mapJob);
 					dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
@@ -101,7 +100,7 @@ public class MainWorkflow
 				dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
 
 				//create pileup job, child of mapview
-				PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("ReferenceBFA"), Integer.parseInt(workFlowParams
+				PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i +".ReferenceBFA"), Integer.parseInt(workFlowParams
 						.getSetting("MaqPileupQ")));;
 				dax.addJob(pileupJob);
 				dax.addChild(pileupJob.getID(), mapMergeJob.getID());
@@ -119,7 +118,12 @@ public class MainWorkflow
 				//create countPileupJob, child of pileupJob
 				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.CHdinucleotide);
 				dax.addJob(countCHPileupJob);
-				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());				
+				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
+				
+				//create countPileupJob, child of pileupJob
+				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.RefComposition);
+				dax.addJob(countGenomePileupJob);
+				dax.addChild(countGenomePileupJob.getID(), pileupJob.getID());
 			}
 		} catch (Exception e)
 		{

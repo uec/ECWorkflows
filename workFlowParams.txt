@@ -1,28 +1,28 @@
 #################################
-Global Settings (shouldn't change too much)
+## Global Settings (shouldn't change too much)
 
 #optional template to use for pbs jobs
 JobTemplate = pbsTemplate.sh
 #pegasus tranformation catalog 
 PegasusTC = tc.data
 
-#locate of pbs storage space
+#location of pbs storage space
 tmpDir = /home/uec-00/ramjan/tmp
 
 #queue to use
 queue = laird
 
-#specific pipeline options
+################################
+## Project Specific Settings
+
+FlowCellName = 300ABCAAXX
 RegularSplitFactor = 4000000
 BisulfiteSplitFactor = 250000
 MinMismatches = 2
-FirstReadLength = 35
 MaqPileupQ = 30
 
 ###############################
-#Project Specific Settings
-FlowCellName = 300ABCAAXX
-ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+## Lane Specific Settings
 
 #inputs are fastQ files
 Lane.2.Input = s_2_1-100__AltaCyclic_seq.short.txt
@@ -34,7 +34,7 @@ Lane.3.AlignmentType = bisulfite
 Lane.3.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 
 Lane.4.Input = s_4_1-100__AltaCyclic_seq.short.txt
-# can be explicitely set to regular, although this is the default if unspecified.
+#can be explicitely set to regular, although this is the default if unspecified.
 Lane.4.AlignmentType = regular
 Lane.4.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 

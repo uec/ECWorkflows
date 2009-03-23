@@ -9,4 +9,5 @@ public interface WorkflowConstants
 	public static final String Mononucleotide = "";
 	public static final String CGdinucleotide = "-cgonly";
 	public static final String CHdinucleotide = "-chonly";
+	public static final String RefComposition = "-refComposition";
 }

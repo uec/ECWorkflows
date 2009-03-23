@@ -104,7 +104,6 @@ public class WorkFlowArgs
     			"PegasusTC",
     			"BisulfiteSplitFactor",
     			"MinMismatches",
-    			"FirstReadLength",
     			"MaqPileupQ",
     			"FlowCellName"};
     	for(String s : requiredArgs)

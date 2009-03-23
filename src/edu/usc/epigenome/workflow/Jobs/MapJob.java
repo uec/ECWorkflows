@@ -10,7 +10,7 @@ import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 public class MapJob extends ECJob
 {
 
-	public MapJob(String inputFile, String referenceGenomeFile, int minMismatches, int firstReadLength, boolean methylationMode)
+	public MapJob(String inputFile, String referenceGenomeFile, int minMismatches, boolean isBisulfite)
 	{
 		super(WorkflowConstants.NAMESPACE, "map", WorkflowConstants.VERSION, "map_" + inputFile);
 		Filename input = new Filename(inputFile, LFN.INPUT);
@@ -32,12 +32,11 @@ public class MapJob extends ECJob
 		// add the arguments to the job
 		// job.addArgument(new PseudoText("map "));
 		this.addArgument(new PseudoText(" -n " + minMismatches));
-		if (methylationMode)
+		if (isBisulfite)
 		{
 			this.addArgument(new PseudoText(" -M c "));
-		}
-		//this.addArgument(new PseudoText(" -1 " + firstReadLength + " "));
-		this.addArgument(new PseudoText(" -1 " + firstReadLength + " "));
+		}		
+		this.addArgument(new PseudoText(" -1 "));
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(referenceGenomeFile));

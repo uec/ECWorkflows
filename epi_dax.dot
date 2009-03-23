@@ -1,7 +1,7 @@
 digraph g {
 "Parameters" [
 shape = "Mrecord"
- label = "{ Parameters  | MinMismatches=2 | uscec::countfastq:1.0=/usr/bin/java | Lane.4.AlignmentType=regular | Lane.3.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::map:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_map.pl | uscec::sol2sanger:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl | ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::filterContams:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/solexaFilterContams.pl | FlowCellName=300ABCAAXX | Lane.4.Input=s_4_1-100__AltaCyclic_seq.short.txt | Lane.2.Input=s_2_1-100__AltaCyclic_seq.short.txt | uscec::mapview:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapview.pl | uscec::fast2bfq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_fastq2bfq.pl | queue=laird | LFN=PFN | RegularSplitFactor=4000000 | Lane.3.AlignmentType=bisulfite | FirstReadLength=35 | tmpDir=/home/uec-00/ramjan/tmp | uscec::mapMerge:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapmerge.pl | uscec::pileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl | Lane.2.AlignmentType=bisulfite | MaqPileupQ=30 | uscec::countpileup:1.0=/usr/bin/java | Lane.3.Input=s_3_1-100__AltaCyclic_seq.short.txt | uscec::chr21:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/maqindex | PegasusTC=tc.data | Lane.2.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::fastqSplit:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/fastqSplit.pl | BisulfiteSplitFactor=250000}" ];
+ label = "{ Parameters  | MinMismatches=2 | uscec::countfastq:1.0=/usr/bin/java | Lane.4.AlignmentType=regular | Lane.3.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::map:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_map.pl | uscec::sol2sanger:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl | uscec::filterContams:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/solexaFilterContams.pl | FlowCellName=300ABCAAXX | Lane.4.Input=s_4_1-100__AltaCyclic_seq.short.txt | Lane.2.Input=s_2_1-100__AltaCyclic_seq.short.txt | uscec::mapview:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapview.pl | uscec::fast2bfq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_fastq2bfq.pl | queue=laird | LFN=PFN | RegularSplitFactor=4000000 | Lane.3.AlignmentType=bisulfite | tmpDir=/home/uec-00/ramjan/tmp | uscec::mapMerge:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapmerge.pl | uscec::pileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl | Lane.2.AlignmentType=bisulfite | MaqPileupQ=30 | uscec::countpileup:1.0=/usr/bin/java | Lane.3.Input=s_3_1-100__AltaCyclic_seq.short.txt | uscec::chr21:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/maqindex | PegasusTC=tc.data | Lane.2.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::fastqSplit:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/fastqSplit.pl | BisulfiteSplitFactor=250000}" ];
 "filterContams_s_2_1-100__AltaCyclic_seq.short.2.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_1-100__AltaCyclic_seq.short.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt</font></td></tr></table>> ];
@@ -23,12 +23,15 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_3.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr></table>> ];
-"fast2bfq_s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr></table>> ];
 "countfastq_300ABCAAXX2" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_Gerald_mononucleotide.csv</font></td></tr></table>> ];
+"countpileup_ResultCount_300ABCAAXX_s_4.pileup-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_referenceGenome.csv</font></td></tr></table>> ];
+"fast2bfq_s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr></table>> ];
 "sol2sanger_s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr></table>> ];
@@ -74,6 +77,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "mapMerge_300ABCAAXX3" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_1-100__AltaCyclic_seq.short.2.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map</font></td></tr></table>> ];
+"countpileup_ResultCount_300ABCAAXX_s_2.pileup-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_referenceGenome.csv</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX4" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map</font></td></tr></table>> ];
@@ -86,6 +92,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup-cgonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_cg_dinucleotide.csv</font></td></tr></table>> ];
+"countpileup_ResultCount_300ABCAAXX_s_3.pileup-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_referenceGenome.csv</font></td></tr></table>> ];
 "pileup_ResultCount_300ABCAAXX_s_4.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr></table>> ];
@@ -116,12 +125,12 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "mapview_ResultCount_300ABCAAXX_s_4.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map.q30.txt</font></td></tr></table>> ];
-"countpileup_ResultCount_300ABCAAXX_s_4.pileup-chonly" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_ch_dinucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_maq_mononucleotide.csv</font></td></tr></table>> ];
+"countpileup_ResultCount_300ABCAAXX_s_4.pileup-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_ch_dinucleotide.csv</font></td></tr></table>> ];
 "fast2bfq_s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq</font></td></tr></table>> ];
@@ -142,9 +151,11 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup"
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup-chonly"
+"pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup-refComposition"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-chonly"
+"pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-refComposition"
 "fast2bfq_s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq" -> "map_s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq"
 "sol2sanger_s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "countfastq_300ABCAAXX4"
 "sol2sanger_s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "fast2bfq_s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq"
@@ -171,6 +182,7 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-chonly"
+"pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-refComposition"
 "map_s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq" -> "mapMerge_300ABCAAXX4"
 "map_s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq" -> "mapMerge_300ABCAAXX3"
 "fastqSpit_s_2_1-100__AltaCyclic_seq.short.txt" -> "filterContams_s_2_1-100__AltaCyclic_seq.short.1.txt"

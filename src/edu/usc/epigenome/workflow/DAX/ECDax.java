@@ -301,7 +301,7 @@ public class ECDax extends ADAG
 		String copyout = new String();
 		for (String s : hasOutputs.get(job))
 		{
-			copyout += "cp " + s + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "\n";
+			copyout += "mv " + s + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
 
