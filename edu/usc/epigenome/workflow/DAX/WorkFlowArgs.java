@@ -32,9 +32,9 @@ public class WorkFlowArgs
 					String cleanLine = s.replaceAll("\\s", "");
 					String[] matchedLine = cleanLine.split("=");
 					workFlowArgsMap.put(matchedLine[0], matchedLine[1]);
-					if(matchedLine[0].matches("Lane\\dInput"))
+					if(matchedLine[0].matches("Lane\\.\\d\\.Input"))
 					{
-						lanesUsed.add(Integer.parseInt(matchedLine[0].substring(4, 5)));
+						lanesUsed.add(Integer.parseInt(matchedLine[0].substring(5, 6)));
 					}
 					if(matchedLine[0].matches("JobTemplate"))
 					{
@@ -106,8 +106,7 @@ public class WorkFlowArgs
     			"MinMismatches",
     			"FirstReadLength",
     			"MaqPileupQ",
-    			"FlowCellName",
-    			"ReferenceBFA"};
+    			"FlowCellName"};
     	for(String s : requiredArgs)
     	{
     		if(workFlowArgsMap.containsKey(s) == false)
@@ -123,9 +122,9 @@ public class WorkFlowArgs
     {
     	return workFlowArgsMap.get(key);
     }
-    public String getSetting(int laneNumber)
+    public String getLaneInput(int laneNumber)
     {
-    	return workFlowArgsMap.get("Lane" + laneNumber + "Input");
+    	return workFlowArgsMap.get("Lane." + laneNumber + ".Input");
     }
     
     public Integer[] getAvailableLanes()
@@ -134,25 +133,12 @@ public class WorkFlowArgs
     }
     public Boolean laneIsBisulfite(int laneNumber)
     {
-    	if(workFlowArgsMap.containsKey("Lane" + laneNumber + "AlignmentType"))
-    		if(workFlowArgsMap.get("Lane" + laneNumber + "AlignmentType").contains("sulfite"))
+    	if(workFlowArgsMap.containsKey("Lane." + laneNumber + ".AlignmentType"))
+    		if(workFlowArgsMap.get("Lane." + laneNumber + ".AlignmentType").contains("sulfite"))
     			return true;
     		else
     			return false;
     	else 
     		return false;
     }
-
-//    public static void main(String[] args) 
-//    {
-//    	WorkFlowArgs a = new WorkFlowArgs(args[0]);
-//    	System.out.println(a.toString());
-//    	System.out.println(a.getSetting(2));
-//    	System.out.println(a.getSetting("MaqBin"));
-//    	for(int i : a.getAvailableLanes())
-//    	{
-//    		System.out.println(i);
-//    	}
-//    	
-//    }
 }

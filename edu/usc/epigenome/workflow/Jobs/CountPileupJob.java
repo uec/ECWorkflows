@@ -63,7 +63,7 @@ public class CountPileupJob extends ECJob
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(chartType));
 		this.addArgument(new PseudoText(" "));
-		this.addArgument(new PseudoText("-additionalDesc " + graphDesc));
+		//this.addArgument(new PseudoText("-additionalDesc " + graphDesc));
 		this.addArgument(new PseudoText(" -cycles -quals "));		
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" >" + outputFileName));
