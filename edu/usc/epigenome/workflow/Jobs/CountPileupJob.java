@@ -21,10 +21,8 @@ public class CountPileupJob extends ECJob
 		// only one output file
 		// construct the output filenames for job
 		String outputFileName;
-		String graphDesc = "";
 		if(chartType == WorkflowConstants.Mononucleotide)
 		{
-			graphDesc = "postAlignment";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_maq_mononucleotide" + ".csv");
 			Filename outputmono = new Filename(outputFileName, LFN.OUTPUT);
@@ -34,7 +32,6 @@ public class CountPileupJob extends ECJob
 		}
 		else if(chartType == WorkflowConstants.CGdinucleotide)
 		{
-			graphDesc = "postAlignment.CpG";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_cg_dinucleotide" + ".csv");
 			Filename outputcg = new Filename(outputFileName, LFN.OUTPUT);
@@ -44,9 +41,16 @@ public class CountPileupJob extends ECJob
 		
 		else if(chartType == WorkflowConstants.CHdinucleotide)
 		{
-			graphDesc = "postAlignment.CpH";
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_ch_dinucleotide" + ".csv");
+			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
+			outputch.setRegister(true);
+			this.addUses(outputch);
+		}
+		else if(chartType == WorkflowConstants.RefComposition)
+		{
+			outputFileName = new String(inputFileName);
+			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_referenceGenome" + ".csv");
 			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
 			outputch.setRegister(true);
 			this.addUses(outputch);
