@@ -36,6 +36,7 @@ public class MapJob extends ECJob
 		{
 			this.addArgument(new PseudoText(" -M c "));
 		}
+		//this.addArgument(new PseudoText(" -1 " + firstReadLength + " "));
 		this.addArgument(new PseudoText(" -1 " + firstReadLength + " "));
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));

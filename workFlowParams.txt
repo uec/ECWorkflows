@@ -25,14 +25,16 @@ FlowCellName = 300ABCAAXX
 ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 
 #inputs are fastQ files
-Lane2Input = s_2_1-100__AltaCyclic_seq.short.txt
-Lane2AlignmentType = bisulfite
+Lane.2.Input = s_2_1-100__AltaCyclic_seq.short.txt
+Lane.2.AlignmentType = bisulfite
+Lane.2.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 
-Lane3Input = s_3_1-100__AltaCyclic_seq.short.txt
-Lane3AlignmentType = bisulfite
+Lane.3.Input = s_3_1-100__AltaCyclic_seq.short.txt
+Lane.3.AlignmentType = bisulfite
+Lane.3.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 
-Lane4Input = s_4_1-100__AltaCyclic_seq.short.txt
+Lane.4.Input = s_4_1-100__AltaCyclic_seq.short.txt
 # can be explicitely set to regular, although this is the default if unspecified.
-Lane4AlignmentType = regular
-
+Lane.4.AlignmentType = regular
+Lane.4.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 

@@ -35,7 +35,7 @@ public class MainWorkflow
 				List<MapJob> mapJobs = new LinkedList<MapJob>();
 				List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
 				
-				String laneInputFile = workFlowParams.getSetting(i);
+				String laneInputFile = workFlowParams.getLaneInput(i);
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFile);
 
 				// create a fastSplit job
