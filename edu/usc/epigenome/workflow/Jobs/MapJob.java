@@ -36,7 +36,6 @@ public class MapJob extends ECJob
 		{
 			this.addArgument(new PseudoText(" -M c "));
 		}		
-		this.addArgument(new PseudoText(" -1 "));
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(referenceGenomeFile));
