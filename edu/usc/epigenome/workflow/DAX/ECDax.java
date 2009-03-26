@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.StringReader;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -219,35 +222,36 @@ public class ECDax extends ADAG
 	public void runWorkflow(Boolean isDryrun)
 	{
 		parseDAX();
+		//copy over dependant starting files, stage in initial file deps
+		for (String job : hasParents.keySet())
+		{
+			if (hasParents.get(job).size() == 0 && !isDryrun)
+			{				
+				for(String inputFile : hasInputs.get(job))
+				{
+					try
+					{
+						File fromFile = new File(inputFile);
+						File outPath = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"));
+						outPath.mkdirs();
+						File toFile = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), fromFile.getName());
+						ECDax.copyFile(fromFile, toFile);
+						System.out.println("Staging in initial input: " + fromFile.getName());
+					} 
+					catch (IOException e)
+					{
+						e.printStackTrace();
+					}
+				}
+			}							
+		}
+		
+		//check job deps and run ready jobs until nothing left to run
 		while (!checkAllProcessed())
 		{
 			for (String job : hasParents.keySet())
 			{
-				if (hasParents.get(job).size() == 0)
-				{
-					if (!isDryrun)
-					{
-						for(String inputFile : hasInputs.get(job))
-						{
-							try
-							{
-								File fromFile = new File(inputFile);
-								File outPath = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"));
-								outPath.mkdirs();
-								File toFile = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), fromFile.getName());
-								ECDax.copyFile(fromFile, toFile);
-							} 
-							catch (IOException e)
-							{
-								e.printStackTrace();
-							}
-						}
-					}
-					runPBSJob(job, isDryrun);
-					hasParents.remove(job);
-					break;
-				}
-				else if (checkJobDepsOK(job))
+				if (checkJobDepsOK(job))
 				{					
 					runPBSJob(job, isDryrun);
 					hasParents.remove(job);
@@ -290,7 +294,8 @@ public class ECDax extends ADAG
 		String copyin = new String();
 		for (String s : hasInputs.get(job))
 		{
-			copyin += "cp " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + s + " . \n";
+			File f = new File(s);
+			copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + f.getName() + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYIN", copyin);
 
@@ -301,7 +306,8 @@ public class ECDax extends ADAG
 		String copyout = new String();
 		for (String s : hasOutputs.get(job))
 		{
-			copyout += "mv " + s + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "\n";
+			File f = new File(s);
+			copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
 
@@ -321,7 +327,8 @@ public class ECDax extends ADAG
 			File tmpFile;
 			try
 			{
-				tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
+				//tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
+				tmpFile = File.createTempFile("ECjob_" + hasExecName.get(job).replace("::", "_"), ".sh");
 				BufferedWriter out = new BufferedWriter(new FileWriter(tmpFile));
 				out.write(jobScript);
 				out.close();
@@ -382,23 +389,28 @@ public class ECDax extends ADAG
 		}
 	}
 
-	public static void copyFile(File in, File out) throws IOException
+	public static void copyFile(File f1, File f2) throws IOException
 	{
-		FileChannel inChannel = new FileInputStream(in).getChannel();
-		FileChannel outChannel = new FileOutputStream(out).getChannel();
-		try
-		{
-			inChannel.transferTo(0, inChannel.size(), outChannel);
-		} catch (IOException e)
-		{
-			throw e;
-		} finally
-		{
-			if (inChannel != null)
-				inChannel.close();
-			if (outChannel != null)
-				outChannel.close();
-		}
+		try {
+		 InputStream in = new FileInputStream(f1);
+	      
+	      OutputStream out = new FileOutputStream(f2);
+
+	      byte[] buf = new byte[1024];
+	      int len;
+	      while ((len = in.read(buf)) > 0){
+	        out.write(buf, 0, len);
+	      }
+	      in.close();
+	      out.close();	      
+	    }
+	    catch(FileNotFoundException ex){
+	      System.out.println(ex.getMessage() + " in the specified directory.");
+	      System.exit(0);
+	    }
+	    catch(IOException e){
+	      System.out.println(e.getMessage());      
+	    }
 	}
 
 }
