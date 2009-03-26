@@ -31,11 +31,11 @@ public class MapJob extends ECJob
 
 		// add the arguments to the job
 		// job.addArgument(new PseudoText("map "));
-		this.addArgument(new PseudoText(" -n " + minMismatches + " "));
 		if (isBisulfite)
 		{
-			this.addArgument(new PseudoText(" -M c "));
-		}		
+			this.addArgument(new PseudoText(" -M c"));
+		}
+		this.addArgument(new PseudoText(" -n " + minMismatches + " "));
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(referenceGenomeFile));
