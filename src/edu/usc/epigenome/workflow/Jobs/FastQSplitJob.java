@@ -14,7 +14,7 @@ import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 
 public class FastQSplitJob extends ECJob
 {
-	public FastQSplitJob(String inputFile, int binSize)
+	public FastQSplitJob(String inputFile, int binSize) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "fastqSplit", WorkflowConstants.VERSION, "fastqSpit_" + inputFile);
 		Filename input = new Filename(inputFile, LFN.INPUT);
@@ -42,6 +42,8 @@ public class FastQSplitJob extends ECJob
 
 		// TODO rounding errors?
 		long numOfOutputs;
+		if(lineCount % 4 != 0)
+			throw new Exception("ERROR! " + inputFile + "lines is not divisible by four!");
 		if(((lineCount / 4) % binSize) == 0)
 			numOfOutputs = ((lineCount / 4) / binSize);
 		else
