@@ -8,16 +8,16 @@ import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.DAX.WorkFlowArgs;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
-import edu.usc.epigenome.workflow.Jobs.CountFastQJob;
-import edu.usc.epigenome.workflow.Jobs.CountPileupJob;
-import edu.usc.epigenome.workflow.Jobs.FastQ2BFQJob;
-import edu.usc.epigenome.workflow.Jobs.FastQSplitJob;
-import edu.usc.epigenome.workflow.Jobs.FilterContamsJob;
-import edu.usc.epigenome.workflow.Jobs.MapJob;
-import edu.usc.epigenome.workflow.Jobs.MapMergeJob;
-import edu.usc.epigenome.workflow.Jobs.MapViewJob;
-import edu.usc.epigenome.workflow.Jobs.PileupJob;
-import edu.usc.epigenome.workflow.Jobs.Sol2SangerJob;
+import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
+import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
+import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
+import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
+import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.MapJob;
+import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
+import edu.usc.epigenome.workflow.job.ecjob.MapViewJob;
+import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
+import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
 
 public class MainWorkflow
 {

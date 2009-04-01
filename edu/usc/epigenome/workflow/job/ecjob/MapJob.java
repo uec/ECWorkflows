@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.Jobs;
+package edu.usc.epigenome.workflow.job.ecjob;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
