@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.Jobs;
+package edu.usc.epigenome.workflow.job.ecjob;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
