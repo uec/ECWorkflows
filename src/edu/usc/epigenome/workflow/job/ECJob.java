@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.DAX;
+package edu.usc.epigenome.workflow.job;
 
 import java.util.Iterator;
 import java.util.LinkedList;

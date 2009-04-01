@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.DAX;
+package edu.usc.epigenome.workflow.parameter;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
