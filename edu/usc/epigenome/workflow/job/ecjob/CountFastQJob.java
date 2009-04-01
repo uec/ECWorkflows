@@ -7,8 +7,8 @@ import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
-import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
+import edu.usc.epigenome.workflow.job.ECJob;
 
 public class CountFastQJob extends Job
 {

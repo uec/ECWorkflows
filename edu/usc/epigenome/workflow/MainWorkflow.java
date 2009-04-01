@@ -6,7 +6,6 @@ import java.util.List;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
-import edu.usc.epigenome.workflow.DAX.WorkFlowArgs;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
@@ -18,6 +17,7 @@ import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapViewJob;
 import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
+import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
 public class MainWorkflow
 {

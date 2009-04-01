@@ -3,8 +3,8 @@ package edu.usc.epigenome.workflow.job.ecjob;
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
 
-import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
+import edu.usc.epigenome.workflow.job.ECJob;
 
 public class FilterContamsJob extends ECJob
 {

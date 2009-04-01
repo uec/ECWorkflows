@@ -4,8 +4,8 @@ import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.PseudoText;
 
-import edu.usc.epigenome.workflow.DAX.ECJob;
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
+import edu.usc.epigenome.workflow.job.ECJob;
 
 public class MapViewJob extends ECJob
 {
