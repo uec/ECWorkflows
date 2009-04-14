@@ -24,17 +24,21 @@ public class FilterContamsJob extends ECJob
 
 		String contamPolyaOutputFileName = new String(inputFile);
 		contamPolyaOutputFileName = contamPolyaOutputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "contam.polya" + "$2");
-		//Filename contamPolya = new Filename(contamPolyaOutputFileName, LFN.OUTPUT);
-		// contamPolya.setRegister(false);
-		// output.setType(LFN.OUTPUT);
-		// job.addUses(contamPolya);
+		Filename contamPolya = new Filename(contamPolyaOutputFileName, LFN.OUTPUT);
+		contamPolya.setRegister(false);
+		this.addUses(contamPolya);
 
 		String contamAdapterOutputFileName = new String(inputFile);
 		contamAdapterOutputFileName = contamAdapterOutputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "contam.adapters" + "$2");
-		//Filename contamAdapter = new Filename(contamAdapterOutputFileName, LFN.OUTPUT);
-		// contamAdapter.setRegister(false);
-		// output.setType(LFN.OUTPUT);
-		// job.addUses(contamAdapter);
+		Filename contamAdapter = new Filename(contamAdapterOutputFileName, LFN.OUTPUT);
+		contamAdapter.setRegister(false);
+		this.addUses(contamAdapter);
+		
+		String contamAdapterTrimOutputFileName = new String(inputFile);
+		contamAdapterTrimOutputFileName = contamAdapterTrimOutputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "contam.adapterTrim" + "$2");
+		Filename contamAdapterTrim = new Filename(contamAdapterTrimOutputFileName, LFN.OUTPUT);
+		contamAdapterTrim.setRegister(false);
+		this.addUses(contamAdapterTrim);
 
 		// add the arguments to the job
 		this.addArgument(input);

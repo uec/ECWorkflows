@@ -4,13 +4,12 @@ import java.util.List;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import org.griphyn.vdl.dax.PseudoText;
 
 import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 import edu.usc.epigenome.workflow.job.ECJob;
 
-public class CountFastQJob extends Job
+public class CountFastQJob extends ECJob
 {
 	public CountFastQJob(List<Sol2SangerJob> fastQJobs, String flowcellName, int laneNumber)
 	{

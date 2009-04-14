@@ -9,7 +9,11 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class CountPileupJob extends ECJob 
 {
-
+	public static final String Mononucleotide = "";
+	public static final String CGdinucleotide = "-cgonly";
+	public static final String CHdinucleotide = "-chonly";
+	public static final String RefComposition = "-refComposition";
+	
 	public CountPileupJob(String inputFileName, String chartType) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "countpileup", WorkflowConstants.VERSION, "countpileup_" + inputFileName + chartType);
@@ -21,7 +25,7 @@ public class CountPileupJob extends ECJob
 		// only one output file
 		// construct the output filenames for job
 		String outputFileName;
-		if(chartType == WorkflowConstants.Mononucleotide)
+		if(chartType == CountPileupJob.Mononucleotide)
 		{
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_maq_mononucleotide" + ".csv");
@@ -30,7 +34,7 @@ public class CountPileupJob extends ECJob
 			this.addUses(outputmono);
 			
 		}
-		else if(chartType == WorkflowConstants.CGdinucleotide)
+		else if(chartType == CountPileupJob.CGdinucleotide)
 		{
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_cg_dinucleotide" + ".csv");
@@ -39,7 +43,7 @@ public class CountPileupJob extends ECJob
 			this.addUses(outputcg);
 		}
 		
-		else if(chartType == WorkflowConstants.CHdinucleotide)
+		else if(chartType == CountPileupJob.CHdinucleotide)
 		{
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_ch_dinucleotide" + ".csv");
@@ -47,7 +51,7 @@ public class CountPileupJob extends ECJob
 			outputch.setRegister(true);
 			this.addUses(outputch);
 		}
-		else if(chartType == WorkflowConstants.RefComposition)
+		else if(chartType == CountPileupJob.RefComposition)
 		{
 			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_referenceGenome" + ".csv");
