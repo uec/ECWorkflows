@@ -8,8 +8,7 @@ public class bustardJob extends ECJob
 
 	public bustardJob(String flowcellName)
 	{
-		super(WorkflowConstants.NAMESPACE, "bustard", WorkflowConstants.VERSION, "bustard _" + flowcellName);
-		// TODO Auto-generated constructor stub
+		super(WorkflowConstants.NAMESPACE, "bustard", WorkflowConstants.VERSION, "bustard _" + flowcellName);		
 	}
 
 }
