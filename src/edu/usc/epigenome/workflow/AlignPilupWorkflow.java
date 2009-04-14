@@ -6,7 +6,6 @@ import java.util.List;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
-import edu.usc.epigenome.workflow.DAX.WorkflowConstants;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
@@ -19,7 +18,7 @@ import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
 import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
-public class MainWorkflow
+public class AlignPilupWorkflow
 {
 	public static void createWorkFlow(ECDax dax)	
 	{
@@ -57,7 +56,17 @@ public class MainWorkflow
 					dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
 
 					// sol2sanger job
-					Sol2SangerJob sol2sangerJob = new Sol2SangerJob(filterContamJob.getSingleOutputFile().getFilename());
+					
+					//get the nocontam file
+					String nocontamFile = "";
+					for(Filename s : filterContamJob.getOutputFiles())
+					{
+						if(s.getFilename().contains(".nocontam"))
+						{
+							nocontamFile = s.getFilename();
+						}
+					}
+					Sol2SangerJob sol2sangerJob = new Sol2SangerJob(nocontamFile);
 					dax.addJob(sol2sangerJob);
 					dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
 					fastqJobs.add(sol2sangerJob);
@@ -106,22 +115,22 @@ public class MainWorkflow
 				dax.addChild(pileupJob.getID(), mapMergeJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.Mononucleotide);
+				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.Mononucleotide);
 				dax.addJob(countMonoPileupJob);
 				dax.addChild(countMonoPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.CGdinucleotide);
+				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CGdinucleotide);
 				dax.addJob(countCGPileupJob);
 				dax.addChild(countCGPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.CHdinucleotide);
+				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CHdinucleotide);
 				dax.addJob(countCHPileupJob);
 				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of pileupJob
-				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),WorkflowConstants.RefComposition);
+				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.RefComposition);
 				dax.addJob(countGenomePileupJob);
 				dax.addChild(countGenomePileupJob.getID(), pileupJob.getID());
 			}

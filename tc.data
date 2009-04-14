@@ -10,3 +10,6 @@ hpc 	uscec::pileup:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_u
 hpc 	uscec::sol2sanger:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl	INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc 	uscec::countpileup:1.0 	  	/usr/bin/java									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc 	uscec::countfastq:1.0 	  	/usr/bin/java									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+localhost	uscec::bustard:1.0 	  	/home/zack/devel/bustard/bustard.pl									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+localhost	uscec::stage:1.0   		/usr/bin/scp									INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+localhost	uscec::runRemote		/home/zack/devel/bustard/remote.pl
