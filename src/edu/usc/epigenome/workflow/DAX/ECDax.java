@@ -3,14 +3,9 @@ package edu.usc.epigenome.workflow.DAX;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -223,30 +218,7 @@ public class ECDax extends ADAG
 	public void runWorkflow(Boolean isDryrun)
 	{
 		parseDAX();
-		//copy over dependant starting files, stage in initial file deps
-		for (String job : hasParents.keySet())
-		{
-			if (hasParents.get(job).size() == 0 && !isDryrun)
-			{				
-				for(String inputFile : hasInputs.get(job))
-				{
-					try
-					{
-						File fromFile = new File(inputFile);
-						File outPath = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"));
-						outPath.mkdirs();
-						File toFile = new File(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), fromFile.getName());
-						ECDax.copyFile(fromFile, toFile);
-						System.out.println("Staging in initial input: " + fromFile.getName());
-					} 
-					catch (IOException e)
-					{
-						e.printStackTrace();
-					}
-				}
-			}							
-		}
-		
+
 		//check job deps and run ready jobs until nothing left to run
 		while (!checkAllProcessed())
 		{
@@ -296,7 +268,12 @@ public class ECDax extends ADAG
 		for (String s : hasInputs.get(job))
 		{
 			File f = new File(s);
-			copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + f.getName() + "\n";
+			if(f.isAbsolute())
+			{
+				copyin += "ln -s " + s + "\n";
+			}
+			else
+				copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + f.getName() + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYIN", copyin);
 
@@ -389,29 +366,4 @@ public class ECDax extends ADAG
 			e.printStackTrace();
 		}
 	}
-
-	public static void copyFile(File f1, File f2) throws IOException
-	{
-		try {
-		 InputStream in = new FileInputStream(f1);
-	      
-	      OutputStream out = new FileOutputStream(f2);
-
-	      byte[] buf = new byte[1024];
-	      int len;
-	      while ((len = in.read(buf)) > 0){
-	        out.write(buf, 0, len);
-	      }
-	      in.close();
-	      out.close();	      
-	    }
-	    catch(FileNotFoundException ex){
-	      System.out.println(ex.getMessage() + " in the specified directory.");
-	      System.exit(0);
-	    }
-	    catch(IOException e){
-	      System.out.println(e.getMessage());      
-	    }
-	}
-
 }

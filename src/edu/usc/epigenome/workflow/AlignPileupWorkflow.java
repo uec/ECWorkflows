@@ -18,7 +18,7 @@ import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
 import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
-public class AlignPilupWorkflow
+public class AlignPileupWorkflow
 {
 	public static void createWorkFlow(ECDax dax)	
 	{
@@ -34,8 +34,8 @@ public class AlignPilupWorkflow
 				List<MapJob> mapJobs = new LinkedList<MapJob>();
 				List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
 				
-				String laneInputFile = workFlowParams.getLaneInput(i);
-				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFile);
+				String laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
+				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFileName);
 
 				// create a fastSplit job
 				int splitSize = 0;
@@ -43,7 +43,7 @@ public class AlignPilupWorkflow
 					splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
 				else
 					splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
-				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFile, splitSize);
+				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
 				dax.addJob(fastqSplitJob);
 
 				// iterate through the output files of fastQsplit jobs to create pipeline
@@ -174,9 +174,9 @@ public class AlignPilupWorkflow
 				
 		ECDax dax = new ECDax(new WorkFlowArgs(paramFile));
 		createWorkFlow(dax);
-		dax.saveAsDot("epi_dax.dot");
+		dax.saveAsDot("alignpileup_dax.dot");
 		dax.runWorkflow(dryrun);
-		dax.saveAsXML("epi_dax.xml");
+		dax.saveAsXML("alignpileup_dax.xml");
 	}
 
 }

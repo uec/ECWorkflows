@@ -1,5 +1,6 @@
 package edu.usc.epigenome.workflow.job.ecjob;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -51,7 +52,8 @@ public class FastQSplitJob extends ECJob
 		//System.out.println("Number of outputs for fastqsplit are " + numOfOutputs);
 		for (int i = 1; i <= numOfOutputs; i++)
 		{
-			String outFile = new String(inputFile);
+			File inFile = new File(inputFile);
+			String outFile = new String(inFile.getName());
 			outFile = outFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + i + "$2");
 			Filename output = new Filename(outFile, LFN.OUTPUT);
 			output.setRegister(false);

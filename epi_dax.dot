@@ -1,16 +1,7 @@
 digraph g {
 "Parameters" [
 shape = "Mrecord"
- label = "{ Parameters  | MinMismatches=2 | uscec::countfastq:1.0=/usr/bin/java | Lane.4.AlignmentType=regular | Lane.3.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::map:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_map.pl | uscec::sol2sanger:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl | uscec::filterContams:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/solexaFilterContams.pl | FlowCellName=300ABCAAXX | Lane.4.Input=/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.txt | Lane.2.Input=/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt | uscec::mapview:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapview.pl | uscec::fast2bfq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_fastq2bfq.pl | queue=laird | LFN=PFN | RegularSplitFactor=4000000 | Lane.3.AlignmentType=bisulfite | tmpDir=/home/uec-00/ramjan/tmp | uscec::mapMerge:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapmerge.pl | uscec::pileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl | Lane.2.AlignmentType=bisulfite | MaqPileupQ=30 | uscec::countpileup:1.0=/usr/bin/java | Lane.3.Input=/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt | uscec::chr21:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/maqindex | PegasusTC=tc.data | Lane.2.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::fastqSplit:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/fastqSplit.pl | BisulfiteSplitFactor=250000}" ];
-"map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.map</font></td></tr></table>> ];
-"map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.bfq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.map</font></td></tr></table>> ];
-"filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt</font></td></tr></table>> ];
+ label = "{ Parameters  | MinMismatches=2 | uscec::countfastq:1.0=/usr/bin/java | Lane.4.AlignmentType=regular | Lane.3.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::map:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_map.pl | uscec::remotebustard:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/remotebustard.pl | uscec::sol2sanger:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl | uscec::filterContams:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/solexaFilterContams.pl | FlowCellName=300ABCAAXX | referenceLane=1 | Lane.2.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | Lane.4.Input=s_4_seq.txt | Lane.2.Input=s_2_seq.txt | uscec::mapview:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapview.pl | uscec::fast2bfq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_fastq2bfq.pl | queue=laird | LFN=PFN | Eland.webdir=http://gastorage2.usc.edu/slxa_runs/incoming/ | RegularSplitFactor=4000000 | Lane.3.AlignmentType=bisulfite | tmpDir=/home/uec-00/ramjan/tmp | Lane.3.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | uscec::mapMerge:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapmerge.pl | Eland.username=zack | Lane.2.AlignmentType=bisulfite | uscec::pileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl | MaqPileupQ=30 | uscec::countpileup:1.0=/usr/bin/java | Lane.3.Input=s_3_seq.txt | Lane.4.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | uscec::chr21:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/maqindex | PegasusTC=tc.data | Lane.2.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::fastqSplit:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/fastqSplit.pl | BisulfiteSplitFactor=250000}" ];
 "pileup_ResultCount_300ABCAAXX_s_2.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr></table>> ];
@@ -19,133 +10,82 @@ shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr></table>> ];
 "countfastq_300ABCAAXX2" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_Gerald_mononucleotide.csv</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_Gerald_mononucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup-refComposition" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_referenceGenome.csv</font></td></tr></table>> ];
-"filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.txt" [
+"fastqSpit_s_4_seq.txt" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr></table>> ];
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr></table>> ];
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.txt</font></td></tr></table>> ];
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.txt</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_seq.txt</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX2" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2.map</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2.map</font></td></tr></table>> ];
 "mapview_ResultCount_300ABCAAXX_s_2.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2.map.q30.txt</font></td></tr></table>> ];
-"filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt</font></td></tr></table>> ];
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup-chonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_ch_dinucleotide.csv</font></td></tr></table>> ];
-"filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX3" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map</font></td></tr></table>> ];
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq" [
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map</font></td></tr></table>> ];
+"fastqSpit_s_2_seq.txt" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr></table>> ];
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_seq.txt</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_2.pileup-refComposition" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_referenceGenome.csv</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX4" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup-cgonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_cg_dinucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_2.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_maq_mononucleotide.csv</font></td></tr></table>> ];
-"map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.bfq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup-cgonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_cg_dinucleotide.csv</font></td></tr></table>> ];
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup-refComposition" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_referenceGenome.csv</font></td></tr></table>> ];
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr></table>> ];
 "pileup_ResultCount_300ABCAAXX_s_4.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr></table>> ];
-"map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr></table>> ];
-"filterContams_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr></table>> ];
-"mapview_ResultCount_300ABCAAXX_s_3.map" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map.q30.txt</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_2.pileup-chonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_ch_dinucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_2.pileup-cgonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2_cg_dinucleotide.csv</font></td></tr></table>> ];
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt" [
+"mapview_ResultCount_300ABCAAXX_s_3.map" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map.q30.txt</font></td></tr></table>> ];
 "countfastq_300ABCAAXX3" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_Gerald_mononucleotide.csv</font></td></tr></table>> ];
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq" [
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_Gerald_mononucleotide.csv</font></td></tr></table>> ];
+"fastqSpit_s_3_seq.txt" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.bfq</font></td></tr></table>> ];
-"mapview_ResultCount_300ABCAAXX_s_4.map" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map.q30.txt</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_seq.txt</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3_maq_mononucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup-chonly" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_ch_dinucleotide.csv</font></td></tr></table>> ];
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq" [
+"mapview_ResultCount_300ABCAAXX_s_4.map" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4.map.q30.txt</font></td></tr></table>> ];
+"remotebustard_300ABCAAXX" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::remotebustard</font></td></tr></table>> ];
 "countfastq_300ABCAAXX4" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_Gerald_mononucleotide.csv</font></td></tr></table>> ];
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq</font></td></tr></table>> ];
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.txt</font></td></tr></table>> ];
-"map_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: /Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.map</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_Gerald_mononucleotide.csv</font></td></tr></table>> ];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_4_maq_mononucleotide.csv</font></td></tr></table>> ];
-"map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq" -> "mapMerge_300ABCAAXX3"
-"map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.bfq" -> "mapMerge_300ABCAAXX2"
-"filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.txt" -> "sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt"
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup"
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_2.map" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup-chonly"
@@ -154,45 +94,25 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-chonly"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup-refComposition"
-"filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.txt" -> "sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "countfastq_300ABCAAXX3"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq"
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.txt" -> "filterContams_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.txt"
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt" -> "filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.txt"
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt" -> "filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.txt"
 "mapMerge_300ABCAAXX2" -> "mapview_ResultCount_300ABCAAXX_s_2.map"
 "mapMerge_300ABCAAXX2" -> "pileup_ResultCount_300ABCAAXX_s_2.map"
-"filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.txt" -> "sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt"
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq" -> "map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.bfq"
-"filterContams_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.txt" -> "sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt"
 "mapMerge_300ABCAAXX3" -> "mapview_ResultCount_300ABCAAXX_s_3.map"
 "mapMerge_300ABCAAXX3" -> "pileup_ResultCount_300ABCAAXX_s_3.map"
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq" -> "map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "countfastq_300ABCAAXX2"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.fastq"
 "mapMerge_300ABCAAXX4" -> "mapview_ResultCount_300ABCAAXX_s_4.map"
 "mapMerge_300ABCAAXX4" -> "pileup_ResultCount_300ABCAAXX_s_4.map"
-"map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.bfq" -> "mapMerge_300ABCAAXX3"
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq" -> "map_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt" -> "countfastq_300ABCAAXX2"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.txt" -> "fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-cgonly"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-chonly"
 "pileup_ResultCount_300ABCAAXX_s_4.map" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup-refComposition"
-"map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.1.nocontam.bfq" -> "mapMerge_300ABCAAXX2"
-"filterContams_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.txt" -> "sol2sanger_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt" -> "countfastq_300ABCAAXX3"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.txt" -> "fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.nocontam.fastq"
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.fastq" -> "map_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.2.nocontam.bfq"
-"fast2bfq_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.fastq" -> "map_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.nocontam.bfq"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "countfastq_300ABCAAXX4"
-"sol2sanger_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.txt" -> "fast2bfq_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.fastq"
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt" -> "filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.1.txt"
-"fastqSpit_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt" -> "filterContams_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.2.txt"
-"map_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.1.nocontam.bfq" -> "mapMerge_300ABCAAXX4"
-Start -> "fastqSpit_/Users/zack/devel/WorkflowDax/s_4_1-100__AltaCyclic_seq.short.txt"
-Start -> "fastqSpit_/Users/zack/devel/WorkflowDax/s_2_1-100__AltaCyclic_seq.short.txt"
-Start -> "fastqSpit_/Users/zack/devel/WorkflowDax/s_3_1-100__AltaCyclic_seq.short.txt"
+"remotebustard_300ABCAAXX" -> "fastqSpit_s_2_seq.txt"
+"remotebustard_300ABCAAXX" -> "fastqSpit_s_3_seq.txt"
+"remotebustard_300ABCAAXX" -> "fastqSpit_s_4_seq.txt"
+Start -> "countfastq_300ABCAAXX2"
+Start -> "mapMerge_300ABCAAXX2"
+Start -> "mapMerge_300ABCAAXX3"
+Start -> "mapMerge_300ABCAAXX4"
+Start -> "countfastq_300ABCAAXX3"
+Start -> "remotebustard_300ABCAAXX"
+Start -> "countfastq_300ABCAAXX4"
 Parameters -> Start
 }
