@@ -307,6 +307,8 @@ public class ECDax extends ADAG
 			{
 				//tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
 				tmpFile = File.createTempFile("ECjob_" + hasExecName.get(job).replace("::", "_"), ".sh");
+				tmpFile.deleteOnExit();
+				System.out.print("############\n# " + tmpFile.getName() + ":\n");
 				BufferedWriter out = new BufferedWriter(new FileWriter(tmpFile));
 				out.write(jobScript);
 				out.close();

@@ -11,10 +11,13 @@ import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GzipJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapViewJob;
 import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
+import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
+import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
 import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
@@ -114,25 +117,40 @@ public class AlignPileupWorkflow
 				dax.addJob(pileupJob);
 				dax.addChild(pileupJob.getID(), mapMergeJob.getID());
 				
-				//create countPileupJob, child of pileupJob
-				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.Mononucleotide);
+				//create gzip job, child of pileup
+				GzipJob gzipjob = new GzipJob(pileupJob.getSingleOutputFile().getFilename());
+				dax.addJob(gzipjob);
+				dax.addChild(gzipjob.getID(),pileupJob.getID());
+								
+				//create countPileupJob, child of gziped pileupJob
+				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.Mononucleotide);
 				dax.addJob(countMonoPileupJob);
-				dax.addChild(countMonoPileupJob.getID(), pileupJob.getID());
+				dax.addChild(countMonoPileupJob.getID(), gzipjob.getID());
 				
-				//create countPileupJob, child of pileupJob
-				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CGdinucleotide);
+				//create countPileupJob, child of gzipped pileupJob
+				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.CGdinucleotide);
 				dax.addJob(countCGPileupJob);
-				dax.addChild(countCGPileupJob.getID(), pileupJob.getID());
+				dax.addChild(countCGPileupJob.getID(), gzipjob.getID());
 				
-				//create countPileupJob, child of pileupJob
-				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CHdinucleotide);
+				//create countPileupJob, child of gzipped pileupJob
+				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.CHdinucleotide);
 				dax.addJob(countCHPileupJob);
-				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
+				dax.addChild(countCHPileupJob.getID(), gzipjob.getID());
 				
-				//create countPileupJob, child of pileupJob
-				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.RefComposition);
+				//create countPileupJob, child of gzipped pileupJob
+				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.RefComposition);
 				dax.addJob(countGenomePileupJob);
-				dax.addChild(countGenomePileupJob.getID(), pileupJob.getID());
+				dax.addChild(countGenomePileupJob.getID(), gzipjob.getID());
+				
+				//create readdepth, child of gzipped pileupJob
+				ReadDepthJob readdepthJob = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i, 5000, 0);
+				dax.addJob(readdepthJob);
+				dax.addChild(readdepthJob.getID(), gzipjob.getID());
+				
+				//create readcount, child of gzipped pileupJob
+				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i);
+				dax.addJob(readcountJob);
+				dax.addChild(readcountJob.getID(), gzipjob.getID());
 			}
 		} catch (Exception e)
 		{
