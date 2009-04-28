@@ -1,13 +1,14 @@
 package edu.usc.epigenome.workflow;
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
+import edu.usc.epigenome.workflow.job.ecjob.GenECDaxJob;
 import edu.usc.epigenome.workflow.job.ecjob.RemoteBustardJob;
 import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
 public class BasecallingWorkflow
 {
 
-	public static void createWorkFlow(ECDax dax)	
+	public static void createWorkFlow(ECDax dax, String paramFilePathName)	
 	{
 		try
 		{
@@ -25,7 +26,15 @@ public class BasecallingWorkflow
 			}
 			RemoteBustardJob bustard = new RemoteBustardJob(workFlowParams.getSetting("FlowCellName"), elandGenomes, workFlowParams.getSetting("referenceLane"), workFlowParams.getSetting("tmpDir"),System.getProperty("user.name"), workFlowParams.getSetting("Eland.username"), workFlowParams.getSetting("Eland.webdir"));			
 			dax.addJob(bustard);
-			
+			String[] seqFileNames = new String[workFlowParams.getAvailableLanes().length];
+			int seqFNIndex =0;
+			for (int i : workFlowParams.getAvailableLanes())
+			{
+				seqFileNames[seqFNIndex++] = workFlowParams.getLaneInput(i);
+			}
+			GenECDaxJob genECDax = new GenECDaxJob(paramFilePathName, seqFileNames);
+			dax.addJob(genECDax);
+			dax.addChild(genECDax.getID(), bustard.getID());
 			
 		} catch (Exception e)
 		{
@@ -66,7 +75,7 @@ public class BasecallingWorkflow
 			usage();
 				
 		ECDax dax = new ECDax(new WorkFlowArgs(paramFile));
-		createWorkFlow(dax);
+		createWorkFlow(dax, new File(paramFile).getAbsolutePath());
 		dax.saveAsDot("bustard_dax.dot");
 		dax.runWorkflow(dryrun);
 		dax.saveAsXML("bustard_dax.xml");
