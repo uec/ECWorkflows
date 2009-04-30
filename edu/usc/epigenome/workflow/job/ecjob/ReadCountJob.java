@@ -9,7 +9,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class ReadCountJob extends ECJob
 {
-	public ReadCountJob(String inputFileName, String flowcellName, int laneNumber)
+	public ReadCountJob(String inputFileName, String flowcellName, int laneNumber, int randomSubset, int numTrials)
 	{
 		super(WorkflowConstants.NAMESPACE, "readcount", WorkflowConstants.VERSION, "readcount_" + flowcellName + laneNumber);
 		Filename input = new Filename(inputFileName, LFN.INPUT);
@@ -21,7 +21,7 @@ public class ReadCountJob extends ECJob
 		outputFile.setRegister(true);
 		this.addUses(outputFile);
 		
-		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToDepthReport "));
+		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToDepthReport -randomSubset " + randomSubset + " -randomSubsetNumTrials " + numTrials +" "));
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" >" + outputFileName));	
 	}	
