@@ -148,7 +148,7 @@ public class AlignPileupWorkflow
 				dax.addChild(readdepthJob.getID(), gzipjob.getID());
 				
 				//create readcount, child of gzipped pileupJob
-				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i);
+				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i, 1000000, 100);
 				dax.addJob(readcountJob);
 				dax.addChild(readcountJob.getID(), gzipjob.getID());
 			}
