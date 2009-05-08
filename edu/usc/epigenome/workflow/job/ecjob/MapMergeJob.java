@@ -12,7 +12,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 public class MapMergeJob extends ECJob
 {
 
-	public MapMergeJob(List<MapJob> mapJobs, String flowcellName, int laneNumber)
+	public MapMergeJob(List<ECJob> mapJobs, String flowcellName, int laneNumber)
 	{
 		super(WorkflowConstants.NAMESPACE, "mapMerge", WorkflowConstants.VERSION, "mapMerge_" + flowcellName + laneNumber);
 		// only one output file
