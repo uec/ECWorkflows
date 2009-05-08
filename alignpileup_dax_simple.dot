@@ -12,29 +12,31 @@ digraph g {
 "sol2sanger_s_8_sequence.1.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "mapMerge_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
 "sol2sanger_s_4_sequence.6.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"countfastq_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"readdepth_300ABCAAXX115000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "map_s_8_sequence.5.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_2_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
+"readdepth_300ABCAAXX705000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "map_s_4_sequence.1.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_5_sequence.7.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "fast2bfq_s_7_sequence.1.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"countfastq_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" [shape = "circle" style="filled" colorscheme="paired12" color=7 label = ""];
 "filterContams_s_6_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"countfastq_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "map_s_6_sequence.2.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "fast2bfq_s_6_sequence.4.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "sol2sanger_s_4_sequence.7.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_7_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_4_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_7_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_4_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "map_s_8_sequence.1.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_5_sequence.2.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "filterContams_s_3_sequence.3.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_8.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_8.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "map_s_4_sequence.6.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_1_sequence.3.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "sol2sanger_s_1_sequence.3.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
@@ -50,17 +52,17 @@ digraph g {
 "filterContams_s_5_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "map_s_4_sequence.5.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "map_s_5_sequence.4.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
-"countfastq_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "sol2sanger_s_1_sequence.6.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "sol2sanger_s_1_sequence.2.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "fast2bfq_s_2_sequence.5.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_2_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_2_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"readdepth_300ABCAAXX105000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "mapMerge_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
 "fast2bfq_s_1_sequence.3.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"readdepth_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "pileup_ResultCount_300ABCAAXX_s_1.map" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" [shape = "circle" style="filled" colorscheme="paired12" color=7 label = ""];
-"countfastq_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "filterContams_s_4_sequence.3.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "map_s_5_sequence.2.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_4_sequence.5.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
@@ -70,13 +72,14 @@ digraph g {
 "filterContams_s_4_sequence.8.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "sol2sanger_s_2_sequence.8.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"countfastq_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_5.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"countfastq_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_5.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "map_s_4_sequence.3.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "fast2bfq_s_6_sequence.5.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"countfastq_300ABCAAXX4" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX4" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
 "sol2sanger_s_4_sequence.5.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "pileup_ResultCount_300ABCAAXX_s_7.map" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"readdepth_300ABCAAXX715000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "filterContams_s_5_sequence.6.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "pileup_ResultCount_300ABCAAXX_s_2.map" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
 "filterContams_s_6_sequence.3.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
@@ -91,9 +94,9 @@ digraph g {
 "filterContams_s_1_sequence.6.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "fast2bfq_s_5_sequence.5.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "filterContams_s_8_sequence.3.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
+"readdepth_300ABCAAXX805000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "fast2bfq_s_4_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "filterContams_s_1_sequence.5.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"readdepth_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "fast2bfq_s_6_sequence.3.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "sol2sanger_s_6_sequence.6.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "sol2sanger_s_7_sequence.4.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
@@ -107,28 +110,30 @@ digraph g {
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "map_s_6_sequence.6.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "mapMerge_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
-"readdepth_300ABCAAXX4" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" [shape = "circle" style="filled" colorscheme="paired12" color=7 label = ""];
 "map_s_7_sequence.2.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_4_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "pileup_ResultCount_300ABCAAXX_s_3.map" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
-"countfastq_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_1_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"readdepth_300ABCAAXX315000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"countfastq_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_1_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"readdepth_300ABCAAXX215000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "map_s_1_sequence.2.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX305000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "map_s_2_sequence.8.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_8_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "fast2bfq_s_3_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_1_sequence.1.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "filterContams_s_5_sequence.4.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"readdepth_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "mapMerge_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
 "map_s_1_sequence.1.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "sol2sanger_s_4_sequence.9.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" [shape = "circle" style="filled" colorscheme="paired12" color=7 label = ""];
-"readdepth_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
+"readdepth_300ABCAAXX405000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "map_s_3_sequence.2.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
 "map_s_7_sequence.4.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX515000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "sol2sanger_s_4_sequence.8.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "sol2sanger_s_8_sequence.3.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
@@ -136,12 +141,11 @@ digraph g {
 "fast2bfq_s_2_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" [shape = "circle" style="filled" colorscheme="paired12" color=7 label = ""];
 "fast2bfq_s_1_sequence.5.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"readdepth_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "filterContams_s_2_sequence.6.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "map_s_4_sequence.8.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "fast2bfq_s_2_sequence.8.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_1_sequence.4.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_6.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_6.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "fast2bfq_s_4_sequence.1.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "sol2sanger_s_6_sequence.5.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "fast2bfq_s_4_sequence.4.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
@@ -158,13 +162,13 @@ digraph g {
 "sol2sanger_s_5_sequence.7.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "mapMerge_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
+"readdepth_300ABCAAXX415000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "fast2bfq_s_8_sequence.3.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_7_sequence.3.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_7_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_3_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
-"readdepth_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_3_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"readdepth_300ABCAAXX205000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "fast2bfq_s_6_sequence.1.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"readdepth_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "filterContams_s_6_sequence.2.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "fast2bfq_s_8_sequence.4.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "pileup_ResultCount_300ABCAAXX_s_4.map" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
@@ -196,9 +200,9 @@ digraph g {
 "readcount_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=13 label = ""];
 "map_s_7_sequence.3.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_1.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_1.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "sol2sanger_s_3_sequence.3.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_2.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_2.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "sol2sanger_s_1_sequence.1.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "sol2sanger_s_4_sequence.4.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
@@ -211,7 +215,7 @@ digraph g {
 "sol2sanger_s_5_sequence.2.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "readcount_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=13 label = ""];
 "filterContams_s_3_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_4.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_4.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "map_s_6_sequence.1.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "filterContams_s_7_sequence.5.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "sol2sanger_s_5_sequence.6.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
@@ -240,11 +244,14 @@ digraph g {
 "fast2bfq_s_1_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_5_sequence.3.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "mapMerge_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=8 label = ""];
+"readdepth_300ABCAAXX505000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "map_s_2_sequence.4.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "fast2bfq_s_5_sequence.6.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "fast2bfq_s_3_sequence.1.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX815000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"readdepth_300ABCAAXX605000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
 "fast2bfq_s_2_sequence.6.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_6_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_6_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "fast2bfq_s_4_sequence.5.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
@@ -256,7 +263,7 @@ digraph g {
 "filterContams_s_7_sequence.1.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "fast2bfq_s_8_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "sol2sanger_s_7_sequence.5.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_7.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_7.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "filterContams_s_7_sequence.2.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "sol2sanger_s_2_sequence.2.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
@@ -274,7 +281,7 @@ digraph g {
 "fast2bfq_s_2_sequence.4.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "filterContams_s_8_sequence.5.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "filterContams_s_8_sequence.4.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
-"fastqSpit_/Users/zack/devel/WorkflowDAX/s_5_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=10 label = ""];
+"fastqSpit_/Users/zack/devel/WorkflowDAX/s_5_sequence.txt" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
 "sol2sanger_s_5_sequence.3.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "filterContams_s_3_sequence.2.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
 "map_s_2_sequence.7.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
@@ -282,7 +289,8 @@ digraph g {
 "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
 "readcount_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=13 label = ""];
 "sol2sanger_s_3_sequence.1.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
-"mapview_ResultCount_300ABCAAXX_s_3.map" [shape = "circle" style="filled" colorscheme="paired12" color=11 label = ""];
+"readdepth_300ABCAAXX615000" [shape = "circle" style="filled" colorscheme="paired12" color=9 label = ""];
+"mapview_ResultCount_300ABCAAXX_s_3.map" [shape = "circle" style="filled" colorscheme="paired12" color=12 label = ""];
 "map_s_6_sequence.5.nocontam.bfq" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
 "fast2bfq_s_5_sequence.2.nocontam.fastq" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
 "filterContams_s_2_sequence.8.txt" [shape = "circle" style="filled" colorscheme="paired12" color=6 label = ""];
@@ -292,7 +300,7 @@ digraph g {
 "sol2sanger_s_6_sequence.4.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "sol2sanger_s_5_sequence.5.nocontam.txt" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
 "Legend" [
-shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="white"><font color="black">Legend</font></td></tr><tr><td align="left" bgcolor="11"></td><td align="left"><font  color="">uscec::mapview</font></td></tr><tr><td align="left" bgcolor="1"></td><td align="left"><font  color="">uscec::map</font></td></tr><tr><td align="left" bgcolor="4"></td><td align="left"><font  color="">uscec::pileup</font></td></tr><tr><td align="left" bgcolor="10"></td><td align="left"><font  color="">uscec::fastqSplit</font></td></tr><tr><td align="left" bgcolor="12"></td><td align="left"><font  color="">uscec::readdepth</font></td></tr><tr><td align="left" bgcolor="13"></td><td align="left"><font  color="">uscec::readcount</font></td></tr><tr><td align="left" bgcolor="3"></td><td align="left"><font  color="">uscec::sol2sanger</font></td></tr><tr><td align="left" bgcolor="8"></td><td align="left"><font  color="">uscec::mapMerge</font></td></tr><tr><td align="left" bgcolor="9"></td><td align="left"><font  color="">uscec::countfastq</font></td></tr><tr><td align="left" bgcolor="7"></td><td align="left"><font  color="">uscec::gzip</font></td></tr><tr><td align="left" bgcolor="2"></td><td align="left"><font  color="">uscec::fast2bfq</font></td></tr><tr><td align="left" bgcolor="6"></td><td align="left"><font  color="">uscec::filterContams</font></td></tr><tr><td align="left" bgcolor="5"></td><td align="left"><font  color="">uscec::countpileup</font></td></tr></table>> ];
+shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="white"><font color="black">Legend</font></td></tr><tr><td align="left" bgcolor="12"></td><td align="left"><font  color="">uscec::mapview</font></td></tr><tr><td align="left" bgcolor="1"></td><td align="left"><font  color="">uscec::map</font></td></tr><tr><td align="left" bgcolor="4"></td><td align="left"><font  color="">uscec::pileup</font></td></tr><tr><td align="left" bgcolor="11"></td><td align="left"><font  color="">uscec::fastqSplit</font></td></tr><tr><td align="left" bgcolor="9"></td><td align="left"><font  color="">uscec::readdepth</font></td></tr><tr><td align="left" bgcolor="13"></td><td align="left"><font  color="">uscec::readcount</font></td></tr><tr><td align="left" bgcolor="3"></td><td align="left"><font  color="">uscec::sol2sanger</font></td></tr><tr><td align="left" bgcolor="8"></td><td align="left"><font  color="">uscec::mapMerge</font></td></tr><tr><td align="left" bgcolor="10"></td><td align="left"><font  color="">uscec::countfastq</font></td></tr><tr><td align="left" bgcolor="7"></td><td align="left"><font  color="">uscec::gzip</font></td></tr><tr><td align="left" bgcolor="2"></td><td align="left"><font  color="">uscec::fast2bfq</font></td></tr><tr><td align="left" bgcolor="6"></td><td align="left"><font  color="">uscec::filterContams</font></td></tr><tr><td align="left" bgcolor="5"></td><td align="left"><font  color="">uscec::countpileup</font></td></tr></table>> ];
 "map_s_2_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX2"
 "fast2bfq_s_8_sequence.1.nocontam.fastq" -> "map_s_8_sequence.1.nocontam.bfq"
 "sol2sanger_s_5_sequence.4.nocontam.txt" -> "countfastq_300ABCAAXX5"
@@ -306,7 +314,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readcount_300ABCAAXX5"
-"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX5"
+"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX505000"
+"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX515000"
 "map_s_5_sequence.7.nocontam.bfq" -> "mapMerge_300ABCAAXX5"
 "sol2sanger_s_8_sequence.1.nocontam.txt" -> "countfastq_300ABCAAXX8"
 "sol2sanger_s_8_sequence.1.nocontam.txt" -> "fast2bfq_s_8_sequence.1.nocontam.fastq"
@@ -324,7 +333,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readcount_300ABCAAXX6"
-"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX6"
+"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX605000"
+"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX615000"
 "filterContams_s_6_sequence.1.txt" -> "sol2sanger_s_6_sequence.1.nocontam.txt"
 "map_s_6_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX6"
 "fast2bfq_s_6_sequence.4.nocontam.fastq" -> "map_s_6_sequence.4.nocontam.bfq"
@@ -386,7 +396,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_1.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_1.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readcount_300ABCAAXX1"
-"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX1"
+"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX105000"
+"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX115000"
 "filterContams_s_4_sequence.3.txt" -> "sol2sanger_s_4_sequence.3.nocontam.txt"
 "map_s_5_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX5"
 "filterContams_s_4_sequence.5.txt" -> "sol2sanger_s_4_sequence.5.nocontam.txt"
@@ -439,7 +450,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readcount_300ABCAAXX8"
-"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX8"
+"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX805000"
+"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX815000"
 "map_s_7_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX7"
 "filterContams_s_4_sequence.1.txt" -> "sol2sanger_s_4_sequence.1.nocontam.txt"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "gzip_ResultCount_300ABCAAXX_s_3.pileup"
@@ -465,7 +477,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readcount_300ABCAAXX2"
-"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX2"
+"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX205000"
+"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX215000"
 "map_s_3_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX3"
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" -> "filterContams_s_8_sequence.1.txt"
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" -> "filterContams_s_8_sequence.2.txt"
@@ -482,14 +495,16 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readcount_300ABCAAXX7"
-"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX7"
+"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX705000"
+"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX715000"
 "fast2bfq_s_2_sequence.2.nocontam.fastq" -> "map_s_2_sequence.2.nocontam.bfq"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-cgonly"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readcount_300ABCAAXX3"
-"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX3"
+"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX305000"
+"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX315000"
 "fast2bfq_s_1_sequence.5.nocontam.fastq" -> "map_s_1_sequence.5.nocontam.bfq"
 "filterContams_s_2_sequence.6.txt" -> "sol2sanger_s_2_sequence.6.nocontam.txt"
 "map_s_4_sequence.8.nocontam.bfq" -> "mapMerge_300ABCAAXX4"
@@ -532,7 +547,8 @@ shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0"
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readcount_300ABCAAXX4"
-"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX4"
+"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX405000"
+"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX415000"
 "fast2bfq_s_4_sequence.3.nocontam.fastq" -> "map_s_4_sequence.3.nocontam.bfq"
 "map_s_1_sequence.3.nocontam.bfq" -> "mapMerge_300ABCAAXX1"
 "fast2bfq_s_6_sequence.6.nocontam.fastq" -> "map_s_6_sequence.6.nocontam.bfq"

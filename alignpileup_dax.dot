@@ -41,6 +41,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "sol2sanger_s_4_sequence.6.nocontam.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_sequence.6.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.6.nocontam.fastq</font></td></tr></table>> ];
+"readdepth_300ABCAAXX115000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_1.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_1_maq_5000.csv</font></td></tr></table>> ];
 "countfastq_300ABCAAXX8" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.3.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.4.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.5.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_8_Gerald_mononucleotide.csv</font></td></tr></table>> ];
@@ -50,6 +53,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "filterContams_s_2_sequence.1.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.1.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.1.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.1.contam.adapterTrim.txt</font></td></tr></table>> ];
+"readdepth_300ABCAAXX705000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_7.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_7_maq_5000.csv</font></td></tr></table>> ];
 "map_s_4_sequence.1.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_sequence.1.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.1.nocontam.map</font></td></tr></table>> ];
@@ -170,15 +176,15 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_2_sequence.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.3.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.4.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.5.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.7.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.8.txt</font></td></tr></table>> ];
+"readdepth_300ABCAAXX105000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_1.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_1_maq_5000.csv</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX6" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.2.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.3.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.4.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.5.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.6.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_6.map</font></td></tr></table>> ];
 "fast2bfq_s_1_sequence.3.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.3.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.3.nocontam.bfq</font></td></tr></table>> ];
-"readdepth_300ABCAAXX1" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_1.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_1_maq_5000.csv</font></td></tr></table>> ];
 "pileup_ResultCount_300ABCAAXX_s_1.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_1.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_1.pileup</font></td></tr></table>> ];
@@ -236,6 +242,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_7.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_7.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_7.pileup</font></td></tr></table>> ];
+"readdepth_300ABCAAXX715000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_7.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_7_maq_5000.csv</font></td></tr></table>> ];
 "filterContams_s_5_sequence.6.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_5_sequence.6.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.6.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.6.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.6.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.6.contam.adapterTrim.txt</font></td></tr></table>> ];
@@ -278,15 +287,15 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "filterContams_s_8_sequence.3.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.3.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.3.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.3.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.3.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.3.contam.adapterTrim.txt</font></td></tr></table>> ];
+"readdepth_300ABCAAXX805000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_8.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_8_maq_5000.csv</font></td></tr></table>> ];
 "fast2bfq_s_4_sequence.2.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_sequence.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.2.nocontam.bfq</font></td></tr></table>> ];
 "filterContams_s_1_sequence.5.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.5.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.contam.adapterTrim.txt</font></td></tr></table>> ];
-"readdepth_300ABCAAXX6" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_6.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_6_maq_5000.csv</font></td></tr></table>> ];
 "fast2bfq_s_6_sequence.3.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.3.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.3.nocontam.bfq</font></td></tr></table>> ];
@@ -326,9 +335,6 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "mapMerge_300ABCAAXX1" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.2.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.3.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.4.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.5.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.6.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_1.map</font></td></tr></table>> ];
-"readdepth_300ABCAAXX4" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_4_maq_5000.csv</font></td></tr></table>> ];
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::gzip</font></td></tr></table>> ];
@@ -341,15 +347,24 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "pileup_ResultCount_300ABCAAXX_s_3.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileup</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.pileup</font></td></tr></table>> ];
+"readdepth_300ABCAAXX315000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_3_maq_5000.csv</font></td></tr></table>> ];
 "countfastq_300ABCAAXX7" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countfastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.2.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.3.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.4.nocontam.fastq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.5.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_7_Gerald_mononucleotide.csv</font></td></tr></table>> ];
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_1_sequence.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.3.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.4.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.6.txt</font></td></tr></table>> ];
+"readdepth_300ABCAAXX215000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_2_maq_5000.csv</font></td></tr></table>> ];
 "map_s_1_sequence.2.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.2.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.2.nocontam.map</font></td></tr></table>> ];
+"readdepth_300ABCAAXX305000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_3_maq_5000.csv</font></td></tr></table>> ];
 "map_s_2_sequence.8.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.8.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.8.nocontam.map</font></td></tr></table>> ];
@@ -365,9 +380,6 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "filterContams_s_5_sequence.4.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_5_sequence.4.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.4.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.4.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.4.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.4.contam.adapterTrim.txt</font></td></tr></table>> ];
-"readdepth_300ABCAAXX3" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_3_maq_5000.csv</font></td></tr></table>> ];
 "mapMerge_300ABCAAXX2" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.2.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.3.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.4.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.5.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.6.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.7.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.8.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_2.map</font></td></tr></table>> ];
@@ -380,9 +392,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::gzip</font></td></tr></table>> ];
-"readdepth_300ABCAAXX8" [
+"readdepth_300ABCAAXX405000" [
 shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_8.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_8_maq_5000.csv</font></td></tr></table>> ];
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_4_maq_5000.csv</font></td></tr></table>> ];
 "map_s_3_sequence.2.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.2.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.2.nocontam.map</font></td></tr></table>> ];
@@ -392,6 +404,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "map_s_7_sequence.4.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_7_sequence.4.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_7_sequence.4.nocontam.map</font></td></tr></table>> ];
+"readdepth_300ABCAAXX515000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_5.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_5_maq_5000.csv</font></td></tr></table>> ];
 "sol2sanger_s_4_sequence.8.nocontam.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: s_4_sequence.8.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.8.nocontam.fastq</font></td></tr></table>> ];
@@ -413,9 +428,6 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "fast2bfq_s_1_sequence.5.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_1_sequence.5.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.5.nocontam.bfq</font></td></tr></table>> ];
-"readdepth_300ABCAAXX7" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_7.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_7_maq_5000.csv</font></td></tr></table>> ];
 "filterContams_s_2_sequence.6.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.6.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.contam.adapterTrim.txt</font></td></tr></table>> ];
@@ -479,6 +491,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "mapMerge_300ABCAAXX3" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.2.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.3.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map</font></td></tr></table>> ];
+"readdepth_300ABCAAXX415000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_4.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_4_maq_5000.csv</font></td></tr></table>> ];
 "fast2bfq_s_8_sequence.3.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.3.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.3.nocontam.bfq</font></td></tr></table>> ];
@@ -491,15 +506,12 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_3_sequence.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fastqSplit</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.1.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.3.txt</font></td></tr></table>> ];
-"readdepth_300ABCAAXX2" [
+"readdepth_300ABCAAXX205000" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_2.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_2_maq_5000.csv</font></td></tr></table>> ];
 "fast2bfq_s_6_sequence.1.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.1.nocontam.bfq</font></td></tr></table>> ];
-"readdepth_300ABCAAXX5" [
-shape = "Mrecord"
-label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_5.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_5_maq_5000.csv</font></td></tr></table>> ];
 "filterContams_s_6_sequence.2.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::filterContams</font></td></tr><tr><td align="left"><font color="brown4"> input: s_6_sequence.2.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.2.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.2.contam.polya.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.2.contam.adapters.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.2.contam.adapterTrim.txt</font></td></tr></table>> ];
@@ -725,6 +737,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "mapMerge_300ABCAAXX8" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapMerge</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.1.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.2.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.3.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.4.nocontam.map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_8_sequence.5.nocontam.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_8.map</font></td></tr></table>> ];
+"readdepth_300ABCAAXX505000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_5.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_5_maq_5000.csv</font></td></tr></table>> ];
 "map_s_2_sequence.4.nocontam.bfq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::map</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.4.nocontam.bfq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.4.nocontam.map</font></td></tr></table>> ];
@@ -734,6 +749,12 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "fast2bfq_s_3_sequence.1.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.1.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.1.nocontam.bfq</font></td></tr></table>> ];
+"readdepth_300ABCAAXX815000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_8.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_8_maq_5000.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX605000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_6.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_6_maq_5000.csv</font></td></tr></table>> ];
 "fast2bfq_s_2_sequence.6.nocontam.fastq" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::fast2bfq</font></td></tr><tr><td align="left"><font color="brown4"> input: s_2_sequence.6.nocontam.fastq</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.6.nocontam.bfq</font></td></tr></table>> ];
@@ -851,6 +872,9 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "sol2sanger_s_3_sequence.1.nocontam.txt" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::sol2sanger</font></td></tr><tr><td align="left"><font color="brown4"> input: s_3_sequence.1.nocontam.txt</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.1.nocontam.fastq</font></td></tr></table>> ];
+"readdepth_300ABCAAXX615000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_6.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_6_maq_5000.csv</font></td></tr></table>> ];
 "mapview_ResultCount_300ABCAAXX_s_3.map" [
 shape = "Mrecord"
 label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::mapview</font></td></tr><tr><td align="left"><font color="brown4"> input: ResultCount_300ABCAAXX_s_3.map</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ResultCount_300ABCAAXX_s_3.map.q30.txt</font></td></tr></table>> ];
@@ -891,7 +915,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_5.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readcount_300ABCAAXX5"
-"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX5"
+"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX505000"
+"gzip_ResultCount_300ABCAAXX_s_5.pileup" -> "readdepth_300ABCAAXX515000"
 "map_s_5_sequence.7.nocontam.bfq" -> "mapMerge_300ABCAAXX5"
 "sol2sanger_s_8_sequence.1.nocontam.txt" -> "countfastq_300ABCAAXX8"
 "sol2sanger_s_8_sequence.1.nocontam.txt" -> "fast2bfq_s_8_sequence.1.nocontam.fastq"
@@ -909,7 +934,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_6.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readcount_300ABCAAXX6"
-"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX6"
+"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX605000"
+"gzip_ResultCount_300ABCAAXX_s_6.pileup" -> "readdepth_300ABCAAXX615000"
 "filterContams_s_6_sequence.1.txt" -> "sol2sanger_s_6_sequence.1.nocontam.txt"
 "map_s_6_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX6"
 "fast2bfq_s_6_sequence.4.nocontam.fastq" -> "map_s_6_sequence.4.nocontam.bfq"
@@ -971,7 +997,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_1.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_1.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readcount_300ABCAAXX1"
-"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX1"
+"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX105000"
+"gzip_ResultCount_300ABCAAXX_s_1.pileup" -> "readdepth_300ABCAAXX115000"
 "filterContams_s_4_sequence.3.txt" -> "sol2sanger_s_4_sequence.3.nocontam.txt"
 "map_s_5_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX5"
 "filterContams_s_4_sequence.5.txt" -> "sol2sanger_s_4_sequence.5.nocontam.txt"
@@ -1024,7 +1051,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_8.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readcount_300ABCAAXX8"
-"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX8"
+"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX805000"
+"gzip_ResultCount_300ABCAAXX_s_8.pileup" -> "readdepth_300ABCAAXX815000"
 "map_s_7_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX7"
 "filterContams_s_4_sequence.1.txt" -> "sol2sanger_s_4_sequence.1.nocontam.txt"
 "pileup_ResultCount_300ABCAAXX_s_3.map" -> "gzip_ResultCount_300ABCAAXX_s_3.pileup"
@@ -1050,7 +1078,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_2.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readcount_300ABCAAXX2"
-"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX2"
+"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX205000"
+"gzip_ResultCount_300ABCAAXX_s_2.pileup" -> "readdepth_300ABCAAXX215000"
 "map_s_3_sequence.2.nocontam.bfq" -> "mapMerge_300ABCAAXX3"
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" -> "filterContams_s_8_sequence.1.txt"
 "fastqSpit_/Users/zack/devel/WorkflowDAX/s_8_sequence.txt" -> "filterContams_s_8_sequence.2.txt"
@@ -1067,14 +1096,16 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_7.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readcount_300ABCAAXX7"
-"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX7"
+"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX705000"
+"gzip_ResultCount_300ABCAAXX_s_7.pileup" -> "readdepth_300ABCAAXX715000"
 "fast2bfq_s_2_sequence.2.nocontam.fastq" -> "map_s_2_sequence.2.nocontam.bfq"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-cgonly"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_3.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readcount_300ABCAAXX3"
-"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX3"
+"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX305000"
+"gzip_ResultCount_300ABCAAXX_s_3.pileup" -> "readdepth_300ABCAAXX315000"
 "fast2bfq_s_1_sequence.5.nocontam.fastq" -> "map_s_1_sequence.5.nocontam.bfq"
 "filterContams_s_2_sequence.6.txt" -> "sol2sanger_s_2_sequence.6.nocontam.txt"
 "map_s_4_sequence.8.nocontam.bfq" -> "mapMerge_300ABCAAXX4"
@@ -1117,7 +1148,8 @@ label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-chonly"
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "countpileup_ResultCount_300ABCAAXX_s_4.pileup.gz-refComposition"
 "gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readcount_300ABCAAXX4"
-"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX4"
+"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX405000"
+"gzip_ResultCount_300ABCAAXX_s_4.pileup" -> "readdepth_300ABCAAXX415000"
 "fast2bfq_s_4_sequence.3.nocontam.fastq" -> "map_s_4_sequence.3.nocontam.bfq"
 "map_s_1_sequence.3.nocontam.bfq" -> "mapMerge_300ABCAAXX1"
 "fast2bfq_s_6_sequence.6.nocontam.fastq" -> "map_s_6_sequence.6.nocontam.bfq"

@@ -11,7 +11,7 @@ public class ReadDepthJob extends ECJob
 {
 	public ReadDepthJob(String inputFileName, String flowcellName, int laneNumber, String genome, int windowSize, int maxIdent)
 	{
-		super(WorkflowConstants.NAMESPACE, "readdepth", WorkflowConstants.VERSION, "readdepth_" + flowcellName + laneNumber);
+		super(WorkflowConstants.NAMESPACE, "readdepth", WorkflowConstants.VERSION, "readdepth_" + flowcellName + laneNumber + maxIdent + windowSize);
 		Filename input = new Filename(inputFileName, LFN.INPUT);
 		input.setRegister(false);
 		this.addUses(input);
