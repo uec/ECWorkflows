@@ -97,6 +97,10 @@ public class WorkFlowArgs
     	return retString;
     }
     
+    /**
+     * check to make sure parameters have been entered for a ga workflow
+     * @throws Exception
+     */
     private void Validate() throws Exception
     {
     	String[] requiredArgs = {

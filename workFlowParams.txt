@@ -22,7 +22,7 @@ Eland.username = zack
 ## Project Specific Settings
 
 FlowCellName = 300ABCAAXX
-RegularSplitFactor = 4000000
+RegularSplitFactor = 1000
 BisulfiteSplitFactor = 250000
 MinMismatches = 2
 MaqPileupQ = 30
@@ -38,12 +38,12 @@ Lane.1.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/phi-X174/phi_plus_SNPs
 Lane.1.Eland.Genome = /srv/data/slxa/GENOMES/phi-X174/
 
 Lane.2.Input = s_2_sequence.txt
-Lane.2.AlignmentType = bisulfite
+Lane.2.AlignmentType = regular
 Lane.2.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 Lane.2.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.3.Input = s_3_sequence.txt
-Lane.3.AlignmentType = bisulfite
+Lane.3.AlignmentType = regular
 Lane.3.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
 Lane.3.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 

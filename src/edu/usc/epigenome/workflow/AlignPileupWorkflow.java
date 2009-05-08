@@ -6,6 +6,7 @@ import java.util.List;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
+import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
@@ -23,18 +24,24 @@ import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
 public class AlignPileupWorkflow
 {
+	/**
+	 * Creates an AlignPileUp workflow from an empty dax object 
+	 * @param dax The ECDAX to which processing jobs will be added
+	 */	
 	public static void createWorkFlow(ECDax dax)	
 	{
 		try
 		{
 			// construct a dax object
 			// For every requested lane in this flowcell..
+			
+			//get the params so that we have the input parameters
 			WorkFlowArgs workFlowParams = dax.getWorkFlowParams();
 			
-			List<Job> mapMergeJobs = new LinkedList<Job>();
+			//List<Job> mapMergeJobs = new LinkedList<Job>();
 			for (int i : workFlowParams.getAvailableLanes())
 			{
-				List<MapJob> mapJobs = new LinkedList<MapJob>();
+				List<ECJob> mapJobs = new LinkedList<ECJob>();
 				List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
 				
 				String laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
@@ -104,7 +111,7 @@ public class AlignPileupWorkflow
 				{
 					dax.addChild(mapMergeJob.getID(), map.getID());
 				}
-				mapMergeJobs.add(mapMergeJob);
+				//mapMergeJobs.add(mapMergeJob);
 
 				// crate mapview job, child of mapmerge
 				MapViewJob mapViewJob =  new MapViewJob(mapMergeJob.getSingleOutputFile().getFilename(), Integer.parseInt(workFlowParams.getSetting("MaqPileupQ")));;
@@ -142,10 +149,20 @@ public class AlignPileupWorkflow
 				dax.addJob(countGenomePileupJob);
 				dax.addChild(countGenomePileupJob.getID(), gzipjob.getID());
 				
-				//create readdepth, child of gzipped pileupJob
-				ReadDepthJob readdepthJob = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i, 5000, 0);
-				dax.addJob(readdepthJob);
-				dax.addChild(readdepthJob.getID(), gzipjob.getID());
+				//create readdepth:0, child of gzipped pileupJob
+				String genome;
+				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) { genome = "phiX";}
+				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) { genome = "hg18";}
+				else {genome = "hg18";}
+				
+				ReadDepthJob readdepthJob0 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
+				dax.addJob(readdepthJob0);
+				dax.addChild(readdepthJob0.getID(), gzipjob.getID());
+
+				//create readdepth:1, child of gzipped pileupJob
+				ReadDepthJob readdepthJob1 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 1);
+				dax.addJob(readdepthJob1); 
+				dax.addChild(readdepthJob1.getID(), gzipjob.getID());
 				
 				//create readcount, child of gzipped pileupJob
 				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i, 1000000, 100);
@@ -158,6 +175,9 @@ public class AlignPileupWorkflow
 		}
 	}	
 	
+	/**
+	 * print the usage
+	 */
 	public static void usage()
 	{
 		System.out.println("Usage: program [-dryrun] workflowParameterFile.txt");
@@ -165,6 +185,9 @@ public class AlignPileupWorkflow
 		System.out.println("-dryrun: display pbs output, do not run");
 		System.exit(0);
 	}
+	/**
+	 * @param args input parameter filename to use
+	 */
 	public static void main(String[] args)
 	{
 		String paramFile = "";
@@ -193,8 +216,10 @@ public class AlignPileupWorkflow
 		ECDax dax = new ECDax(new WorkFlowArgs(paramFile));
 		createWorkFlow(dax);
 		dax.saveAsDot("alignpileup_dax.dot");
+		dax.saveAsSimpleDot("alignpileup_dax_simple.dot");
 		dax.runWorkflow(dryrun);
 		dax.saveAsXML("alignpileup_dax.xml");
+		
 	}
 
 }

@@ -11,6 +11,12 @@ import org.griphyn.vdl.dax.Job;
 public class ECJob extends Job
 {
 
+	/**
+	 * @param namespace
+	 * @param the app from tc.data this job does
+	 * @param version 
+	 * @param id a unique id
+	 */
 	public ECJob(String namespace, String name, String version, String id)
 	{
 		super(namespace, name, version, id);

@@ -1,5 +1,9 @@
 package edu.usc.epigenome.workflow.DAX;
 
+/**
+ * @author zack
+ * constants for convenience, shouldnt change much
+ */
 public interface WorkflowConstants
 {
 	public static final String NAMESPACE = "uscec";

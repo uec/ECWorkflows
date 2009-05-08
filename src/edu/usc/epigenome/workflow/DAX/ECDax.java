@@ -24,20 +24,45 @@ import org.xml.sax.SAXException;
 
 import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 
+/**
+ * @author zack
+ * extends ADAG to add dot, pbs
+ */
 public class ECDax extends ADAG
 {
 
 	// Globals
+	//job -> dependents
 	HashMap<String, ArrayList<String>> hasChildren;
+	
+	//job -> depends on
 	HashMap<String, ArrayList<String>> hasParents;
+	
+	//job -> needs input files
 	HashMap<String, ArrayList<String>> hasInputs;
+	
+	//job -> produces output files
 	HashMap<String, ArrayList<String>> hasOutputs;
+	
+	//all job id's (unique)
 	HashMap<String, String> jobIDs;
+	
+	//a job complete cmd line
 	HashMap<String, String> hasCmdLine;
+	
+	//the tc.data app that  job does
 	HashMap<String, String> hasExecName;
+	
+	//used in dryrun as a substitute for pbs job ID
 	int tmpNum = 1;
+	
+	//the jobs param objects
 	WorkFlowArgs workFlowParams;
 
+	/**
+	 * get params
+	 * @return the param object used by this dax
+	 */
 	public WorkFlowArgs getWorkFlowParams()
 	{
 		return workFlowParams;
@@ -47,12 +72,19 @@ public class ECDax extends ADAG
 			+ "export RESULTS_DIR=DAXPBS_RESULTSDIR \n" + "export TMP=DAXPBS_TMPDIR \n" + "mkdir -p $RESULTS_DIR \n" + "mkdir $TMP/$PBS_JOBID \n"
 			+ "cd $TMP/$PBS_JOBID \n" + "#DAXPBS_COPYIN \n" + "#DAXPBS_RUN\n" + "#DAXPBS_COPYOUT \n";
 
+	/**
+	 * create an instance of ECDAX
+	 * @param workFlowParamsIn params to use for this dax
+	 */
 	public ECDax(WorkFlowArgs workFlowParamsIn)
 	{
 		super(1, 0, WorkflowConstants.NAMESPACE);
 		this.workFlowParams = workFlowParamsIn;
 	}
 
+	/**
+	 * parse the xml of this dax and populate internal objects so we can run/plot this job 
+	 */
 	public void parseDAX()
 	{
 		hasChildren = new HashMap<String, ArrayList<String>>();
@@ -84,7 +116,7 @@ public class ECDax extends ADAG
 				hasParents.put(jobName, new ArrayList<String>());
 				jobIDs.put(jobName, WorkflowConstants.EMPTY);
 
-				// input/output deps
+				// input/output file deps
 				hasInputs.put(jobName, new ArrayList<String>());
 				hasOutputs.put(jobName, new ArrayList<String>());
 				NodeList files = e.getElementsByTagName("uses");
@@ -154,6 +186,11 @@ public class ECDax extends ADAG
 		reader.close();
 	}
 
+	
+	/**
+	 * create a verbose dot graph with inputs ouputs and params
+	 * @param dotFileName file to save as
+	 */
 	public void saveAsDot(String dotFileName)
 	{
 		parseDAX();
@@ -214,7 +251,75 @@ public class ECDax extends ADAG
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * create a simple(er) graph, save as dot file (use graphviz to view)
+	 * @param dotFileName file to save as
+	 */
+	public void saveAsSimpleDot(String dotFileName)
+	{
+		parseDAX();
+		int nextColor = 1;
+		HashMap<String,Integer> nameToColor = new HashMap<String,Integer>(); 
+		String dotGraph = "digraph g {\n";
+		
+		for (String parent : hasChildren.keySet())
+		{
+			
+			if(!(nameToColor.containsKey(hasExecName.get(parent))))
+			{
+				nameToColor.put(hasExecName.get(parent), nextColor++);
+			}
+			dotGraph += "\"" + parent + "\" [shape = \"circle\" style=\"filled\" colorscheme=\"paired12\" color="+ nameToColor.get(hasExecName.get(parent))+ " label = \"" +/* hasExecName.get(parent) +*/ "\"];\n";			
+		}
+		
+		
+		//add legend
+		dotGraph += "\"Legend\" [\nshape = \"Mrecord\" colorscheme=\"paired12\""
+			+ "label =<<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" cellpadding=\"4\"><tr><td bgcolor=\"white\"><font color=\"black\">Legend</font></td></tr>";
+		for (String jobtype : nameToColor.keySet())
+		{
+				dotGraph += "<tr><td align=\"left\" bgcolor=\""+ nameToColor.get(jobtype) +"\"></td><td align=\"left\"><font  color=\"\">" + jobtype + "</font></td></tr>";				
+		}
+		dotGraph += "</table>> ];\n";
+		
+		// add relations
+		for (String parent : hasChildren.keySet())
+		{
+			for (String child : hasChildren.get(parent))
+			{
+				dotGraph += "\"" + parent + "\" -> \"" + child + "\"\n";
+			}
+		}
+		
+		
 
+		// add start node
+		for (String parent : hasParents.keySet())
+		{
+			if (hasParents.get(parent).size() == 0)
+				dotGraph += "Start -> \"" + parent + "\"\n";
+		}
+		//dotGraph += "Parameters -> Start\n";
+		dotGraph += "}\n";
+		File dotFile = new File(dotFileName);
+		BufferedWriter out;
+		try
+		{
+			out = new BufferedWriter(new FileWriter(dotFile));
+			out.write(dotGraph);
+			out.close();
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+
+	/**
+	 * run the workflow on pbs (porting to sge would be easy)
+	 * @param isDryrun if true, a test run, if false really run on pbs
+	 */
 	public void runWorkflow(Boolean isDryrun)
 	{
 		parseDAX();
@@ -234,6 +339,11 @@ public class ECDax extends ADAG
 		}
 	}
 
+	/**
+	 * run a given job on pbs. capture the job id for dependency resolution
+	 * @param job the job_id to run
+	 * @param isDryrun true if testing, false if really running
+	 */
 	private void runPBSJob(String job, Boolean isDryrun)
 	{
 		String jobScript;
@@ -335,6 +445,11 @@ public class ECDax extends ADAG
 		System.out.print("##############\n" + jobScript);
 	}
 
+	/**
+	 * see if job is ready to queue
+	 * @param job job_id to run
+	 * @return true of ok, false if not ready
+	 */
 	private Boolean checkJobDepsOK(String job)
 	{
 		for (String dep : hasParents.get(job))
@@ -345,6 +460,10 @@ public class ECDax extends ADAG
 		return true;
 	}
 
+	/**
+	 * see if all jobs have been queued and dependencies reduced
+	 * @return true if all done, false if still jobs to be queued
+	 */
 	private Boolean checkAllProcessed()
 	{
 		for (String s : jobIDs.keySet())
@@ -355,6 +474,10 @@ public class ECDax extends ADAG
 		return true;
 	}
 
+	/**
+	 * save dax as xml
+	 * @param fileName file to save as
+	 */
 	public void saveAsXML(String fileName)
 	{
 		FileWriter daxFw;

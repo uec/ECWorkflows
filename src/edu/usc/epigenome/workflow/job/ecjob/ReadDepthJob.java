@@ -9,7 +9,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class ReadDepthJob extends ECJob
 {
-	public ReadDepthJob(String inputFileName, String flowcellName, int laneNumber, int windowSize, int maxIdent)
+	public ReadDepthJob(String inputFileName, String flowcellName, int laneNumber, String genome, int windowSize, int maxIdent)
 	{
 		super(WorkflowConstants.NAMESPACE, "readdepth", WorkflowConstants.VERSION, "readdepth_" + flowcellName + laneNumber);
 		Filename input = new Filename(inputFileName, LFN.INPUT);
@@ -21,7 +21,7 @@ public class ReadDepthJob extends ECJob
 		outputFile.setRegister(true);
 		this.addUses(outputFile);
 		
-		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToReadDepthWindows -strandSpecific -maxIdentical " + maxIdent + " -windSize " + windowSize + " "));
+		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToReadDepthWindows -genomeVers "+ genome + " -strandSpecific -maxIdentical " + maxIdent + " -windSize " + windowSize + " "));
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" >" + outputFileName));		
 	}
