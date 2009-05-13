@@ -1,9 +1,9 @@
 package edu.usc.epigenome.workflow;
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
+import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
 import edu.usc.epigenome.workflow.job.ecjob.GenECDaxJob;
 import edu.usc.epigenome.workflow.job.ecjob.RemoteBustardJob;
-import edu.usc.epigenome.workflow.metadata.GAMetaData;
 
 public class BasecallingWorkflow
 {
@@ -13,7 +13,7 @@ public class BasecallingWorkflow
 		try
 		{
 			//Construct a dax, starting from solexa output
-			GAMetaData workFlowParams = dax.getWorkFlowParams();
+			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
 			
 			//run bustard
 			//first get genomes for each lane
@@ -74,7 +74,7 @@ public class BasecallingWorkflow
 		else
 			usage();
 				
-		ECDax dax = new ECDax(new GAMetaData(paramFile));
+		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
 		createWorkFlow(dax, new File(paramFile).getAbsolutePath());
 		dax.saveAsDot("bustard_dax.dot");
 		dax.runWorkflow(dryrun);

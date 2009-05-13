@@ -6,6 +6,7 @@ import java.util.List;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
+import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
@@ -20,7 +21,6 @@ import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
-import edu.usc.epigenome.workflow.metadata.GAMetaData;
 
 public class AlignPileupWorkflow
 {
@@ -36,7 +36,7 @@ public class AlignPileupWorkflow
 			// For every requested lane in this flowcell..
 			
 			//get the params so that we have the input parameters
-			GAMetaData workFlowParams = dax.getWorkFlowParams();
+			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
 			
 			//List<Job> mapMergeJobs = new LinkedList<Job>();
 			for (int i : workFlowParams.getAvailableLanes())
@@ -213,7 +213,7 @@ public class AlignPileupWorkflow
 		else
 			usage();
 				
-		ECDax dax = new ECDax(new GAMetaData(paramFile));
+		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
 		createWorkFlow(dax);
 		dax.saveAsDot("alignpileup_dax.dot");
 		dax.saveAsSimpleDot("alignpileup_dax_simple.dot");

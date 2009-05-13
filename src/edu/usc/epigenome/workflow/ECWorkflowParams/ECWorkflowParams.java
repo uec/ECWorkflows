@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.metadata;
+package edu.usc.epigenome.workflow.ECWorkflowParams;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -9,8 +9,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
-public class GAMetaData
+public class ECWorkflowParams
 {
     private HashMap<String,String> workFlowArgsMap = new HashMap<String,String>();
     public HashMap<String, String> getWorkFlowArgsMap()
@@ -18,7 +19,7 @@ public class GAMetaData
 		return workFlowArgsMap;
 	}
 	private HashSet<Integer> lanesUsed = new HashSet<Integer>();
-    public  GAMetaData(String fileName) 
+    public  ECWorkflowParams(String fileName) 
     {
     	try
 		{
@@ -68,14 +69,14 @@ public class GAMetaData
 				}
 			}
 			fileReader.close(); 
-			try
-			{
-				this.Validate();
-			} 
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
+//			try
+//			{
+//				this.Validate();
+//			} 
+//			catch (Exception e)
+//			{
+//				e.printStackTrace();
+//			}
 		} 
     	
     	catch (FileNotFoundException e)
@@ -101,15 +102,15 @@ public class GAMetaData
      * check to make sure parameters have been entered for a ga workflow
      * @throws Exception
      */
-    private void Validate() throws Exception
+    public void validate(Set<String> requiredArgs) throws Exception
     {
-    	String[] requiredArgs = {
-    			"RegularSplitFactor",
-    			"PegasusTC",
-    			"BisulfiteSplitFactor",
-    			"MinMismatches",
-    			"MaqPileupQ",
-    			"FlowCellName"};
+//    	String[] requiredArgs = {
+//    			"RegularSplitFactor",
+//    			"PegasusTC",
+//    			"BisulfiteSplitFactor",
+//    			"MinMismatches",
+//    			"MaqPileupQ",
+//    			"FlowCellName"};
     	for(String s : requiredArgs)
     	{
     		if(workFlowArgsMap.containsKey(s) == false)
