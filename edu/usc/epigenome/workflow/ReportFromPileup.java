@@ -2,10 +2,10 @@ package edu.usc.epigenome.workflow;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
+import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
-import edu.usc.epigenome.workflow.metadata.GAMetaData;
 
 public class ReportFromPileup
 {
@@ -15,7 +15,7 @@ public class ReportFromPileup
 		{
 			// construct a dax object
 			// For every requested lane in this flowcell..
-			GAMetaData workFlowParams = dax.getWorkFlowParams();
+			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
 				
 			for (int i : workFlowParams.getAvailableLanes())
 			{
@@ -98,7 +98,7 @@ public class ReportFromPileup
 		else
 			usage();
 				
-		ECDax dax = new ECDax(new GAMetaData(paramFile));
+		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
 		createWorkFlow(dax);
 		dax.saveAsDot("reportOnly_dax.dot");
 		dax.runWorkflow(dryrun);

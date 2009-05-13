@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import edu.usc.epigenome.workflow.metadata.GAMetaData;
+import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
 
 /**
  * @author zack
@@ -65,13 +65,13 @@ public class ECDax extends ADAG
 	}
 	
 	//the jobs param objects
-	GAMetaData workFlowParams;
+	ECWorkflowParams workFlowParams;
 
 	/**
 	 * get params
 	 * @return the param object used by this dax
 	 */
-	public GAMetaData getWorkFlowParams()
+	public ECWorkflowParams getWorkFlowParams()
 	{
 		return workFlowParams;
 	}
@@ -84,10 +84,20 @@ public class ECDax extends ADAG
 	 * create an instance of ECDAX
 	 * @param workFlowParamsIn params to use for this dax
 	 */
-	public ECDax(GAMetaData workFlowParamsIn)
+	public ECDax(ECWorkflowParams workFlowParamsIn)
 	{
 		super(1, 0, WorkflowConstants.NAMESPACE);
 		this.workFlowParams = workFlowParamsIn;
+		
+		try
+		{
+			this.workFlowParams.validate(this.requiredParams());
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 	
 
