@@ -22,9 +22,9 @@ import edu.usc.epigenome.workflow.job.ECJob;
 	import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
 	import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 	import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
-import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
+import edu.usc.epigenome.workflow.metadata.GAMetaData;
 
-	public class AlignPileupSimpeDot
+	public class AlignPileupSimpleDot
 	{
 		public static void createWorkFlow(ECDax dax)	
 		{
@@ -32,7 +32,7 @@ import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 			{
 				// construct a dax object
 				// For every requested lane in this flowcell..
-				WorkFlowArgs workFlowParams = dax.getWorkFlowParams();
+				GAMetaData workFlowParams = dax.getWorkFlowParams();
 				
 				List<ECJob> mapMergeJobs = new LinkedList<ECJob>();
 				for (int i : workFlowParams.getAvailableLanes())
@@ -244,7 +244,7 @@ import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
 			else
 				usage();
 					
-			ECDax dax = new ECDax(new WorkFlowArgs(paramFile));
+			ECDax dax = new ECDax(new GAMetaData(paramFile));
 			createWorkFlow(dax);
 			dax.saveAsSimpleDot("alignpileup_dax.dot");
 			dax.runWorkflow(dryrun);

@@ -9,6 +9,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,7 +25,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import edu.usc.epigenome.workflow.parameter.WorkFlowArgs;
+import edu.usc.epigenome.workflow.metadata.GAMetaData;
 
 /**
  * @author zack
@@ -56,14 +59,19 @@ public class ECDax extends ADAG
 	//used in dryrun as a substitute for pbs job ID
 	int tmpNum = 1;
 	
+	public  Set<String> requiredParams()
+	{
+		return new HashSet<String>();
+	}
+	
 	//the jobs param objects
-	WorkFlowArgs workFlowParams;
+	GAMetaData workFlowParams;
 
 	/**
 	 * get params
 	 * @return the param object used by this dax
 	 */
-	public WorkFlowArgs getWorkFlowParams()
+	public GAMetaData getWorkFlowParams()
 	{
 		return workFlowParams;
 	}
@@ -76,11 +84,12 @@ public class ECDax extends ADAG
 	 * create an instance of ECDAX
 	 * @param workFlowParamsIn params to use for this dax
 	 */
-	public ECDax(WorkFlowArgs workFlowParamsIn)
+	public ECDax(GAMetaData workFlowParamsIn)
 	{
 		super(1, 0, WorkflowConstants.NAMESPACE);
 		this.workFlowParams = workFlowParamsIn;
 	}
+	
 
 	/**
 	 * parse the xml of this dax and populate internal objects so we can run/plot this job 

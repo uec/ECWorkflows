@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.parameter;
+package edu.usc.epigenome.workflow.metadata;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class WorkFlowArgs
+public class GAMetaData
 {
     private HashMap<String,String> workFlowArgsMap = new HashMap<String,String>();
     public HashMap<String, String> getWorkFlowArgsMap()
@@ -18,7 +18,7 @@ public class WorkFlowArgs
 		return workFlowArgsMap;
 	}
 	private HashSet<Integer> lanesUsed = new HashSet<Integer>();
-    public  WorkFlowArgs(String fileName) 
+    public  GAMetaData(String fileName) 
     {
     	try
 		{
