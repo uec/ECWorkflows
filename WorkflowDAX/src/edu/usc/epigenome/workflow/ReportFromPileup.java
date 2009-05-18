@@ -9,7 +9,7 @@ import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 
 public class ReportFromPileup
 {
-	public static void createWorkFlow(ECDax dax)	
+	public static void createWorkFlow(ECDax dax, Boolean pbsMode)	
 	{
 		try
 		{
@@ -18,9 +18,13 @@ public class ReportFromPileup
 			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
 				
 			for (int i : workFlowParams.getAvailableLanes())
-			{
+			{				
+				String laneInputFileName;
+				if(pbsMode = true)
+					laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
+				else
+					laneInputFileName = new File(workFlowParams.getLaneInput(i)).getName();
 				
-				String laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
 				if(!(laneInputFileName.contentEquals("up.gz")))
 				{
 					System.err.println("expected pileup.gz file as input for lane " + i +", File=" + laneInputFileName);
@@ -46,9 +50,13 @@ public class ReportFromPileup
 				
 				//create readdepth,
 				String genome;
-				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) { genome = "phiX";}
-				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) { genome = "hg18";}
-				else {genome = "hg18";}
+				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) 
+					genome = "phiX";
+				else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) 
+					genome = "hg18";
+				else 
+					genome = "hg18";
+				
 				
 				ReadDepthJob readdepthJob0 = new ReadDepthJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
 				dax.addJob(readdepthJob0);
@@ -77,31 +85,26 @@ public class ReportFromPileup
 	{
 		String paramFile = "";
 		Boolean dryrun = false;
-		//create a dax from the passed in param obj
-		if(args.length == 1)
+		Boolean pbsMode = false;
+		
+		for(String s : args)
 		{
-			if((new File(args[0])).exists())
-				paramFile = args[0];
-			else
-				usage();
-		}
-		else if(args.length==2)
-		{
-			if(args[0].equals("-dryrun") && (new File(args[1])).exists())
-			{
-				paramFile = args[1];
+			if(s.equals("-dryrun")) 
 				dryrun = true;
-			}
+			else if(s.equals("-pbs")) 
+				pbsMode = true;
+			else if(new File(s).exists())
+				paramFile = s;
 			else
 				usage();
-		}
-		else
-			usage();
+		}		
 				
 		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
-		createWorkFlow(dax);
-		dax.saveAsDot("reportOnly_dax.dot");
-		dax.runWorkflow(dryrun);
-		dax.saveAsXML("reportOnly_dax.xml");
+		createWorkFlow(dax, pbsMode);
+		dax.saveAsDot("reportonly_dax.dot");
+		dax.saveAsSimpleDot("reportonly_dax_simple.dot");
+		if(pbsMode)
+			dax.runWorkflow(dryrun);
+		dax.saveAsXML("reportonly_dax.xml");
 	}
 }

@@ -295,12 +295,12 @@ public class ECDax extends ADAG
 		
 		//add legend
 		dotGraph += "\"Legend\" [\nshape = \"Mrecord\" colorscheme=\"paired12\""
-			+ "label =<<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" cellpadding=\"4\"><tr><td bgcolor=\"white\"><font color=\"black\">Legend</font></td></tr>";
+			+ "label =<<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" cellpadding=\"4\"><tr><td bgcolor=\"white\"><font color=\"black\">Legend</font></td></tr><tr>";
 		for (String jobtype : nameToColor.keySet())
 		{
-				dotGraph += "<tr><td align=\"left\" bgcolor=\""+ nameToColor.get(jobtype) +"\"></td><td align=\"left\"><font  color=\"\">" + jobtype + "</font></td></tr>";				
+				dotGraph += "<td align=\"left\" bgcolor=\""+ nameToColor.get(jobtype) +"\" border=\"2\" color=\""+ nameToColor.get(jobtype) +"\">      </td><td align=\"left\" border=\"2\" color=\""+ nameToColor.get(jobtype) +"\"><font>" + jobtype + "</font></td><td> </td>";				
 		}
-		dotGraph += "</table>> ];\n";
+		dotGraph += "</tr></table>> ];\n";
 		
 		// add relations
 		for (String parent : hasChildren.keySet())
@@ -312,14 +312,16 @@ public class ECDax extends ADAG
 		}
 		
 		
+		
 
 		// add start node
 		for (String parent : hasParents.keySet())
 		{
 			if (hasParents.get(parent).size() == 0)
-				dotGraph += "Start -> \"" + parent + "\"\n";
+				dotGraph += "Start -> \"" + parent + "\"\n";			
 		}
-		//dotGraph += "Parameters -> Start\n";
+		dotGraph += "{ edge [color=\"#ffffff\"]\n Legend -> Start\n}\n";
+		
 		dotGraph += "}\n";
 		File dotFile = new File(dotFileName);
 		BufferedWriter out;
