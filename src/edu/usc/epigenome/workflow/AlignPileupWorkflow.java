@@ -13,7 +13,6 @@ import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.GzipJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapViewJob;
@@ -28,7 +27,7 @@ public class AlignPileupWorkflow
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
-	public static void createWorkFlow(ECDax dax)	
+	public static void createWorkFlow(ECDax dax, Boolean pbsMode)	
 	{
 		try
 		{
@@ -44,7 +43,13 @@ public class AlignPileupWorkflow
 				List<ECJob> mapJobs = new LinkedList<ECJob>();
 				List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
 				
-				String laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
+				String laneInputFileName;
+				if(pbsMode = true)
+					laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
+				else
+					laneInputFileName = new File(workFlowParams.getLaneInput(i)).getName();
+				
+					
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFileName);
 
 				// create a fastSplit job
@@ -55,6 +60,7 @@ public class AlignPileupWorkflow
 					splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
 				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
 				dax.addJob(fastqSplitJob);
+				
 
 				// iterate through the output files of fastQsplit jobs to create pipeline
 				for (Filename f : fastqSplitJob.getOutputFiles())
@@ -118,36 +124,33 @@ public class AlignPileupWorkflow
 				dax.addJob(mapViewJob);
 				dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
 
-				//create pileup job, child of mapview
+				//create pileup.gz job, child of mapview
 				PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i +".ReferenceBFA"), Integer.parseInt(workFlowParams
 						.getSetting("MaqPileupQ")));;
 				dax.addJob(pileupJob);
 				dax.addChild(pileupJob.getID(), mapMergeJob.getID());
 				
-				//create gzip job, child of pileup
-				GzipJob gzipjob = new GzipJob(pileupJob.getSingleOutputFile().getFilename());
-				dax.addJob(gzipjob);
-				dax.addChild(gzipjob.getID(),pileupJob.getID());
+				
 								
 				//create countPileupJob, child of gziped pileupJob
-				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.Mononucleotide);
+				CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() ,CountPileupJob.Mononucleotide);
 				dax.addJob(countMonoPileupJob);
-				dax.addChild(countMonoPileupJob.getID(), gzipjob.getID());
+				dax.addChild(countMonoPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of gzipped pileupJob
-				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.CGdinucleotide);
+				CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CGdinucleotide);
 				dax.addJob(countCGPileupJob);
-				dax.addChild(countCGPileupJob.getID(), gzipjob.getID());
+				dax.addChild(countCGPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of gzipped pileupJob
-				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.CHdinucleotide);
+				CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CHdinucleotide);
 				dax.addJob(countCHPileupJob);
-				dax.addChild(countCHPileupJob.getID(), gzipjob.getID());
+				dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
 				
 				//create countPileupJob, child of gzipped pileupJob
-				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() + ".gz",CountPileupJob.RefComposition);
+				CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.RefComposition);
 				dax.addJob(countGenomePileupJob);
-				dax.addChild(countGenomePileupJob.getID(), gzipjob.getID());
+				dax.addChild(countGenomePileupJob.getID(), pileupJob.getID());
 				
 				//create readdepth:0, child of gzipped pileupJob
 				String genome;
@@ -155,19 +158,19 @@ public class AlignPileupWorkflow
 				if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) { genome = "hg18";}
 				else {genome = "hg18";}
 				
-				ReadDepthJob readdepthJob0 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
+				ReadDepthJob readdepthJob0 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
 				dax.addJob(readdepthJob0);
-				dax.addChild(readdepthJob0.getID(), gzipjob.getID());
+				dax.addChild(readdepthJob0.getID(), pileupJob.getID());
 
 				//create readdepth:1, child of gzipped pileupJob
-				ReadDepthJob readdepthJob1 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 1);
+				ReadDepthJob readdepthJob1 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 1);
 				dax.addJob(readdepthJob1); 
-				dax.addChild(readdepthJob1.getID(), gzipjob.getID());
+				dax.addChild(readdepthJob1.getID(), pileupJob.getID());
 				
 				//create readcount, child of gzipped pileupJob
-				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename() + ".gz", workFlowParams.getSetting("FlowCellName"), i, 1000000, 100);
+				ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, 1000000, 100);
 				dax.addJob(readcountJob);
-				dax.addChild(readcountJob.getID(), gzipjob.getID());
+				dax.addChild(readcountJob.getID(), pileupJob.getID());
 			}
 		} catch (Exception e)
 		{
@@ -180,8 +183,9 @@ public class AlignPileupWorkflow
 	 */
 	public static void usage()
 	{
-		System.out.println("Usage: program [-dryrun] workflowParameterFile.txt");
+		System.out.println("Usage: program [-dryrun] [-pbs] workflowParameterFile.txt");
 		System.out.println("workflowParameterFile.txt: contains all parameters");
+		System.out.println("-pbs: operate in pbs mode");
 		System.out.println("-dryrun: display pbs output, do not run");
 		System.exit(0);
 	}
@@ -192,32 +196,26 @@ public class AlignPileupWorkflow
 	{
 		String paramFile = "";
 		Boolean dryrun = false;
-		//create a dax from the passed in param obj
-		if(args.length == 1)
+		Boolean pbsMode = false;
+		
+		for(String s : args)
 		{
-			if((new File(args[0])).exists())
-				paramFile = args[0];
-			else
-				usage();
-		}
-		else if(args.length==2)
-		{
-			if(args[0].equals("-dryrun") && (new File(args[1])).exists())
-			{
-				paramFile = args[1];
+			if(s.equals("-dryrun")) 
 				dryrun = true;
-			}
+			else if(s.equals("-pbs")) 
+				pbsMode = true;
+			else if(new File(s).exists())
+				paramFile = s;
 			else
 				usage();
-		}
-		else
-			usage();
+		}		
 				
 		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
-		createWorkFlow(dax);
+		createWorkFlow(dax, pbsMode);
 		dax.saveAsDot("alignpileup_dax.dot");
 		dax.saveAsSimpleDot("alignpileup_dax_simple.dot");
-		dax.runWorkflow(dryrun);
+		if(pbsMode)
+			dax.runWorkflow(dryrun);
 		dax.saveAsXML("alignpileup_dax.xml");
 		
 	}

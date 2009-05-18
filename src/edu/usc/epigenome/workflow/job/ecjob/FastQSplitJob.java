@@ -17,7 +17,7 @@ public class FastQSplitJob extends ECJob
 {
 	public FastQSplitJob(String inputFile, int binSize) throws Exception
 	{
-		super(WorkflowConstants.NAMESPACE, "fastqSplit", WorkflowConstants.VERSION, "fastqSpit_" + inputFile);
+		super(WorkflowConstants.NAMESPACE, "fastqSplit", WorkflowConstants.VERSION, "fastqSpit_" + new File(inputFile).getName());
 		Filename input = new Filename(inputFile, LFN.INPUT);
 		input.setRegister(false);
 		this.addUses(input);
