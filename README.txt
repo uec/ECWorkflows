@@ -1,0 +1,32 @@
+
+to run pegasus DAX using pbs (with the -pbs flag):
+SETUP INPUTS AND PARAMETER FILE
+create a dir for your project, copy over your input (fastq) input files. This
+dir will end up having all your pbs output. 
+
+copy over the sample workfFlowParams.txt.sample and edit it to your specs:
+
+global settings may only need the tmpDir changed.
+Flowcell settings: change the flowcell serial
+Lane settings: change the input files, alignment is Bisulfite or regular, and ref genome
+
+OPTIONAL, HIGHLY RECOMENDED:
+you are now ready to do a dryrun to verify things are working correctly. it
+may take a few minutes since it calculates the number of splits
+
+java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.MainWorkflow -pbs -dryrun workFlowParams.txt
+
+this will print the pbs commands that will be run. it will also generate a .dax
+and .dot file. open the .dot file with graphviz and and view the workflow
+graphical plot. graphviz has a nice OSX gui. get graphviz at
+http://www.graphviz.org/Download..php
+
+RUNNING THE WORKFLOW
+this generates everything, like above, but since there is no "-dryrun" arg, it WILL RUN on
+pbs.
+
+java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.MainWorkflow -pbs workFlowParams.txt
+
+again, this may take a few minutes since we calcuate the number of splits and queue up jobs. dax and
+dot files will be generated.  the final results files will be in your tmpDir/FlowcellID (tmpdir that you
+specified in your param file). 
