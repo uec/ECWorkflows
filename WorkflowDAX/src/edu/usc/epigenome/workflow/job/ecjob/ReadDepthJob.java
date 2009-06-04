@@ -21,8 +21,9 @@ public class ReadDepthJob extends ECJob
 		outputFile.setRegister(true);
 		this.addUses(outputFile);
 		
-		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToReadDepthWindows -genomeVers "+ genome + " -strandSpecific -maxIdentical " + maxIdent + " -windSize " + windowSize + " "));
+		this.addArgument(new PseudoText(outputFileName));
+		this.addArgument(new PseudoText( " java edu.usc.epigenome.scripts.PileupToReadDepthWindows -genomeVers "+ genome + " -strandSpecific -maxIdentical " + maxIdent + " -windSize " + windowSize + " "));
 		this.addArgument(input);
-		this.addArgument(new PseudoText(" >" + outputFileName));		
+				
 	}
 }

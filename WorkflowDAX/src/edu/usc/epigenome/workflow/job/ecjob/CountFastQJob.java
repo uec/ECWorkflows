@@ -21,7 +21,8 @@ public class CountFastQJob extends ECJob
 		this.addUses(outputFileCSV);
 
 		// add the arguments to the job
-		this.addArgument(new PseudoText(" edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
+		this.addArgument(new PseudoText(outputFileNameCSV));
+		this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
 		
 		// iterate through all the map jobs
 		for (ECJob j : fastQJobs)
@@ -35,6 +36,6 @@ public class CountFastQJob extends ECJob
 					this.addArgument(new PseudoText(" "));				
 			}
 		}
-		this.addArgument(new PseudoText(">" + outputFileNameCSV));
+		
 	}
 }

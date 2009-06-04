@@ -67,13 +67,14 @@ public class CountPileupJob extends ECJob
 		//prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+)$", "$1");
 
 		// add the arguments to the job
-		this.addArgument(new PseudoText( " edu.usc.epigenome.scripts.PileupToBaseComposition"));
+		this.addArgument(new PseudoText(outputFileName));
+		this.addArgument(new PseudoText( " java edu.usc.epigenome.scripts.PileupToBaseComposition"));
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(chartType));
 		this.addArgument(new PseudoText(" "));
 		//this.addArgument(new PseudoText("-additionalDesc " + graphDesc));
 		this.addArgument(new PseudoText(" -cycles -quals "));		
 		this.addArgument(input);
-		this.addArgument(new PseudoText(" >" + outputFileName));
+		
 	}
 }
