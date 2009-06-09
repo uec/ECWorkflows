@@ -1,3 +1,5 @@
+View the latest version of this document at:
+http://epiweb.usc.edu/svn/ECWorkflow/trunk/WorkflowDAX/README.txt?view=markup
 
 to run pegasus DAX using pbs (with the -pbs flag):
 SETUP INPUTS AND PARAMETER FILE
@@ -14,7 +16,7 @@ OPTIONAL, HIGHLY RECOMENDED:
 you are now ready to do a dryrun to verify things are working correctly. it
 may take a few minutes since it calculates the number of splits
 
-java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.MainWorkflow -pbs -dryrun workFlowParams.txt
+java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.AlignPileupWorkflow -pbs -dryrun workFlowParams.txt
 
 this will print the pbs commands that will be run. it will also generate a .dax
 and .dot file. open the .dot file with graphviz and and view the workflow
@@ -25,8 +27,19 @@ RUNNING THE WORKFLOW
 this generates everything, like above, but since there is no "-dryrun" arg, it WILL RUN on
 pbs.
 
-java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.MainWorkflow -pbs workFlowParams.txt
+java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.AlignPileupWorkflow -pbs workFlowParams.txt
 
 again, this may take a few minutes since we calcuate the number of splits and queue up jobs. dax and
 dot files will be generated.  the final results files will be in your tmpDir/FlowcellID (tmpdir that you
 specified in your param file). 
+
+TO RUN REPORT GENERATION ON PILEUPS ONLY
+this will skip alignments etc, you must have pileups for each lane on hand
+make sure the lane inputs in your parameter file reference the pileup.gz files not the fastq txt files. ex:
+Lane.8.Input = s_8_sequence_short.pileup.gz
+
+the only difference is the entry point in the java call:
+
+java -cp /auto/uec-00/ramjan/software/ECWorkflow/ECWorkFlow.jar:/auto/uec-00/ramjan/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromPileup -pbs -dryrun workFlowParams.txt
+
+
