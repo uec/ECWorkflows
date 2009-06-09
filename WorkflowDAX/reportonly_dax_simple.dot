@@ -1,0 +1,119 @@
+digraph g {
+"readcount_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX715000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX115000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX705000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX505000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX415000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX815000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX205000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX605000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX805000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX4" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX315000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX215000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX105000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX305000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX405000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readdepth_300ABCAAXX515000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"readcount_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX615000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"Legend" [
+shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="white"><font color="black">Legend</font></td></tr><tr><td align="left" bgcolor="2" border="2" color="2">      </td><td align="left" border="2" color="2"><font>uscec::readdepth</font></td><td> </td><td align="left" bgcolor="3" border="2" color="3">      </td><td align="left" border="2" color="3"><font>uscec::countpileup</font></td><td> </td><td align="left" bgcolor="1" border="2" color="1">      </td><td align="left" border="2" color="1"><font>uscec::readcount</font></td><td> </td></tr></table>> ];
+Start -> "readcount_300ABCAAXX8"
+Start -> "readdepth_300ABCAAXX715000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz"
+Start -> "readdepth_300ABCAAXX115000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz"
+Start -> "readcount_300ABCAAXX2"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly"
+Start -> "readcount_300ABCAAXX1"
+Start -> "readdepth_300ABCAAXX705000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX505000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX415000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX815000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz"
+Start -> "readdepth_300ABCAAXX205000"
+Start -> "readdepth_300ABCAAXX605000"
+Start -> "readdepth_300ABCAAXX805000"
+Start -> "readcount_300ABCAAXX5"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz"
+Start -> "readcount_300ABCAAXX4"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX315000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX215000"
+Start -> "readdepth_300ABCAAXX105000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly"
+Start -> "readcount_300ABCAAXX7"
+Start -> "readdepth_300ABCAAXX305000"
+Start -> "readdepth_300ABCAAXX405000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX515000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition"
+Start -> "readcount_300ABCAAXX3"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition"
+Start -> "readcount_300ABCAAXX6"
+Start -> "readdepth_300ABCAAXX615000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition"
+{ edge [color="#ffffff"]
+ Legend -> Start
+}
+}

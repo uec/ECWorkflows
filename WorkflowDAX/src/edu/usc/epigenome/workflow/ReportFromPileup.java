@@ -25,7 +25,7 @@ public class ReportFromPileup
 				else
 					laneInputFileName = new File(workFlowParams.getLaneInput(i)).getName();
 				
-				if(!(laneInputFileName.contentEquals("up.gz")))
+				if(!(laneInputFileName.contains("up.gz")))
 				{
 					System.err.println("expected pileup.gz file as input for lane " + i +", File=" + laneInputFileName);
 					System.exit(1);
@@ -76,8 +76,10 @@ public class ReportFromPileup
 	
 	public static void usage()
 	{
-		System.out.println("Usage: program [-dryrun] workflowParameterFile.txt");
+		System.out.println("Error: parameter file does not exist");
+		System.out.println("Usage: program [-dryrun] [-pbs] workflowParameterFile.txt");
 		System.out.println("workflowParameterFile.txt: contains all parameters");
+		System.out.println("-pbs: operate in pbs mode");
 		System.out.println("-dryrun: display pbs output, do not run");
 		System.exit(0);
 	}

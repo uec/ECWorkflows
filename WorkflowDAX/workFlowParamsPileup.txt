@@ -1,0 +1,74 @@
+#################################
+## Global Settings (shouldn't change too much)
+
+#optional template to use for pbs jobs
+JobTemplate = pbsTemplate.sh
+#pegasus tranformation catalog 
+PegasusTC = tc.data
+
+#location of pbs storage space / project dir
+tmpDir = /home/uec-00/ramjan/tmp
+
+#queue to use
+queue = laird
+
+#eland options
+Eland.webdir = http://gastorage2.usc.edu/slxa_runs/incoming/
+
+#remote user name for eland server: ex user zack on gastorage2
+Eland.username = zack
+
+################################
+## Project Specific Settings
+
+FlowCellName = 300ABCAAXX
+RegularSplitFactor = 1000
+BisulfiteSplitFactor = 250000
+MinMismatches = 2
+MaqPileupQ = 30
+referenceLane = 1
+
+###############################
+## Lane Specific Settings
+
+#inputs are fastQ files
+Lane.1.Input = s_1_sequence.pileup.gz
+Lane.1.AlignmentType = regular
+Lane.1.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/phi-X174/phi_plus_SNPs.bfa
+Lane.1.Eland.Genome = /srv/data/slxa/GENOMES/phi-X174/
+
+Lane.2.Input = s_2_sequence.pileup.gz
+Lane.2.AlignmentType = regular
+Lane.2.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.2.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.3.Input = s_3_sequence.pileup.gz
+Lane.3.AlignmentType = regular
+Lane.3.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.3.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.4.Input = s_4_sequence.pileup.gz
+#can be explicitely set to regular, although this is the default if unspecified.
+Lane.4.AlignmentType = regular
+Lane.4.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.4.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.5.Input = s_5_sequence.pileup.gz
+Lane.5.AlignmentType = regular
+Lane.5.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.5.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.6.Input = s_6_sequence.pileup.gz
+Lane.6.AlignmentType = regular
+Lane.6.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.6.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.7.Input = s_7_sequence.pileup.gz
+Lane.7.AlignmentType = regular
+Lane.7.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.7.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+
+Lane.8.Input = s_8_sequence.pileup.gz
+Lane.8.AlignmentType = regular
+Lane.8.ReferenceBFA = /home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.8.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
