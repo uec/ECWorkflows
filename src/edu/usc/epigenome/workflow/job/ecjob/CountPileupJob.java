@@ -1,5 +1,7 @@
 package edu.usc.epigenome.workflow.job.ecjob;
 
+import java.io.File;
+
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.PseudoText;
@@ -25,9 +27,9 @@ public class CountPileupJob extends ECJob
 		// only one output file
 		// construct the output filenames for job
 		String outputFileName;
+		outputFileName = new String(new File(inputFileName).getName());
 		if(chartType == CountPileupJob.Mononucleotide)
 		{
-			outputFileName = new String(inputFileName);
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_maq_mononucleotide" + ".csv");
 			Filename outputmono = new Filename(outputFileName, LFN.OUTPUT);
 			outputmono.setRegister(true);
@@ -35,8 +37,7 @@ public class CountPileupJob extends ECJob
 			
 		}
 		else if(chartType == CountPileupJob.CGdinucleotide)
-		{
-			outputFileName = new String(inputFileName);
+		{			
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_cg_dinucleotide" + ".csv");
 			Filename outputcg = new Filename(outputFileName, LFN.OUTPUT);
 			outputcg.setRegister(true);
@@ -44,16 +45,14 @@ public class CountPileupJob extends ECJob
 		}
 		
 		else if(chartType == CountPileupJob.CHdinucleotide)
-		{
-			outputFileName = new String(inputFileName);
+		{			
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_ch_dinucleotide" + ".csv");
 			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
 			outputch.setRegister(true);
 			this.addUses(outputch);
 		}
 		else if(chartType == CountPileupJob.RefComposition)
-		{
-			outputFileName = new String(inputFileName);
+		{			
 			outputFileName = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\_referenceGenome" + ".csv");
 			Filename outputch = new Filename(outputFileName, LFN.OUTPUT);
 			outputch.setRegister(true);
@@ -63,9 +62,7 @@ public class CountPileupJob extends ECJob
 		{
 			throw new Exception("unknown chart type requested");
 		}
-		//String prefix = new String(inputFileName);
-		//prefix = prefix.replaceAll("^(.+?)(_s_\\d_\\.\\w+)$", "$1");
-
+		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(outputFileName));
 		this.addArgument(new PseudoText( " java edu.usc.epigenome.scripts.PileupToBaseComposition"));
