@@ -91,7 +91,7 @@ public class ReportFromPileup
 				dax.addJob(alignpileup5);
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup6 = new AlignFeaturePileupJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i, "kg-exon", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "knownGene-exon.hg18.gtf", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup6 = new AlignFeaturePileupJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i, "kg-exon", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "knownGene-exon.hg18.gtf", 1000, 1, 0, 0, 3995);
 				dax.addJob(alignpileup6);
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
