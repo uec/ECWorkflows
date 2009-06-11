@@ -67,7 +67,7 @@ public class ReportFromPileup
 				dax.addJob(readdepthJob1);
 				
 				//create readcount,
-				ReadCountJob readcountJob = new ReadCountJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i, 1000000, 100);
+				ReadCountJob readcountJob = new ReadCountJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("randomSubset")), 100);
 				dax.addJob(readcountJob);
 				
 				//create AlignFeaturejob, child of gzipped pileupJob

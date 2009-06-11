@@ -27,6 +27,7 @@ BisulfiteSplitFactor = 250000
 MinMismatches = 2
 MaqPileupQ = 30
 referenceLane = 1
+randomSubset = 300000
 
 ###############################
 ## Lane Specific Settings
