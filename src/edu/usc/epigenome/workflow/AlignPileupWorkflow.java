@@ -10,6 +10,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.AlignFeaturePileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
+import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
@@ -109,6 +110,34 @@ public class AlignPileupWorkflow
 				for (Job fastqjob : fastqJobs)
 				{
 					dax.addChild(countFastQJob.getID(), fastqjob.getID());
+				}
+				
+				
+				//create nmercount for 3
+				CountNmerJob count3mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 3);
+				dax.addJob(count3mer);
+				// mapmerge is child to all the map jobs
+				for (Job fastqjob : fastqJobs)
+				{
+					dax.addChild(count3mer.getID(), fastqjob.getID());
+				}
+				
+				//create nmercount for 5
+				CountNmerJob count5mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 5);
+				dax.addJob(count5mer);
+				// mapmerge is child to all the map jobs
+				for (Job fastqjob : fastqJobs)
+				{
+					dax.addChild(count5mer.getID(), fastqjob.getID());
+				}
+				
+				//create nmercount for 10
+				CountNmerJob count10mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 10);
+				dax.addJob(count10mer);
+				// mapmerge is child to all the map jobs
+				for (Job fastqjob : fastqJobs)
+				{
+					dax.addChild(count10mer.getID(), fastqjob.getID());
 				}
 				
 				// for each lane create a map merge job

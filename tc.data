@@ -14,6 +14,7 @@ hpc 	uscec::readcount:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_util
 hpc 	uscec::countfastq:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc 	uscec::pileupwig:1.0 	  	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc 	uscec::featurepileup:1.0   	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc 	uscec::countnmer:1.0  	 	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc		uscec::remotebustard:1.0 	/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/remotebustard.pl		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc		uscec::genecdax:1.0 		/usr/bin/java																	INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc		uscec::gzip:1.0 			/bin/gzip																		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
