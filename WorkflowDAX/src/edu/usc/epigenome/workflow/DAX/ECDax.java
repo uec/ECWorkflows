@@ -426,6 +426,18 @@ public class ECDax extends ADAG
 		if (isDryrun)
 		{
 			jobIDs.put(job, String.valueOf(tmpNum++));
+			try
+			{
+				FileWriter log = new FileWriter("dryrun.log.txt", true);
+				log.write("##############\n" + jobScript);
+				log.close();
+			} 
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 
 		// else qsub it
@@ -439,7 +451,14 @@ public class ECDax extends ADAG
 				//tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
 				tmpFile = File.createTempFile("ECjob_" + hasExecName.get(job).replace("::", "_"), ".sh");
 				tmpFile.deleteOnExit();
+				
 				System.out.print("############\n# " + tmpFile.getName() + ":\n");
+				
+				FileWriter log = new FileWriter("pbsrun.log.txt", true);
+				log.write("\n############\n# " + tmpFile.getName() + ":\n");
+				log.write(jobScript);
+				log.close();
+				
 				BufferedWriter out = new BufferedWriter(new FileWriter(tmpFile));
 				out.write(jobScript);
 				out.close();
@@ -463,7 +482,7 @@ public class ECDax extends ADAG
 				e.printStackTrace();
 			}
 		}
-		System.out.print("##############\n" + jobScript);
+		System.out.print("\n##############\n" + jobScript);
 	}
 
 	/**
