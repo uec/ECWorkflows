@@ -202,52 +202,52 @@ public class AlignPileupWorkflow
 				dax.addChild(readcountJob.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup1 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "Ku2008-Ring1B", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "PcG_sites/Ku2008/hg18.ES.Ring1B.HMM.startsEnds.gff", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup1 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "Ku2008-Ring1B", "/home/uec-00/shared/production/genomic-data-misc/" + "PcG_sites/Ku2008/hg18.ES.Ring1B.HMM.startsEnds.gff", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup1);
 				dax.addChild(alignpileup1.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup2 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "Ku2008-H3K27", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "PcG_sites/Ku2008/hg18.ES.H3K27me3.HMM.startsEnds.gff", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup2 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "Ku2008-H3K27", "/home/uec-00/shared/production/genomic-data-misc/" + "PcG_sites/Ku2008/hg18.ES.H3K27me3.HMM.startsEnds.gff", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup2);
 				dax.addChild(alignpileup2.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup3 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "guelen2008-LADs", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "guelen2008-laminB1Lads.startsEnds.gff", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup3 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "guelen2008-LADs", "/home/uec-00/shared/production/genomic-data-misc/" + "guelen2008-laminB1Lads.startsEnds.gff", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup3);
 				dax.addChild(alignpileup3.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup4 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-tssNoncgi", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "knownGene-tss.NO_overlap_tj_or_gg_cpgi.hg18.gtf", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup4 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-tssNoncgi", "/home/uec-00/shared/production/genomic-data-misc/" + "knownGene-tss.NO_overlap_tj_or_gg_cpgi.hg18.gtf", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup4);
 				dax.addChild(alignpileup4.getID(), pileupJob.getID());
 
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup5 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-tssCgi", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "knownGene-tss.overlap_tj_or_gg_cpgi.hg18.gtf", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup5 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-tssCgi", "/home/uec-00/shared/production/genomic-data-misc/" + "knownGene-tss.overlap_tj_or_gg_cpgi.hg18.gtf", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup5);
 				dax.addChild(alignpileup5.getID(), pileupJob.getID());
 
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup6 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-exon", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "knownGene-exon.hg18.gtf", 1000, 1, 0, 0, 3995);
+				AlignFeaturePileupJob alignpileup6 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kg-exon", "/home/uec-00/shared/production/genomic-data-misc/" + "knownGene-exon.hg18.gtf", 1000, 1, 0, 0, 3995);
 				dax.addJob(alignpileup6);
 				dax.addChild(alignpileup6.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup7 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kim2007-ctcf", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "CTCF/Kim2007/ctcf.imr90.hg18.startsEnds.gff", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup7 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "kim2007-ctcf", "/home/uec-00/shared/production/genomic-data-misc/" + "CTCF/Kim2007/ctcf.imr90.hg18.startsEnds.gff", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup7);
 				dax.addChild(alignpileup7.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup8 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "RepeatMaskerLINE", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "repeats/DbRepeatMaskerLINE.hg18.startsEnds.gff", 1000, 1, 0, 0, 3995);
+				AlignFeaturePileupJob alignpileup8 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "RepeatMaskerLINE", "/home/uec-00/shared/production/genomic-data-misc/" + "repeats/DbRepeatMaskerLINE.hg18.startsEnds.gff", 1000, 1, 0, 0, 3995);
 				dax.addJob(alignpileup8);
 				dax.addChild(alignpileup8.getID(), pileupJob.getID());
 				
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup9 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "RepeatMaskerSINE", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "repeats/DbRepeatMaskerSINE.hg18.startsEnds.gff", 1000, 1, 0, 0, 3995);
+				AlignFeaturePileupJob alignpileup9 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "RepeatMaskerSINE", "/home/uec-00/shared/production/genomic-data-misc/" + "repeats/DbRepeatMaskerSINE.hg18.startsEnds.gff", 1000, 1, 0, 0, 3995);
 				dax.addJob(alignpileup9);
 				dax.addChild(alignpileup9.getID(), pileupJob.getID());
 
 				//create AlignFeaturejob, child of gzipped pileupJob
-				AlignFeaturePileupJob alignpileup10 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "TJGG-exonNoTss", "/home/rcf-40/bberman/storage/genomic-data-misc/" + "CpG_islands/Takai_Jones_plus_GG.merged.exonOverlapNoPromoters.hg18.gtf", 1000, 1, 0, 0, 1995);
+				AlignFeaturePileupJob alignpileup10 = new AlignFeaturePileupJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, "TJGG-exonNoTss", "/home/uec-00/shared/production/genomic-data-misc/" + "CpG_islands/Takai_Jones_plus_GG.merged.exonOverlapNoPromoters.hg18.gtf", 1000, 1, 0, 0, 1995);
 				dax.addJob(alignpileup10);
 				dax.addChild(alignpileup10.getID(), pileupJob.getID());
 				
