@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
+import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapJob;
@@ -56,14 +57,17 @@ public class AlignPileupWorkflow
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFileName);
 
 				// create a fastSplit job
-				int splitSize = 0;
-				if (workFlowParams.laneIsBisulfite(i))
-					splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
-				else
-					splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
-				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
-				dax.addJob(fastqSplitJob);
+				//int splitSize = 0;
+				//if (workFlowParams.laneIsBisulfite(i))
+				//	splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
+				//else
+				//	splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
+				//FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
+				//dax.addJob(fastqSplitJob);
 				
+				int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 7;
+				FastQConstantSplitJob fastqSplitJob = new FastQConstantSplitJob(laneInputFileName, splitSize);
+				dax.addJob(fastqSplitJob);
 
 				// iterate through the output files of fastQsplit jobs to create pipeline
 				for (Filename f : fastqSplitJob.getOutputFiles())
@@ -267,11 +271,13 @@ public class AlignPileupWorkflow
 	 */
 	public static void usage()
 	{
-		System.out.println("Error: parameter file does not exist");
-		System.out.println("Usage: program [-dryrun] [-pbs] workflowParameterFile.txt");
+		System.out.println("Error: parameter file does not exist and no valid URL given");
+		System.out.println("Usage: program [-dryrun] [-pbs] [workflowParameterFile.txt] [http://processURL]");
 		System.out.println("workflowParameterFile.txt: contains all parameters");
+		System.out.println("workflowURL.txt: contains all parameters");
 		System.out.println("-pbs: operate in pbs mode");
 		System.out.println("-dryrun: display pbs output, do not run");
+		System.err.println("Either one of the arguements or both must be specified");
 		System.exit(0);
 	}
 	/**
@@ -280,6 +286,7 @@ public class AlignPileupWorkflow
 	public static void main(String[] args)
 	{
 		String paramFile = "";
+		String processURL = "";
 		Boolean dryrun = false;
 		Boolean pbsMode = false;
 		
@@ -291,18 +298,29 @@ public class AlignPileupWorkflow
 				pbsMode = true;
 			else if(new File(s).exists())
 				paramFile = s;
+			else if(s.contains("http://"))
+				processURL = s;
 			else
 				usage();
-		}		
-				
-		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
+		}
+		
+		ECWorkflowParams par = null;
+		if(paramFile.length() > 0 && processURL.length() > 7)
+			par = new ECWorkflowParams(new File(paramFile), processURL);
+		else if(paramFile.length() > 0 && processURL.length() == 0)
+			par = new ECWorkflowParams(new File(paramFile));
+		else if(paramFile.length() == 0 && processURL.length() > 7)
+			par = new ECWorkflowParams(processURL);
+		else
+			usage();
+		
+		ECDax dax = new ECDax(par);
 		createWorkFlow(dax, pbsMode);
 		dax.saveAsDot("alignpileup_dax.dot");
 		dax.saveAsSimpleDot("alignpileup_dax_simple.dot");
 		if(pbsMode)
 			dax.runWorkflow(dryrun);
-		dax.saveAsXML("alignpileup_dax.xml");
-		
+		dax.saveAsXML("alignpileup_dax.xml");		
 	}
 
 }
