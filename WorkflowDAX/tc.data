@@ -2,6 +2,7 @@
 hpc     uscec::chr21:1.0                /home/uec-00/shared/production/production/software/perl_utils_usc/maqindex      INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"
 hpc     uscec::fast2bfq:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wrap_maq_fastq2bfq.pl    INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::fastqSplit:1.0           /home/uec-00/shared/production/software/perl_utils_usc/fastqSplit.pl            INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"
+hpc     uscec::fastqConstantSplit:1.0   /home/uec-00/shared/production/software/perl_utils_usc/fastqConstantSplit.pl    INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"
 hpc     uscec::filterContams:1.0        /home/uec-00/shared/production/software/perl_utils_usc/solexaFilterContams.pl   INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::map:1.0                  /home/uec-00/shared/production/software/perl_utils_usc/wrap_maq_map.pl          INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"
 hpc     uscec::mapview:1.0              /home/uec-00/shared/production/software/perl_utils_usc/wrap_maq_mapview.pl      INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1"

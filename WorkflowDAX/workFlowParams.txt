@@ -5,6 +5,8 @@
 JobTemplate = pbsTemplate.sh
 #pegasus tranformation catalog 
 PegasusTC = tc.data
+#number of nodes in cluster to help plan split factors
+ClusterSize = 256
 
 #location of pbs storage space / project dir
 tmpDir = /home/uec-00/ramjan/tmp
