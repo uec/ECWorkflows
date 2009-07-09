@@ -40,7 +40,7 @@ public class AlignPileupWorkflow
 			
 			//get the params so that we have the input parameters
 			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
-			
+			workFlowParams.saveAs("workflowParamsUsed.log.txt");
 			//List<Job> mapMergeJobs = new LinkedList<Job>();
 			for (int i : workFlowParams.getAvailableLanes())
 			{
