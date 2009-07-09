@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import java.io.FileReader;
 
@@ -48,6 +50,10 @@ public class ECWorkflowParams
 	// initialize from web only
 	public ECWorkflowParams(String processIDSite)
 	{
+		if(new File("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt").exists())
+		{
+			processFileSettings("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt");
+		}
 		processRemoteSettings(processIDSite);
 		setDefaults();
 		System.out.print(this.toString());
@@ -63,6 +69,23 @@ public class ECWorkflowParams
 		System.out.print(this.toString());
 		processPegasusTC();
 		processJobTemplate();
+	}
+	
+	public void saveAs(String filename)
+	{
+		FileWriter log;
+		try
+		{
+			log = new FileWriter(filename, false);
+			log.write(this.toString());
+			log.close();
+		} 
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	private void processFileSettings(String filename)
@@ -355,7 +378,7 @@ public class ECWorkflowParams
 				String laneInputFile = "s_" + lane + "_sequence.txt";
 				for (String s : files)
 				{
-					if (s.matches(".*s_" + lane + "_.+?\\.(txt|gz)"))
+					if (s.matches(".*s_" + lane + "[_\\.].+?\\.(txt|gz)"))
 					{
 						laneInputFile = s;
 						System.err.println("Guessing input file for lane " + lane + ": " + s + " (found in current directory)");
