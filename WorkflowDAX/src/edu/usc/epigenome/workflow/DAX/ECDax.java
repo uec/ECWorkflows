@@ -278,7 +278,10 @@ public class ECDax extends ADAG
 	public void saveAsSimpleDot(String dotFileName)
 	{
 		parseDAX();
-		int nextColor = 1;
+		//String colors[] = {"orange", "blue", "brown", "blueviolet", "plum4", "cadetblue", "chartreuse", "cornflowerblue", "crimson", "cyan", "darkgreen", "darkkhaki","deeppink","gray", "darkslateblue", "dodgerblue", "gold", "green", "darkgoldenrod"};
+		String colors[] = {"red", "green", "blue", "orange", "yellow", "violet", "gray", "brown", "red4", "green4", "blue4", "orangered", "yellow3", "darkviolet", "gray19", "lightpink", "palegreen", "lightblue", "salmon", 
+						   "red", "green", "blue", "orange", "yellow", "violet", "gray", "brown", "red4", "green4", "blue4", "orangered", "yellow3", "darkviolet", "gray19", "lightpink", "palegreen", "lightblue", "salmon"};
+		int nextColor = 0;
 		HashMap<String,Integer> nameToColor = new HashMap<String,Integer>(); 
 		String dotGraph = "digraph g {\n";
 		
@@ -289,16 +292,16 @@ public class ECDax extends ADAG
 			{
 				nameToColor.put(hasExecName.get(parent), nextColor++);
 			}
-			dotGraph += "\"" + parent + "\" [shape = \"circle\" style=\"filled\" colorscheme=\"paired12\" color="+ nameToColor.get(hasExecName.get(parent))+ " label = \"" +/* hasExecName.get(parent) +*/ "\"];\n";			
+			dotGraph += "\"" + parent + "\" [shape = \"circle\" style=\"filled\" colorscheme=\"X11\" color="+ colors[nameToColor.get(hasExecName.get(parent))]+ " label = \"" +/* hasExecName.get(parent) +*/ "\"];\n";			
 		}
 		
 		
 		//add legend
-		dotGraph += "\"Legend\" [\nshape = \"Mrecord\" colorscheme=\"paired12\""
+		dotGraph += "\"Legend\" [\nshape = \"Mrecord\" colorscheme=\"X11\""
 			+ "label =<<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" cellpadding=\"4\"><tr><td bgcolor=\"white\"><font color=\"black\">Legend</font></td></tr><tr>";
 		for (String jobtype : nameToColor.keySet())
 		{
-				dotGraph += "<td align=\"left\" bgcolor=\""+ nameToColor.get(jobtype) +"\" border=\"2\" color=\""+ nameToColor.get(jobtype) +"\">      </td><td align=\"left\" border=\"2\" color=\""+ nameToColor.get(jobtype) +"\"><font>" + jobtype + "</font></td><td> </td>";				
+				dotGraph += "<td align=\"left\" bgcolor=\""+ colors[nameToColor.get(jobtype)] +"\" border=\"2\" color=\""+ colors[nameToColor.get(jobtype)] +"\">      </td><td align=\"left\" border=\"2\" color=\""+ colors[nameToColor.get(jobtype)] +"\"><font>" + jobtype + "</font></td><td> </td>";				
 		}
 		dotGraph += "</tr></table>> ];\n";
 		
