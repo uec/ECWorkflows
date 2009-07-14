@@ -164,6 +164,11 @@ public class ECWorkflowParams
 	private void processRemoteSettings(String processIDSite)
 	{
 		Document processDom = getDomFromAddress(processIDSite);
+		//get lims id
+		NodeList processRoot = processDom.getElementsByTagName("process");
+		Element process = (Element) processRoot.item(0);
+		this.workFlowArgsMap.put("LimsID", process.getAttribute("limsid"));
+		
 		// get process types (Bs-seq etc) and run settings set for each lane
 		NodeList processFieldList = processDom.getElementsByTagName("ns2:field");
 		for (int i = 0; i < processFieldList.getLength(); i++)
@@ -402,15 +407,17 @@ public class ECWorkflowParams
 
 	public static void main(String[] args)
 	{
+		@SuppressWarnings("unused")
+		ECWorkflowParams par = null;
 		if(args.length == 1)
 		{
 			if(new File(args[0]).exists())
 			{
-				ECWorkflowParams par = new ECWorkflowParams(new File("workFlowParams.txt"));
+				par = new ECWorkflowParams(new File("workFlowParams.txt"));
 			}
 			else if(args[0].contains("http://"))
 			{
-				ECWorkflowParams par = new ECWorkflowParams(args[1]);				
+				par = new ECWorkflowParams(args[1]);				
 			}
 			else
 			{
@@ -420,7 +427,7 @@ public class ECWorkflowParams
 		}
 		else if (args.length == 2)
 		{
-			ECWorkflowParams par = new ECWorkflowParams(new File(args[0]), args[1]);
+			par = new ECWorkflowParams(new File(args[0]), args[1]);
 		}
 		
 		else 
@@ -428,6 +435,6 @@ public class ECWorkflowParams
 			System.err.println("usage:  ECWorkflowParams  [paramfile.txt] [http://processURL]");
 			System.err.println("Either one or both of the arguements must be specified");
 			System.exit(1);
-		}		
+		}	
 	}
 }

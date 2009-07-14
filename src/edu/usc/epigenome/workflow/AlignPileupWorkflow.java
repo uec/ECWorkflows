@@ -14,7 +14,7 @@ import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
-import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
+//import edu.usc.epigenome.workflow.job.ecjob.FastQSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
@@ -57,14 +57,15 @@ public class AlignPileupWorkflow
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFileName);
 
 				// create a fastSplit job
-				//int splitSize = 0;
-				//if (workFlowParams.laneIsBisulfite(i))
-				//	splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
-				//else
-				//	splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
-				//FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
-				//dax.addJob(fastqSplitJob);
-				
+				/* 
+				int splitSize = 0;
+				if (workFlowParams.laneIsBisulfite(i))
+					splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
+				else
+					splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
+				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
+				dax.addJob(fastqSplitJob);
+				*/
 				int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 7;
 				FastQConstantSplitJob fastqSplitJob = new FastQConstantSplitJob(laneInputFileName, splitSize);
 				dax.addJob(fastqSplitJob);
