@@ -10,7 +10,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 public class MapJob extends ECJob
 {
 
-	public MapJob(String inputFile, String referenceGenomeFile, int minMismatches, boolean isBisulfite)
+	public MapJob(String inputFile, String referenceGenomeFile, int minMismatches, boolean isBisulfite, int trim1, int trim2)
 	{
 		super(WorkflowConstants.NAMESPACE, "map", WorkflowConstants.VERSION, "map_" + inputFile);
 		Filename input = new Filename(inputFile, LFN.INPUT);
@@ -35,6 +35,16 @@ public class MapJob extends ECJob
 		{
 			this.addArgument(new PseudoText(" -M c"));
 		}
+		
+		if(trim1 > 0)
+		{
+			this.addArgument(new PseudoText(" -1 " + trim1 + " "));
+		}
+		if(trim2 > 0)
+		{
+			this.addArgument(new PseudoText(" -2 " + trim2 + " "));
+		}
+		
 		this.addArgument(new PseudoText(" -n " + minMismatches + " "));
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));

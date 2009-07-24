@@ -18,12 +18,12 @@ public class PileupToWigJob extends ECJob
 		input.setRegister(false);
 		this.addUses(input);
 		
-		String outputFileName = flowcellName + "_s_" + laneNumber + ".coverage.m" + maxIdent + ".q" + minQuality + ".wig";
+		String outputFileName = flowcellName + "_s_" + laneNumber + ".coverage.m" + maxIdent + ".q" + minQuality + ".wig.gz";
 		Filename outputFile = new Filename(outputFileName , LFN.OUTPUT);
 		outputFile.setRegister(true);
 		this.addUses(outputFile);
 		
-		this.addArgument(new PseudoText( "pileuptowig.log java -Xmx1995m edu.usc.epigenome.scripts.PileupToWig -stepSize " + stepSize + " -windSize " + windowSize + " -name " + new File(inputFileName).getName().replace(".pileup", "").replace(".gz", "") + " -maxIdentical " + maxIdent + " -desc java_pileupwig_" + stepSize + "_" + windowSize + " -type " + type + " -output " + outputFileName + " "));
+		this.addArgument(new PseudoText( "pileuptowig.log java -Xmx1995m edu.usc.epigenome.scripts.PileupToWig -stepSize " + stepSize + " -windSize " + windowSize + " -name " + new File(inputFileName).getName().replace(".pileup", "").replace(".gz", "") + " -maxIdentical " + maxIdent + " -desc java_pileupwig_" + stepSize + "_" + windowSize + " -type " + type + " -output " + outputFileName.replace(".gz","") + " "));
 		this.addArgument(input);
 	}
 }
