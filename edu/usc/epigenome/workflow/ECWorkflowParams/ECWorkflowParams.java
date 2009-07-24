@@ -213,6 +213,18 @@ public class ECWorkflowParams
 				else
 					this.workFlowArgsMap.put("ReadyToRun", "false");
 			}
+			
+			//check end1 maq trim
+			if (processField.getAttribute("name").contains("End1 Trim Read Length"))
+			{
+				this.workFlowArgsMap.put("MaqTrimEnd1", processField.getTextContent());
+			}
+			
+			//check end2 maq trim
+			if (processField.getAttribute("name").contains("End2 Trim Read Length"))
+			{
+				this.workFlowArgsMap.put("MaqTrimEnd2", processField.getTextContent());
+			}
 		}
 
 		NodeList inputNodeList = processDom.getElementsByTagName("input");
@@ -361,7 +373,16 @@ public class ECWorkflowParams
 
 	private void setDefaults()
 	{
-		setDefault("tmpDir", "/home/uec-00/shared/tmp");
+		File tmpdir = new File(".");
+		try
+		{
+			setDefault("tmpDir", tmpdir.getCanonicalPath().replace("/auto/", "/home/") + "/results");
+		} catch (IOException e)
+		{
+			setDefault("tmpDir", tmpdir.getAbsolutePath() + "/results");
+			e.printStackTrace();
+		}
+		
 		setDefault("JobTemplate", "/home/uec-00/shared/production/software/ECWorkflow/pbsTemplate.sh");
 		setDefault("PegasusTC", "/home/uec-00/shared/production/software/ECWorkflow/tc.data");
 		setDefault("queue", "laird");
@@ -372,6 +393,8 @@ public class ECWorkflowParams
 		setDefault("randomSubset", "1000000");
 		setDefault("ReadyToRun", "true");
 		setDefault("ClusterSize", "256");
+		setDefault("MaqTrimEnd1", "0");
+		setDefault("MaqTrimEnd2", "0");
 
 		String files[] = new File(".").list();
 		for (int lane : getAvailableLanes())
