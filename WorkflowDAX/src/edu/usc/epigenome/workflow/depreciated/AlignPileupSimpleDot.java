@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow;
+package edu.usc.epigenome.workflow.depreciated;
 
 import java.io.File;
 import java.util.HashSet;
@@ -93,8 +93,8 @@ public class AlignPileupSimpleDot
 					dax.addChild(fastq2bfqJob.getID(), sol2sangerJob.getID());
 
 					// map job. additional input grabbed from hg18.BS.bfa
-					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),
-							Integer.parseInt(workFlowParams.getSetting("MinMismatches")), workFlowParams.laneIsBisulfite(i));
+					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
+							workFlowParams.laneIsBisulfite(i), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
 					dax.addJob(mapJob);
 					dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
 					mapJobs.add(mapJob);

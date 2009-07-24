@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.job.ecjob;
+package edu.usc.epigenome.workflow.depreciated;
 
 import org.griphyn.vdl.dax.PseudoText;
 
