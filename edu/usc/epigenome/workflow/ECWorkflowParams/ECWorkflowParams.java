@@ -71,6 +71,19 @@ public class ECWorkflowParams
 		processJobTemplate();
 	}
 	
+	//initialize from nothing! use defaults
+	public ECWorkflowParams()
+	{
+		if(new File("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt").exists())
+		{
+			processFileSettings("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt");
+		}
+		setDefaults();
+		System.out.print(this.toString());
+		processPegasusTC();
+		processJobTemplate();
+	}
+	
 	public void saveAs(String filename)
 	{
 		FileWriter log;
@@ -352,8 +365,8 @@ public class ECWorkflowParams
 				throw new Exception("missing required arguement: " + s);
 			}
 		}
-		if (lanesUsed.isEmpty())
-			throw new Exception("no lanes specified");
+		//if (lanesUsed.isEmpty())
+		//	throw new Exception("no lanes specified");
 	}
 
 	public String getSetting(String key)
