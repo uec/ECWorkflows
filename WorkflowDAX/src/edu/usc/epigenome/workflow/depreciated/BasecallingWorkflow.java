@@ -2,7 +2,6 @@ package edu.usc.epigenome.workflow.depreciated;
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
-import edu.usc.epigenome.workflow.job.ecjob.GenECDaxJob;
 
 public class BasecallingWorkflow
 {
