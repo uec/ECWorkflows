@@ -50,6 +50,9 @@ public class ECDax extends ADAG
 	//all job id's (unique)
 	HashMap<String, String> jobIDs;
 	
+	//top level job id's (unique)
+	HashMap<String, String> heldJobIDs;
+	
 	//a job complete cmd line
 	HashMap<String, String> hasCmdLine;
 	
@@ -112,6 +115,7 @@ public class ECDax extends ADAG
 		hasOutputs = new HashMap<String, ArrayList<String>>();
 		hasCmdLine = new HashMap<String, String>();
 		hasExecName = new HashMap<String, String>();
+		heldJobIDs = new HashMap<String, String>();
 		jobIDs = new HashMap<String, String>();
 
 		String xmlString = this.toXML("", "");
@@ -361,6 +365,24 @@ public class ECDax extends ADAG
 				}
 			}
 		}
+		//release holds
+		if(!isDryrun)
+		{
+			for(String job : heldJobIDs.keySet())
+			{
+				
+				try
+				{
+					java.lang.Runtime.getRuntime().exec("qrls " + heldJobIDs.get(job));
+					System.err.println("releasing hold on " + job + " (" + heldJobIDs.get(job) + ")");
+				} 
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+				
+			}
+		}
 	}
 
 	/**
@@ -371,6 +393,7 @@ public class ECDax extends ADAG
 	private void runPBSJob(String job, Boolean isDryrun)
 	{
 		String jobScript;
+		Boolean hasNoDeps = false;
 
 		// See if we have a template file
 		try
@@ -396,7 +419,11 @@ public class ECDax extends ADAG
 		{
 			jobScript = jobScript.replace("#DAXPBS_DEPS", deps);
 		}
-
+		else
+		{
+			hasNoDeps = true;
+		}
+			
 		// COPYIN
 		String copyin = new String();
 		for (String s : hasInputs.get(job))
@@ -467,8 +494,14 @@ public class ECDax extends ADAG
 				out.close();
 
 				// exec
-				Process p = thisApp.exec("qsub " + tmpFile.getAbsolutePath());
-
+				String execCmd = "qsub " + tmpFile.getAbsolutePath();
+				if(hasNoDeps)
+				{
+					 execCmd = "qsub -h " + tmpFile.getAbsolutePath();
+					 
+				}				
+				Process p = thisApp.exec(execCmd);
+				
 				// capture and parse output
 				String processLine;
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -477,6 +510,10 @@ public class ECDax extends ADAG
 					if (processLine.matches("\\d+.+"))
 					{
 						jobIDs.put(job, processLine.trim());
+						if(hasNoDeps)
+						{
+							heldJobIDs.put(job, processLine.trim());
+						}
 					}
 				}
 				input.close();
