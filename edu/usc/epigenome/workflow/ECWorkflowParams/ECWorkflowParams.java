@@ -267,6 +267,8 @@ public class ECWorkflowParams
 				{
 					if (sampleField.getTextContent().contains("hi"))
 						genome = "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.bfa";
+					else if (sampleField.getTextContent().contains("sacCer"))
+						genome = "/auto/uec-00/shared/production/genomes/sacCer1/sacCer1.bfa";
 				}
 			}
 			this.workFlowArgsMap.put("Lane." + laneNumber + ".ReferenceBFA", genome);
