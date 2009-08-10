@@ -49,12 +49,10 @@ public class ReportFromPileup
 					
 					//create readdepth,
 					String genome;
-					if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) 
-						genome = "phiX";
-					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) 
-						genome = "hg18";
-					else 
-						genome = "hg18";
+					if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) { genome = "phiX";}
+					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("sacCer")) { genome = "sacCer1";}
+					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) { genome = "hg18";}
+					else {genome = "hg18";}
 					
 					
 					ReadDepthJob readdepthJob0 = new ReadDepthJob(laneInputFileName, workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
