@@ -15,7 +15,7 @@ public class QCMetricsJob extends ECJob
 		super(WorkflowConstants.NAMESPACE, "qcmetrics", WorkflowConstants.VERSION, "qcmetrics_" + flowcell);
 		String outputFileName = new String(flowcell + "_qcmetrics.csv");
 		Filename output = new Filename(outputFileName, LFN.OUTPUT);
-		output.setRegister(false);
+		output.setRegister(true);
 		this.addUses(output);
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" /home/uec-00/shared/production/software/perl_utils_usc/bisulfiteQCMetrics.pl "));

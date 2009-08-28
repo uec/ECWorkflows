@@ -1,35 +1,39 @@
 #################################
-## Global Settings (shouldn't change too much)
+## Global Settings (shouldn't change too much, you probably should use defaults and not set these)
 
-#optional template to use for pbs jobs
-JobTemplate = pbsTemplate.sh
-#pegasus tranformation catalog 
-PegasusTC = tc.data
-#number of nodes in cluster to help plan split factors
-ClusterSize = 64
+#optional template to use for pbs jobs, probably best to use defaults on hpcc
+#JobTemplate = pbsTemplate.sh
 
-#location of pbs storage space / project dir
-tmpDir = /home/uec-00/ramjan/tmp
+#pegasus tranformation catalog, probably best to use defaults on hpcc
+#PegasusTC = tc.data
+
+#number of nodes in cluster to help plan split factors, default is 256
+#ClusterSize = 256
+
+#location of pbs storage space / project dir, default is to create a folder in current dir
+#tmpDir = /home/uec-00/ramjan/tmp
 
 #queue to use
 queue = laird
 
-#eland options
-Eland.webdir = http://gastorage2.usc.edu/slxa_runs/incoming/
+#eland options (not used much)
+#Eland.webdir = http://gastorage2.usc.edu/slxa_runs/incoming/
 
-#remote user name for eland server: ex user zack on gastorage2
-Eland.username = zack
+#remote user name for eland server: ex user zack on gastorage2 (not used much)
+#Eland.username = zack
 
 ################################
 ## Project Specific Settings
 
 FlowCellName = 300ABCAAXX
-RegularSplitFactor = 4000000
-BisulfiteSplitFactor = 250000
 MinMismatches = 2
 MaqPileupQ = 30
 referenceLane = 1
 randomSubset = 300000
+
+#the following are rarely used since we dynamically size our chunks to max out the cluster
+#RegularSplitFactor = 500000
+#BisulfiteSplitFactor = 250000
 
 ###############################
 ## Lane Specific Settings
@@ -38,40 +42,40 @@ randomSubset = 300000
 Lane.1.Input = s_1_sequence.txt
 Lane.1.AlignmentType = regular
 Lane.1.ReferenceBFA = /home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.bfa
-Lane.1.Eland.Genome = /srv/data/slxa/GENOMES/phi-X174/
+#Lane.1.Eland.Genome = /srv/data/slxa/GENOMES/phi-X174/
 
 Lane.2.Input = s_2_sequence.txt
 Lane.2.AlignmentType = bisulfite
 Lane.2.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.2.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.2.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.3.Input = s_3_sequence.txt
 Lane.3.AlignmentType = bisulfite
 Lane.3.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.3.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.3.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.4.Input = s_4_sequence.txt
 #can be explicitely set to regular, although this is the default if unspecified.
 Lane.4.AlignmentType = regular
 Lane.4.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.4.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.4.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.5.Input = s_5_sequence.txt
 Lane.5.AlignmentType = regular
 Lane.5.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.5.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.5.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.6.Input = s_6_sequence.txt
 Lane.6.AlignmentType = regular
 Lane.6.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.6.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.6.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.7.Input = s_7_sequence.txt
 Lane.7.AlignmentType = regular
 Lane.7.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.7.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.7.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
 
 Lane.8.Input = s_8_sequence.txt
 Lane.8.AlignmentType = regular
 Lane.8.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-Lane.8.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
+#Lane.8.Eland.Genome = /srv/data/slxa/GENOMES/hg18_unmasked/
