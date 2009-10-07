@@ -1,176 +1,74 @@
-package edu.usc.epigenome.workflow.ECWorkflowParams;
+package edu.usc.epigenome.workflow.ECWorkflowParams.specialized;
 
 import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import java.io.FileReader;
-
 import java.io.InputStreamReader;
 import java.io.StringReader;
-
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-public class ECWorkflowParams
+import edu.usc.epigenome.workflow.ECWorkflowParams.ECParams;
+
+public class GAParams extends ECParams
 {
-	protected HashMap<String, String> workFlowArgsMap = new HashMap<String, String>();
 	protected HashSet<Integer> lanesUsed = new HashSet<Integer>();
 
-	public HashMap<String, String> getWorkFlowArgsMap()
-	{
-		return workFlowArgsMap;
-	}
-
+	
 	// initialize from file then remote web, web trumps file
-	public ECWorkflowParams(File file, String processIDSite)
+	public GAParams(File file, String processIDSite)
 	{
-		processFileSettings(file.getAbsolutePath());
+		super(file);
 		processRemoteSettings(processIDSite);
-		setDefaults();
-		System.out.print(this.toString());
-		processPegasusTC();
-		processJobTemplate();
+		setGADefaults();
+		System.out.print(this.toString());		
 	}
 
 	// initialize from web only
-	public ECWorkflowParams(String processIDSite)
+	public GAParams(String processIDSite)
 	{
-		if(new File("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt").exists())
-		{
-			processFileSettings("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt");
-		}
+		super();
 		processRemoteSettings(processIDSite);
-		setDefaults();
+		setGADefaults();
 		System.out.print(this.toString());
-		processPegasusTC();
-		processJobTemplate();
 	}
 
 	// initialize from file only
-	public ECWorkflowParams(File file)
+	public GAParams(File file)
 	{
-		processFileSettings(file.getAbsolutePath());
-		setDefaults();
+		super(file);
+		this.findAvailableLanes();
+		setGADefaults();
 		System.out.print(this.toString());
-		processPegasusTC();
-		processJobTemplate();
 	}
 	
 	//initialize from nothing! use defaults
-	public ECWorkflowParams()
+	public GAParams()
 	{
-		if(new File("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt").exists())
-		{
-			processFileSettings("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt");
-		}
-		setDefaults();
+		super();
+		this.findAvailableLanes();
+		setGADefaults();	
 		System.out.print(this.toString());
-		processPegasusTC();
-		processJobTemplate();
 	}
 	
-	public void saveAs(String filename)
-	{
-		FileWriter log;
-		try
-		{
-			log = new FileWriter(filename, false);
-			log.write(this.toString());
-			log.close();
-		} 
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+	
 
-	private void processFileSettings(String filename)
+	protected void findAvailableLanes()
 	{
-		try
+		for (String key : this.workFlowArgsMap.keySet())
 		{
-			FileReader fileReader = new FileReader(filename);
-			BufferedReader fileIn = new BufferedReader(fileReader);
-			String s;
-			while ((s = fileIn.readLine()) != null)
+			if (key.matches("Lane\\.\\d\\.Input"))
 			{
-				if (s.matches("\\S+\\s*=\\s*\\S+") && !s.matches("\\s*#.*"))
-				{
-					String cleanLine = s.replaceAll("\\s", "");
-					String[] matchedLine = cleanLine.split("=");
-					workFlowArgsMap.put(matchedLine[0], matchedLine[1]);
-					if (matchedLine[0].matches("Lane\\.\\d\\.Input"))
-					{
-						if (!(this.lanesUsed.contains(Integer.parseInt(matchedLine[0].substring(5, 6)))))
-							lanesUsed.add(Integer.parseInt(matchedLine[0].substring(5, 6)));
-					}
-				}
+				if (!(this.lanesUsed.contains(Integer.parseInt(key.substring(5, 6)))))
+					lanesUsed.add(Integer.parseInt(key.substring(5, 6)));
 			}
-			fileReader.close();
-		}
-
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	private void processPegasusTC()
-	{
-		try
-		{
-			FileInputStream fstream = new FileInputStream(this.workFlowArgsMap.get("PegasusTC"));
-			DataInputStream in = new DataInputStream(fstream);
-			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine;
-			// Read File Line By Line
-			while ((strLine = br.readLine()) != null)
-			{
-				if (strLine.matches("\\S+\\s+\\S+\\s+\\S+.*"))
-				{
-					String[] tcMatch = strLine.split("\\s+");
-					workFlowArgsMap.put(tcMatch[1], tcMatch[2]);
-				}
-			}
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	private void processJobTemplate()
-	{
-		try
-		{
-			StringBuffer fileData = new StringBuffer(4092);
-			BufferedReader reader = new BufferedReader(new FileReader(this.workFlowArgsMap.get("JobTemplate")));
-			char[] buf = new char[2048];
-			int numRead = 0;
-			while ((numRead = reader.read(buf)) != -1)
-			{
-				fileData.append(buf, 0, numRead);
-			}
-			reader.close();
-			workFlowArgsMap.put("JobTemplate", fileData.toString());
-		} catch (Exception e)
-		{
-			e.printStackTrace();
 		}
 	}
 
@@ -325,26 +223,9 @@ public class ECWorkflowParams
 		return dom;
 	}
 
-	private void setDefault(String key, String value)
-	{
-		if (!(this.workFlowArgsMap.containsKey(key)))
-		{
-			System.err.println("Using default: " + key + " = " + value);
-			this.workFlowArgsMap.put(key, value);
-		}
-	}
 
-	public String toString()
-	{
-		String retString = new String();
-		String[] keys = this.workFlowArgsMap.keySet().toArray(new String[this.workFlowArgsMap.keySet().size()]);
-		java.util.Arrays.sort(keys);
-		for (String key : keys)
-		{
-			retString += key + " = " + workFlowArgsMap.get(key) + "\n";
-		}
-		return retString;
-	}
+
+
 
 	/**
 	 * check to make sure parameters have been entered for a ga workflow
@@ -371,10 +252,7 @@ public class ECWorkflowParams
 		//	throw new Exception("no lanes specified");
 	}
 
-	public String getSetting(String key)
-	{
-		return workFlowArgsMap.get(key);
-	}
+	
 
 	public String getLaneInput(int laneNumber)
 	{
@@ -386,21 +264,8 @@ public class ECWorkflowParams
 		return lanesUsed.toArray(new Integer[lanesUsed.size()]);
 	}
 
-	private void setDefaults()
+	protected void setGADefaults()
 	{
-		File tmpdir = new File(".");
-		try
-		{
-			setDefault("tmpDir", tmpdir.getCanonicalPath().replace("/auto/", "/home/") + "/results");
-		} catch (IOException e)
-		{
-			setDefault("tmpDir", tmpdir.getAbsolutePath() + "/results");
-			e.printStackTrace();
-		}
-		
-		setDefault("JobTemplate", "/home/uec-00/shared/production/software/ECWorkflow/pbsTemplate.sh");
-		setDefault("PegasusTC", "/home/uec-00/shared/production/software/ECWorkflow/tc.data");
-		setDefault("queue", "laird");
 		setDefault("RegularSplitFactor", "500000");
 		setDefault("BisulfiteSplitFactor", "500000");
 		setDefault("MinMismatches", "2");
@@ -429,7 +294,7 @@ public class ECWorkflowParams
 				}
 				setDefault("Lane." + lane + ".Input", laneInputFile);
 			}
-		}
+		}		
 	}
 
 	public Boolean laneIsBisulfite(int laneNumber)
@@ -446,16 +311,16 @@ public class ECWorkflowParams
 	public static void main(String[] args)
 	{
 		@SuppressWarnings("unused")
-		ECWorkflowParams par = null;
+		GAParams par = null;
 		if(args.length == 1)
 		{
 			if(new File(args[0]).exists())
 			{
-				par = new ECWorkflowParams(new File("workFlowParams.txt"));
+				par = new GAParams(new File("workFlowParams.txt"));
 			}
 			else if(args[0].contains("http://"))
 			{
-				par = new ECWorkflowParams(args[1]);				
+				par = new GAParams(args[1]);				
 			}
 			else
 			{
@@ -465,7 +330,7 @@ public class ECWorkflowParams
 		}
 		else if (args.length == 2)
 		{
-			par = new ECWorkflowParams(new File(args[0]), args[1]);
+			par = new GAParams(new File(args[0]), args[1]);
 		}
 		
 		else 

@@ -2,7 +2,7 @@ package edu.usc.epigenome.workflow;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
-import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
+import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.AlignFeaturePileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
 import edu.usc.epigenome.workflow.job.ecjob.PileupToWigJob;
@@ -17,7 +17,7 @@ public class ReportFromPileup
 		{
 			// construct a dax object
 			// For every requested lane in this flowcell..
-			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
+			GAParams workFlowParams = (GAParams) dax.getWorkFlowParams();
 			workFlowParams.saveAs("workflowParamsUsed.log.txt");	
 			for (int i : workFlowParams.getAvailableLanes())
 			{				
@@ -159,13 +159,13 @@ public class ReportFromPileup
 				usage();
 		}
 		
-		ECWorkflowParams par = null;
+		GAParams par = null;
 		if(paramFile.length() > 0 && processURL.length() > 7)
-			par = new ECWorkflowParams(new File(paramFile), processURL);
+			par = new GAParams(new File(paramFile), processURL);
 		else if(paramFile.length() > 0 && processURL.length() == 0)
-			par = new ECWorkflowParams(new File(paramFile));
+			par = new GAParams(new File(paramFile));
 		else if(paramFile.length() == 0 && processURL.length() > 7)
-			par = new ECWorkflowParams(processURL);
+			par = new GAParams(processURL);
 		else
 			usage();
 		
