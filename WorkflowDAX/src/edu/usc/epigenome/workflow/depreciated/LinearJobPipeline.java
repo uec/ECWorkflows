@@ -1,6 +1,8 @@
-package edu.usc.epigenome.workflow.job;
+package edu.usc.epigenome.workflow.depreciated;
 
 import java.util.ArrayList;
+
+import edu.usc.epigenome.workflow.job.ECJob;
 
 public class LinearJobPipeline
 {
