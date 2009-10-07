@@ -1,7 +1,7 @@
 package edu.usc.epigenome.workflow.depreciated;
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
-import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
+import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 
 public class BasecallingWorkflow
 {
@@ -11,7 +11,7 @@ public class BasecallingWorkflow
 		try
 		{
 			//Construct a dax, starting from solexa output
-			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
+			GAParams workFlowParams = (GAParams) dax.getWorkFlowParams();
 			
 			//run bustard
 			//first get genomes for each lane
@@ -72,7 +72,7 @@ public class BasecallingWorkflow
 		else
 			usage();
 				
-		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
+		ECDax dax = new ECDax(new GAParams(paramFile));
 		createWorkFlow(dax, new File(paramFile).getAbsolutePath());
 		dax.saveAsDot("bustard_dax.dot");
 		dax.runWorkflow(dryrun);

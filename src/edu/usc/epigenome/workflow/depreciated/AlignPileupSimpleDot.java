@@ -10,7 +10,7 @@ import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.Job;
 
 import edu.usc.epigenome.workflow.DAX.ECDax;
-import edu.usc.epigenome.workflow.ECWorkflowParams.ECWorkflowParams;
+import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
@@ -41,7 +41,7 @@ public class AlignPileupSimpleDot
 		{
 			// construct a dax object
 			// For every requested lane in this flowcell..
-			ECWorkflowParams workFlowParams = dax.getWorkFlowParams();
+			GAParams workFlowParams = (GAParams) dax.getWorkFlowParams();
 
 			List<ECJob> mapMergeJobs = new LinkedList<ECJob>();
 			for (int i : workFlowParams.getAvailableLanes())
@@ -257,7 +257,7 @@ public class AlignPileupSimpleDot
 		} else
 			usage();
 
-		ECDax dax = new ECDax(new ECWorkflowParams(paramFile));
+		ECDax dax = new ECDax(new GAParams(paramFile));
 		createWorkFlow(dax);
 		dax.saveAsSimpleDot("alignpileup_dax.dot");
 		dax.runWorkflow(dryrun);
