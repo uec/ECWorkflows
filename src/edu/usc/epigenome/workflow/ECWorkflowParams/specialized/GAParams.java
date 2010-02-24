@@ -275,6 +275,7 @@ public class GAParams extends ECParams
 		setDefault("ClusterSize", "256");
 		setDefault("MaqTrimEnd1", "0");
 		setDefault("MaqTrimEnd2", "0");
+		setDefault("hgBFA", "/home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa");
 
 		String files[] = new File(".").list();
 		for (int lane : getAvailableLanes())
