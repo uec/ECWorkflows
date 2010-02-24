@@ -480,7 +480,8 @@ public class ECDax extends ADAG
 			try
 			{
 				//tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
-				tmpFile = File.createTempFile("ECjob_" + hasExecName.get(job).replace("::", "_"), ".sh");
+				String jobName = workFlowParams.getWorkFlowArgsMap().containsKey("FlowCellName") ? workFlowParams.getSetting("FlowCellName") : "job";
+				tmpFile = File.createTempFile("uec_" + jobName + "_" + hasExecName.get(job).replace("::", "_"), ".sh");
 				tmpFile.deleteOnExit();
 				
 				System.out.print("############\n# " + tmpFile.getName() + ":\n");

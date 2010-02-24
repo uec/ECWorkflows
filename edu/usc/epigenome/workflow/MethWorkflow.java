@@ -12,7 +12,11 @@ public class MethWorkflow
 		{
 			// construct a dax object
 			//MethParams workFlowParams = (MethParams) dax.getWorkFlowParams();
-			System.out.println("Creating merged reporting pipeline from " + barCodeList.size() + " chips" );							
+			System.out.println("Creating merged reporting pipeline from " + barCodeList.size() + " chips" );
+			for(String s : barCodeList)
+			{
+				
+			}
 			
 	
 

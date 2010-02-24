@@ -57,17 +57,8 @@ public class AlignPileupWorkflow
 					
 				System.out.println("Creating processing pipeline for lane " + i + ": " + laneInputFileName);
 
-				// create a fastSplit job
-				/* 
-				int splitSize = 0;
-				if (workFlowParams.laneIsBisulfite(i))
-					splitSize = Integer.parseInt(workFlowParams.getSetting("BisulfiteSplitFactor"));
-				else
-					splitSize = Integer.parseInt(workFlowParams.getSetting("RegularSplitFactor"));
-				FastQSplitJob fastqSplitJob = new FastQSplitJob(laneInputFileName, splitSize);
-				dax.addJob(fastqSplitJob);
-				*/
-				int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 7;
+	
+				int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 8;
 				FastQConstantSplitJob fastqSplitJob = new FastQConstantSplitJob(laneInputFileName, splitSize);
 				dax.addJob(fastqSplitJob);
 
@@ -103,7 +94,7 @@ public class AlignPileupWorkflow
 
 					// map job. additional input grabbed from hg18.BS.bfa
 					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
-							workFlowParams.laneIsBisulfite(i), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
+							workFlowParams.getSetting("Lane." + i + ".AlignmentType"), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
 					dax.addJob(mapJob);
 					dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
 					mapJobs.add(mapJob);
@@ -163,12 +154,12 @@ public class AlignPileupWorkflow
 				dax.addJob(qcjob);
 
 				// crate mapview job, child of mapmerge
-				MapViewJob mapViewJob =  new MapViewJob(mapMergeJob.getSingleOutputFile().getFilename(), Integer.parseInt(workFlowParams.getSetting("MaqPileupQ")));;
-				dax.addJob(mapViewJob);
-				dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
-				dax.addChild(qcjob.getID(), mapViewJob.getID());
+				//MapViewJob mapViewJob =  new MapViewJob(mapMergeJob.getSingleOutputFile().getFilename(), Integer.parseInt(workFlowParams.getSetting("MaqPileupQ")));;
+				//dax.addJob(mapViewJob);
+				//dax.addChild(mapViewJob.getID(), mapMergeJob.getID());
+				//dax.addChild(qcjob.getID(), mapViewJob.getID());
 
-				//create pileup.gz job, child of mapview
+				//create pileup.gz job, child of mapmerge
 				PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i +".ReferenceBFA"), Integer.parseInt(workFlowParams
 						.getSetting("MaqPileupQ")));;
 				dax.addJob(pileupJob);
