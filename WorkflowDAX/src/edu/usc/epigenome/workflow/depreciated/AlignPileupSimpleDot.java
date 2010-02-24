@@ -94,7 +94,7 @@ public class AlignPileupSimpleDot
 
 					// map job. additional input grabbed from hg18.BS.bfa
 					MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
-							workFlowParams.laneIsBisulfite(i), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
+							workFlowParams.getSetting("Lane." + i + ".AlignmentType"), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
 					dax.addJob(mapJob);
 					dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
 					mapJobs.add(mapJob);
