@@ -8,13 +8,19 @@ This document will explain that how to run workflows at USC HPCC. Input files, a
 ##########################
 Workflows Implemented so far:
 
-edu.usc.epigenome.workflow.AlignPileupWorkflow
-starts from per-lane fastq files, does alignment and reporting
 
-edu.usc.epigenome.workflow.ReportFromPileup
+edu.usc.epigenome.workflow.SequencingPipeline
+A wrapper for other application specific workflow, starts from per-lane fastq files, does alignment and reporting based upon whether the lane is regular, Bisulfite or chipseq, which is specified in the param file:
+EX:
+Lane.2.Input = s_6_sequence_short.txt #(input fastq file, can be symlink)
+Lane.2.AlignmentType = bisulfite      #(could be bisulfite, chipseq or regular)
+Lane.2.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+
+
+edu.usc.epigenome.workflow.generator.ReportFromPileup
 starts from per-lane Pileup.gz files and generates lane-wise reports
 
-edu.usc.epigenome.workflow.ReportFromMaps
+edu.usc.epigenome.workflow.generator.ReportFromMaps
 starts from map files, merges and does reports.
 
 
@@ -58,8 +64,8 @@ various *.dot files
 use graphviz to view graphical flow charts of the workflow. 
 http://www.graphviz.org/Download..php
 
-alignpileup.xml 
-the xml file to be used with pegasus
+various xml files 
+the xml file to be used with pegasus, created per workflow-type (ex chipseq, bs or regular will be grouped into a single workflow)
 
 ##################################
 Analysis Output
@@ -70,25 +76,25 @@ Execution Examples
 its always recommended to do a dryrun (-dryrun) before really executing on the cluster.
 
 do a test run (dryrun) from input fastq seqs using file only:
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.AlignPileupWorkflow -pbs -dryrun workFlowParams.txt
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.SequencingPipeline -pbs -dryrun workFlowParams.txt
 
 do a pbs run  from input fastq seqs using file and http://processURL :
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.AlignPileupWorkflow -pbs workFlowParams.txt http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.SequencingPipeline -pbs workFlowParams.txt http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
 
 run the report-only workflow using pileup inputs using a paramter file only:
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromPileup -pbs workFlowParams.txt
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.generator.ReportFromPileup -pbs workFlowParams.txt
 
 run the report-only workflow using pileup inputs using a http://processURL only
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromPileup -pbs  http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.generator.ReportFromPileup -pbs  http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
 
 run the report-only workflow using pileup inputs using a paramter file only:
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromPileup -pbs workFlowParams.txt
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.generator.ReportFromPileup -pbs workFlowParams.txt
 
 run the report-only workflow using pileup inputs using a http://processURL only
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromPileup -pbs  http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.generator.ReportFromPileup -pbs  http://epilims.usc.edu:8080/api/processes/GW2-BPB-090630-24-547
 
 run the report-only workflow using map inputs with no paramfile (since probably not needed):
-java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.ReportFromMaps -pbs file1.map file2.map file3.map 
+java -cp /home/uec-00/shared/production/software/ECWorkflow/ECWorkFlow.jar:/home/uec-00/shared/production/software/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.generator.ReportFromMaps -pbs file1.map file2.map file3.map 
 
 ######################################
 Global Defaults
