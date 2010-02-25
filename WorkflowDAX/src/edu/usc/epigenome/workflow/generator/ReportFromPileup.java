@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow;
+package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
