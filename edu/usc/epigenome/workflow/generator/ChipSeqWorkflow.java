@@ -212,7 +212,7 @@ public class ChipSeqWorkflow
 					dax.addChild(qcjob.getID(), readdepthJob1.getID());
 					
 					//create readcount, child of gzipped pileupJob
-					ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("randomSubset")), 100);
+					ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("randomSubset")), 20);
 					dax.addJob(readcountJob);
 					dax.addChild(readcountJob.getID(), pileupJob.getID());
 					dax.addChild(qcjob.getID(), readcountJob.getID());
