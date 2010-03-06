@@ -19,10 +19,16 @@ public class Maq2BamJob extends ECJob
 
 		// construct the output filenames for job
 		String outputBamFile = new String(inputFile);
-		outputBamFile = outputBamFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "NODUPS.sorted.calmd.bam");
+		outputBamFile = outputBamFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "bam");
 		Filename outputBam = new Filename(outputBamFile, LFN.OUTPUT);
 		outputBam.setRegister(false);
 		this.addUses(outputBam);
+		
+		String outputNodupsBamFile = new String(inputFile);
+		outputNodupsBamFile = outputNodupsBamFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "NODUPS.sorted.calmd.bam");
+		Filename outputNodupsBam = new Filename(outputNodupsBamFile, LFN.OUTPUT);
+		outputNodupsBam.setRegister(false);
+		this.addUses(outputNodupsBam);
 		
 		String outputBaiFile = new String(inputFile);
 		outputBaiFile = outputBaiFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "NODUPS.sorted.calmd.bam.bai");
