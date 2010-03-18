@@ -3,7 +3,6 @@ package edu.usc.epigenome.workflow;
 import java.io.File;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
-import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflowPE;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
 import edu.usc.epigenome.workflow.generator.TopHatWorkflow;
