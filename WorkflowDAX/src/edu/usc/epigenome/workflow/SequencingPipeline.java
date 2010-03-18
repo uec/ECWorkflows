@@ -3,8 +3,10 @@ package edu.usc.epigenome.workflow;
 import java.io.File;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflowPE;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
+import edu.usc.epigenome.workflow.generator.TopHatWorkflow;
 
 public class SequencingPipeline
 {
@@ -54,10 +56,10 @@ public class SequencingPipeline
 		else
 			usage();
 		
-
 		BasicAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		BisulfiteAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		ChipSeqWorkflow.createWorkFlow(par, pbsMode, dryrun);
+		TopHatWorkflow.createWorkFlow(par, pbsMode, dryrun);
 	}
 
 }

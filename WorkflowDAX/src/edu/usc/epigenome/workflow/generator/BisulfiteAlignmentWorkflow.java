@@ -47,60 +47,118 @@ public class BisulfiteAlignmentWorkflow
 			{
 				if(workFlowParams.getSetting("Lane." + i + ".AlignmentType").toLowerCase().contains("bisulfite"))
 				{
-					List<ECJob> mapJobs = new LinkedList<ECJob>();
+					boolean isPE = workFlowParams.getLaneInput(i).contains(",");
+				
 					List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
+					List<FastQ2BFQJob> bfqJobs = new LinkedList<FastQ2BFQJob>();
+					List<ECJob> mapJobs = new LinkedList<ECJob>();
 					
-					String laneInputFileName;
-					if(pbsMode = true)
-						laneInputFileName = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
-					else
-						laneInputFileName = new File(workFlowParams.getLaneInput(i)).getName();
+					String laneInputFileNameR1 = null;
+					String laneInputFileNameR2 = null;
 					
-						
-					System.out.println("Creating Bisulfite workflow for lane " + i + ": " + laneInputFileName);
-	
-		
+					//split Fastq Job. handle paired end and non pbs
 					int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 8;
-					FastQConstantSplitJob fastqSplitJob = new FastQConstantSplitJob(laneInputFileName, splitSize);
+					FastQConstantSplitJob fastqSplitJob = null;
+					if(pbsMode = true)
+					{
+						if( isPE)
+						{
+							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i).split(",")[0]).getAbsolutePath();
+							laneInputFileNameR2 = new File(workFlowParams.getLaneInput(i).split(",")[1]).getAbsolutePath();
+							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
+							System.out.println("Creating Bisulfite PE Processing workflow for lane " + i + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
+						}
+						else
+						{
+							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
+							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
+							System.out.println("Creating Bisulfite SR Processing workflow for lane " + i + ": " + laneInputFileNameR1);
+						}
+					}
+					else
+					{
+						if( isPE)
+						{
+							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i).split(",")[0]).getName();
+							laneInputFileNameR2 = new File(workFlowParams.getLaneInput(i).split(",")[1]).getName();
+							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
+						}
+						else
+						{
+							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i)).getName();
+							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
+						}
+					}
+						
 					dax.addJob(fastqSplitJob);
 	
+		
 					// iterate through the output files of fastQsplit jobs to create pipeline
 					for (Filename f : fastqSplitJob.getOutputFiles())
 					{
-						//filter contam job
-						String splitFastqOutputFile = f.getFilename();
-						FilterContamsJob filterContamJob = new FilterContamsJob(splitFastqOutputFile);
-						dax.addJob(filterContamJob);
-						dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
-	
-						// sol2sanger job
-						
-						//get the nocontam file
-						String nocontamFile = "";
-						for(Filename s : filterContamJob.getOutputFiles())
+						String splitFileName = f.getFilename();
+						FilterContamsJob filterContamJob = null;
+						if(!isPE)
 						{
-							if(s.getFilename().contains(".nocontam"))
+							//filter contam job, cant do with PE since it messes up order
+							String splitFastqOutputFile = f.getFilename();
+							filterContamJob = new FilterContamsJob(splitFastqOutputFile);
+							dax.addJob(filterContamJob);
+							dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
+							//get the nocontam file							
+							for(Filename s : filterContamJob.getOutputFiles())
 							{
-								nocontamFile = s.getFilename();
+								if(s.getFilename().contains(".nocontam"))
+								{
+									splitFileName = s.getFilename();
+								}
 							}
 						}
-						Sol2SangerJob sol2sangerJob = new Sol2SangerJob(nocontamFile);
+						
+						// sol2sanger job
+						Sol2SangerJob sol2sangerJob = new Sol2SangerJob(splitFileName);
 						dax.addJob(sol2sangerJob);
-						dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
+						if(isPE)
+							dax.addChild(sol2sangerJob.getID(), fastqSplitJob.getID());
+						else
+							dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
 						fastqJobs.add(sol2sangerJob);
 						
 						// fastq2bfq job
 						FastQ2BFQJob fastq2bfqJob = new FastQ2BFQJob(sol2sangerJob.getSingleOutputFile().getFilename());
 						dax.addJob(fastq2bfqJob);
 						dax.addChild(fastq2bfqJob.getID(), sol2sangerJob.getID());
+						bfqJobs.add(fastq2bfqJob);
 	
-						// map job. additional input grabbed from hg18.BS.bfa
-						MapJob mapJob = new MapJob(fastq2bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
-								workFlowParams.getSetting("Lane." + i + ".AlignmentType"), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
-						dax.addJob(mapJob);
-						dax.addChild(mapJob.getID(), fastq2bfqJob.getID());
-						mapJobs.add(mapJob);
-	
+						
+							
+					}
+					
+					// map job. needs genome. PE and SE are processed diff due to extra file and args
+					if(isPE)
+					{
+						for(int h = 0; h < bfqJobs.size(); h+=2)
+						{
+							FastQ2BFQJob bfqJobR1 = bfqJobs.get(h);
+							FastQ2BFQJob bfqJobR2 = bfqJobs.get(h+1);
+							MapJob mapJob = new MapJob(bfqJobR1.getSingleOutputFile().getFilename(), bfqJobR2.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
+									workFlowParams.getSetting("Lane." + i + ".AlignmentType"), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
+							dax.addJob(mapJob);
+							dax.addChild(mapJob.getID(), bfqJobR1.getID());
+							dax.addChild(mapJob.getID(), bfqJobR2.getID());
+							mapJobs.add(mapJob);
+						}						
+					}
+					else
+					{
+						for(FastQ2BFQJob bfqJob : bfqJobs)
+						{
+							MapJob mapJob = new MapJob(bfqJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA"),  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
+									workFlowParams.getSetting("Lane." + i + ".AlignmentType"), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")), Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")));
+							dax.addJob(mapJob);
+							dax.addChild(mapJob.getID(), bfqJob.getID());
+							mapJobs.add(mapJob);
+						}
 					}
 					
 					
@@ -224,11 +282,14 @@ public class BisulfiteAlignmentWorkflow
 				}
 
 			}
-			dax.saveAsDot("bisulfite_dax.dot");
-			dax.saveAsSimpleDot("bisulfite_dax_simple.dot");
-			if(pbsMode)
-				dax.runWorkflow(dryrun);
-			dax.saveAsXML("bisulfite_dax.xml");
+			if(dax.getChildCount() > 0)
+			{
+				dax.saveAsDot("bisulfite_dax.dot");
+				dax.saveAsSimpleDot("bisulfite_dax_simple.dot");
+				if(pbsMode)
+					dax.runWorkflow(dryrun);
+				dax.saveAsXML("bisulfite_dax.xml");
+			}
 			
 		} 
 		catch (Exception e)
