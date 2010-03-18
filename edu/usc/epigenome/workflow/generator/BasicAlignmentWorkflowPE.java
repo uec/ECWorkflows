@@ -24,7 +24,7 @@ import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
 
-public class BasicAlignmentWorkflow
+public class BasicAlignmentWorkflowPE
 {
 	/**
 	 * Creates an AlignPileUp workflow from an empty dax object 
@@ -55,7 +55,7 @@ public class BasicAlignmentWorkflow
 					String laneInputFileNameR2 = null;
 					
 					//split Fastq Job. handle paired end and non pbs
-					int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 8;
+					int splitSize = isPE ? Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 16 : Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 8;
 					FastQConstantSplitJob fastqSplitJob = null;
 					if(pbsMode = true)
 					{

@@ -57,5 +57,58 @@ public class MapJob extends ECJob
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(input);
 	}
+	public MapJob(String inputFileR1, String inputFileR2, String referenceGenomeFile, int minMismatches, String alignType, int trim1, int trim2)
+	{
+		super(WorkflowConstants.NAMESPACE, "map", WorkflowConstants.VERSION, "map_" + inputFileR1);
+		Filename inputR1 = new Filename(inputFileR1, LFN.INPUT);
+		inputR1.setRegister(false);
+		this.addUses(inputR1);
+		
+		Filename inputR2 = new Filename(inputFileR2, LFN.INPUT);
+		inputR2.setRegister(false);
+		this.addUses(inputR2);
+
+		//Filename referenceGenome = new Filename(referenceGenomeFile, LFN.INPUT);
+		//input.setRegister(false);
+		//job.addUses(referenceGenome);
+
+		// construct the output filenames for job
+		String outputFile = new String(inputFileR1);
+		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "map");
+		Filename output = new Filename(outputFile, LFN.OUTPUT);
+		output.setRegister(false);
+		// output.setType(LFN.OUTPUT);
+		this.addUses(output);
+
+		// add the arguments to the job
+		// job.addArgument(new PseudoText("map "));
+		if (alignType.toLowerCase().contentEquals("bisulfite"))
+		{
+			this.addArgument(new PseudoText(" -M c"));
+		}
+		else if (alignType.toLowerCase().contentEquals("bisulfiterev"))
+		{
+			this.addArgument(new PseudoText(" -M g"));
+		}
+		
+		
+		if(trim1 > 0)
+		{
+			this.addArgument(new PseudoText(" -1 " + trim1 + " "));
+		}
+		if(trim2 > 0)
+		{
+			this.addArgument(new PseudoText(" -2 " + trim2 + " "));
+		}
+		
+		this.addArgument(new PseudoText(" -n " + minMismatches + " "));
+		this.addArgument(output);
+		this.addArgument(new PseudoText(" "));
+		this.addArgument(new PseudoText(referenceGenomeFile));
+		this.addArgument(new PseudoText(" "));
+		this.addArgument(inputR1);
+		this.addArgument(new PseudoText(" "));
+		this.addArgument(inputR2);
+	}
 
 }
