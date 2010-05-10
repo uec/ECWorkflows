@@ -8,6 +8,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -64,10 +67,18 @@ public class GAParams extends ECParams
 	{
 		for (String key : this.workFlowArgsMap.keySet())
 		{
-			if (key.matches("Lane\\.\\d\\.Input"))
+//			if (key.matches("Lane\\.(\\d+)\\.Input"))
+//			{
+//				if (!(this.lanesUsed.contains(Integer.parseInt(key.substring(5, 6)))))
+//					lanesUsed.add(Integer.parseInt(key.substring(5, 6)));
+//			}
+			Pattern p = Pattern.compile("Lane\\.(\\d+)\\.Input");
+			Matcher m = p.matcher(key);
+			if (m.find())
 			{
-				if (!(this.lanesUsed.contains(Integer.parseInt(key.substring(5, 6)))))
-					lanesUsed.add(Integer.parseInt(key.substring(5, 6)));
+				int lane = Integer.parseInt(m.group(1));
+				if (!(this.lanesUsed.contains(lane)))
+					lanesUsed.add(lane);
 			}
 		}
 	}

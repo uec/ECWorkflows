@@ -65,9 +65,9 @@ public class TopHatJob extends ECJob
 		this.addUses(outputBed);
 		
 		// add the arguments to the job
-		this.addArgument(new PseudoText(referenceGenomeFile + " "));
 		this.addArgument(new PseudoText("-r " + mate_inner_dist + " "));
 		this.addArgument(new PseudoText("--solexa1.3-quals "));
+		this.addArgument(new PseudoText(referenceGenomeFile + " "));
 		this.addArgument(inputR1);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(inputR2);

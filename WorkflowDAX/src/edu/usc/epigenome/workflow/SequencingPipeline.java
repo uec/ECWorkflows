@@ -5,6 +5,8 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
+import edu.usc.epigenome.workflow.generator.MultiFileBSWorkflow;
+import edu.usc.epigenome.workflow.generator.SimpleBasicAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.TopHatWorkflow;
 
 public class SequencingPipeline
@@ -59,6 +61,8 @@ public class SequencingPipeline
 		BisulfiteAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		ChipSeqWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		TopHatWorkflow.createWorkFlow(par, pbsMode, dryrun);
+		MultiFileBSWorkflow.createWorkFlow(par, pbsMode, dryrun);
+		SimpleBasicAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 	}
 
 }
