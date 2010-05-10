@@ -22,7 +22,7 @@ public class ReadCountJob extends ECJob
 		this.addUses(outputFile);
 		
 		this.addArgument(new PseudoText(outputFileName));
-		this.addArgument(new PseudoText( " java -Xmx1995m edu.usc.epigenome.scripts.PileupToDepthReport -randomSubset " + randomSubset + " -randomSubsetNumTrials " + numTrials +" "));
+		this.addArgument(new PseudoText( " java -Xmx3995m edu.usc.epigenome.scripts.PileupToDepthReport -randomSubset " + randomSubset + " -randomSubsetNumTrials " + numTrials +" "));
 		this.addArgument(input);
 			
 	}	

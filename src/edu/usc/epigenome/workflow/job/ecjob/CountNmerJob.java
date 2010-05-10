@@ -38,4 +38,29 @@ public class CountNmerJob extends ECJob
 		}
 		this.addArgument(new PseudoText(" \\| fastqToFasta.pl \\| java -Xmx1995m edu.usc.epigenome.scripts.FastaToNmerCounts -nmer " + nmerSize + " \\| head -n 1000 "));
 	}
+	
+	public CountNmerJob(Filename[] fastQJobs, String flowcellName, int laneNumber, int nmerSize)
+	{
+		super(WorkflowConstants.NAMESPACE, "countnmer", WorkflowConstants.VERSION, "countnmer_" + flowcellName + laneNumber + nmerSize);
+		// only one output file
+		String outputFileNameCSV = "nmerCount_" + flowcellName + "_s_" + laneNumber + "_" + nmerSize + "mers.csv";
+		Filename outputFileCSV = new Filename(outputFileNameCSV, LFN.OUTPUT);
+		outputFileCSV.setRegister(true);
+		this.addUses(outputFileCSV);
+
+		// add the arguments to the job
+		this.addArgument(new PseudoText(outputFileNameCSV));
+		this.addArgument(new PseudoText(" cat "));
+		
+		// iterate through all the map jobs
+		for (Filename f : fastQJobs)
+		{
+				Filename input = new Filename(f.getFilename(), LFN.INPUT);
+				input.setRegister(false);
+				this.addUses(input);
+				this.addArgument(input);
+				this.addArgument(new PseudoText(" "));				
+		}
+		this.addArgument(new PseudoText(" \\| fastqToFasta.pl \\| java -Xmx1995m edu.usc.epigenome.scripts.FastaToNmerCounts -nmer " + nmerSize + " \\| head -n 1000 "));
+	}
 }

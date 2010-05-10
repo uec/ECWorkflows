@@ -53,7 +53,7 @@ public class ECParams
 			String s;
 			while ((s = fileIn.readLine()) != null)
 			{
-				if (s.matches("\\S+\\s*=\\s*\\S+") && !s.matches("\\s*#.*"))
+				if (s.matches("\\s*\\S+\\s*=\\s*\\S+\\s*") && !s.matches("\\s*#.*"))
 				{
 					String cleanLine = s.replaceAll("\\s", "");
 					String[] matchedLine = cleanLine.split("=");
