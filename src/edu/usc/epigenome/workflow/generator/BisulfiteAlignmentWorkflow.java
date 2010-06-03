@@ -161,6 +161,24 @@ public class BisulfiteAlignmentWorkflow
 						}
 					}
 					
+					//try to align a single bfqJob to multiple organisms to test for contam
+					String[] organisms = {"/home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa", 
+										  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.bfa",
+										  "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.bfa",
+										  "/home/uec-00/shared/production/genomes/arabidopsis/tair8.pluscontam.bfa",
+										  "/home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.bfa",
+										  "/home/uec-00/shared/production/genomes/Ecoli/EcoliIHE3034.bfa",
+										  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.bfa"};
+					
+					for(String bfa : organisms)
+					{
+						String bfaBase = new File(bfa).getName().replace(".bfa", "");
+						MapJob sampleMapJob = new MapJob(bfqJobs.get(bfqJobs.size() / 2).getSingleOutputFile().getFilename(), bfa,  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
+								"regular", Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")),Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")), "aligntest_s_" + i + "_" + bfaBase + ".map");						
+						dax.addJob(sampleMapJob);
+						dax.addChild(sampleMapJob.getID(), bfqJobs.get(bfqJobs.size() / 2).getID());						
+					}
+					
 					
 					//for each lane create a countfastq job
 					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i);

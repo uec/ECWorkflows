@@ -9,6 +9,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class Maq2BamJob extends ECJob
 {
+	private String nodupsBam = "";
 	public Maq2BamJob(String inputFile, String genome)
 	{
 		super(WorkflowConstants.NAMESPACE, "maq2bam", WorkflowConstants.VERSION, "maq2bam_" + inputFile);
@@ -27,6 +28,7 @@ public class Maq2BamJob extends ECJob
 		String outputNodupsBamFile = new String(inputFile);
 		outputNodupsBamFile = outputNodupsBamFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "NODUPS.sorted.calmd.bam");
 		Filename outputNodupsBam = new Filename(outputNodupsBamFile, LFN.OUTPUT);
+		nodupsBam = outputNodupsBamFile;
 		outputNodupsBam.setRegister(false);
 		this.addUses(outputNodupsBam);
 		
@@ -41,5 +43,10 @@ public class Maq2BamJob extends ECJob
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(genome));
+	}
+	
+	public String getNodupsOutput()
+	{
+		return nodupsBam;
 	}
 }
