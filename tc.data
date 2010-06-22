@@ -21,3 +21,4 @@ hpc     uscec::remotebustard:1.0        /home/uec-00/shared/production/software/
 hpc     uscec::genecdax:1.0             /usr/bin/java                                                                   INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::gzip:1.0                 /bin/gzip                                                                       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::findpeaks:1.0     	  	/home/uec-00/shared/production/software/perl_utils_usc/wrap_findpeaks.pl   		INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc     uscec::wigtotdf:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wigtotdf.pl              INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
