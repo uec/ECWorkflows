@@ -24,6 +24,7 @@ import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
 import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
 import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
+import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
 
 public class BasicAlignmentWorkflow
 {
@@ -267,6 +268,8 @@ public class BasicAlignmentWorkflow
 					String genome;
 					if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("phi")) { genome = "phiX";}
 					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg18")) { genome = "hg18";}
+					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("hg19")) { genome = "hg19";}
+					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("tair8")) { genome = "tair8";}
 					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("sacCer")) { genome = "sacCer1";}
 					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("mm")) { genome = "mm9";}
 					else {genome = "hg18";}
@@ -293,6 +296,11 @@ public class BasicAlignmentWorkflow
 					PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, 600, 50, 1, 0, 2);
 					dax.addJob(pilewig);
 					dax.addChild(pilewig.getID(), pileupJob.getID());
+					
+					//wig to tdf (IGVTOOLS )job child of pileup to wig
+					WigToTdfJob wigtotdf = new WigToTdfJob(pilewig.getSingleOutputFile().getFilename(),genome);
+					dax.addJob(wigtotdf);
+					dax.addChild(wigtotdf.getID(),pilewig.getID());
 				}
 
 			}
