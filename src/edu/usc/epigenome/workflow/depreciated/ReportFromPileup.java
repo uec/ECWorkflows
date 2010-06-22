@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.generator;
+package edu.usc.epigenome.workflow.depreciated;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;

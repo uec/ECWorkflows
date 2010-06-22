@@ -11,6 +11,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class FindPeaksJob extends ECJob
 {
+	private String wigFile;
 	public FindPeaksJob(String inputFile, int fragSize)
 	{
 		super(WorkflowConstants.NAMESPACE, "findpeaks", WorkflowConstants.VERSION, "findpeaks_" + new File(inputFile).getName());
@@ -27,11 +28,17 @@ public class FindPeaksJob extends ECJob
 		
 		String outputWigFile = new String(inputFile);
 		outputWigFile = outputWigFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_fixed_" + fragSize + "_standard.wig.gz");
+		wigFile = outputWigFile;
 		Filename outputWig = new Filename(outputWigFile, LFN.OUTPUT);
 		outputWig.setRegister(false);
 		this.addUses(outputWig);
 		
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" " + fragSize));		
+	}
+	
+	public String getWigFile()
+	{
+		return wigFile;
 	}
 }
