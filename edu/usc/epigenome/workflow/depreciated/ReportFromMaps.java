@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.generator;
+package edu.usc.epigenome.workflow.depreciated;
 
 import java.io.File;
 import java.util.ArrayList;
