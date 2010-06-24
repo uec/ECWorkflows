@@ -390,6 +390,7 @@ public class ChipSeqWorkflow
 		catch (Exception e)
 		{
 			e.printStackTrace();
+			
 		}
 	}
 }
