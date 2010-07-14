@@ -13,7 +13,7 @@ public class FastQConstantSplitJob extends ECJob
 {
 	public FastQConstantSplitJob(String inputFile, int numberOfPieces) throws Exception
 	{
-		super(WorkflowConstants.NAMESPACE, "fastqConstantSplit", WorkflowConstants.VERSION, "fastqConstantSpit_" + new File(inputFile).getName());
+		super(WorkflowConstants.NAMESPACE, "fastqConstantSplit", WorkflowConstants.VERSION, "fastqConstantSplit_" + new File(inputFile).getName());
 		Filename input = new Filename(inputFile, LFN.INPUT);
 		input.setRegister(false);
 		this.addUses(input);
