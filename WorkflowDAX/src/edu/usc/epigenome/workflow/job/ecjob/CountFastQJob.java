@@ -11,7 +11,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class CountFastQJob extends ECJob
 {
-	public CountFastQJob(List<Sol2SangerJob> fastQJobs, String flowcellName, int laneNumber)
+	public CountFastQJob(List<Sol2SangerJob> fastQJobs, String flowcellName, int laneNumber, Boolean isIlluminaPhred)
 	{
 		super(WorkflowConstants.NAMESPACE, "countfastq", WorkflowConstants.VERSION, "countfastq_" + flowcellName + laneNumber);
 		// only one output file
@@ -22,7 +22,10 @@ public class CountFastQJob extends ECJob
 
 		// add the arguments to the job
 		this.addArgument(new PseudoText(outputFileNameCSV));
-		this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
+		if(isIlluminaPhred)
+			this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
+		else
+			this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -cycles -quals "));
 		
 		// iterate through all the map jobs
 		for (ECJob j : fastQJobs)
@@ -37,7 +40,7 @@ public class CountFastQJob extends ECJob
 			}
 		}		
 	}
-	public CountFastQJob(Filename[] inputFastQs, String flowcellName, int laneNumber)
+	public CountFastQJob(Filename[] inputFastQs, String flowcellName, int laneNumber, Boolean isIlluminaPhred)
 	{
 		super(WorkflowConstants.NAMESPACE, "countfastq", WorkflowConstants.VERSION, "countfastq_" + flowcellName + laneNumber);
 		// only one output file
@@ -48,8 +51,10 @@ public class CountFastQJob extends ECJob
 
 		// add the arguments to the job
 		this.addArgument(new PseudoText(outputFileNameCSV));
-		this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
-		
+		if(isIlluminaPhred)
+			this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -solexa -cycles -quals "));
+		else
+			this.addArgument(new PseudoText(" java edu.usc.epigenome.scripts.FastqToBaseComposition -cycles -quals "));
 		// iterate through all the map jobs
 		for (Filename f : inputFastQs)
 		{

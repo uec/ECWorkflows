@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.depreciated;
+package edu.usc.epigenome.workflow.deprecated;
 
 import java.io.File;
 import java.util.HashSet;
@@ -101,7 +101,7 @@ public class AlignPileupSimpleDot
 
 				}
 				// for each lane create a countfastq job
-				CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i);
+				CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, false);
 				dax.addJob(countFastQJob);
 				// mapmerge is child to all the map jobs
 				for (Job fastqjob : fastqJobs)

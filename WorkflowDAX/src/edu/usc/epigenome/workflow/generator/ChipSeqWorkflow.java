@@ -10,6 +10,7 @@ import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
+import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
@@ -54,44 +55,24 @@ public class ChipSeqWorkflow
 					List<Sol2SangerJob> fastqJobs = new LinkedList<Sol2SangerJob>();
 					List<FastQ2BFQJob> bfqJobs = new LinkedList<FastQ2BFQJob>();
 					List<ECJob> mapJobs = new LinkedList<ECJob>();
+					List<String> filterTrimCountFiles = new LinkedList<String>();
 					
-					String laneInputFileNameR1 = null;
-					String laneInputFileNameR2 = null;
+					String laneInputFileNameR1 = pbsMode ? new File(workFlowParams.getLaneInput(i).split(",")[0]).getAbsolutePath() : new File(workFlowParams.getLaneInput(i).split(",")[0]).getName();
 					
 					//split Fastq Job. handle paired end and non pbs
 					int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize")) / 8;
 					FastQConstantSplitJob fastqSplitJob = null;
-					if(pbsMode = true)
+					if(isPE)
 					{
-						if( isPE)
-						{
-							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i).split(",")[0]).getAbsolutePath();
-							laneInputFileNameR2 = new File(workFlowParams.getLaneInput(i).split(",")[1]).getAbsolutePath();
-							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-							System.out.println("Creating ChipSeq PE Processing workflow for lane " + i + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
-						}
-						else
-						{
-							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i)).getAbsolutePath();
-							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-							System.out.println("Creating ChipSeq SR Processing workflow for lane " + i + ": " + laneInputFileNameR1);
-						}
+						String laneInputFileNameR2 = pbsMode ? new File(workFlowParams.getLaneInput(i).split(",")[1]).getAbsolutePath() : new File(workFlowParams.getLaneInput(i).split(",")[1]).getName();
+						fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
+						System.out.println("Creating Basic PE Processing workflow for lane " + i + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 					}
 					else
 					{
-						if( isPE)
-						{
-							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i).split(",")[0]).getName();
-							laneInputFileNameR2 = new File(workFlowParams.getLaneInput(i).split(",")[1]).getName();
-							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-						}
-						else
-						{
-							laneInputFileNameR1 = new File(workFlowParams.getLaneInput(i)).getName();
-							fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-						}
-					}
-						
+						fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
+						System.out.println("Creating Basic SR Processing workflow for lane " + i + ": " + laneInputFileNameR1);
+					}						
 					dax.addJob(fastqSplitJob);
 	
 		
@@ -106,24 +87,15 @@ public class ChipSeqWorkflow
 							String splitFastqOutputFile = f.getFilename();
 							filterContamJob = new FilterContamsJob(splitFastqOutputFile);
 							dax.addJob(filterContamJob);
-							dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
-							//get the nocontam file							
-							for(Filename s : filterContamJob.getOutputFiles())
-							{
-								if(s.getFilename().contains(".nocontam"))
-								{
-									splitFileName = s.getFilename();
-								}
-							}
+							dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());												
+							filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
+							splitFileName = filterContamJob.getNoContamOutputFileName();
 						}
 						
 						// sol2sanger job
 						Sol2SangerJob sol2sangerJob = new Sol2SangerJob(splitFileName);
 						dax.addJob(sol2sangerJob);
-						if(isPE)
-							dax.addChild(sol2sangerJob.getID(), fastqSplitJob.getID());
-						else
-							dax.addChild(sol2sangerJob.getID(), filterContamJob.getID());
+						dax.addChild(sol2sangerJob.getID(), isPE ? fastqSplitJob.getID() : filterContamJob.getID());
 						fastqJobs.add(sol2sangerJob);
 						
 						// fastq2bfq job
@@ -131,9 +103,6 @@ public class ChipSeqWorkflow
 						dax.addJob(fastq2bfqJob);
 						dax.addChild(fastq2bfqJob.getID(), sol2sangerJob.getID());
 						bfqJobs.add(fastq2bfqJob);
-	
-						
-							
 					}
 					
 					// map job. needs genome. PE and SE are processed diff due to extra file and args
@@ -182,50 +151,48 @@ public class ChipSeqWorkflow
 					}
 					
 					//for each lane create a countfastq job
-					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i);
+					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, false);
 					dax.addJob(countFastQJob);
 					// mapmerge is child to all the map jobs
 					for (Job fastqjob : fastqJobs)
-					{
 						dax.addChild(countFastQJob.getID(), fastqjob.getID());
-					}
 					
+					//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob
+					if(!isPE)
+					{
+						CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  workFlowParams.getSetting("FlowCellName"), i);
+						dax.addJob(countAdapterTrim);
+						for (Job bfqjob : bfqJobs)
+							dax.addChild(countAdapterTrim.getID(), bfqjob.getID());
+					}
 					
 					//create nmercount for 3
 					CountNmerJob count3mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 3);
 					dax.addJob(count3mer);
 					// mapmerge is child to all the map jobs
 					for (Job fastqjob : fastqJobs)
-					{
 						dax.addChild(count3mer.getID(), fastqjob.getID());
-					}
 					
 					//create nmercount for 5
 					CountNmerJob count5mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 5);
 					dax.addJob(count5mer);
 					// mapmerge is child to all the map jobs
 					for (Job fastqjob : fastqJobs)
-					{
 						dax.addChild(count5mer.getID(), fastqjob.getID());
-					}
 					
 					//create nmercount for 10
 					CountNmerJob count10mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 10);
 					dax.addJob(count10mer);
 					// mapmerge is child to all the map jobs
 					for (Job fastqjob : fastqJobs)
-					{
 						dax.addChild(count10mer.getID(), fastqjob.getID());
-					}
 					
 					// for each lane create a map merge job
 					MapMergeJob mapMergeJob = new MapMergeJob(mapJobs, workFlowParams.getSetting("FlowCellName"), i);
 					dax.addJob(mapMergeJob);
 					// mapmerge is child to all the map jobs
 					for (Job map : mapJobs)
-					{
 						dax.addChild(mapMergeJob.getID(), map.getID());
-					}
 					//mapMergeJobs.add(mapMergeJob);
 					
 					//create qcmetrics job 
@@ -368,7 +335,7 @@ public class ChipSeqWorkflow
 					
 					
 					//pileup to wig job child of gzipped pileupjob
-					PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, 600, 50, 1, 0, 2);
+					PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("WigWindSize")), 50, 1, 0, 2);
 					dax.addJob(pilewig);
 					dax.addChild(pilewig.getID(), pileupJob.getID());
 					
