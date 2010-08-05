@@ -26,3 +26,4 @@ hpc     uscec::tophat:1.0               /home/uec-00/shared/production/software/
 hpc     uscec::findpeaks:1.0            /home/uec-00/shared/production/software/perl_utils_usc/wrap_findpeaks.pl        INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::wigtotdf:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wigtotdf.pl              INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::sam2bam:1.0              /home/uec-00/shared/production/software/perl_utils_usc/sam2bam.pl               INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc     uscec::countadaptertrim:1.0     /home/uec-00/shared/production/software/perl_utils_usc/countAdapterTrimCounts.pl               INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"

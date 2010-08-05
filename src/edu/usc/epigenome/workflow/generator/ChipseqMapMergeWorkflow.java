@@ -190,7 +190,7 @@ public class ChipseqMapMergeWorkflow
 					
 					
 					//pileup to wig job child of gzipped pileupjob
-					PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, 600, 50, 1, 0, 2);
+					PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("WigWindSize")), 50, 1, 0, 2);
 					dax.addJob(pilewig);
 					dax.addChild(pilewig.getID(), pileupJob.getID());
 					
