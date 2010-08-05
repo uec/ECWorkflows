@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.depreciated;
+package edu.usc.epigenome.workflow.deprecated;
 import java.io.File;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;

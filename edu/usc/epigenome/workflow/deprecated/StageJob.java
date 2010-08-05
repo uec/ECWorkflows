@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.depreciated;
+package edu.usc.epigenome.workflow.deprecated;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
