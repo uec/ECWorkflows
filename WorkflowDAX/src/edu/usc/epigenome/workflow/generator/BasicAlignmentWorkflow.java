@@ -129,6 +129,10 @@ public class BasicAlignmentWorkflow
 						}
 					}
 					
+					//create qcmetrics job 
+					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), workFlowParams.getSetting("FlowCellName"));
+					dax.addJob(qcjob);
+					
 					//try to align a single bfqJob to multiple organisms to test for contam
 					String[] organisms = {"/home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa", 
 										  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.bfa",
@@ -144,7 +148,9 @@ public class BasicAlignmentWorkflow
 						MapJob sampleMapJob = new MapJob(bfqJobs.get(bfqJobs.size() / 2).getSingleOutputFile().getFilename(), bfa,  Integer.parseInt(workFlowParams.getSetting("MinMismatches")),
 								"regular", Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd1")),Integer.parseInt(workFlowParams.getSetting("MaqTrimEnd2")), "aligntest_s_" + i + "_" + bfaBase + ".map");						
 						dax.addJob(sampleMapJob);
-						dax.addChild(sampleMapJob.getID(), bfqJobs.get(bfqJobs.size() / 2).getID());						
+						dax.addChild(sampleMapJob.getID(), bfqJobs.get(bfqJobs.size() / 2).getID());	
+						if(bfa.contains("hg"))
+							dax.addChild(qcjob.getID(), sampleMapJob.getID());
 					}
 					
 					//for each lane create a countfastq job
@@ -193,9 +199,7 @@ public class BasicAlignmentWorkflow
 					for (Job map : mapJobs)
 						dax.addChild(mapMergeJob.getID(), map.getID());
 					
-					//create qcmetrics job 
-					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), workFlowParams.getSetting("FlowCellName"));
-					dax.addJob(qcjob);
+
 	
 	
 					//create pileup.gz job, child of mapmerge
