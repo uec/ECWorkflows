@@ -501,14 +501,18 @@ public class ECDax extends ADAG
 				{
 					 execCmd = "qsub -h " + tmpFile.getAbsolutePath();
 					 
-				}				
+				}
+				System.out.print("\n##attempting to qsub############\n" + jobScript);
 				Process p = thisApp.exec(execCmd);
+				
 				
 				// capture and parse output
 				String processLine;
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+				System.out.print("\n##submitted job############\n");
 				while ((processLine = input.readLine()) != null)
 				{
+					System.out.println("##qsub response: " + processLine);
 					if (processLine.matches("\\d+.+"))
 					{
 						jobIDs.put(job, processLine.trim());
@@ -517,6 +521,10 @@ public class ECDax extends ADAG
 							heldJobIDs.put(job, processLine.trim());
 						}
 					}
+					else
+					{
+						System.out.println("##error in processLine: " + processLine);
+					}
 				}
 				input.close();
 			} catch (IOException e)
@@ -524,7 +532,7 @@ public class ECDax extends ADAG
 				e.printStackTrace();
 			}
 		}
-		System.out.print("\n##############\n" + jobScript);
+		
 	}
 
 	/**
