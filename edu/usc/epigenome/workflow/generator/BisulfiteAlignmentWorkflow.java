@@ -160,43 +160,6 @@ public class BisulfiteAlignmentWorkflow
 					}
 					
 					
-					//for each lane create a countfastq job
-					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, false);
-					dax.addJob(countFastQJob);
-					// mapmerge is child to all the map jobs
-					for (Job fastqjob : fastqJobs)
-						dax.addChild(countFastQJob.getID(), fastqjob.getID());
-					
-					//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob
-					if(!isPE)
-					{
-						CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  workFlowParams.getSetting("FlowCellName"), i);
-						dax.addJob(countAdapterTrim);
-						for (Job bfqjob : bfqJobs)
-							dax.addChild(countAdapterTrim.getID(), bfqjob.getID());
-					}
-					
-					//create nmercount for 3
-					CountNmerJob count3mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 3);
-					dax.addJob(count3mer);
-					// mapmerge is child to all the map jobs
-					for (Job fastqjob : fastqJobs)
-						dax.addChild(count3mer.getID(), fastqjob.getID());
-					
-					//create nmercount for 5
-					CountNmerJob count5mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 5);
-					dax.addJob(count5mer);
-					// mapmerge is child to all the map jobs
-					for (Job fastqjob : fastqJobs)
-						dax.addChild(count5mer.getID(), fastqjob.getID());
-					
-					//create nmercount for 10
-					CountNmerJob count10mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 10);
-					dax.addJob(count10mer);
-					// mapmerge is child to all the map jobs
-					for (Job fastqjob : fastqJobs)
-						dax.addChild(count10mer.getID(), fastqjob.getID());
-					
 					// for each lane create a map merge job
 					MapMergeJob mapMergeJob = new MapMergeJob(mapJobs, workFlowParams.getSetting("FlowCellName"), i);
 					dax.addJob(mapMergeJob);
@@ -204,6 +167,36 @@ public class BisulfiteAlignmentWorkflow
 					for (Job map : mapJobs)
 						dax.addChild(mapMergeJob.getID(), map.getID());
 					//mapMergeJobs.add(mapMergeJob);
+					
+					
+					//for each lane create a countfastq job, child of mapmerge
+					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, false);
+					dax.addJob(countFastQJob);
+					dax.addChild(countFastQJob.getID(), mapMergeJob.getID());
+					
+					
+					//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob, , child of mapmerge
+					if(!isPE)
+					{
+						CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  workFlowParams.getSetting("FlowCellName"), i);
+						dax.addJob(countAdapterTrim);
+						dax.addChild(countAdapterTrim.getID(), mapMergeJob.getID());
+					}
+					
+					//create nmercount for 3, child of mapmerge
+					CountNmerJob count3mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 3);
+					dax.addJob(count3mer);
+					dax.addChild(count3mer.getID(), mapMergeJob.getID());
+					
+					//create nmercount for 5, child of mapmerge
+					CountNmerJob count5mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 5);
+					dax.addJob(count5mer);
+					dax.addChild(count5mer.getID(), mapMergeJob.getID());
+					
+					//create nmercount for 10, child of mapmerge
+					CountNmerJob count10mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 10);
+					dax.addJob(count10mer);
+					dax.addChild(count10mer.getID(), mapMergeJob.getID());
 					
 						
 					//create pileup.gz job, child of mapmerge
@@ -251,21 +244,23 @@ public class BisulfiteAlignmentWorkflow
 					else if(workFlowParams.getSetting("Lane." + i + ".ReferenceBFA").contains("mm")) { genome = "mm9";}
 					else {genome = "hg18";}
 					
+					
 					ReadDepthJob readdepthJob0 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 0);
 					dax.addJob(readdepthJob0);
 					dax.addChild(readdepthJob0.getID(), pileupJob.getID());
-					dax.addChild(qcjob.getID(), readdepthJob0.getID());
+					//dax.addChild(qcjob.getID(), readdepthJob0.getID());
 	
 					//create readdepth:1, child of gzipped pileupJob
 					ReadDepthJob readdepthJob1 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i,genome, 5000, 1);
 					dax.addJob(readdepthJob1); 
 					dax.addChild(readdepthJob1.getID(), pileupJob.getID());
-					dax.addChild(qcjob.getID(), readdepthJob1.getID());
+					//dax.addChild(qcjob.getID(), readdepthJob1.getID());
 					
 					//create readcount, child of gzipped pileupJob
 					ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename(), workFlowParams.getSetting("FlowCellName"), i, Integer.parseInt(workFlowParams.getSetting("randomSubset")), 20);
 					dax.addJob(readcountJob);
-					dax.addChild(readcountJob.getID(), pileupJob.getID());
+					dax.addChild(readcountJob.getID(), readdepthJob1.getID());
+					dax.addChild(readcountJob.getID(), readdepthJob0.getID());
 					dax.addChild(qcjob.getID(), readcountJob.getID());
 					
 					
