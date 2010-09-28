@@ -8,6 +8,7 @@ import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipseqMapMergeWorkflow;
 import edu.usc.epigenome.workflow.generator.MultiFileBSWorkflow;
 import edu.usc.epigenome.workflow.generator.SimpleBasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.generator.SimpleFastAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.TopHatWorkflow;
 
 public class SequencingPipeline
@@ -65,6 +66,7 @@ public class SequencingPipeline
 		MultiFileBSWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		SimpleBasicAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 		ChipseqMapMergeWorkflow.createWorkFlow(par, pbsMode, dryrun);
+		SimpleFastAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
 	}
 
 }
