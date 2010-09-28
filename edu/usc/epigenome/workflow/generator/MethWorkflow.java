@@ -15,7 +15,7 @@ public class MethWorkflow
 			System.out.println("Creating merged reporting pipeline from " + barCodeList.size() + " chips" );
 			for(String s : barCodeList)
 			{
-				
+				System.out.println(s);
 			}
 			
 	
