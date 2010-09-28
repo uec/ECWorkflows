@@ -10,7 +10,7 @@ import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
+
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
@@ -18,10 +18,7 @@ import edu.usc.epigenome.workflow.job.ecjob.MapJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
 import edu.usc.epigenome.workflow.job.ecjob.Maq2BamJob;
 import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
-import edu.usc.epigenome.workflow.job.ecjob.PileupToWigJob;
-import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
-import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
+
 
 public class MultiFileBSWorkflow
 {
