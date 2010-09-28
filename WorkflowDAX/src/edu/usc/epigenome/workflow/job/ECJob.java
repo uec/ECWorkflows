@@ -37,6 +37,7 @@ public class ECJob extends Job
 	 * @param job the job you want to retrieve a list of output fileName for
 	 * @return List<Filename> a list of all output filenames for the job
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Filename> getOutputFiles()
 	{
 		List<Filename> o = new LinkedList<Filename>();
@@ -59,6 +60,7 @@ public class ECJob extends Job
 	 * @return Filename	A single file that is the output of the job
 	 * @throws Exception number of outputs for job is NOT EQUAL to 1
 	 */
+	@SuppressWarnings("unchecked")
 	public Filename getSingleOutputFile() throws Exception
 	{
 		List<Filename> o = new LinkedList<Filename>();

@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
 import org.griphyn.vdl.dax.Filename;
-import org.griphyn.vdl.dax.Job;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
