@@ -32,6 +32,7 @@ public class BwaJob extends ECJob {
 		this.addArgument(new PseudoText(referenceGenomeFile));
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(input);
+		this.addArgument(new PseudoText(" "));
 		this.addArgument(output);
 	}
 	
@@ -54,7 +55,7 @@ public class BwaJob extends ECJob {
 
 		// construct the output filenames for job
 		String outputFile = new String(inputFileR1);
-		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1");
+		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1.sam");
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
 		output.setRegister(false);
 		// output.setType(LFN.OUTPUT);
@@ -66,6 +67,7 @@ public class BwaJob extends ECJob {
 		this.addArgument(inputR1);
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(inputR2);
+		this.addArgument(new PseudoText(" "));
 		this.addArgument(output);
 	}
 }
