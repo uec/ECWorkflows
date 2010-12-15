@@ -11,10 +11,10 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class TopHatJob extends ECJob
 {
-	public String samFile = "";
-	public String getSamFile()
+	public String bamFile = "";
+	public String getBamFile()
 	{
-		return samFile;
+		return bamFile;
 	}
 	public TopHatJob(String inputFile, String referenceGenomeFile) throws Exception
 	{
@@ -23,8 +23,8 @@ public class TopHatJob extends ECJob
 		input.setRegister(false);
 		this.addUses(input);
 
-		String outFileSam = inputFile + ".tophat_hits.sam";
-		samFile = outFileSam;
+		String outFileSam = inputFile + ".tophat_hits.bam";
+		bamFile = outFileSam;
 		Filename outputSam = new Filename(outFileSam, LFN.OUTPUT);
 		outputSam.setRegister(true);
 		this.addUses(outputSam);
@@ -49,7 +49,8 @@ public class TopHatJob extends ECJob
 		inputR1.setRegister(false);
 		this.addUses(inputR2);
 
-		String outFileSam = inputFileR1 + ".tophat_hits.sam";
+		String outFileSam = inputFileR1 + ".tophat_hits.bam";
+		bamFile = outFileSam;
 		Filename outputSam = new Filename(outFileSam, LFN.OUTPUT);
 		outputSam.setRegister(true);
 		this.addUses(outputSam);
