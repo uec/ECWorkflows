@@ -54,13 +54,17 @@ public class RNAseqWorkflow
 					{
 						String laneInputFileNameR2 = pbsMode ? new File(workFlowParams.getLaneInput(i).split(",")[1]).getAbsolutePath() : new File(workFlowParams.getLaneInput(i).split(",")[1]).getName();
 						fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-						System.out.println("Creating chipseq PE Processing workflow for lane " + i + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
+						System.out.println("Creating RNAseq PE Processing workflow for lane " + i + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 					}
 					else
 					{
 						fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-						System.out.println("Creating chipseq SR Processing workflow for lane " + i + ": " + laneInputFileNameR1);
-					}		
+						System.out.println("Creating RNAseq SR Processing workflow for lane " + i + ": " + laneInputFileNameR1);
+					}
+					dax.addJob(fastqSplitJob);
+					
+					
+					
 					for (Filename f : fastqSplitJob.getOutputFiles())
 					{
 						String splitFileName = f.getFilename();
@@ -116,7 +120,7 @@ public class RNAseqWorkflow
 					TopHatJob tophat = tophatJobs.get(0);
 					
 					//run cufflinks
-					CufflinksJob cufflinks = new CufflinksJob(tophat.getSamFile());
+					CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile());
 					dax.addJob(cufflinks);
 					dax.addChild(cufflinks.getID(), tophat.getID());
 					
