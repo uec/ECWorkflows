@@ -23,6 +23,7 @@ hpc     uscec::gzip:1.0                 /bin/gzip                               
 hpc     uscec::maq2bam:1.0              /home/uec-00/shared/production/software/perl_utils_usc/maq2bam.pl               INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::findpeaks:1.0            /home/uec-00/shared/production/software/perl_utils_usc/wrap_java_report.pl      INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::tophat:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_tophat.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc     uscec::cufflinks:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_cufflinks.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::findpeaks:1.0            /home/uec-00/shared/production/software/perl_utils_usc/wrap_findpeaks.pl        INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::wigtotdf:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wigtotdf.pl              INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::sam2bam:1.0              /home/uec-00/shared/production/software/perl_utils_usc/sam2bam.pl               INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"

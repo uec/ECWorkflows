@@ -11,6 +11,11 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class TopHatJob extends ECJob
 {
+	public String samFile = "";
+	public String getSamFile()
+	{
+		return samFile;
+	}
 	public TopHatJob(String inputFile, String referenceGenomeFile) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "tophat", WorkflowConstants.VERSION, "tophat_" + new File(inputFile).getName());
@@ -18,12 +23,8 @@ public class TopHatJob extends ECJob
 		input.setRegister(false);
 		this.addUses(input);
 
-		String outFileWig = inputFile + ".tophat_coverage.wig";
-		Filename outputWig = new Filename(outFileWig, LFN.OUTPUT);
-		outputWig.setRegister(true);
-		this.addUses(outputWig);
-	
-		String outFileSam = inputFile + "tophat_hits.sam";
+		String outFileSam = inputFile + ".tophat_hits.sam";
+		samFile = outFileSam;
 		Filename outputSam = new Filename(outFileSam, LFN.OUTPUT);
 		outputSam.setRegister(true);
 		this.addUses(outputSam);
@@ -35,7 +36,6 @@ public class TopHatJob extends ECJob
 		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(referenceGenomeFile + " "));
-		this.addArgument(new PseudoText("--solexa1.3-quals "));
 		this.addArgument(input);
 	}
 	public TopHatJob(String inputFileR1, String inputFileR2, String referenceGenomeFile, int mate_inner_dist) throws Exception
@@ -49,11 +49,6 @@ public class TopHatJob extends ECJob
 		inputR1.setRegister(false);
 		this.addUses(inputR2);
 
-		String outFileWig = inputFileR1 + ".tophat_coverage.wig";
-		Filename outputWig = new Filename(outFileWig, LFN.OUTPUT);
-		outputWig.setRegister(true);
-		this.addUses(outputWig);
-	
 		String outFileSam = inputFileR1 + ".tophat_hits.sam";
 		Filename outputSam = new Filename(outFileSam, LFN.OUTPUT);
 		outputSam.setRegister(true);
@@ -65,8 +60,8 @@ public class TopHatJob extends ECJob
 		this.addUses(outputBed);
 		
 		// add the arguments to the job
+		this.addArgument(new PseudoText("-p 8 "));
 		this.addArgument(new PseudoText("-r " + mate_inner_dist + " "));
-		this.addArgument(new PseudoText("--solexa1.3-quals "));
 		this.addArgument(new PseudoText(referenceGenomeFile + " "));
 		this.addArgument(inputR1);
 		this.addArgument(new PseudoText(" "));
