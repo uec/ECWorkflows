@@ -11,6 +11,15 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class CufflinksJob extends ECJob
 {
+	private String gtfFile;
+	
+	
+	public String getGtfFile()
+	{
+		return gtfFile;
+	}
+
+
 	public CufflinksJob(String inputFile) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "cufflinks", WorkflowConstants.VERSION, "cufflinks_" + new File(inputFile).getName());
@@ -19,6 +28,7 @@ public class CufflinksJob extends ECJob
 		this.addUses(input);
 
 		String outgtfName = inputFile + ".cufflinks_transcripts.gtf";
+		gtfFile = outgtfName;
 		Filename outgtf = new Filename(outgtfName, LFN.OUTPUT);
 		outgtf.setRegister(true);
 		this.addUses(outgtf);
