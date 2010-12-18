@@ -8,10 +8,10 @@
 #PegasusTC = tc.data
 
 #number of nodes in cluster to help plan split factors, default is 256
-ClusterSize = 256
+ClusterSize = 64
 
 #location of pbs storage space / project dir, default is to create a folder in current dir
-#tmpDir = /home/uec-00/ramjan/tmp
+#tmpDir = hg18
 
 #queue to use
 queue = laird
@@ -25,7 +25,7 @@ queue = laird
 ################################
 ## Project Specific Settings
 
-FlowCellName = 6191BAAXX
+FlowCellName = 618JOAAXX
 MinMismatches = 2
 MaqPileupQ = 30
 referenceLane = 1
@@ -40,34 +40,37 @@ randomSubset = 300000
 
 #inputs are fastQ files
 Lane.2.Input = s_2_1_sequence.txt,s_2_2_sequence.txt
-Lane.2.AlignmentType = simple
-Lane.2.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
-
-Lane.1.Input = s_1_1_sequence.txt,s_1_2_sequence.txt
-Lane.1.AlignmentType = simple 
-Lane.1.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.2.AlignmentType = rnaseq
+Lane.2.ReferenceBFA = hg18
 
 Lane.3.Input = s_3_1_sequence.txt,s_3_2_sequence.txt
- Lane.3.AlignmentType = simple
-Lane.3.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.3.AlignmentType = rnaseq
+Lane.3.ReferenceBFA = hg18
 
 Lane.4.Input = s_4_1_sequence.txt,s_4_2_sequence.txt
-Lane.4.AlignmentType = simple
-Lane.4.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.4.AlignmentType = rnaseq
+Lane.4.ReferenceBFA = hg18
 
 Lane.5.Input = s_5_1_sequence.txt,s_5_2_sequence.txt
-Lane.5.AlignmentType = simple
-Lane.5.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.5.AlignmentType = rnaseq
+Lane.5.ReferenceBFA = hg18
 
 Lane.6.Input = s_6_1_sequence.txt,s_6_2_sequence.txt
-Lane.6.AlignmentType = simple
-Lane.6.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.6.AlignmentType = rnaseq
+Lane.6.ReferenceBFA = hg18
 
 Lane.7.Input = s_7_1_sequence.txt,s_7_2_sequence.txt
-Lane.7.AlignmentType = simple
-Lane.7.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.7.AlignmentType = rnaseq
+Lane.7.ReferenceBFA = hg18
 
 Lane.8.Input = s_8_1_sequence.txt,s_8_2_sequence.txt
-Lane.8.AlignmentType = simple
-Lane.8.ReferenceBFA = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa
+Lane.8.AlignmentType = rnaseq
+Lane.8.ReferenceBFA = hg18
 
+
+#differential expression analysis
+#rnaseqdiff.N = GTF_LANE:samp1:samp2,sam2rep:sampN,sampNrep  (specify the lane number)
+#EX: rnaseqdiff.1 = 2:2:4,5
+rnaseq.diff.1 = 8:8:3
+rnaseq.diff.2 = 5:5:6
+rnaseq.diff.time.1 = 2:2,3:4:5
