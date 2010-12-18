@@ -1,8 +1,10 @@
 package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ArrayList;
 
 import org.griphyn.vdl.dax.Filename;
 
@@ -11,6 +13,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
+import edu.usc.epigenome.workflow.job.ecjob.CuffDiffJob;
 import edu.usc.epigenome.workflow.job.ecjob.CufflinksJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
@@ -33,6 +36,9 @@ public class RNAseqWorkflow
 			
 			//get the params so that we have the input parameters
 			GAParams workFlowParams = (GAParams) dax.getWorkFlowParams();
+			HashMap<String,String> sampleBams = new HashMap<String,String>();
+			HashMap<String,String> sampleGTFs = new HashMap<String,String>();
+			HashMap<String,String> lastJobId = new HashMap<String,String>(); 
 			
 			for (int i : workFlowParams.getAvailableLanes())
 			{
@@ -124,6 +130,10 @@ public class RNAseqWorkflow
 					dax.addJob(cufflinks);
 					dax.addChild(cufflinks.getID(), tophat.getID());
 					
+					lastJobId.put(String.valueOf(i), cufflinks.getID());
+					sampleGTFs.put(String.valueOf(i), cufflinks.getGtfFile());
+					sampleBams.put(String.valueOf(i), tophat.getBamFile());
+					
 					
 					//for each lane create a countfastq job, child of mapmerge
 					CountFastQJob countFastQJob = new CountFastQJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, false);
@@ -149,15 +159,50 @@ public class RNAseqWorkflow
 					//create nmercount for 5, child of mapmerge
 					CountNmerJob count5mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 5);
 					dax.addJob(count5mer);
-					dax.addChild(count5mer.getID(), tophat.getID());
+					dax.addChild(count5mer.getID(), count3mer.getID());
 					
 					//create nmercount for 10, child of mapmerge
 					CountNmerJob count10mer = new CountNmerJob(fastqJobs, workFlowParams.getSetting("FlowCellName"), i, 10);
 					dax.addJob(count10mer);
-					dax.addChild(count10mer.getID(), tophat.getID());
+					dax.addChild(count10mer.getID(), count3mer.getID());
 										
 				}//end if(rnaseq)
 			}//end lane loop
+			
+			//generate diff exp rnaseq analysis
+			for(String rnadiffkey : workFlowParams.getWorkFlowArgsMap().keySet())
+			{
+				if(rnadiffkey.startsWith("rnaseq.diff"))
+				{
+					ArrayList<ArrayList<String>> allSamples = new ArrayList<ArrayList<String>>();
+					String[] rnadiffparam = workFlowParams.getSetting(rnadiffkey).split(":");
+					String prefix = workFlowParams.getSetting(rnadiffkey).replace(":", "_").replace(",", "-");
+					
+					for(int k = 1;k<rnadiffparam.length;k++)
+					{
+						ArrayList<String> sample = new ArrayList<String>();
+						for(String m : rnadiffparam[k].split(","))
+						{
+							sample.add(sampleBams.get(m));
+						}
+						allSamples.add(sample);
+					}
+					CuffDiffJob cuffdiff = new CuffDiffJob(sampleGTFs.get(rnadiffparam[0]), allSamples,prefix,rnadiffkey.toLowerCase().contains("time"));
+					dax.addJob(cuffdiff);
+					for(String s : rnadiffparam)
+					{
+						if(s.contains(","))
+							for(String m : s.split(","))
+								dax.addChild(cuffdiff.getID(),lastJobId.get(m));
+						else
+							dax.addChild(cuffdiff.getID(),lastJobId.get(s));
+					}
+				}
+			}
+			
+			
+			
+			
 			if(dax.getChildCount() > 0)
 			{
 				dax.saveAsDot("rnaseq_dax.dot");
