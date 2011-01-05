@@ -16,7 +16,7 @@ public class CuffDiffJob extends ECJob
 	{
 		super(WorkflowConstants.NAMESPACE, "cuffdiff", WorkflowConstants.VERSION, "cuffdiff_" + new File(gtfFilename).getName());
 		
-		String[] outputFileNames = {"isoforms.fpkm_tracking", "genes.fpkm_tracking", "cds.fpkm_tracking","tss_groups.fpkm_tracking", "isoform_exp.diff","gene_exp.diff","tss_group_exp.diff","cds_exp.fpkm_tracking","splicing.diff","cds.diff","promoters.diff"};
+		String[] outputFileNames = {"isoforms.fpkm_tracking", "genes.fpkm_tracking", "cds.fpkm_tracking","tss_groups.fpkm_tracking", "isoform_exp.diff","gene_exp.diff","tss_group_exp.diff","cds_exp.fpkm_tracking","splicing.diff","cds.diff","cds_exp.diff","promoters.diff"};
 	
 		for(ArrayList<String> i : sampleAlns)
 			for(String j : i)
@@ -44,6 +44,7 @@ public class CuffDiffJob extends ECJob
 		if(isTimeSeries)
 			this.addArgument(new PseudoText(" -T "));
 		this.addArgument(gtfFile);
+		this.addArgument(new PseudoText(" "));
 		for(ArrayList<String> i : sampleAlns)
 		{
 			for(String j : i)
