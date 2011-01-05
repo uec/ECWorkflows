@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
+import edu.usc.epigenome.workflow.job.ecjob.CuffCompareJob;
 import edu.usc.epigenome.workflow.job.ecjob.CuffDiffJob;
 import edu.usc.epigenome.workflow.job.ecjob.CufflinksJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
@@ -174,29 +175,41 @@ public class RNAseqWorkflow
 			{
 				if(rnadiffkey.startsWith("rnaseq.diff"))
 				{
-					ArrayList<ArrayList<String>> allSamples = new ArrayList<ArrayList<String>>();
+					//parse params and build the input list of prereq files
+					ArrayList<ArrayList<String>> analysisBams = new ArrayList<ArrayList<String>>();
+					ArrayList<String> analysisGTFs = new ArrayList<String>();
+					
 					String[] rnadiffparam = workFlowParams.getSetting(rnadiffkey).split(":");
 					String prefix = workFlowParams.getSetting(rnadiffkey).replace(":", "_").replace(",", "-");
 					
-					for(int k = 1;k<rnadiffparam.length;k++)
+					for(int k = 0;k<rnadiffparam.length;k++)
 					{
 						ArrayList<String> sample = new ArrayList<String>();
 						for(String m : rnadiffparam[k].split(","))
 						{
 							sample.add(sampleBams.get(m));
+							analysisGTFs.add(sampleGTFs.get(m));
 						}
-						allSamples.add(sample);
+						analysisBams.add(sample);
 					}
-					CuffDiffJob cuffdiff = new CuffDiffJob(sampleGTFs.get(rnadiffparam[0]), allSamples,prefix,rnadiffkey.toLowerCase().contains("time"));
-					dax.addJob(cuffdiff);
+					
+					//create cuffcompare job from ref gene gtf and sample gtfs
+					CuffCompareJob cuffcompare = new CuffCompareJob(workFlowParams.getSetting("refGene"),analysisGTFs, prefix + "_" + new File(workFlowParams.getSetting("refGene")).getName());
+					dax.addJob(cuffcompare);
 					for(String s : rnadiffparam)
 					{
 						if(s.contains(","))
 							for(String m : s.split(","))
-								dax.addChild(cuffdiff.getID(),lastJobId.get(m));
+								dax.addChild(cuffcompare.getID(),lastJobId.get(m));
 						else
-							dax.addChild(cuffdiff.getID(),lastJobId.get(s));
+							dax.addChild(cuffcompare.getID(),lastJobId.get(s));
 					}
+					
+					
+					//create a cuffdiff job from cuffcompare output and sample bams
+					CuffDiffJob cuffdiff = new CuffDiffJob(cuffcompare.getOutputGTF(), analysisBams,prefix,rnadiffkey.toLowerCase().contains("time"));
+					dax.addJob(cuffdiff);
+					dax.addChild(cuffdiff.getID(),cuffcompare.getID());
 				}
 			}
 			

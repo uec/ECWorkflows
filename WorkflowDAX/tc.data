@@ -25,6 +25,7 @@ hpc     uscec::findpeaks:1.0            /home/uec-00/shared/production/software/
 hpc     uscec::tophat:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_tophat.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::cufflinks:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_cufflinks.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::cuffdiff:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wrap_cuffdiff.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
+hpc     uscec::cuffcompare:1.0          /home/uec-00/shared/production/software/perl_utils_usc/wrap_cuffcompare.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::findpeaks:1.0            /home/uec-00/shared/production/software/perl_utils_usc/wrap_findpeaks.pl        INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::wigtotdf:1.0             /home/uec-00/shared/production/software/perl_utils_usc/wigtotdf.pl              INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"
 hpc     uscec::sam2bam:1.0              /home/uec-00/shared/production/software/perl_utils_usc/sam2bam.pl               INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5"

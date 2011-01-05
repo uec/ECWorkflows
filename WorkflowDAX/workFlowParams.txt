@@ -69,8 +69,11 @@ Lane.8.ReferenceBFA = hg18
 
 
 #differential expression analysis
-#rnaseqdiff.N = GTF_LANE:samp1:samp2,sam2rep:sampN,sampNrep  (specify the lane number)
+#rnaseqdiff.N = samp1:samp2,sam2rep:sampN,sampNrep  (specify the lane number) (sep replicates with commas no spaces)
 #EX: rnaseqdiff.1 = 2:2:4,5
-rnaseq.diff.1 = 8:8:3
-rnaseq.diff.2 = 5:5:6
-rnaseq.diff.time.1 = 2:2,3:4:5
+refGene = /home/uec-00/shared/production/genomic-data-misc/Homo_sapiens.NCBI36.54.gtf
+rnaseq.diff.1 = 8:3
+rnaseq.diff.2 = 5:6
+
+#process as a time series, not pairwise
+rnaseq.diff.time.1 = 2,3:4:5
