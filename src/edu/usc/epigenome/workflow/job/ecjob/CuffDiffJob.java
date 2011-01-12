@@ -12,7 +12,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class CuffDiffJob extends ECJob
 {
-	public CuffDiffJob(String gtfFilename,ArrayList<ArrayList<String>> sampleAlns, String outputPrefix, Boolean isTimeSeries) throws Exception
+	public CuffDiffJob(String gtfFilename,ArrayList<ArrayList<String>> sampleAlns, String outputPrefix, Boolean isTimeSeries, String refFa) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "cuffdiff", WorkflowConstants.VERSION, "cuffdiff_" + new File(gtfFilename).getName());
 		
@@ -40,7 +40,7 @@ public class CuffDiffJob extends ECJob
 		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(outputPrefix + " "));
-		this.addArgument(new PseudoText("-p 8 "));
+		this.addArgument(new PseudoText("-p 8 -r " + refFa + " "));
 		if(isTimeSeries)
 			this.addArgument(new PseudoText(" -T "));
 		this.addArgument(gtfFile);

@@ -20,7 +20,7 @@ public class CufflinksJob extends ECJob
 	}
 
 
-	public CufflinksJob(String inputFile) throws Exception
+	public CufflinksJob(String inputFile, String refFa) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "cufflinks", WorkflowConstants.VERSION, "cufflinks_" + new File(inputFile).getName());
 		Filename input = new Filename(inputFile, LFN.INPUT);
@@ -46,7 +46,7 @@ public class CufflinksJob extends ECJob
 		
 		
 		// add the arguments to the job
-		this.addArgument(new PseudoText(" -p 8 "));
+		this.addArgument(new PseudoText(" -p 8 -r " + refFa + " "));
 		this.addArgument(input);
 	}
 }
