@@ -127,7 +127,7 @@ public class RNAseqWorkflow
 					TopHatJob tophat = tophatJobs.get(0);
 					
 					//run cufflinks
-					CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile());
+					CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), workFlowParams.getSetting("Lane." + i + ".ReferenceBFA") + ".fa");
 					dax.addJob(cufflinks);
 					dax.addChild(cufflinks.getID(), tophat.getID());
 					
@@ -181,6 +181,7 @@ public class RNAseqWorkflow
 					
 					String[] rnadiffparam = workFlowParams.getSetting(rnadiffkey).split(":");
 					String prefix = workFlowParams.getSetting(rnadiffkey).replace(":", "_").replace(",", "-");
+					String lastLane = "";
 					
 					for(int k = 0;k<rnadiffparam.length;k++)
 					{
@@ -189,6 +190,7 @@ public class RNAseqWorkflow
 						{
 							sample.add(sampleBams.get(m));
 							analysisGTFs.add(sampleGTFs.get(m));
+							lastLane = m;
 						}
 						analysisBams.add(sample);
 					}
@@ -207,7 +209,7 @@ public class RNAseqWorkflow
 					
 					
 					//create a cuffdiff job from cuffcompare output and sample bams
-					CuffDiffJob cuffdiff = new CuffDiffJob(cuffcompare.getOutputGTF(), analysisBams,prefix,rnadiffkey.toLowerCase().contains("time"));
+					CuffDiffJob cuffdiff = new CuffDiffJob(cuffcompare.getOutputGTF(), analysisBams,prefix,rnadiffkey.toLowerCase().contains("time"),workFlowParams.getSetting("Lane." + lastLane + ".ReferenceBFA") + ".fa" );
 					dax.addJob(cuffdiff);
 					dax.addChild(cuffdiff.getID(),cuffcompare.getID());
 				}
