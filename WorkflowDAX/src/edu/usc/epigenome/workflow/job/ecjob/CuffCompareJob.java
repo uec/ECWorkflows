@@ -18,7 +18,7 @@ public class CuffCompareJob extends ECJob
 		return outputGTF;
 	}
 	
-	public CuffCompareJob(String refgtf, ArrayList<String> samplegtfs, String outputPrefix) throws Exception
+	public CuffCompareJob(String refgtf, ArrayList<String> samplegtfs, String outputPrefix, String refFaContigsDir) throws Exception
 	{
 		super(WorkflowConstants.NAMESPACE, "cuffcompare", WorkflowConstants.VERSION, "cuffcompare_" + outputPrefix + new File(refgtf).getName());
 		
@@ -48,6 +48,7 @@ public class CuffCompareJob extends ECJob
 		this.addArgument(new PseudoText(" -o " + outputPrefix + " "));
 		this.addArgument(new PseudoText(" -r "));
 		this.addArgument(refGTFfile);
+		this.addArgument(new PseudoText(" -s " + refFaContigsDir));
 		this.addArgument(new PseudoText(" "));
 		for(String s  : samplegtfs)
 		{

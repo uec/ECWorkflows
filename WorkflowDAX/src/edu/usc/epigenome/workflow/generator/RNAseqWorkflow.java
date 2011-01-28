@@ -196,7 +196,7 @@ public class RNAseqWorkflow
 					}
 					
 					//create cuffcompare job from ref gene gtf and sample gtfs
-					CuffCompareJob cuffcompare = new CuffCompareJob(workFlowParams.getSetting("refGene"),analysisGTFs, prefix + "_" + new File(workFlowParams.getSetting("refGene")).getName());
+					CuffCompareJob cuffcompare = new CuffCompareJob(workFlowParams.getSetting("refGene"),analysisGTFs, prefix + "_" + new File(workFlowParams.getSetting("refGene")).getName(),workFlowParams.getSetting("Lane." + lastLane + ".ReferenceBFA") + "split");
 					dax.addJob(cuffcompare);
 					for(String s : rnadiffparam)
 					{
