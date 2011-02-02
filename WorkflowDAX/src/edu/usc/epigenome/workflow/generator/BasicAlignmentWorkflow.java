@@ -32,6 +32,8 @@ public class BasicAlignmentWorkflow
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
+	public static String WorkflowName = "regular";
+	
 	public static void createWorkFlow(GAParams par,Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -130,7 +132,7 @@ public class BasicAlignmentWorkflow
 					}
 					
 					//create qcmetrics job 
-					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), workFlowParams.getSetting("FlowCellName"));
+					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + WorkflowName, workFlowParams.getSetting("FlowCellName"));
 					dax.addJob(qcjob);
 					
 					//try to align a single bfqJob to multiple organisms to test for contam
@@ -274,7 +276,10 @@ public class BasicAlignmentWorkflow
 				dax.saveAsDot("basicAlignment_dax.dot");
 				dax.saveAsSimpleDot("basicAlignment_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("basicAlignment_dax.xml");
 			}
 			

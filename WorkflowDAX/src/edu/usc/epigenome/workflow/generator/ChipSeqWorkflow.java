@@ -35,6 +35,8 @@ public class ChipSeqWorkflow
 	 * Creates an chipseq map merging workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
+	public static String WorkflowName = "chipseq";
+
 	public static void createWorkFlow(GAParams par, Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -133,7 +135,7 @@ public class ChipSeqWorkflow
 					}
 					
 					//create qcmetrics job 
-					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), workFlowParams.getSetting("FlowCellName"));
+					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + WorkflowName, workFlowParams.getSetting("FlowCellName"));
 					dax.addJob(qcjob);
 					
 					
@@ -348,7 +350,10 @@ public class ChipSeqWorkflow
 				dax.saveAsDot("chipSeq_dax.dot");
 				dax.saveAsSimpleDot("chipSeq_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("chipSeq_dax.xml");
 			}
 		} 
