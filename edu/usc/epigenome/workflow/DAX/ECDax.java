@@ -421,7 +421,7 @@ public class ECDax extends ADAG
 			jobScript = new String(pbsScriptTemplate);
 		}
 		jobScript = jobScript.replace("DAXPBS_QUEUE", workFlowParams.getSetting("queue"));
-		jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"));
+		jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName"));
 		jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
 		if(hasExecMemReqs.containsKey(job))
 			jobScript = jobScript.replace("DAXPBS_MEM", "PBS -l mem=" + hasExecMemReqs.get(job));
@@ -451,7 +451,7 @@ public class ECDax extends ADAG
 				copyin += "ln -s " + s + "\n";
 			}
 			else
-				copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + f.getName() + "\n";
+				copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/" + f.getName() + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYIN", copyin);
 
@@ -463,7 +463,7 @@ public class ECDax extends ADAG
 		for (String s : hasOutputs.get(job))
 		{
 			File f = new File(s);
-			copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "\n";
+			copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
 
@@ -496,7 +496,7 @@ public class ECDax extends ADAG
 			try
 			{
 				//tmpFile = File.createTempFile(job, ".sh", new File(WorkflowConstants.systemTmp));
-				String jobName = workFlowParams.getWorkFlowArgsMap().containsKey("FlowCellName") ? workFlowParams.getSetting("FlowCellName") : "job";
+				String jobName = workFlowParams.getWorkFlowArgsMap().containsKey("FlowCellName") ? workFlowParams.getSetting("FlowCellName") + "_" + workFlowParams.getSetting("WorkflowName") : "job";
 				tmpFile = File.createTempFile("uec_" + jobName + "_" + hasExecName.get(job).replace("::", "_"), ".sh");
 				tmpFile.deleteOnExit();
 				

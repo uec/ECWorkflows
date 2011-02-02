@@ -12,22 +12,14 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountPileupJob;
+
 import edu.usc.epigenome.workflow.job.ecjob.FastQ2BFQJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapJob;
 import edu.usc.epigenome.workflow.job.ecjob.MapMergeJob;
 import edu.usc.epigenome.workflow.job.ecjob.Maq2BamJob;
-import edu.usc.epigenome.workflow.job.ecjob.PileupJob;
-import edu.usc.epigenome.workflow.job.ecjob.PileupToWigJob;
-import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.ReadCountJob;
-import edu.usc.epigenome.workflow.job.ecjob.ReadDepthJob;
-import edu.usc.epigenome.workflow.job.ecjob.Sol2SangerJob;
-import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
+
 
 
 public class MultiFileBSWorkflow
@@ -36,6 +28,8 @@ public class MultiFileBSWorkflow
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
+	public static String WorkflowName = "fastbs";
+	
 	public static void createWorkFlow(GAParams par,Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -283,7 +277,10 @@ public class MultiFileBSWorkflow
 				dax.saveAsDot("bisulfite_dax.dot");
 				dax.saveAsSimpleDot("bisulfite_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("bisulfite_dax.xml");
 			}
 			

@@ -6,6 +6,8 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.MethParams;
 
 public class MethWorkflow
 {
+	public static String WorkflowName = "methylation";
+	
 	public static void createWorkFlow(ECDax dax, Boolean pbsMode, ArrayList<String> barCodeList)	
 	{
 		try
@@ -70,7 +72,10 @@ public class MethWorkflow
 		dax.saveAsDot("report_meth_dax.dot");
 		dax.saveAsSimpleDot("report_meth_dax_simple.dot");
 		if(pbsMode)
+		{
+			par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 			dax.runWorkflow(dryrun);
+		}
 		dax.saveAsXML("report_meth_dax.xml");		
 	}
 
