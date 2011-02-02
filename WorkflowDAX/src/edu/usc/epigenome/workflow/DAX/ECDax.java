@@ -60,6 +60,9 @@ public class ECDax extends ADAG
 	//the tc.data app that  job does
 	HashMap<String, String> hasExecName;
 	
+	//the tc.data app mem reqs for pbs reservation
+	HashMap<String, String> hasExecMemReqs;
+	
 	//used in dryrun as a substitute for pbs job ID
 	int tmpNum = 1;
 	
@@ -80,9 +83,17 @@ public class ECDax extends ADAG
 		return workFlowParams;
 	}
 
-	String pbsScriptTemplate = "#PBS -q DAXPBS_QUEUE \n" + "#PBS -S /bin/bash \n" + "#PBS -l walltime=48:00:00 \n" + "#DAXPBS_DEPS\n"
-			+ "export RESULTS_DIR=DAXPBS_RESULTSDIR \n" + "export TMP=DAXPBS_TMPDIR \n" + "mkdir -p $RESULTS_DIR \n" + "mkdir $TMP/$PBS_JOBID \n"
-			+ "cd $TMP/$PBS_JOBID \n" + "#DAXPBS_COPYIN \n" + "#DAXPBS_RUN\n" + "#DAXPBS_COPYOUT \n";
+	String pbsScriptTemplate = 	"#PBS -q DAXPBS_QUEUE \n" + 
+							 	"#PBS -S /bin/bash \n" + 
+							 	"#PBS -l walltime=48:00:00 \n" + 
+							 	"#DAXPBS_DEPS\n"+ 
+							 	"export RESULTS_DIR=DAXPBS_RESULTSDIR \n" + 
+							 	"export TMP=DAXPBS_TMPDIR \n" + 
+							 	"mkdir -p $RESULTS_DIR \n" + 
+							 	"mkdir $TMP/$PBS_JOBID \n" + 
+							 	"cd $TMP/$PBS_JOBID \n" + 
+							 	"#DAXPBS_COPYIN \n" + 
+							 	"#DAXPBS_RUN\n" + "#DAXPBS_COPYOUT \n";
 
 	/**
 	 * create an instance of ECDAX
@@ -116,6 +127,7 @@ public class ECDax extends ADAG
 		hasOutputs = new HashMap<String, ArrayList<String>>();
 		hasCmdLine = new HashMap<String, String>();
 		hasExecName = new HashMap<String, String>();
+		hasExecMemReqs = new HashMap<String, String>();
 		heldJobIDs = new HashMap<String, String>();
 		jobIDs = new HashMap<String, String>();
 
@@ -162,6 +174,8 @@ public class ECDax extends ADAG
 				String jobCmdLine = workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version"))
 						+ " ";
 				hasExecName.put(jobName, e.getAttribute("namespace") + "::" + e.getAttribute("name"));
+				hasExecMemReqs.put(jobName, workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_MAXMEM"));
+				
 				NodeList argsNodeList = e.getElementsByTagName("argument");
 				for (int j = 0; j < argsNodeList.getLength(); j++)
 				{
@@ -409,6 +423,8 @@ public class ECDax extends ADAG
 		jobScript = jobScript.replace("DAXPBS_QUEUE", workFlowParams.getSetting("queue"));
 		jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"));
 		jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
+		if(hasExecMemReqs.containsKey(job))
+			jobScript = jobScript.replace("DAXPBS_MEM", "PBS -l mem=" + hasExecMemReqs.get(job));
 
 		// PREPARE DEPS
 		String deps = new String("#PBS -W depend=afterany");
