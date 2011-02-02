@@ -34,6 +34,8 @@ public class BisulfiteAlignmentWorkflow
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
+	public static String WorkflowName = "bisulfite";
+	
 	public static void createWorkFlow(GAParams par,Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -136,7 +138,7 @@ public class BisulfiteAlignmentWorkflow
 					}
 					
 					//create qcmetrics job 
-					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName"), workFlowParams.getSetting("FlowCellName"));
+					QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + WorkflowName, workFlowParams.getSetting("FlowCellName"));
 					dax.addJob(qcjob);
 					
 					//try to align a single bfqJob to multiple organisms to test for contam
@@ -281,7 +283,10 @@ public class BisulfiteAlignmentWorkflow
 				dax.saveAsDot("bisulfite_dax.dot");
 				dax.saveAsSimpleDot("bisulfite_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("bisulfite_dax.xml");
 			}
 			

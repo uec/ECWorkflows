@@ -26,7 +26,9 @@ public class RNAseqWorkflow
 	/**
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
-	 */	
+	 */
+	public static String WorkflowName = "rnaseq";
+	
 	public static void createWorkFlow(GAParams par,Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -223,7 +225,10 @@ public class RNAseqWorkflow
 				dax.saveAsDot("rnaseq_dax.dot");
 				dax.saveAsSimpleDot("rnaseq_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("rnaseq_dax.xml");
 			}
 			

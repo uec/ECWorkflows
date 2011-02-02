@@ -22,7 +22,9 @@ public class SimpleBasicAlignmentWorkflow
 	/**
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
-	 */	
+	 */
+	public static String WorkflowName = "simple";
+	
 	public static void createWorkFlow(GAParams par,Boolean pbsMode, Boolean dryrun)	
 	{
 		try
@@ -136,7 +138,10 @@ public class SimpleBasicAlignmentWorkflow
 				dax.saveAsDot("simpleAlignment_dax.dot");
 				dax.saveAsSimpleDot("simpleAlignment_dax_simple.dot");
 				if(pbsMode)
+				{
+					par.getWorkFlowArgsMap().put("WorkflowName", WorkflowName);
 					dax.runWorkflow(dryrun);
+				}
 				dax.saveAsXML("simpleAlignment_dax.xml");
 			}
 			
