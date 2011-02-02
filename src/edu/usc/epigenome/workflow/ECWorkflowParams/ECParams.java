@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class ECParams
@@ -101,6 +103,10 @@ public class ECParams
 				{
 					String[] tcMatch = strLine.split("\\s+");
 					workFlowArgsMap.put(tcMatch[1], tcMatch[2]);
+					Pattern gene_idP = Pattern.compile("MAXMEM=\"(.+?)\"");
+					Matcher m = gene_idP.matcher(strLine);
+			    	if(m.find())
+			    		workFlowArgsMap.put(tcMatch[1] + "_MAXMEM",m.group(1));
 				}
 			}
 		} catch (Exception e)
