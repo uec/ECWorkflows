@@ -2,6 +2,7 @@
 #PBS -S /bin/bash
 #PBS -l walltime=300:00:00
 #DAXPBS_MEM
+#DAXPBS_CPU
 #Note: DAXPBS comments will be replaced with job specific data
 #DAXPBS_DEPS
 umask 022

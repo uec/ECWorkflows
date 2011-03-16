@@ -356,6 +356,7 @@ public class ChipSeqWorkflow
 				}
 				dax.saveAsXML("chipSeq_dax.xml");
 			}
+			dax.release();
 		} 
 		catch (Exception e)
 		{

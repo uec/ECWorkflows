@@ -282,6 +282,7 @@ public class BasicAlignmentWorkflow
 				}
 				dax.saveAsXML("basicAlignment_dax.xml");
 			}
+			dax.release();
 			
 		} 
 		catch (Exception e)
