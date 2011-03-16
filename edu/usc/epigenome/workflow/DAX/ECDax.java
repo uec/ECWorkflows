@@ -63,6 +63,9 @@ public class ECDax extends ADAG
 	//the tc.data app mem reqs for pbs reservation
 	HashMap<String, String> hasExecMemReqs;
 	
+	//the tc.data app cpu reqs for pbs reservation
+	HashMap<String, String> hasExecCPUReqs;
+	
 	//used in dryrun as a substitute for pbs job ID
 	int tmpNum = 1;
 	
@@ -128,6 +131,7 @@ public class ECDax extends ADAG
 		hasCmdLine = new HashMap<String, String>();
 		hasExecName = new HashMap<String, String>();
 		hasExecMemReqs = new HashMap<String, String>();
+		hasExecCPUReqs = new HashMap<String, String>();
 		heldJobIDs = new HashMap<String, String>();
 		jobIDs = new HashMap<String, String>();
 
@@ -174,7 +178,10 @@ public class ECDax extends ADAG
 				String jobCmdLine = workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version"))
 						+ " ";
 				hasExecName.put(jobName, e.getAttribute("namespace") + "::" + e.getAttribute("name"));
-				hasExecMemReqs.put(jobName, workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_MAXMEM"));
+				if(workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_MAXMEM") != null)
+					hasExecMemReqs.put(jobName, workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_MAXMEM"));
+				if(workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_NUMCPUS") != null)
+					hasExecCPUReqs.put(jobName, workFlowParams.getSetting(e.getAttribute("namespace") + "::" + e.getAttribute("name") + ":" + e.getAttribute("version") + "_NUMCPUS"));
 				
 				NodeList argsNodeList = e.getElementsByTagName("argument");
 				for (int j = 0; j < argsNodeList.getLength(); j++)
@@ -425,6 +432,8 @@ public class ECDax extends ADAG
 		jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
 		if(hasExecMemReqs.containsKey(job))
 			jobScript = jobScript.replace("DAXPBS_MEM", "PBS -l mem=" + hasExecMemReqs.get(job));
+		if(hasExecCPUReqs.containsKey(job))
+			jobScript = jobScript.replace("DAXPBS_CPU", "PBS -l nodes=1:ppn=" + hasExecCPUReqs.get(job));
 
 		// PREPARE DEPS
 		String deps = new String("#PBS -W depend=afterany");
@@ -525,6 +534,8 @@ public class ECDax extends ADAG
 				// capture and parse output
 				String processLine;
 				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+				BufferedReader error = new BufferedReader(new InputStreamReader(p.getInputStream()));
+				
 				System.out.print("\n##submitted job############\n");
 				while ((processLine = input.readLine()) != null)
 				{
@@ -541,8 +552,15 @@ public class ECDax extends ADAG
 					{
 						System.out.println("##error in processLine: " + processLine);
 					}
+					p.destroy();
+					input.close();
+					thisApp.gc();
+					break;
+					
 				}
+				
 				input.close();
+				
 			} catch (IOException e)
 			{
 				e.printStackTrace();
@@ -596,5 +614,25 @@ public class ECDax extends ADAG
 		{
 			e.printStackTrace();
 		}
+	}
+	public void release()
+	{
+		hasChildren.clear();
+			//job -> depends on
+		hasParents.clear();
+			//job -> needs input files
+		hasInputs.clear();
+			//job -> produces output files
+		hasOutputs.clear();
+			//all job id's (unique)
+		jobIDs.clear();
+			//top level job id's (unique)
+		heldJobIDs.clear();
+			//a job complete cmd line
+		hasCmdLine.clear();
+			//the tc.data app that  job does
+		hasExecName.clear();
+			//the tc.data app mem reqs for pbs reservation
+		hasExecMemReqs.clear();
 	}
 }

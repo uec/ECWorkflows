@@ -103,10 +103,15 @@ public class ECParams
 				{
 					String[] tcMatch = strLine.split("\\s+");
 					workFlowArgsMap.put(tcMatch[1], tcMatch[2]);
-					Pattern gene_idP = Pattern.compile("MAXMEM=\"(.+?)\"");
-					Matcher m = gene_idP.matcher(strLine);
-			    	if(m.find())
-			    		workFlowArgsMap.put(tcMatch[1] + "_MAXMEM",m.group(1));
+					Pattern memPattern = Pattern.compile("MAXMEM=\"(.+?)\"");
+					Matcher memMatch = memPattern.matcher(strLine);
+			    	if(memMatch.find())
+			    		workFlowArgsMap.put(tcMatch[1] + "_MAXMEM",memMatch.group(1));
+			    	
+			    	Pattern cpuPattern = Pattern.compile("NUMCPUS=\"(.+?)\"");
+					Matcher cpuMatch = cpuPattern.matcher(strLine);
+			    	if(cpuMatch.find())
+			    		workFlowArgsMap.put(tcMatch[1] + "_NUMCPUS",cpuMatch.group(1));
 				}
 			}
 		} catch (Exception e)
