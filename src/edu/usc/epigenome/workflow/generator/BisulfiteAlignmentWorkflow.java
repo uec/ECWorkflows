@@ -289,6 +289,7 @@ public class BisulfiteAlignmentWorkflow
 				}
 				dax.saveAsXML("bisulfite_dax.xml");
 			}
+			dax.release();
 			
 		} 
 		catch (Exception e)
