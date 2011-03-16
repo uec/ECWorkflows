@@ -1,0 +1,295 @@
+digraph g {
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX8kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX5kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"pileupwig_300ABCAAXX21600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX115000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX4Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX2" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX5kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX1" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"readdepth_300ABCAAXX705000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX3Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX415000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX6kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX5TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX205000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX3TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX8Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX8RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"pileupwig_300ABCAAXX81600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"featurepileup_300ABCAAXX4guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX2kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"pileupwig_300ABCAAXX61600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX4Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX2kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX105000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readcount_300ABCAAXX7" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX7RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX5Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX8kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"pileupwig_300ABCAAXX31600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX5RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX8kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX6" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX8TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"pileupwig_300ABCAAXX41600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"featurepileup_300ABCAAXX2kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX5kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX8" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX1RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX715000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX6Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX8guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX1Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX505000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX8Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX3kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX815000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"readdepth_300ABCAAXX605000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX5kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX805000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"readcount_300ABCAAXX5" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX2RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX2kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX6RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX8kg-tssNoncgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1kg-tssCgi11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX8RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX5guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX4" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX7Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX315000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"pileupwig_300ABCAAXX11600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX2TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX215000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"readdepth_300ABCAAXX305000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX7kim2007-ctcf11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4kg-exon11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readdepth_300ABCAAXX405000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX2guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX2RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX2Ku2008-H3K2711000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"pileupwig_300ABCAAXX71600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"pileupwig_300ABCAAXX51600" [shape = "circle" style="filled" colorscheme="paired12" color=3 label = ""];
+"featurepileup_300ABCAAXX7Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX515000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX5Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"readcount_300ABCAAXX3" [shape = "circle" style="filled" colorscheme="paired12" color=5 label = ""];
+"featurepileup_300ABCAAXX2Ku2008-Ring1B11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX3RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"readdepth_300ABCAAXX615000" [shape = "circle" style="filled" colorscheme="paired12" color=4 label = ""];
+"featurepileup_300ABCAAXX4RepeatMaskerLINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX1guelen2008-LADs11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX4RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition" [shape = "circle" style="filled" colorscheme="paired12" color=1 label = ""];
+"featurepileup_300ABCAAXX5RepeatMaskerSINE11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"featurepileup_300ABCAAXX7TJGG-exonNoTss11000" [shape = "circle" style="filled" colorscheme="paired12" color=2 label = ""];
+"Legend" [
+shape = "Mrecord" colorscheme="paired12"label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="white"><font color="black">Legend</font></td></tr><tr><td align="left" bgcolor="3" border="2" color="3">      </td><td align="left" border="2" color="3"><font>uscec::pileupwig</font></td><td> </td><td align="left" bgcolor="4" border="2" color="4">      </td><td align="left" border="2" color="4"><font>uscec::readdepth</font></td><td> </td><td align="left" bgcolor="2" border="2" color="2">      </td><td align="left" border="2" color="2"><font>uscec::featurepileup</font></td><td> </td><td align="left" bgcolor="1" border="2" color="1">      </td><td align="left" border="2" color="1"><font>uscec::countpileup</font></td><td> </td><td align="left" bgcolor="5" border="2" color="5">      </td><td align="left" border="2" color="5"><font>uscec::readcount</font></td><td> </td></tr></table>> ];
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8kg-exon11000"
+Start -> "featurepileup_300ABCAAXX6Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX3kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX5kim2007-ctcf11000"
+Start -> "pileupwig_300ABCAAXX21600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX115000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX4Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7kg-tssCgi11000"
+Start -> "readcount_300ABCAAXX2"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX5kg-tssNoncgi11000"
+Start -> "readcount_300ABCAAXX1"
+Start -> "readdepth_300ABCAAXX705000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX3Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX6TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX6kg-tssCgi11000"
+Start -> "readdepth_300ABCAAXX415000"
+Start -> "featurepileup_300ABCAAXX6kg-exon11000"
+Start -> "featurepileup_300ABCAAXX5TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX6kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-tssCgi11000"
+Start -> "readdepth_300ABCAAXX205000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX3TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX8Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7kg-exon11000"
+Start -> "featurepileup_300ABCAAXX1kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX1kg-exon11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX7kg-tssNoncgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX81600"
+Start -> "featurepileup_300ABCAAXX4guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX1Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX2kg-tssNoncgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX61600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX4Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX2kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX4kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX6guelen2008-LADs11000"
+Start -> "readdepth_300ABCAAXX105000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly"
+Start -> "readcount_300ABCAAXX7"
+Start -> "featurepileup_300ABCAAXX7RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX4TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX3RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX5Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX6kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX1TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX8kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX1RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX3kg-exon11000"
+Start -> "pileupwig_300ABCAAXX31600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX5RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX8kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX6RepeatMaskerLINE11000"
+Start -> "readcount_300ABCAAXX6"
+Start -> "featurepileup_300ABCAAXX8TJGG-exonNoTss11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX41600"
+Start -> "featurepileup_300ABCAAXX2kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX5kg-exon11000"
+Start -> "featurepileup_300ABCAAXX3guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX3kg-tssNoncgi11000"
+Start -> "readcount_300ABCAAXX8"
+Start -> "featurepileup_300ABCAAXX1RepeatMaskerSINE11000"
+Start -> "readdepth_300ABCAAXX715000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX6Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8guelen2008-LADs11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly"
+Start -> "featurepileup_300ABCAAXX1Ku2008-Ring1B11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX505000"
+Start -> "featurepileup_300ABCAAXX8Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly"
+Start -> "featurepileup_300ABCAAXX3kg-tssCgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX815000"
+Start -> "readdepth_300ABCAAXX605000"
+Start -> "featurepileup_300ABCAAXX5kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX3Ku2008-H3K2711000"
+Start -> "readdepth_300ABCAAXX805000"
+Start -> "readcount_300ABCAAXX5"
+Start -> "featurepileup_300ABCAAXX2RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX7RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX2kg-exon11000"
+Start -> "featurepileup_300ABCAAXX1kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX6RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX8kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX1kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX8RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX5guelen2008-LADs11000"
+Start -> "readcount_300ABCAAXX4"
+Start -> "featurepileup_300ABCAAXX7Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX315000"
+Start -> "pileupwig_300ABCAAXX11600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX2TJGG-exonNoTss11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition"
+Start -> "readdepth_300ABCAAXX215000"
+Start -> "readdepth_300ABCAAXX305000"
+Start -> "featurepileup_300ABCAAXX7kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-exon11000"
+Start -> "readdepth_300ABCAAXX405000"
+Start -> "featurepileup_300ABCAAXX2guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX2RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX2Ku2008-H3K2711000"
+Start -> "pileupwig_300ABCAAXX71600"
+Start -> "pileupwig_300ABCAAXX51600"
+Start -> "featurepileup_300ABCAAXX7Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7guelen2008-LADs11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX515000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX5Ku2008-Ring1B11000"
+Start -> "readcount_300ABCAAXX3"
+Start -> "featurepileup_300ABCAAXX2Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX3RepeatMaskerLINE11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition"
+Start -> "readdepth_300ABCAAXX615000"
+Start -> "featurepileup_300ABCAAXX4RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX1guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX4RepeatMaskerSINE11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX5RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX7TJGG-exonNoTss11000"
+{ edge [color="#ffffff"]
+ Legend -> Start
+}
+}
