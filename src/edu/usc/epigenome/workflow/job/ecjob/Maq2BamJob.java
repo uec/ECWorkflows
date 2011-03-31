@@ -11,6 +11,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 public class Maq2BamJob extends ECJob
 {
 	private String nodupsBam = "";
+	private String dupsBam = "";
 	public Maq2BamJob(String inputFile, String genome)
 	{
 		super(WorkflowConstants.NAMESPACE, "maq2bam", WorkflowConstants.VERSION, "maq2bam_" + inputFile);
@@ -22,6 +23,7 @@ public class Maq2BamJob extends ECJob
 		// construct the output filenames for job
 		String outputBamFile = new String(inputFile);
 		outputBamFile = outputBamFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "bam");
+		dupsBam = outputBamFile;
 		Filename outputBam = new Filename(outputBamFile, LFN.OUTPUT);
 		outputBam.setRegister(false);
 		this.addUses(outputBam);
@@ -50,5 +52,9 @@ public class Maq2BamJob extends ECJob
 	public String getNodupsOutput()
 	{
 		return nodupsBam;
+	}
+	public String getBamOutput()
+	{
+		return dupsBam;
 	}
 }

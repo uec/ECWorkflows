@@ -2,11 +2,12 @@ package edu.usc.epigenome.workflow;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
+import edu.usc.epigenome.workflow.deprecated.MultiFileBSWorkflow;
 import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipseqMapMergeWorkflow;
-import edu.usc.epigenome.workflow.generator.MultiFileBSWorkflow;
+import edu.usc.epigenome.workflow.generator.RNAseqDiffExpWorkflow;
 import edu.usc.epigenome.workflow.generator.SimpleBasicAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.SimpleFastAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqWorkflow;
@@ -16,10 +17,9 @@ public class SequencingPipeline
 
 	public static void usage()
 	{
-		System.out.println("Error: parameter file does not exist and no valid URL given");
-		System.out.println("Usage: program [-dryrun] [-pbs] [workflowParameterFile.txt] [http://processURL]");
-		System.out.println("workflowParameterFile.txt: contains all parameters");
-		System.out.println("workflowURL.txt: contains all parameters");
+		System.out.println("Error: parameter file does not exist");
+		System.out.println("Usage: program [-dryrun] [-pbs] [workflowParameterFile.txt]");
+		System.out.println("workflowParameterFile.txt: contains all parameters");		
 		System.out.println("-pbs: operate in pbs mode");
 		System.out.println("-dryrun: display pbs output, do not run");
 		System.err.println("Either one of the arguements or both must be specified");
@@ -31,7 +31,6 @@ public class SequencingPipeline
 	public static void main(String[] args)
 	{
 		String paramFile = "";
-		String processURL = "";
 		Boolean dryrun = false;
 		Boolean pbsMode = false;
 		
@@ -42,31 +41,40 @@ public class SequencingPipeline
 			else if(s.equals("-pbs")) 
 				pbsMode = true;
 			else if(new File(s).exists())
-				paramFile = s;
-			else if(s.contains("http://"))
-				processURL = s;
+				paramFile = s;			
 			else
+			{
 				usage();
+				System.exit(0);
+			}
 		}
 		
 		GAParams par = null;
-		if(paramFile.length() > 0 && processURL.length() > 7)
-			par = new GAParams(new File(paramFile), processURL);
-		else if(paramFile.length() > 0 && processURL.length() == 0)
-			par = new GAParams(new File(paramFile));
-		else if(paramFile.length() == 0 && processURL.length() > 7)
-			par = new GAParams(processURL);
-		else
-			usage();
+		par = new GAParams(new File(paramFile));
 		
-		BasicAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		BisulfiteAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		ChipSeqWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		RNAseqWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		MultiFileBSWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		SimpleBasicAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		ChipseqMapMergeWorkflow.createWorkFlow(par, pbsMode, dryrun);
-		SimpleFastAlignmentWorkflow.createWorkFlow(par, pbsMode, dryrun);
+		for(String sampleEntryKey : par.getSamples().keySet() )
+		{
+			String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
+			if(workflow.toLowerCase().equals("regular")) 	BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("chipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("chipseqmerge"))ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("rnaseq")) 	RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("fastbs")) 	MultiFileBSWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("simple")) 	SimpleBasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("fast")) 		SimpleFastAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+		}
+		
+		//one shot analysis ie do not do for each sample, do for all samples one time.
+		for(String sampleEntryKey : par.getSamples().keySet() )
+		{
+			String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
+			if(workflow.toLowerCase().equals("rnaseqdiff"))
+			{
+				RNAseqDiffExpWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+				break;
+			}
+		}
 	}
 
 }

@@ -33,6 +33,16 @@ public class TopHatJob extends ECJob
 		Filename outputBed = new Filename(outFileBed, LFN.OUTPUT);
 		outputBed.setRegister(true);
 		this.addUses(outputBed);
+				
+		String outFileInsBed = inputFile + ".tophat_insertions.bed";
+		Filename outputInsBed = new Filename(outFileInsBed, LFN.OUTPUT);
+		outputInsBed.setRegister(true);
+		this.addUses(outputInsBed);
+		
+		String outFileDelBed = inputFile + ".tophat_deletions.bed";
+		Filename outputDelBed = new Filename(outFileDelBed, LFN.OUTPUT);
+		outputDelBed.setRegister(true);
+		this.addUses(outputDelBed);
 		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(referenceGenomeFile + " "));
@@ -59,6 +69,16 @@ public class TopHatJob extends ECJob
 		Filename outputBed = new Filename(outFileBed, LFN.OUTPUT);
 		outputBed.setRegister(true);
 		this.addUses(outputBed);
+		
+		String outFileInsBed = inputFileR1 + ".tophat_insertions.bed";
+		Filename outputInsBed = new Filename(outFileInsBed, LFN.OUTPUT);
+		outputInsBed.setRegister(true);
+		this.addUses(outputInsBed);
+		
+		String outFileDelBed = inputFileR1 + ".tophat_deletions.bed";
+		Filename outputDelBed = new Filename(outFileDelBed, LFN.OUTPUT);
+		outputDelBed.setRegister(true);
+		this.addUses(outputDelBed);
 		
 		// add the arguments to the job
 		this.addArgument(new PseudoText("-p 8 "));

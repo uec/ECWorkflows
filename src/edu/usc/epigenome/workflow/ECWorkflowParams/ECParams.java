@@ -201,7 +201,7 @@ public class ECParams
 		setDefault("JobTemplate", "/home/uec-00/shared/production/software/ECWorkflow/pbsTemplate.sh");
 		setDefault("PegasusTC", "/home/uec-00/shared/production/software/ECWorkflow/tc.data");
 		setDefault("queue", "laird");
-		setDefault("ClusterSize", "256");
+		setDefault("ClusterSize", "64");
 	}
 
 }

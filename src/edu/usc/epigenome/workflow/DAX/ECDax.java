@@ -485,7 +485,7 @@ public class ECDax extends ADAG
 			try
 			{
 				FileWriter log = new FileWriter("dryrun.log.txt", true);
-				log.write("##############\n" + jobScript);
+				log.write("\n##############\n" + jobScript);
 				log.close();
 			} 
 			catch (IOException e)

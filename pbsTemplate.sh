@@ -1,6 +1,6 @@
 #PBS -q DAXPBS_QUEUE
 #PBS -S /bin/bash
-#PBS -l walltime=300:00:00
+#PBS -l walltime=96:00:00
 #DAXPBS_MEM
 #DAXPBS_CPU
 #Note: DAXPBS comments will be replaced with job specific data
