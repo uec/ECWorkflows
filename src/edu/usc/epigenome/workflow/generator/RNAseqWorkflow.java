@@ -1,6 +1,7 @@
 package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -141,7 +142,7 @@ public class RNAseqWorkflow
 			dax.addChild(countAdapterTrim.getID(), tophat.getID());
 			
 			//for each lane create a countfastq job, child of bammerge
-			CountFastQJob countFastQJob = new CountFastQJob((String[])splitFiles.toArray(), flowcellID, Integer.parseInt(laneNumber), false);
+			CountFastQJob countFastQJob = new CountFastQJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), false);
 			dax.addJob(countFastQJob);
 			dax.addChild(countFastQJob.getID(), countAdapterTrim.getID());
 			
@@ -152,17 +153,17 @@ public class RNAseqWorkflow
 
 			
 			//create nmercount for 3, child of mapmerge
-			CountNmerJob count3mer = new CountNmerJob((String[])splitFiles.toArray(), flowcellID, Integer.parseInt(laneNumber), 3);
+			CountNmerJob count3mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 3);
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),tophat.getID());
 			
 			//create nmercount for 5, child of mapmerge
-			CountNmerJob count5mer = new CountNmerJob((String[])splitFiles.toArray(), flowcellID, Integer.parseInt(laneNumber), 5);
+			CountNmerJob count5mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 5);
 			dax.addJob(count5mer);
 			dax.addChild(count5mer.getID(), tophat.getID());
 			
 			//create nmercount for 10, child of mapmerge
-			CountNmerJob count10mer = new CountNmerJob((String[])splitFiles.toArray(), flowcellID, Integer.parseInt(laneNumber), 10);
+			CountNmerJob count10mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 10);
 			dax.addJob(count10mer);
 			dax.addChild(count10mer.getID(), tophat.getID());
 			
