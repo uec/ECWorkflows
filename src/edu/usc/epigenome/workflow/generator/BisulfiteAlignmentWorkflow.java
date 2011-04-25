@@ -79,8 +79,7 @@ public class BisulfiteAlignmentWorkflow
 			for (Filename f : fastqSplitJob.getOutputFiles())
 			{
 				String splitFileName = f.getFilename();
-				String splitParentID = fastqSplitJob.getID();
-				
+		
 				//filter contam job, cant do with PE since it messes up order
 				String splitFastqOutputFile = f.getFilename();
 				FilterContamsJob filterContamJob = new FilterContamsJob(splitFastqOutputFile);
@@ -89,13 +88,10 @@ public class BisulfiteAlignmentWorkflow
 				filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
 				
 				if(!isPE)
-				{
 					splitFileName = filterContamJob.getNoContamOutputFileName();
-					splitParentID = filterContamJob.getID();
-				}
 				
 				splitFiles.add(splitFileName);
-				splitIDs.add(splitParentID);
+				splitIDs.add(filterContamJob.getID());
 				
 			}
 			

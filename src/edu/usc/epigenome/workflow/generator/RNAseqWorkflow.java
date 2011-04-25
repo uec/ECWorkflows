@@ -77,7 +77,7 @@ public class RNAseqWorkflow
 			for (Filename f : fastqSplitJob.getOutputFiles())
 			{
 				String splitFileName = f.getFilename();
-				String splitParentID = fastqSplitJob.getID();
+				
 				
 				//filter contam job, cant do with PE since it messes up order
 				String splitFastqOutputFile = f.getFilename();
@@ -87,13 +87,10 @@ public class RNAseqWorkflow
 				filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
 				
 				if(!isPE)
-				{
-					splitFileName = filterContamJob.getNoContamOutputFileName();
-					splitParentID = filterContamJob.getID();
-				}
+					splitFileName = filterContamJob.getNoContamOutputFileName();					
 				
 				splitFiles.add(splitFileName);
-				splitIDs.add(splitParentID);
+				splitIDs.add(filterContamJob.getID());
 				
 			}
 			
