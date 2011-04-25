@@ -295,14 +295,14 @@ public class ChipSeqWorkflow
 				
 			if(dax.getChildCount() > 0)
 			{
-				dax.saveAsDot("chipSeq_dax.dot");
-				dax.saveAsSimpleDot("chipSeq_dax_simple.dot");
+				dax.saveAsDot("chipSeq_dax_" + label + ".dot");
+				dax.saveAsSimpleDot("chipSeq_dax_simple_" + label + ".dot");
 				if(pbsMode)
 				{
 					par.getWorkFlowArgsMap().put("WorkflowName", label);
 					dax.runWorkflow(dryrun);
 				}
-				dax.saveAsXML("chipSeq_dax.xml");
+				dax.saveAsXML("chipSeq_dax_" + label + ".xml");
 			}
 			dax.release();
 		} 

@@ -56,7 +56,7 @@ public class SequencingPipeline
 		{
 			String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
 			if(workflow.toLowerCase().equals("regular")) 	BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().contains("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().equals("chipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().equals("chipseqmerge"))ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().equals("rnaseq")) 	RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);

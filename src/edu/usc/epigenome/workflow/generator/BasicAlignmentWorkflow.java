@@ -283,14 +283,14 @@ public class BasicAlignmentWorkflow
 			
 			if(dax.getChildCount() > 0)
 			{
-				dax.saveAsDot("basicAlignment_dax.dot");
-				dax.saveAsSimpleDot("basicAlignment_dax_simple.dot");
+				dax.saveAsDot("basicAlignment_dax _" + label + ".dot");
+				dax.saveAsSimpleDot("basicAlignment_dax_simple_" + label + ".dot");
 				if(pbsMode)
 				{
 					par.getWorkFlowArgsMap().put("WorkflowName", label);
 					dax.runWorkflow(dryrun);
 				}
-				dax.saveAsXML("basicAlignment_dax.xml");
+				dax.saveAsXML("basicAlignment_dax_" + label + ".xml");
 			}
 			dax.release();
 			
