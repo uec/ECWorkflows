@@ -56,7 +56,7 @@ public class RNAseqWorkflow
 			String laneInputFileNameR1 = pbsMode ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
 			String laneInputFileNameR2 = null;
 			//split Fastq Job. handle paired end and non pbs
-			int splitSize = 1; //tophat cant merge.
+			int splitSize = 1; //tophat cant merge bams.
 			FastQConstantSplitJob fastqSplitJob = null;
 			if(isPE)
 			{
@@ -143,12 +143,12 @@ public class RNAseqWorkflow
 			//for each lane create a countfastq job, child of bammerge
 			CountFastQJob countFastQJob = new CountFastQJob((String[])splitFiles.toArray(), flowcellID, Integer.parseInt(laneNumber), false);
 			dax.addJob(countFastQJob);
-			dax.addChild(countFastQJob.getID(), tophat.getID());
+			dax.addChild(countFastQJob.getID(), countAdapterTrim.getID());
 			
 			//create qcmetrics job child of bammerge
 			QCMetricsJob qcjob = new QCMetricsJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label, flowcellID);
 			dax.addJob(qcjob);
-			dax.addChild(qcjob.getID(), tophat.getID());
+			dax.addChild(qcjob.getID(), countFastQJob.getID());
 
 			
 			//create nmercount for 3, child of mapmerge
