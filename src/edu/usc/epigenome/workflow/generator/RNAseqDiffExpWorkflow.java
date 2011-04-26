@@ -36,8 +36,8 @@ public class RNAseqDiffExpWorkflow
 				String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
 				if(workflow.toLowerCase().equals("rnaseqdiff"))
 				{
-					String sampleNum = sampleEntryKey.split(".")[1];
-					label += sampleNum + " ";
+					String sampleNum = sampleEntryKey.split("\\.")[1];
+					label += sampleNum + "";
 					for(String inputFile : par.getSamples().get(sampleEntryKey).get("Input").split(",")) 
 					{
 						if(inputFile.toLowerCase().endsWith("gtf"))

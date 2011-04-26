@@ -1,57 +1,67 @@
-#################################
-## Global Settings (shouldn't change too much, you probably should use defaults and not set these)
-
-#optional template to use for pbs jobs, probably best to use defaults on hpcc
-JobTemplate = pbsTemplate.sh
-
-#pegasus tranformation catalog, probably best to use defaults on hpcc
+ClusterSize = 8
+queue = laird
+FlowCellName = B02LRABXX
+MinMismatches = 2 
+MaqPileupQ = 30
+referenceLane = 1 
+randomSubset = 300000
 PegasusTC = tc.data
 
-#number of nodes in cluster to help plan split factors, default is 256
-ClusterSize = 4
+Sample.1.SampleID = RAMDE1
+Sample.1.Lane = 1
+Sample.1.Input = s_1_1_CAGATC_sequence.1.fastq.tophat_hits.bam,s_1_1_CAGATC_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.1.Workflow = rnaseqdiff
+Sample.1.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
 
-#location of pbs storage space / project dir, default is to create a folder in current dir
-#tmpDir = hg18
-
-#queue to use
-queue = laird
-
-################################
-## Project Specific Settings
-
-FlowCellName = 618JOAAXX
-MinMismatches = 2
-MaqPileupQ = 30
-referenceLane = 1
-randomSubset = 300000
-
-
-###############################
-## Sample Specific Settings
-
-Sample.2.SampleID = WIT1251A1
+Sample.2.SampleID = RAMDE2
 Sample.2.Lane = 2
-Sample.2.Input = s_2_1_sequence.txt,s_2_2_sequence.txt
-Sample.2.Workflow = chipseq
-Sample.2.Reference = hg18
+Sample.2.Input = s_1_1_CGATGT_sequence.1.fastq.tophat_hits.bam,s_1_1_CGATGT_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.2.Workflow = rnaseqdiff
+Sample.2.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
 
-
-Sample.3.SampleID = WIT125ZZ
+Sample.3.SampleID = RAMDE3
 Sample.3.Lane = 3
-Sample.3.Input = s_2_1_sequence.txt,s_2_2_sequence.txt
-Sample.3.Workflow = bisulfite
-Sample.3.Reference = hg18
+Sample.3.Input = s_1_1_CTTGTA_sequence.1.fastq.tophat_hits.bam,s_1_1_CTTGTA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.3.Workflow = rnaseqdiff
+Sample.3.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
 
-
-Sample.4.SampleID = WIT125YY
+Sample.4.SampleID = RAMDE4
 Sample.4.Lane = 4
-Sample.4.Input = s_2_1_sequence.txt,s_2_2_sequence.txt
-Sample.4.Workflow = regular
-Sample.4.Reference = hg18
+Sample.4.Input = s_1_1_GCCAAT_sequence.1.fastq.tophat_hits.bam,s_1_1_GCCAAT_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.4.Workflow = rnaseqdiff
+Sample.4.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
 
-Sample.5.SampleID = WIT1251XX
-Sample.5.Lane = 4
-Sample.5.Input = s_2_1_sequence.txt,s_2_2_sequence.txt
-Sample.5.Workflow = regular
-Sample.5.Reference = hg18
+Sample.5.SampleID = RAMDE5
+Sample.5.Lane = 5
+Sample.5.Input = s_2_1_ACAGTG_sequence.1.fastq.tophat_hits.bam,s_2_1_ACAGTG_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.5.Workflow = rnaseqdiff
+Sample.5.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
 
+Sample.6.SampleID = RAMDE6
+Sample.6.Lane = 6
+Sample.6.Input = s_2_1_CAGATC_sequence.1.fastq.tophat_hits.bam,s_2_1_CAGATC_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.6.Workflow = rnaseqdiff
+Sample.6.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
+
+Sample.7.SampleID = RAMDE7
+Sample.7.Lane = 7
+Sample.7.Input = s_2_1_CTTGTA_sequence.1.fastq.tophat_hits.bam,s_2_1_CTTGTA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.7.Workflow = rnaseqdiff
+Sample.7.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
+
+Sample.8.SampleID = RAMDE8
+Sample.8.Lane = 8
+Sample.8.Input = s_2_1_TGACCA_sequence.1.fastq.tophat_hits.bam,s_2_1_TGACCA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
+Sample.8.Workflow = rnaseqdiff
+Sample.8.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
+
+refGene = /home/uec-00/shared/production/genomic-data-misc/Homo_sapiens.GRCh37.60.clean.gtf
+rnaseq.diff.1 = 4,5:1,6
+rnaseq.diff.2 = 1,6:2
+rnaseq.diff.3 = 4,5:2
+rnaseq.diff.4 = 1,6:8
+rnaseq.diff.5 = 4,5:8 
+rnaseq.diff.6 = 1,6:7 
+rnaseq.diff.7 = 4,5:7
+rnaseq.diff.8 = 1,6:3 
+rnaseq.diff.9 = 4,5:3 
