@@ -69,12 +69,12 @@ public class BasicAlignmentWorkflow
 			{
 				laneInputFileNameR2 = pbsMode ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-				System.out.println("Creating bisulfite PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
+				System.out.println("Creating basic alignment PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 			}
 			else
 			{
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-				System.out.println("Creating bislfite SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
+				System.out.println("Creating basic alignment SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
 			}						
 			dax.addJob(fastqSplitJob);
 
