@@ -83,17 +83,16 @@ public class BasicAlignmentWorkflow
 			for (Filename f : fastqSplitJob.getOutputFiles())
 			{
 				String splitFileName = f.getFilename();
-				FilterContamsJob filterContamJob = null;
+
+				FilterContamsJob filterContamJob = new FilterContamsJob(splitFileName);
+				dax.addJob(filterContamJob);
+				dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
+				filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
+				
+				//filter contam job, cant do with PE since it messes up order
 				if(!isPE)
-				{
-					//filter contam job, cant do with PE since it messes up order
-					String splitFastqOutputFile = f.getFilename();
-					filterContamJob = new FilterContamsJob(splitFastqOutputFile);
-					dax.addJob(filterContamJob);
-					dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
-					filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
 					splitFileName = filterContamJob.getNoContamOutputFileName();
-				}
+				
 				
 				// sol2sanger job
 				Sol2SangerJob sol2sangerJob = new Sol2SangerJob(splitFileName);
