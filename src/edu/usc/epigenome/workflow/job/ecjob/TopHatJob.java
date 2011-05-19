@@ -29,6 +29,12 @@ public class TopHatJob extends ECJob
 		outputSam.setRegister(true);
 		this.addUses(outputSam);
 		
+		String outFileBai = inputFile + ".tophat_hits.bam.bai";
+		Filename outputBai = new Filename(outFileBai, LFN.OUTPUT);
+		outputBai.setRegister(true);
+		this.addUses(outputBai);
+		
+		
 		String outFileBed = inputFile + ".tophat_junctions.bed";
 		Filename outputBed = new Filename(outFileBed, LFN.OUTPUT);
 		outputBed.setRegister(true);
@@ -64,6 +70,11 @@ public class TopHatJob extends ECJob
 		Filename outputSam = new Filename(outFileSam, LFN.OUTPUT);
 		outputSam.setRegister(true);
 		this.addUses(outputSam);
+		
+		String outFileBai = inputFileR1 + ".tophat_hits.bam.bai";
+		Filename outputBai = new Filename(outFileBai, LFN.OUTPUT);
+		outputBai.setRegister(true);
+		this.addUses(outputBai);
 		
 		String outFileBed = inputFileR1 + ".tophat_junctions.bed";
 		Filename outputBed = new Filename(outFileBed, LFN.OUTPUT);

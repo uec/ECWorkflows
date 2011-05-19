@@ -31,6 +31,11 @@ public class MergeBamsJob extends ECJob
 		outputBam.setRegister(false);
 		this.addUses(outputBam);
 		
+		String outputBamMdupsFile = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "mdups.bam");
+		Filename outputMdupBam = new Filename(outputBamMdupsFile, LFN.OUTPUT);
+		outputMdupBam.setRegister(false);
+		this.addUses(outputMdupBam);
+		
 		String outputBaiFile = outputFileName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "bai");
 		Filename outputBai = new Filename(outputBaiFile, LFN.OUTPUT);
 		outputBai.setRegister(false);
