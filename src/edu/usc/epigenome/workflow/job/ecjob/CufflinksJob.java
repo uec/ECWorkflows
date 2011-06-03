@@ -46,9 +46,9 @@ public class CufflinksJob extends ECJob
 		
 		
 		// add the arguments to the job
-		this.addArgument(new PseudoText(" -p 8 -N --no-faux-reads -u -b " + refFa));
+		this.addArgument(new PseudoText(" -p 8 -N --no-faux-reads -u -b " + refFa + " "));
 		if(refGTF != null)
-			this.addArgument(new PseudoText(" -g " + refGTF));
+			this.addArgument(new PseudoText(" -g " + refGTF + " "));
 		this.addArgument(input);
 	}
 }
