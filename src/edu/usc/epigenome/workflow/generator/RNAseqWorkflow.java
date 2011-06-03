@@ -129,7 +129,7 @@ public class RNAseqWorkflow
 			TopHatJob tophat = tophatJobs.get(0);
 			
 			//run cufflinks
-			CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), referenceGenome + ".fa");
+			CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));
 			dax.addJob(cufflinks);
 			dax.addChild(cufflinks.getID(), tophat.getID());
 						

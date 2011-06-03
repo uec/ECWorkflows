@@ -17,6 +17,7 @@ import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
@@ -162,15 +163,30 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),mergebams.getID());
 			
-			//create nmercount for 5, child of mapmerge
+			//create nmercount for 5, child of nmer
 			CountNmerJob count5mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 5);
 			dax.addJob(count5mer);
-			dax.addChild(count5mer.getID(), mergebams.getID());
+			dax.addChild(count5mer.getID(), count3mer.getID());
 			
-			//create nmercount for 10, child of mapmerge
+			//create nmercount for 10, child of nmer
 			CountNmerJob count10mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 10);
 			dax.addJob(count10mer);
-			dax.addChild(count10mer.getID(), mergebams.getID());
+			dax.addChild(count10mer.getID(),  count3mer.getID());
+			
+			//create readpairdup gatk job
+			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
+			dax.addJob(dupReadPairsMetricJob);
+			dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
+			
+			//create MethLevelAverages gatk job
+			GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
+			dax.addJob(methLevelAveragesMetricJob);
+			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
+			
+			//create MethLevelAverages gatk job
+			//GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
+			//dax.addJob(methLevelAveragesMetricJob);
+			//dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 //			
 //
 //
