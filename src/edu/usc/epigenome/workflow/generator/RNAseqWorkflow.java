@@ -1,6 +1,7 @@
 package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,9 @@ import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CufflinksJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
+import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
 import edu.usc.epigenome.workflow.job.ecjob.TopHatJob;
@@ -127,6 +131,29 @@ public class RNAseqWorkflow
 			
 			//no bam merging support in tophat for now
 			TopHatJob tophat = tophatJobs.get(0);
+			
+			//single file merge for now, just for metrics
+			ArrayList<String> bams = new ArrayList<String>();
+			bams.add(tophat.getBamFile());
+			MergeBamsJob mergebams = new MergeBamsJob(bams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
+			dax.addJob(mergebams);
+			dax.addChild(mergebams.getID(), tophat.getID());
+			
+			//self dup metrics
+			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
+			dax.addJob(dupReadPairsMetricJob);
+			dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
+			
+			//insertsize metrics
+			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart");
+			dax.addJob(insertSizeJob);
+			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
+			
+			//insertsize metrics
+			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart");
+			dax.addJob(meanQualJob);
+			dax.addChild(meanQualJob.getID(),  mergebams.getID());
+			
 			
 			//run cufflinks
 			CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));

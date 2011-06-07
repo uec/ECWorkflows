@@ -19,6 +19,7 @@ import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
 
@@ -182,6 +183,16 @@ public class BisulfiteAlignmentWorkflow
 			GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
 			dax.addJob(methLevelAveragesMetricJob);
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
+			
+			//insertsize metrics
+			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart");
+			dax.addJob(insertSizeJob);
+			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
+			
+			//insertsize metrics
+			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart");
+			dax.addJob(meanQualJob);
+			dax.addChild(meanQualJob.getID(),  mergebams.getID());
 			
 			//create MethLevelAverages gatk job
 			//GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
