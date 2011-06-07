@@ -185,19 +185,21 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
 			//insertsize metrics
-			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart");
+			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
 			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
 			
-			//insertsize metrics
-			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart");
+			//mean qual metrics
+			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart", mergebams.getBam() + ".MeanQualityByCycle.metric.txt");
 			dax.addJob(meanQualJob);
 			dax.addChild(meanQualJob.getID(),  mergebams.getID());
 			
-			//create MethLevelAverages gatk job
-			//GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
-			//dax.addJob(methLevelAveragesMetricJob);
-			//dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
+			//qual dist metrics
+			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
+			dax.addJob(qualDistJob);
+			dax.addChild(qualDistJob.getID(),  mergebams.getID());
+			
+
 //			
 //
 //

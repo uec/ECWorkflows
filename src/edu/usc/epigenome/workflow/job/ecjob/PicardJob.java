@@ -8,7 +8,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class PicardJob extends ECJob
 {
-	public PicardJob(String inputBam,  String tool,String args)
+	public PicardJob(String inputBam,  String tool,String args, String outputFile)
 	{
 		super(WorkflowConstants.NAMESPACE, "picardtool", WorkflowConstants.VERSION, "picard_" + tool + "_" + inputBam );
 		Filename input = new Filename(inputBam, LFN.INPUT);
@@ -18,7 +18,7 @@ public class PicardJob extends ECJob
 		
 
 		// construct the output wig and peaks for input bam
-		String outputMetricFileName = inputBam + "." + tool + ".metric.txt";
+		String outputMetricFileName = outputFile;
 		Filename outputMetricFile = new Filename(outputMetricFileName, LFN.OUTPUT);
 		outputMetricFile.setRegister(false);
 		this.addUses(outputMetricFile);

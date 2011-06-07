@@ -132,29 +132,38 @@ public class RNAseqWorkflow
 			//no bam merging support in tophat for now
 			TopHatJob tophat = tophatJobs.get(0);
 			
+			//sort
+			PicardJob picardSortJob = new PicardJob(tophat.getBamFile(), "SortSam", "SORT_ORDER=coordinate", tophat.getBamFile() + ".sorted.bam");
+			dax.addJob(picardSortJob);
+			dax.addChild(picardSortJob.getID(),  tophat.getID());
+						
 			//single file merge for now, just for metrics
 			ArrayList<String> bams = new ArrayList<String>();
-			bams.add(tophat.getBamFile());
+			bams.add(picardSortJob.getSingleOutputFile().getFilename());
 			MergeBamsJob mergebams = new MergeBamsJob(bams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
 			dax.addJob(mergebams);
-			dax.addChild(mergebams.getID(), tophat.getID());
+			dax.addChild(mergebams.getID(), picardSortJob.getID());
 			
 			//self dup metrics
-			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
+			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome + ".fa", "InvertedReadPairDups","");
 			dax.addJob(dupReadPairsMetricJob);
 			dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
 			
 			//insertsize metrics
-			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart");
+			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
 			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
 			
-			//insertsize metrics
-			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart");
+			//mean qual metrics
+			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart", mergebams.getBam() + ".MeanQualityByCycle.metric.txt");
 			dax.addJob(meanQualJob);
 			dax.addChild(meanQualJob.getID(),  mergebams.getID());
 			
-			
+			//qual dist metrics
+			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
+			dax.addJob(qualDistJob);
+			dax.addChild(qualDistJob.getID(),  mergebams.getID());
+						
 			//run cufflinks
 			CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));
 			dax.addJob(cufflinks);

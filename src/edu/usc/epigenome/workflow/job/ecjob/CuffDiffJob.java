@@ -40,7 +40,7 @@ public class CuffDiffJob extends ECJob
 		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(outputPrefix + " "));
-		this.addArgument(new PseudoText("-p 8 -r " + refFa + " "));
+		this.addArgument(new PseudoText("-p 8 -b " + refFa + " "));
 		if(isTimeSeries)
 			this.addArgument(new PseudoText(" -T "));
 		this.addArgument(gtfFile);
