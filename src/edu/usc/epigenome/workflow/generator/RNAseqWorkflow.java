@@ -136,13 +136,18 @@ public class RNAseqWorkflow
 			PicardJob picardSortJob = new PicardJob(tophat.getBamFile(), "SortSam", "SORT_ORDER=coordinate", tophat.getBamFile() + ".sorted.bam");
 			dax.addJob(picardSortJob);
 			dax.addChild(picardSortJob.getID(),  tophat.getID());
+			
+			//reorder contigs
+			PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "REFERENCE=" + referenceGenome + ".fa", picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
+			dax.addJob(picardReorderContigsJob);
+			dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
 						
 			//single file merge for now, just for metrics
 			ArrayList<String> bams = new ArrayList<String>();
-			bams.add(picardSortJob.getSingleOutputFile().getFilename());
+			bams.add(picardReorderContigsJob.getSingleOutputFile().getFilename());
 			MergeBamsJob mergebams = new MergeBamsJob(bams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
 			dax.addJob(mergebams);
-			dax.addChild(mergebams.getID(), picardSortJob.getID());
+			dax.addChild(mergebams.getID(), picardReorderContigsJob.getID());
 			
 			//self dup metrics
 			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome + ".fa", "InvertedReadPairDups","");
@@ -165,9 +170,9 @@ public class RNAseqWorkflow
 			dax.addChild(qualDistJob.getID(),  mergebams.getID());
 						
 			//run cufflinks
-			CufflinksJob cufflinks = new CufflinksJob(tophat.getBamFile(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));
+			CufflinksJob cufflinks = new CufflinksJob(mergebams.getBam(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));
 			dax.addJob(cufflinks);
-			dax.addChild(cufflinks.getID(), tophat.getID());
+			dax.addChild(cufflinks.getID(),  mergebams.getID());
 						
 			//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob, , child of mapmerge
 			CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  flowcellID, Integer.parseInt(laneNumber));
