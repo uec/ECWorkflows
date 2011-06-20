@@ -199,6 +199,16 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(qualDistJob);
 			dax.addChild(qualDistJob.getID(),  mergebams.getID());
 			
+			//CollectGcBiasMetrics
+			PicardJob gcBiasJob = new PicardJob(mergebams.getBam(), "CollectGcBiasMetrics", "CHART_OUTPUT=chart REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectGcBiasMetrics.metric.txt");
+			dax.addJob(gcBiasJob);
+			dax.addChild(gcBiasJob.getID(),  mergebams.getID());
+			
+			//CollectAlignmentMetrics
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=true REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			dax.addJob(collectAlignmentMetricsJob);
+			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
+			
 
 //			
 //

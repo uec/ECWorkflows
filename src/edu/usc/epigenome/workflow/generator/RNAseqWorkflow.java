@@ -168,6 +168,16 @@ public class RNAseqWorkflow
 			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
 			dax.addJob(qualDistJob);
 			dax.addChild(qualDistJob.getID(),  mergebams.getID());
+			
+			//CollectGcBiasMetrics
+			PicardJob gcBiasJob = new PicardJob(mergebams.getBam(), "CollectGcBiasMetrics", "CHART_OUTPUT=chart REFERENCE_SEQUENCE=" + referenceGenome + ".fa", mergebams.getBam() + ".CollectGcBiasMetrics.metric.txt");
+			dax.addJob(gcBiasJob);
+			dax.addChild(gcBiasJob.getID(),  mergebams.getID());
+			
+			//CollectAlignmentMetrics
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome + ".fa", mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			dax.addJob(collectAlignmentMetricsJob);
+			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 						
 			//run cufflinks
 			CufflinksJob cufflinks = new CufflinksJob(mergebams.getBam(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));
