@@ -115,12 +115,12 @@ public class ChipSeqBWAWorkflow
 					dax.addChild(bwajob.getID(),parentJobEnd2);
 					
 					//sort
-					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
+					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "VALIDATION_STRINGENCY=SILENT SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
 					dax.addJob(picardSortJob);
 					dax.addChild(picardSortJob.getID(),  bwajob.getID());
 					
 					//reorder contigs
-					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
+					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "VALIDATION_STRINGENCY=SILENT  REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
 					dax.addJob(picardReorderContigsJob);
 					dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
 					
@@ -140,12 +140,12 @@ public class ChipSeqBWAWorkflow
 					dax.addChild(bwajob.getID(),parentJobEnd1);
 					
 					//sort
-					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
+					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "VALIDATION_STRINGENCY=SILENT SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
 					dax.addJob(picardSortJob);
 					dax.addChild(picardSortJob.getID(),  bwajob.getID());
 					
 					//reorder contigs
-					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
+					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "VALIDATION_STRINGENCY=SILENT REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
 					dax.addJob(picardReorderContigsJob);
 					dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
 					
@@ -220,27 +220,27 @@ public class ChipSeqBWAWorkflow
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
 			//insertsize metrics
-			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
+			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "VALIDATION_STRINGENCY=SILENT HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
 			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
 			
 			//mean qual metrics
-			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart", mergebams.getBam() + ".MeanQualityByCycle.metric.txt");
+			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "VALIDATION_STRINGENCY=SILENT CHART_OUTPUT=chart", mergebams.getBam() + ".MeanQualityByCycle.metric.txt");
 			dax.addJob(meanQualJob);
 			dax.addChild(meanQualJob.getID(),  mergebams.getID());
 			
 			//qual dist metrics
-			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
+			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "VALIDATION_STRINGENCY=SILENT CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
 			dax.addJob(qualDistJob);
 			dax.addChild(qualDistJob.getID(),  mergebams.getID());
 			
 			//CollectGcBiasMetrics
-			PicardJob gcBiasJob = new PicardJob(mergebams.getBam(), "CollectGcBiasMetrics", "CHART_OUTPUT=chart REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectGcBiasMetrics.metric.txt");
+			PicardJob gcBiasJob = new PicardJob(mergebams.getBam(), "CollectGcBiasMetrics", "VALIDATION_STRINGENCY=SILENT CHART_OUTPUT=chart REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectGcBiasMetrics.metric.txt");
 			dax.addJob(gcBiasJob);
 			dax.addChild(gcBiasJob.getID(),  mergebams.getID());
 			
 			//CollectAlignmentMetrics
-			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 
