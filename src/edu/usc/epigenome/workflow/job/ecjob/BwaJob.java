@@ -22,7 +22,7 @@ public class BwaJob extends ECJob {
 
 		// construct the output filenames for job
 		String outputFile = new String(inputFile);
-		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1");
+		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1.sam");
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
 		output.setRegister(false);
 		// output.setType(LFN.OUTPUT);

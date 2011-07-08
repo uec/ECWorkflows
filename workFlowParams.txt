@@ -7,61 +7,9 @@ referenceLane = 1
 randomSubset = 300000
 PegasusTC = tc.data
 
-Sample.1.SampleID = RAMDE1
-Sample.1.Lane = 1
-Sample.1.Input = s_1_1_CAGATC_sequence.1.fastq.tophat_hits.bam,s_1_1_CAGATC_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.1.Workflow = rnaseqdiff
-Sample.1.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.2.SampleID = RAMDE2
-Sample.2.Lane = 2
-Sample.2.Input = s_1_1_CGATGT_sequence.1.fastq.tophat_hits.bam,s_1_1_CGATGT_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.2.Workflow = rnaseqdiff
-Sample.2.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.3.SampleID = RAMDE3
-Sample.3.Lane = 3
-Sample.3.Input = s_1_1_CTTGTA_sequence.1.fastq.tophat_hits.bam,s_1_1_CTTGTA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.3.Workflow = rnaseqdiff
-Sample.3.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.4.SampleID = RAMDE4
-Sample.4.Lane = 4
-Sample.4.Input = s_1_1_GCCAAT_sequence.1.fastq.tophat_hits.bam,s_1_1_GCCAAT_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.4.Workflow = rnaseqdiff
-Sample.4.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.5.SampleID = RAMDE5
-Sample.5.Lane = 5
-Sample.5.Input = s_2_1_ACAGTG_sequence.1.fastq.tophat_hits.bam,s_2_1_ACAGTG_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.5.Workflow = rnaseqdiff
-Sample.5.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.6.SampleID = RAMDE6
-Sample.6.Lane = 6
-Sample.6.Input = s_2_1_CAGATC_sequence.1.fastq.tophat_hits.bam,s_2_1_CAGATC_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.6.Workflow = rnaseqdiff
-Sample.6.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.7.SampleID = RAMDE7
-Sample.7.Lane = 7
-Sample.7.Input = s_2_1_CTTGTA_sequence.1.fastq.tophat_hits.bam,s_2_1_CTTGTA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.7.Workflow = rnaseqdiff
-Sample.7.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-Sample.8.SampleID = RAMDE8
-Sample.8.Lane = 8
-Sample.8.Input = s_2_1_TGACCA_sequence.1.fastq.tophat_hits.bam,s_2_1_TGACCA_sequence.1.fastq.tophat_hits.bam.cufflinks_transcripts.gtf
-Sample.8.Workflow = rnaseqdiff
-Sample.8.Reference = /home/uec-00/shared/production/genomes/bowtie/hg19
-
-refGene = /home/uec-00/shared/production/genomic-data-misc/Homo_sapiens.GRCh37.60.clean.gtf
-rnaseq.diff.1 = 4,5:1,6
-rnaseq.diff.2 = 1,6:2
-rnaseq.diff.3 = 4,5:2
-rnaseq.diff.4 = 1,6:8
-rnaseq.diff.5 = 4,5:8 
-rnaseq.diff.6 = 1,6:7 
-rnaseq.diff.7 = 4,5:7
-rnaseq.diff.8 = 1,6:3 
-rnaseq.diff.9 = 4,5:3 
+#Sample: LNCAP_DHT_1_Input (Coetzee Sequencing)
+Sample.33.SampleID = SHE1303A3
+Sample.33.Lane = 8
+Sample.33.Input = s_8_sequence.txt
+Sample.33.Workflow = chipseq
+Sample.33.Reference = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.fa

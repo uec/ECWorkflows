@@ -36,7 +36,7 @@ public class ChipSeqWorkflow
 	 * Creates an chipseq map merging workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
-	public static String WorkflowName = "chipseq";
+	public static String WorkflowName = "maqchipseq";
 
 	public static void createWorkFlow(String sample, GAParams par,Boolean pbsMode, Boolean dryrun)
 	{

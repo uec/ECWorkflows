@@ -4,7 +4,9 @@ import java.io.File;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.deprecated.MultiFileBSWorkflow;
 import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.generator.BasicBWAAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
+import edu.usc.epigenome.workflow.generator.ChipSeqBWAWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipseqMapMergeWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqDiffExpWorkflow;
@@ -55,14 +57,16 @@ public class SequencingPipeline
 		for(String sampleEntryKey : par.getSamples().keySet() )
 		{
 			String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
-			if(workflow.toLowerCase().equals("regular")) 	BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("maqregular")) 		BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("regular")) 		BasicBWAAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().contains("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("chipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("chipseqmerge"))ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("rnaseq")) 	RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("fastbs")) 	MultiFileBSWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("simple")) 	SimpleBasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
-			if(workflow.toLowerCase().equals("fast")) 		SimpleFastAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("maqchipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("chipseq")) 		ChipSeqBWAWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("chipseqmerge"))	ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("fastbs")) 		MultiFileBSWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("simple")) 		SimpleBasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("fast")) 			SimpleFastAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 		}
 		
 		//one shot analysis ie do not do for each sample, do for all samples one time.
