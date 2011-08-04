@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
+import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.CuffCompareJob;
 import edu.usc.epigenome.workflow.job.ecjob.CuffDiffJob;
 

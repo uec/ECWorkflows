@@ -11,6 +11,7 @@ import org.griphyn.vdl.dax.Filename;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
+import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
@@ -243,6 +244,11 @@ public class ChipSeqBWAWorkflow
 			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
+			
+			//Application Stack tracking job
+			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
+			dax.addJob(appstack);
+			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
 
 			if(dax.getChildCount() > 0)
 			{
