@@ -185,6 +185,11 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(methLevelAveragesMetricJob);
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
+			//create  BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, " BinDepths", "-winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob);
+			dax.addChild(binDepthsMetricJob.getID(),  mergebams.getID());
+			
 			//insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
@@ -211,96 +216,10 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
 			//Application Stack tracking job
-			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
+			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 			dax.addJob(appstack);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
 			
-
-//			
-//
-//
-//			//create pileup.gz job, child of mapmerge
-//			PileupJob pileupJob = new PileupJob(mapMergeJob.getSingleOutputFile().getFilename(), referenceGenome, Integer.parseInt(workFlowParams
-//					.getSetting("MaqPileupQ")));;
-//			dax.addJob(pileupJob);
-//			dax.addChild(pileupJob.getID(), mapMergeJob.getID());				
-//		
-//			//create maq2bamjob, child of mapMerge
-//			Maq2BamJob maq2bamJob = new Maq2BamJob(mapMergeJob.getSingleOutputFile().getFilename(),referenceGenome.replace(".bfa", ".fa"));
-//			dax.addJob(maq2bamJob);
-//			dax.addChild(maq2bamJob.getID(), mapMergeJob.getID());
-//			
-//			//merge unaln and aln, mark dups
-//			MergeBamFastqJob bamfastqJob = new MergeBamFastqJob(laneInputFileNameR1, laneInputFileNameR2, maq2bamJob.getBamOutput(), referenceGenome.replace(".bfa", ".fa"), sampleName, 
-//					sampleName,	flowcellID, laneNumber, "maq", "0.7.1", "maq map -M c", false, "ResultCount_" + flowcellID  + "_s_" + laneNumber + "_all.bam");
-//			dax.addJob(bamfastqJob);
-//			dax.addChild(bamfastqJob.getID(), maq2bamJob.getID());
-//			
-//			
-//			//create countPileupJob, child of gziped pileupJob
-//			CountPileupJob countMonoPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename() ,CountPileupJob.Mononucleotide);
-//			dax.addJob(countMonoPileupJob);
-//			dax.addChild(countMonoPileupJob.getID(), pileupJob.getID());
-//			dax.addChild(qcjob.getID(), countMonoPileupJob.getID());
-//			
-//			//create countPileupJob, child of gzipped pileupJob
-//			CountPileupJob countCGPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CGdinucleotide);
-//			dax.addJob(countCGPileupJob);
-//			dax.addChild(countCGPileupJob.getID(), pileupJob.getID());
-//			dax.addChild(qcjob.getID(), countCGPileupJob.getID());
-//			
-//			//create countPileupJob, child of gzipped pileupJob
-//			CountPileupJob countCHPileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.CHdinucleotide);
-//			dax.addJob(countCHPileupJob);
-//			dax.addChild(countCHPileupJob.getID(), pileupJob.getID());
-//			dax.addChild(qcjob.getID(), countCHPileupJob.getID());
-//			
-//			//create countPileupJob, child of gzipped pileupJob
-//			CountPileupJob countGenomePileupJob = new CountPileupJob(pileupJob.getSingleOutputFile().getFilename(),CountPileupJob.RefComposition);
-//			dax.addJob(countGenomePileupJob);
-//			dax.addChild(countGenomePileupJob.getID(), pileupJob.getID());
-//			dax.addChild(qcjob.getID(), countGenomePileupJob.getID());
-//			
-//			//create readdepth:0, child of gzipped pileupJob
-//			String genome;
-//			if(referenceGenome.contains("phi")) { genome = "phiX";}
-//			else if(referenceGenome.contains("hg18")) { genome = "hg18";}
-//			else if(referenceGenome.contains("hg19")) { genome = "hg19";}
-//			else if(referenceGenome.contains("tair8")) { genome = "tair8";}
-//			else if(referenceGenome.contains("sacCer")) { genome = "sacCer1";}
-//			else if(referenceGenome.contains("mm")) { genome = "mm9";}
-//			else {genome = "hg18";}
-//			
-//			ReadDepthJob readdepthJob0 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), flowcellID, Integer.parseInt(laneNumber),genome, 5000, 0);
-//			dax.addJob(readdepthJob0);
-//			dax.addChild(readdepthJob0.getID(), pileupJob.getID());
-//			//dax.addChild(qcjob.getID(), readdepthJob0.getID());
-//
-//			//create readdepth:1, child of gzipped pileupJob
-//			ReadDepthJob readdepthJob1 = new ReadDepthJob(pileupJob.getSingleOutputFile().getFilename(), flowcellID, Integer.parseInt(laneNumber),genome, 5000, 1);
-//			dax.addJob(readdepthJob1); 
-//			dax.addChild(readdepthJob1.getID(), pileupJob.getID());
-//			//dax.addChild(qcjob.getID(), readdepthJob1.getID());
-//			
-//			//create readcount, child of gzipped pileupJob
-//			ReadCountJob readcountJob = new ReadCountJob(pileupJob.getSingleOutputFile().getFilename(), flowcellID, Integer.parseInt(laneNumber), Integer.parseInt(workFlowParams.getSetting("randomSubset")), 20);
-//			dax.addJob(readcountJob);
-//			dax.addChild(readcountJob.getID(), readdepthJob1.getID());
-//			dax.addChild(readcountJob.getID(), readdepthJob0.getID());
-//			dax.addChild(qcjob.getID(), readcountJob.getID());
-//			
-//			
-//			//pileup to wig job child of gzipped pileupjob
-//			PileupToWigJob pilewig = new PileupToWigJob(pileupJob.getSingleOutputFile().getFilename(), flowcellID, Integer.parseInt(laneNumber), Integer.parseInt(workFlowParams.getSetting("WigWindSize")), 50, 1, 0, 2);
-//			dax.addJob(pilewig);
-//			dax.addChild(pilewig.getID(), pileupJob.getID());
-//			
-//			//wig to tdf (IGVTOOLS )job child of pileup to wig
-//			WigToTdfJob wigtotdf = new WigToTdfJob(pilewig.getSingleOutputFile().getFilename(),genome);
-//			dax.addJob(wigtotdf);
-//			dax.addChild(wigtotdf.getID(),pilewig.getID());
-//				
-
 			
 			if(dax.getChildCount() > 0)
 			{

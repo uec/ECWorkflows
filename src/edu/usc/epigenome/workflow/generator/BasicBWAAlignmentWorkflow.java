@@ -211,6 +211,11 @@ public class BasicBWAAlignmentWorkflow
 			dax.addJob(methLevelAveragesMetricJob);
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
+			//create  BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, " BinDepths", "-winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob);
+			dax.addChild(binDepthsMetricJob.getID(),  mergebams.getID());
+			
 			//insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "VALIDATION_STRINGENCY=SILENT HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
@@ -238,7 +243,7 @@ public class BasicBWAAlignmentWorkflow
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
 			//Application Stack tracking job
-			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
+			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
 

@@ -1,15 +1,14 @@
-ClusterSize = 8
+ClusterSize = 1
 queue = laird
-FlowCellName = B02LRABXX
+FlowCellName = B031CABXX
 MinMismatches = 2 
 MaqPileupQ = 30
 referenceLane = 1 
 randomSubset = 300000
 PegasusTC = tc.data
 
-#Sample: LNCAP_DHT_1_Input (Coetzee Sequencing)
-Sample.33.SampleID = SHE1303A3
-Sample.33.Lane = 8
-Sample.33.Input = s_8_sequence.txt
-Sample.33.Workflow = chipseq
-Sample.33.Reference = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.fa
+Sample.1.SampleID = NIC1254A1
+Sample.1.Lane = 1
+Sample.1.Input = s_1_1_sequence.txt,s_1_2_sequence.txt
+Sample.1.Workflow = bisulfite
+Sample.1.Reference = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.fa
