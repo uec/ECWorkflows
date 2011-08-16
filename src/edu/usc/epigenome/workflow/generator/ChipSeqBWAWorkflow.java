@@ -221,7 +221,7 @@ public class ChipSeqBWAWorkflow
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
 			//create  BinDepths gatk job
-			GATKMetricJob binDepthsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, " BinDepths", "-winsize 50000 -dumpv");
+			GATKMetricJob binDepthsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
 			dax.addJob(binDepthsMetricJob);
 			dax.addChild(binDepthsMetricJob.getID(),  mergebams.getID());
 			
