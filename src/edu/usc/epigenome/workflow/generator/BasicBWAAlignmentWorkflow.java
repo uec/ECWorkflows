@@ -244,7 +244,7 @@ public class BasicBWAAlignmentWorkflow
 			
 			//Application Stack tracking job
 			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
-			dax.addJob(collectAlignmentMetricsJob);
+			dax.addJob(appstack);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
 
 			if(dax.getChildCount() > 0)
