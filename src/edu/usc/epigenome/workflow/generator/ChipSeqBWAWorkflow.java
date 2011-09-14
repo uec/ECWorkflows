@@ -220,10 +220,15 @@ public class ChipSeqBWAWorkflow
 			dax.addJob(methLevelAveragesMetricJob);
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
-			//create  BinDepths gatk job
-			GATKMetricJob binDepthsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
-			dax.addJob(binDepthsMetricJob);
-			dax.addChild(binDepthsMetricJob.getID(),  mergebams.getID());
+			//create  50k BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob50k);
+			dax.addChild(binDepthsMetricJob50k.getID(),  mergebams.getID());
+			
+			//create  5k BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv");
+			dax.addJob(binDepthsMetricJob5k);
+			dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 			
 			//insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "VALIDATION_STRINGENCY=SILENT HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
