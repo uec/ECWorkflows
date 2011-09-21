@@ -2,16 +2,16 @@ package edu.usc.epigenome.workflow;
 
 import java.io.File;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
+import edu.usc.epigenome.workflow.deprecated.BasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.deprecated.ChipSeqWorkflow;
+import edu.usc.epigenome.workflow.deprecated.ChipseqMapMergeWorkflow;
 import edu.usc.epigenome.workflow.deprecated.MultiFileBSWorkflow;
-import edu.usc.epigenome.workflow.generator.BasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.deprecated.SimpleBasicAlignmentWorkflow;
+import edu.usc.epigenome.workflow.deprecated.SimpleFastAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BasicBWAAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqBWAWorkflow;
-import edu.usc.epigenome.workflow.generator.ChipSeqWorkflow;
-import edu.usc.epigenome.workflow.generator.ChipseqMapMergeWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqDiffExpWorkflow;
-import edu.usc.epigenome.workflow.generator.SimpleBasicAlignmentWorkflow;
-import edu.usc.epigenome.workflow.generator.SimpleFastAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqWorkflow;
 
 public class SequencingPipeline

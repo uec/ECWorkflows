@@ -1,4 +1,4 @@
-package edu.usc.epigenome.workflow.generator;
+package edu.usc.epigenome.workflow.deprecated;
 
 import java.util.ArrayList;
 import edu.usc.epigenome.workflow.DAX.ECDax;

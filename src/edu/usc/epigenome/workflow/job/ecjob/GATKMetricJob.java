@@ -10,7 +10,7 @@ public class GATKMetricJob extends ECJob
 {
 	public GATKMetricJob(String inputBam, String inputBai, String genome, String walkerName, String args)
 	{
-		super(WorkflowConstants.NAMESPACE, "gatkmetrics", WorkflowConstants.VERSION, "gatkmetrics_" + walkerName + "_" + inputBam );
+		super(WorkflowConstants.NAMESPACE, "gatkmetrics", WorkflowConstants.VERSION, "gatkmetrics_" + args.replace(" ", "").replace("-","") + "_" + walkerName + "_" + inputBam );
 		Filename input = new Filename(inputBam, LFN.INPUT);
 		input.setRegister(false);
 		this.addUses(input);
@@ -19,8 +19,10 @@ public class GATKMetricJob extends ECJob
 		inputBaiFile.setRegister(false);
 		this.addUses(inputBaiFile);
 
+		String argsPretty = args.replace(" ", "").replace("-","");
+		
 		// construct the output wig and peaks for input bam
-		String outputMetricFileName = inputBam + "." + walkerName + ".metric.txt";
+		String outputMetricFileName = inputBam + "." + argsPretty + "." + walkerName + ".metric.txt";
 		Filename outputMetricFile = new Filename(outputMetricFileName, LFN.OUTPUT);
 		outputMetricFile.setRegister(false);
 		this.addUses(outputMetricFile);
