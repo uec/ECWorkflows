@@ -241,6 +241,10 @@ public class BasicBWAAlignmentWorkflow
 			dax.addJob(gcBiasJob);
 			dax.addChild(gcBiasJob.getID(),  mergebams.getID());
 			
+			//PICARD EstimateLibraryComplexity
+			PicardJob estimateLibraryComplexity = new PicardJob(mergebams.getBam(), "EstimateLibraryComplexity", "", mergebams.getBam() + ".EstimateLibraryComplexity.metric.txt");
+			dax.addJob(estimateLibraryComplexity);
+			dax.addChild(estimateLibraryComplexity.getID(),  mergebams.getID());
 						
 			//CollectAlignmentMetrics
 			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");

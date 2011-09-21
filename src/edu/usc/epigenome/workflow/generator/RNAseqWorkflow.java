@@ -190,6 +190,11 @@ public class RNAseqWorkflow
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
+			//PICARD EstimateLibraryComplexity
+			PicardJob estimateLibraryComplexity = new PicardJob(mergebams.getBam(), "EstimateLibraryComplexity", "", mergebams.getBam() + ".EstimateLibraryComplexity.metric.txt");
+			dax.addJob(estimateLibraryComplexity);
+			dax.addChild(estimateLibraryComplexity.getID(),  mergebams.getID());
+			
 			//Application Stack tracking job
 			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 			dax.addJob(appstack);

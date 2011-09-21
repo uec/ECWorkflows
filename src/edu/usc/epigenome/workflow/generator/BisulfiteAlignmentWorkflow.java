@@ -185,6 +185,11 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(methLevelAveragesMetricJob);
 			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
+			//create MethLevelAverages CHROM M gatk job
+			GATKMetricJob methLevelAveragesChrmMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-L chrM -cph");
+			dax.addJob(methLevelAveragesChrmMetricJob);
+			dax.addChild(methLevelAveragesChrmMetricJob.getID(),  mergebams.getID());
+			
 			//create  50k BinDepths gatk job
 			GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
 			dax.addJob(binDepthsMetricJob50k);
@@ -195,30 +200,67 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(binDepthsMetricJob5k);
 			dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 			
-			//insertsize metrics
+			//create  50k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob50kds5);
+			dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
+			
+			//create  5k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv");
+			dax.addJob(binDepthsMetricJob5kds5);
+			dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
+			
+			//create  5m Downsample dups gatk job
+			GATKMetricJob dsdups = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleDups", "-p 5000000 -trials 100 -nt 8");
+			dax.addJob(dsdups);
+			dax.addChild(dsdups.getID(),  mergebams.getID());
+			
+			//map to lambaphage
+			ArrayList<String> splitLambdaBams = new ArrayList<String>();
+			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,referenceGenome, laneInputFileNameR1 + ".LambdaPhage.bam");
+			splitLambdaBams.add(lambdaphage.getSingleOutputFile().getFilename());
+			dax.addJob(lambdaphage);
+			dax.addChild(lambdaphage.getID(), fastqSplitJob.getID());
+			
+			//merge and create bais for lambda aln
+			MergeBamsJob mergelambdabams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "_LambdaPhage" + ".bam");
+			dax.addJob(mergelambdabams);
+			dax.addChild(mergelambdabams.getID(),lambdaphage.getID());
+			
+			//methlevelavgs for lambdaphage
+			GATKMetricJob methLevelLambdaAveragesMetricJob = new GATKMetricJob(mergelambdabams.getBam(), mergelambdabams.getBai(), "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "MethLevelAverages", "-cph");
+			dax.addJob(methLevelLambdaAveragesMetricJob);
+			dax.addChild(methLevelLambdaAveragesMetricJob.getID(),  mergelambdabams.getID());
+			
+			//PICARD insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
 			dax.addChild(insertSizeJob.getID(),  mergebams.getID());
 			
-			//mean qual metrics
+			//PICARD mean qual metrics
 			PicardJob meanQualJob = new PicardJob(mergebams.getBam(), "MeanQualityByCycle", "CHART_OUTPUT=chart", mergebams.getBam() + ".MeanQualityByCycle.metric.txt");
 			dax.addJob(meanQualJob);
 			dax.addChild(meanQualJob.getID(),  mergebams.getID());
 			
-			//qual dist metrics
+			//PICARD qual dist metrics
 			PicardJob qualDistJob = new PicardJob(mergebams.getBam(), "QualityScoreDistribution", "CHART_OUTPUT=chart", mergebams.getBam() + ".QualityScoreDistribution.metric.txt");
 			dax.addJob(qualDistJob);
 			dax.addChild(qualDistJob.getID(),  mergebams.getID());
 			
-			//CollectGcBiasMetrics
+			//PICARD CollectGcBiasMetrics
 			PicardJob gcBiasJob = new PicardJob(mergebams.getBam(), "CollectGcBiasMetrics", "CHART_OUTPUT=chart REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectGcBiasMetrics.metric.txt");
 			dax.addJob(gcBiasJob);
 			dax.addChild(gcBiasJob.getID(),  mergebams.getID());
 			
-			//CollectAlignmentMetrics
+			//PICARD CollectAlignmentMetrics
 			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=true REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
+			
+			//PICARD EstimateLibraryComplexity
+			PicardJob estimateLibraryComplexity = new PicardJob(mergebams.getBam(), "EstimateLibraryComplexity", "", mergebams.getBam() + ".EstimateLibraryComplexity.metric.txt");
+			dax.addJob(estimateLibraryComplexity);
+			dax.addChild(estimateLibraryComplexity.getID(),  mergebams.getID());
 			
 			//Application Stack tracking job
 			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
