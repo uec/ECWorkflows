@@ -21,8 +21,10 @@ import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.FindPeaksJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
+import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
 
 
@@ -58,7 +60,7 @@ public class BasicBWAAlignmentWorkflow
 			List<String> splitIDs = new LinkedList<String>();
 			List<String> splitFiles = new LinkedList<String>();
 			
-			List<ECJob> bsmapJobs = new LinkedList<ECJob>();
+			List<ECJob> alignmentJobs = new LinkedList<ECJob>();
 			List<String> filterTrimCountFiles = new LinkedList<String>();
 			
 			String laneInputFileNameR1 = pbsMode ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
@@ -70,12 +72,12 @@ public class BasicBWAAlignmentWorkflow
 			{
 				laneInputFileNameR2 = pbsMode ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-				System.out.println("Creating chipseq (BWA) PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
+				System.out.println("Creating regular (BWA) PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 			}
 			else
 			{
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-				System.out.println("Creating chipseq (BWA) SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
+				System.out.println("Creating regular (BWA) SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
 			}						
 			dax.addJob(fastqSplitJob);
 
@@ -115,17 +117,9 @@ public class BasicBWAAlignmentWorkflow
 					dax.addChild(bwajob.getID(),parentJobEnd1);
 					dax.addChild(bwajob.getID(),parentJobEnd2);
 					
-					//sort
-					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "VALIDATION_STRINGENCY=SILENT SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
-					dax.addJob(picardSortJob);
-					dax.addChild(picardSortJob.getID(),  bwajob.getID());
+	
 					
-					//reorder contigs
-					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "VALIDATION_STRINGENCY=SILENT REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
-					dax.addJob(picardReorderContigsJob);
-					dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
-					
-					bsmapJobs.add(picardReorderContigsJob);
+					alignmentJobs.add(bwajob);
 				}						
 			}
 			else
@@ -140,32 +134,22 @@ public class BasicBWAAlignmentWorkflow
 					dax.addJob(bwajob);
 					dax.addChild(bwajob.getID(),parentJobEnd1);
 					
-					//sort
-					PicardJob picardSortJob = new PicardJob(bwajob.getSingleOutputFile().getFilename(), "SortSam", "VALIDATION_STRINGENCY=SILENT SORT_ORDER=coordinate", bwajob.getSingleOutputFile().getFilename() + ".sorted.bam");
-					dax.addJob(picardSortJob);
-					dax.addChild(picardSortJob.getID(),  bwajob.getID());
-					
-					//reorder contigs
-					PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "VALIDATION_STRINGENCY=SILENT REFERENCE=" + referenceGenome, picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
-					dax.addJob(picardReorderContigsJob);
-					dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
-					
-					bsmapJobs.add(picardReorderContigsJob);
+					alignmentJobs.add(bwajob);
 				}
 			}
 			
 	
 			
 			ArrayList<String> splitBams = new ArrayList<String>();
-			for(ECJob job : bsmapJobs)
+			for(ECJob job : alignmentJobs)
 				splitBams.add(job.getSingleOutputFile().getFilename());
 			
 			// for each lane create a map merge job
-			MergeBamsJob mergebams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
+			MergeBamsJob mergebams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "." + new File(referenceGenome).getName() + ".bam");
 			dax.addJob(mergebams);
 			
 			// mapmerge is child to all the map jobs
-			for (ECJob job : bsmapJobs)
+			for (ECJob job : alignmentJobs)
 				dax.addChild(mergebams.getID(), job.getID());
 		
 					
@@ -221,6 +205,21 @@ public class BasicBWAAlignmentWorkflow
 			dax.addJob(binDepthsMetricJob5k);
 			dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 			
+			//create  50k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob50kds5);
+			dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
+			
+			//create  5k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv");
+			dax.addJob(binDepthsMetricJob5kds5);
+			dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
+			
+			//create  5m Downsample dups gatk job
+			GATKMetricJob dsdups = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleDups", "-p 5000000 -trials 100 -nt 8");
+			dax.addJob(dsdups);
+			dax.addChild(dsdups.getID(),  mergebams.getID());
+			
 			//insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "VALIDATION_STRINGENCY=SILENT HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
 			dax.addJob(insertSizeJob);
@@ -255,6 +254,21 @@ public class BasicBWAAlignmentWorkflow
 			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 			dax.addJob(appstack);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
+			
+			//Contam tests
+			String[] organisms = {"/home/uec-00/shared/production/genomes/encode_hg19_mf/female.hg19.fa", 
+					  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.fa",
+					  "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.fa",
+					  "/home/uec-00/shared/production/genomes/arabidopsis/tair8.pluscontam.fa",
+					  "/home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa",
+					  "/home/uec-00/shared/production/genomes/Ecoli/EcoliIHE3034.fa",
+					  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.fa",
+					  "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa"};
+			
+			OrgContamCheckJob bwaTestContam = new OrgContamCheckJob(laneInputFileNameR1,5000000,organisms);
+			dax.addJob(bwaTestContam);
+			dax.addChild(bwaTestContam.getID(),fastqSplitJob.getID());
+			
 
 			if(dax.getChildCount() > 0)
 			{

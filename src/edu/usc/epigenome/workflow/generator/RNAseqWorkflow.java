@@ -11,6 +11,7 @@ import org.griphyn.vdl.dax.Filename;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
+import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
@@ -19,8 +20,10 @@ import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
+import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 
 import edu.usc.epigenome.workflow.job.ecjob.TopHatJob;
 
@@ -146,7 +149,7 @@ public class RNAseqWorkflow
 			//single file merge for now, just for metrics
 			ArrayList<String> bams = new ArrayList<String>();
 			bams.add(picardReorderContigsJob.getSingleOutputFile().getFilename());
-			MergeBamsJob mergebams = new MergeBamsJob(bams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
+			MergeBamsJob mergebams = new MergeBamsJob(bams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "." + new File(referenceGenome).getName() + ".bam");
 			dax.addJob(mergebams);
 			dax.addChild(mergebams.getID(), picardReorderContigsJob.getID());
 			
@@ -154,6 +157,11 @@ public class RNAseqWorkflow
 			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome + ".fa", "InvertedReadPairDups","");
 			dax.addJob(dupReadPairsMetricJob);
 			dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
+			
+			//create MethLevelAverages gatk job
+			GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
+			dax.addJob(methLevelAveragesMetricJob);
+			dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 			
 			//create  50k BinDepths gatk job
 			GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
@@ -164,6 +172,21 @@ public class RNAseqWorkflow
 			GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv");
 			dax.addJob(binDepthsMetricJob5k);
 			dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
+			
+			//create  50k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
+			dax.addJob(binDepthsMetricJob50kds5);
+			dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
+			
+			//create  5k downsample 5m BinDepths gatk job
+			GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv");
+			dax.addJob(binDepthsMetricJob5kds5);
+			dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
+			
+			//create  5m Downsample dups gatk job
+			GATKMetricJob dsdups = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleDups", "-p 5000000 -trials 100 -nt 8");
+			dax.addJob(dsdups);
+			dax.addChild(dsdups.getID(),  mergebams.getID());
 			
 			//insertsize metrics
 			PicardJob insertSizeJob = new PicardJob(mergebams.getBam(), "CollectInsertSizeMetrics", "HISTOGRAM_FILE=chart", mergebams.getBam() + ".CollectInsertSizeMetrics.metric.txt");
@@ -199,6 +222,21 @@ public class RNAseqWorkflow
 			ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 			dax.addJob(appstack);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
+			
+			
+			//Contam tests
+			String[] organisms = {"/home/uec-00/shared/production/genomes/encode_hg19_mf/female.hg19.fa", 
+					  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.fa",
+					  "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.fa",
+					  "/home/uec-00/shared/production/genomes/arabidopsis/tair8.pluscontam.fa",
+					  "/home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa",
+					  "/home/uec-00/shared/production/genomes/Ecoli/EcoliIHE3034.fa",
+					  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.fa",
+					  "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa"};
+			
+			OrgContamCheckJob bwaTestContam = new OrgContamCheckJob(laneInputFileNameR1,5000000,organisms);
+			dax.addJob(bwaTestContam);
+			dax.addChild(bwaTestContam.getID(),fastqSplitJob.getID());
 						
 			//run cufflinks
 			CufflinksJob cufflinks = new CufflinksJob(mergebams.getBam(), referenceGenome + ".fa", workFlowParams.getSetting("refGene"));

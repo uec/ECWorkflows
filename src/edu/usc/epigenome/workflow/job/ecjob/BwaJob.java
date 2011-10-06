@@ -1,5 +1,7 @@
 package edu.usc.epigenome.workflow.job.ecjob;
 
+import java.io.File;
+
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
 import org.griphyn.vdl.dax.PseudoText;
@@ -15,14 +17,18 @@ public class BwaJob extends ECJob {
 	 */
 	public BwaJob(String inputFile, String referenceGenomeFile)
 	{
-		super(WorkflowConstants.NAMESPACE, "bwa", WorkflowConstants.VERSION, "bwa_" + inputFile);
+		super(WorkflowConstants.NAMESPACE, "bwabam", WorkflowConstants.VERSION, "bwa_" + inputFile + "_" + new File(referenceGenomeFile).getName());
+		String refGenomeBasename = new File(referenceGenomeFile).getName();
+		
+		
 		Filename input = new Filename(inputFile, LFN.INPUT);
 		input.setRegister(false);
 		this.addUses(input);
 
+		
 		// construct the output filenames for job
-		String outputFile = new String(inputFile);
-		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1.sam");
+		String outputFile = new File(inputFile).getName();
+		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1." + refGenomeBasename + ".bam");
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
 		output.setRegister(false);
 		// output.setType(LFN.OUTPUT);
@@ -44,7 +50,8 @@ public class BwaJob extends ECJob {
 	 */
 	public BwaJob(String inputFileR1, String inputFileR2, String referenceGenomeFile)
 	{
-		super(WorkflowConstants.NAMESPACE, "bwape", WorkflowConstants.VERSION, "bwape_" + inputFileR1);
+		super(WorkflowConstants.NAMESPACE, "bwabam", WorkflowConstants.VERSION, "bwape_" + inputFileR1 + "_" + new File(referenceGenomeFile).getName());
+		String refGenomeBasename = new File(referenceGenomeFile).getName();
 		Filename inputR1 = new Filename(inputFileR1, LFN.INPUT);
 		inputR1.setRegister(false);
 		this.addUses(inputR1);
@@ -55,7 +62,7 @@ public class BwaJob extends ECJob {
 
 		// construct the output filenames for job
 		String outputFile = new String(inputFileR1);
-		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1.sam");
+		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1." + refGenomeBasename + ".bam");
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
 		output.setRegister(false);
 		// output.setType(LFN.OUTPUT);

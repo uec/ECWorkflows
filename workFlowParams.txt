@@ -1,119 +1,15 @@
 ClusterSize = 1
 queue = laird
-FlowCellName = B09DCABXX
+FlowCellName = ABCTESTXXX
 MinMismatches = 2 
 MaqPileupQ = 30
 referenceLane = 1 
 randomSubset = 300000
+PegasusTC = tc.data
 
-#Sample: 1-WT (Farnham)
-Sample.1.SampleID = WIT1251A18_wtin
-Sample.1.Lane = 1
-Sample.1.Input = s_1_CGATGT_sequence.txt
+#Sample: LNCAP_DHT_1_Input (Coetzee Sequencing)
+Sample.1.SampleID = TEST
+Sample.1.Lane = 8
+Sample.1.Input = s_8_sequence.txt
 Sample.1.Workflow = chipseq
-Sample.1.Reference = /home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa
-
-Sample.2.SampleID = WIT1251A18_wtIK
-Sample.2.Lane = 1
-Sample.2.Input = s_1_TGACCA_sequence.txt
-Sample.2.Workflow = chipseq
-Sample.2.Reference = /home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa
-
-#Sample: 2-dF4 (Farnham)
-Sample.3.SampleID = WIT1251A19_dF4IK
-Sample.3.Lane = 2
-Sample.3.Input = s_2_ACAGTG_sequence.txt
-Sample.3.Workflow = chipseq
-Sample.3.Reference = /home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa
-
-#Sample: 2-dF4 (Farnham)
-Sample.4.SampleID = WIT1251A19_wtin
-Sample.4.Lane = 2
-Sample.4.Input = s_2_CGATGT_sequence.txt
-Sample.4.Workflow = chipseq
-Sample.4.Reference = /home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.5.SampleID = PAU1301A13_AP4
-Sample.5.Lane = 3
-Sample.5.Input = s_3_ACTTGA_sequence.txt
-Sample.5.Workflow = regular
-Sample.5.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.6.SampleID = PAU1301A13_AP1
-Sample.6.Lane = 3
-Sample.6.Input = s_3_CGATGT_sequence.txt
-Sample.6.Workflow = regular
-Sample.6.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.7.SampleID = PAU1301A13_AP6
-Sample.7.Lane = 3
-Sample.7.Input = s_3_CTTGTA_sequence.txt
-Sample.7.Workflow = regular
-Sample.7.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.8.SampleID = PAU1301A13_AP3
-Sample.8.Lane = 3
-Sample.8.Input = s_3_GCCAAT_sequence.txt
-Sample.8.Workflow = regular
-Sample.8.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.9.SampleID = PAU1301A13_AP5
-Sample.9.Lane = 3
-Sample.9.Input = s_3_TAGCTT_sequence.txt
-Sample.9.Workflow = regular
-Sample.9.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.10.SampleID = PAU1301A13_AP2
-Sample.10.Lane = 3
-Sample.10.Input = s_3_TGACCA_sequence.txt
-Sample.10.Workflow = regular
-Sample.10.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.11.SampleID = PAU1301A13_AP4
-Sample.11.Lane = 5
-Sample.11.Input = s_5_ACTTGA_sequence.txt
-Sample.11.Workflow = regular
-Sample.11.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.12.SampleID = PAU1301A13_AP1
-Sample.12.Lane = 5
-Sample.12.Input = s_5_CGATGT_sequence.txt
-Sample.12.Workflow = regular
-Sample.12.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.13.SampleID = PAU1301A13_AP6
-Sample.13.Lane = 5
-Sample.13.Input = s_5_CTTGTA_sequence.txt
-Sample.13.Workflow = regular
-Sample.13.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.14.SampleID = PAU1301A13_AP3
-Sample.14.Lane = 5
-Sample.14.Input = s_5_GCCAAT_sequence.txt
-Sample.14.Workflow = regular
-Sample.14.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.15.SampleID = PAU1301A13_AP5
-Sample.15.Lane = 5
-Sample.15.Input = s_5_TAGCTT_sequence.txt
-Sample.15.Workflow = regular
-Sample.15.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
-
-#Sample: Austin Paul Pool (Hedgecock Sequencing)
-Sample.16.SampleID = PAU1301A13_AP2
-Sample.16.Lane = 5
-Sample.16.Input = s_5_TGACCA_sequence.txt
-Sample.16.Workflow = regular
-Sample.16.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
+Sample.1.Reference = /home/uec-00/shared/production/genomes/hg18_unmasked/hg18_unmasked.plusContam.fa

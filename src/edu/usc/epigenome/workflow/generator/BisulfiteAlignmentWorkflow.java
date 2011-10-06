@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
@@ -20,8 +21,10 @@ import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
+import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 
 
 public class BisulfiteAlignmentWorkflow
@@ -135,7 +138,7 @@ public class BisulfiteAlignmentWorkflow
 				splitBams.add(job.getSingleOutputFile().getFilename());
 			
 			// for each lane create a map merge job
-			MergeBamsJob mergebams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".bam");
+			MergeBamsJob mergebams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "." + new File(referenceGenome).getName() + ".bam");
 			dax.addJob(mergebams);
 			
 			// mapmerge is child to all the map jobs
@@ -217,13 +220,13 @@ public class BisulfiteAlignmentWorkflow
 			
 			//map to lambaphage
 			ArrayList<String> splitLambdaBams = new ArrayList<String>();
-			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,referenceGenome, laneInputFileNameR1 + ".LambdaPhage.bam");
+			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName() + ".NC_001416.fa.bam");
 			splitLambdaBams.add(lambdaphage.getSingleOutputFile().getFilename());
 			dax.addJob(lambdaphage);
 			dax.addChild(lambdaphage.getID(), fastqSplitJob.getID());
 			
-			//merge and create bais for lambda aln
-			MergeBamsJob mergelambdabams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "_LambdaPhage" + ".bam");
+			//merge and create bai's for lambda aln
+			MergeBamsJob mergelambdabams = new MergeBamsJob(splitLambdaBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".NC_001416.fa" + ".bam");
 			dax.addJob(mergelambdabams);
 			dax.addChild(mergelambdabams.getID(),lambdaphage.getID());
 			
@@ -267,6 +270,20 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(appstack);
 			dax.addChild(appstack.getID(),collectAlignmentMetricsJob.getID());
 			
+			//Contam tests
+			String[] organisms = {"/home/uec-00/shared/production/genomes/encode_hg19_mf/female.hg19.fa", 
+					  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.fa",
+					  "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.fa",
+					  "/home/uec-00/shared/production/genomes/arabidopsis/tair8.pluscontam.fa",
+					  "/home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa",
+					  "/home/uec-00/shared/production/genomes/Ecoli/EcoliIHE3034.fa",
+					  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.fa",
+					  "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa"};
+			
+			OrgContamCheckJob bwaTestContam = new OrgContamCheckJob(laneInputFileNameR1,5000000,organisms);
+			dax.addJob(bwaTestContam);
+			dax.addChild(bwaTestContam.getID(),fastqSplitJob.getID());
+				
 			
 			if(dax.getChildCount() > 0)
 			{
