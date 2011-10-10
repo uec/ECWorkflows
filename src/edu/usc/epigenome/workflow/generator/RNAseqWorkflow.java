@@ -12,6 +12,7 @@ import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
+import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
@@ -267,12 +268,19 @@ public class RNAseqWorkflow
 			//create nmercount for 5, child of mapmerge
 			CountNmerJob count5mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 5);
 			dax.addJob(count5mer);
-			dax.addChild(count5mer.getID(), tophat.getID());
+			dax.addChild(count5mer.getID(), count3mer.getID());
 			
 			//create nmercount for 10, child of mapmerge
 			CountNmerJob count10mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 10);
 			dax.addJob(count10mer);
-			dax.addChild(count10mer.getID(), tophat.getID());
+			dax.addChild(count10mer.getID(), count3mer.getID());
+			
+			//cleanup garbage job
+			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
+			dax.addJob(cleanup);
+			dax.addChild(cleanup.getID(),count10mer.getID());
+			dax.addChild(cleanup.getID(),qcjob.getID());
+
 			
 			if(dax.getChildCount() > 0)
 			{

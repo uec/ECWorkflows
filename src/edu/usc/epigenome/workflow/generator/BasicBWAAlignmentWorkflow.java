@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
+import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
@@ -184,6 +185,14 @@ public class BasicBWAAlignmentWorkflow
 			CountNmerJob count10mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 10);
 			dax.addJob(count10mer);
 			dax.addChild(count10mer.getID(),  count3mer.getID());
+			
+			//cleanup garbage job
+			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
+			dax.addJob(cleanup);
+			dax.addChild(cleanup.getID(),count10mer.getID());
+			dax.addChild(cleanup.getID(),qcjob.getID());
+			dax.addChild(cleanup.getID(),countFastQJob.getID());
+			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
 			
 			//create readpairdup gatk job
 			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");

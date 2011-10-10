@@ -14,6 +14,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
+import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
@@ -24,6 +25,7 @@ import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
+import edu.usc.epigenome.workflow.job.ecjob.SamToolsJob;
 import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 
 
@@ -178,6 +180,14 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(count10mer);
 			dax.addChild(count10mer.getID(),  count3mer.getID());
 			
+			//cleanup garbage job
+			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
+			dax.addJob(cleanup);
+			dax.addChild(cleanup.getID(),count10mer.getID());
+			dax.addChild(cleanup.getID(),qcjob.getID());
+			dax.addChild(cleanup.getID(),countFastQJob.getID());
+			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
+			
 			//create readpairdup gatk job
 			GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
 			dax.addJob(dupReadPairsMetricJob);
@@ -219,16 +229,21 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(dsdups.getID(),  mergebams.getID());
 			
 			//map to lambaphage
-			ArrayList<String> splitLambdaBams = new ArrayList<String>();
-			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName() + ".NC_001416.fa.bam");
-			splitLambdaBams.add(lambdaphage.getSingleOutputFile().getFilename());
+			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName().replace(".txt", ".1.txt") + ".NC_001416.fa.bam");
 			dax.addJob(lambdaphage);
 			dax.addChild(lambdaphage.getID(), fastqSplitJob.getID());
 			
+			//samtools remove unaln
+			ArrayList<String> splitLambdaBams = new ArrayList<String>();
+			SamToolsJob removeUnAln = new SamToolsJob(lambdaphage.getSingleOutputFile().getFilename(), "view", " -h -F 4 -b -o " + lambdaphage.getSingleOutputFile().getFilename() + ".rmuln.bam " + lambdaphage.getSingleOutputFile().getFilename(), lambdaphage.getSingleOutputFile().getFilename() + ".rmuln.bam ");
+			dax.addJob(removeUnAln);
+			dax.addChild(removeUnAln.getID(), lambdaphage.getID());
+			splitLambdaBams.add(removeUnAln.getSingleOutputFile().getFilename());
+	
 			//merge and create bai's for lambda aln
 			MergeBamsJob mergelambdabams = new MergeBamsJob(splitLambdaBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + ".NC_001416.fa" + ".bam");
 			dax.addJob(mergelambdabams);
-			dax.addChild(mergelambdabams.getID(),lambdaphage.getID());
+			dax.addChild(mergelambdabams.getID(),removeUnAln.getID());
 			
 			//methlevelavgs for lambdaphage
 			GATKMetricJob methLevelLambdaAveragesMetricJob = new GATKMetricJob(mergelambdabams.getBam(), mergelambdabams.getBai(), "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "MethLevelAverages", "-cph");
