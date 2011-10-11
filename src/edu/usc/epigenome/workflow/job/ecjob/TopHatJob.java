@@ -51,7 +51,7 @@ public class TopHatJob extends ECJob
 		this.addUses(outputDelBed);
 		
 		// add the arguments to the job
-		this.addArgument(new PseudoText("-p 8 " + referenceGenomeFile + " "));
+		this.addArgument(new PseudoText("-p 11 " + referenceGenomeFile + " "));
 		this.addArgument(input);
 	}
 	public TopHatJob(String inputFileR1, String inputFileR2, String referenceGenomeFile, int mate_inner_dist) throws Exception
@@ -92,7 +92,7 @@ public class TopHatJob extends ECJob
 		this.addUses(outputDelBed);
 		
 		// add the arguments to the job
-		this.addArgument(new PseudoText("-p 8 "));
+		this.addArgument(new PseudoText("-p 11 "));
 		this.addArgument(new PseudoText("-r " + mate_inner_dist + " "));
 		this.addArgument(new PseudoText(referenceGenomeFile + " "));
 		this.addArgument(inputR1);
