@@ -15,6 +15,7 @@ import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonB
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.LambdaPhageBisAlnQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.OrgContamCheckQC;
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.BisSNPJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
@@ -195,6 +196,13 @@ public class BisulfiteAlignmentWorkflow
 			GATKMetricJob methLevelAveragesChrmMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-L chrM -cph");
 			dax.addJob(methLevelAveragesChrmMetricJob);
 			dax.addChild(methLevelAveragesChrmMetricJob.getID(),  mergebams.getID());
+			
+			//create BISSNP JOB
+			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai());
+			dax.addJob(bissnp);
+			dax.addChild(bissnp.getID(),  mergebams.getID());
+			
+			
 			
 			
 			

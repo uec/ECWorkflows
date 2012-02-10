@@ -21,17 +21,32 @@ public class FindPeaksJob extends ECJob
 
 		// construct the output wig and peaks for input bam
 		String outputPeaksFile = new String(inputFile);
-		outputPeaksFile = outputPeaksFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_fixed_" + fragSize + "_standard.peaks");
+		outputPeaksFile = outputPeaksFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" +  "_triangle_standard.peaks");
 		Filename outputPeaks = new Filename(outputPeaksFile, LFN.OUTPUT);
 		outputPeaks.setRegister(false);
 		this.addUses(outputPeaks);
 		
 		String outputWigFile = new String(inputFile);
-		outputWigFile = outputWigFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_fixed_" + fragSize + "_standard.wig.gz");
+		outputWigFile = outputWigFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_triangle_standard.wig.gz");
 		wigFile = outputWigFile;
 		Filename outputWig = new Filename(outputWigFile, LFN.OUTPUT);
 		outputWig.setRegister(false);
 		this.addUses(outputWig);
+		
+		
+		
+		// construct the output RAW wig and peaks for input bam
+		String outputPeaksFileRAW = new String(inputFile);
+		outputPeaksFileRAW = outputPeaksFileRAW.replaceAll("^(.+?)(\\.\\w+)$", "$1" +  "_raw_triangle_standard.peaks");
+		Filename outputPeaksRAW = new Filename(outputPeaksFileRAW, LFN.OUTPUT);
+		outputPeaksRAW.setRegister(false);
+		this.addUses(outputPeaksRAW);
+		
+		String outputWigFileRAW = new String(inputFile);
+		outputWigFileRAW = outputWigFileRAW.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_raw_triangle_standard.wig.gz");
+		Filename outputWigRAW = new Filename(outputWigFileRAW, LFN.OUTPUT);
+		outputWigRAW.setRegister(false);
+		this.addUses(outputWigRAW);
 		
 		this.addArgument(input);
 		this.addArgument(new PseudoText(" " + fragSize));		
