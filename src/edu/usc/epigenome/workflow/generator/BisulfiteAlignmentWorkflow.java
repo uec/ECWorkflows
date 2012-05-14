@@ -24,6 +24,7 @@ import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.NovoAlignBisJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
@@ -110,12 +111,22 @@ public class BisulfiteAlignmentWorkflow
 					String read2 = splitFiles.get(h+1);
 					String parentJobEnd1 = splitIDs.get(h);
 					String parentJobEnd2 = splitIDs.get(h+1);
-					
-					BSMapJob bsmap = new BSMapJob(read1, read2,referenceGenome, read1 + ".bam");
-					dax.addJob(bsmap);
-					dax.addChild(bsmap.getID(),parentJobEnd1);
-					dax.addChild(bsmap.getID(),parentJobEnd2);
-					bsmapJobs.add(bsmap);
+					if(sampleWorkflow.contains("novo"))
+					{
+						NovoAlignBisJob novobis = new NovoAlignBisJob(read1, read2,referenceGenome, read1 + ".bam");
+						dax.addJob(novobis);
+						dax.addChild(novobis.getID(),parentJobEnd1);
+						dax.addChild(novobis.getID(),parentJobEnd2);
+						bsmapJobs.add(novobis);
+					}
+					else
+					{
+						BSMapJob bsmap = new BSMapJob(read1, read2,referenceGenome, read1 + ".bam");
+						dax.addJob(bsmap);
+						dax.addChild(bsmap.getID(),parentJobEnd1);
+						dax.addChild(bsmap.getID(),parentJobEnd2);
+						bsmapJobs.add(bsmap);
+					}
 				}						
 			}
 			else
@@ -124,11 +135,20 @@ public class BisulfiteAlignmentWorkflow
 				{
 					String read1 = splitFiles.get(h);
 					String parentJobEnd1 = splitIDs.get(h);
-					
-					BSMapJob bsmap = new BSMapJob(read1, null,referenceGenome, read1 + ".bam");
-					dax.addJob(bsmap);
-					dax.addChild(bsmap.getID(),parentJobEnd1);
-					bsmapJobs.add(bsmap);
+					if(sampleWorkflow.contains("novo"))
+					{
+						NovoAlignBisJob novobis = new NovoAlignBisJob(read1, null,referenceGenome, read1 + ".bam");
+						dax.addJob(novobis);
+						dax.addChild(novobis.getID(),parentJobEnd1);
+						bsmapJobs.add(novobis);
+					}
+					else
+					{
+						BSMapJob bsmap = new BSMapJob(read1, null,referenceGenome, read1 + ".bam");
+						dax.addJob(bsmap);
+						dax.addChild(bsmap.getID(),parentJobEnd1);
+						bsmapJobs.add(bsmap);
+					}
 				}
 			}
 			
