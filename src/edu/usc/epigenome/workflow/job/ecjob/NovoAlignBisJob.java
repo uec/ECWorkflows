@@ -44,6 +44,7 @@ public class NovoAlignBisJob extends ECJob {
 		
 		if(inputFileNameR2 != null)
 			this.addArgument(inputFileR2);
+		this.addArgument(new PseudoText(" "));
 		
 		this.addArgument(output);
 		this.addArgument(new PseudoText(" "));
