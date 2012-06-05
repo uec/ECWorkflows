@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqBWAWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqDiffExpWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqWorkflow;
+import edu.usc.epigenome.workflow.generator.UnalignedWorkflow;
 
 public class SequencingPipeline
 {
@@ -67,6 +68,7 @@ public class SequencingPipeline
 			if(workflow.toLowerCase().equals("fastbs")) 		MultiFileBSWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().equals("simple")) 		SimpleBasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			if(workflow.toLowerCase().equals("fast")) 			SimpleFastAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
+			if(workflow.toLowerCase().equals("unaligned")) 		UnalignedWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 		}
 		
 		//one shot analysis ie do not do for each sample, do for all samples one time.
