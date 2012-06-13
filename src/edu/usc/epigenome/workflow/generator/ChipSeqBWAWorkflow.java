@@ -13,7 +13,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.OrgContamCheckQC;
-import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
+
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
@@ -22,12 +22,9 @@ import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.FindPeaksJob;
-import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
 
 
@@ -178,10 +175,13 @@ public class ChipSeqBWAWorkflow
 			dax.addJob(findpeaks);
 			dax.addChild(findpeaks.getID(), mergebams.getID());
 			
-//			//wig to tdf (IGVTOOLS )job child of pileup to wig
-//			WigToTdfJob fpwigtotdf = new WigToTdfJob(findpeaks.getWigFile(),referenceGenome);
-//			dax.addJob(fpwigtotdf);
-//			dax.addChild(fpwigtotdf.getID(),findpeaks.getID());
+			//wig to tdf (IGVTOOLS )job child of pileup to wig
+			for(String wig : findpeaks.getWigFiles())
+			{
+				WigToTdfJob fpwigtotdf = new WigToTdfJob(wig,referenceGenome);
+				dax.addJob(fpwigtotdf);
+				dax.addChild(fpwigtotdf.getID(),findpeaks.getID());
+			}
 			
 			//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob, , child of mapmerge
 			CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  flowcellID, Integer.parseInt(laneNumber));

@@ -1,6 +1,8 @@
 package edu.usc.epigenome.workflow.job.ecjob;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.griphyn.vdl.classes.LFN;
 import org.griphyn.vdl.dax.Filename;
@@ -11,7 +13,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class FindPeaksJob extends ECJob
 {
-	private String wigFile;
+	private List<String> wigFiles = new ArrayList<String>();
 	public FindPeaksJob(String inputFile, int fragSize)
 	{
 		super(WorkflowConstants.NAMESPACE, "findpeaks", WorkflowConstants.VERSION, "findpeaks_" + new File(inputFile).getName());
@@ -28,7 +30,7 @@ public class FindPeaksJob extends ECJob
 		
 		String outputWigFile = new String(inputFile);
 		outputWigFile = outputWigFile.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_triangle_standard.wig.gz");
-		wigFile = outputWigFile;
+		wigFiles.add(outputWigFile);
 		Filename outputWig = new Filename(outputWigFile, LFN.OUTPUT);
 		outputWig.setRegister(false);
 		this.addUses(outputWig);
@@ -45,6 +47,7 @@ public class FindPeaksJob extends ECJob
 		String outputWigFileRAW = new String(inputFile);
 		outputWigFileRAW = outputWigFileRAW.replaceAll("^(.+?)(\\.\\w+)$", "$1" + "_raw_triangle_standard.wig.gz");
 		Filename outputWigRAW = new Filename(outputWigFileRAW, LFN.OUTPUT);
+		wigFiles.add(outputWigFileRAW);
 		outputWigRAW.setRegister(false);
 		this.addUses(outputWigRAW);
 		
@@ -52,8 +55,8 @@ public class FindPeaksJob extends ECJob
 		this.addArgument(new PseudoText(" " + fragSize));		
 	}
 	
-	public String getWigFile()
+	public List<String> getWigFiles()
 	{
-		return wigFile;
+		return wigFiles;
 	}
 }

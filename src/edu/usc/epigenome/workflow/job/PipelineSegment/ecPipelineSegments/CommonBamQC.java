@@ -92,14 +92,14 @@ public class CommonBamQC extends PipelineSegment
 		dax.addChild(gcBiasJob.getID(),  mergebams.getID());
 		
 		//PICARD EstimateLibraryComplexity
-		PicardJob estimateLibraryComplexity = new PicardJob(mergebams.getBam(), "EstimateLibraryComplexity", "", mergebams.getBam() + ".EstimateLibraryComplexity.metric.txt");
-		dax.addJob(estimateLibraryComplexity);
-		dax.addChild(estimateLibraryComplexity.getID(),  mergebams.getID());
+		//PicardJob estimateLibraryComplexity = new PicardJob(mergebams.getBam(), "EstimateLibraryComplexity", "", mergebams.getBam() + ".EstimateLibraryComplexity.metric.txt");
+		//dax.addJob(estimateLibraryComplexity);
+		//dax.addChild(estimateLibraryComplexity.getID(),  mergebams.getID());
 					
 		//Application Stack tracking job
 		ApplicationStackJob appstack = new ApplicationStackJob(mergebams.getBam(), mergebams.getBam() + ".ApplicationStackMetrics.metric.txt");
 		dax.addJob(appstack);
-		dax.addChild(appstack.getID(),estimateLibraryComplexity.getID());
+		dax.addChild(appstack.getID(), mergebams.getID());
 		
 		//CPG vs randam cov job
 		BamCPGCoverageJob bamcov = new BamCPGCoverageJob(mergebams.getBam(), mergebams.getBai(), "/home/rcf-40/bberman/tumor/genomic-data-misc/CGIs/Takai_Jones_from_Fei_122007.fixed.PROMOTERONLY.oriented.hg19.bed", mergebams.getBam() + ".CPGvsRandomCov.metric.txt");

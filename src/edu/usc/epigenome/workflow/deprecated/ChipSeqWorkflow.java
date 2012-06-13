@@ -258,7 +258,7 @@ public class ChipSeqWorkflow
 			dax.addChild(findpeaks.getID(), maq2bamJob.getID());
 			
 			//wig to tdf (IGVTOOLS )job child of pileup to wig
-			WigToTdfJob fpwigtotdf = new WigToTdfJob(findpeaks.getWigFile(),genome);
+			WigToTdfJob fpwigtotdf = new WigToTdfJob(findpeaks.getWigFiles().get(0),genome);
 			dax.addJob(fpwigtotdf);
 			dax.addChild(fpwigtotdf.getID(),findpeaks.getID());
 			
