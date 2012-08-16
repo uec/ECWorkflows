@@ -2,8 +2,10 @@ package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 
+import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
@@ -14,7 +16,7 @@ public class RNAseqDiffExpWorkflow
 {
 	public static String WorkflowName = "rnaseqdiff";
 	
-	public static void createWorkFlow(String sample, GAParams par,Boolean pbsMode, Boolean dryrun)	
+	public static void createWorkFlow(String sample, GAParams par, EnumSet<RunOptions> runOptions)	
 	{
 		try
 		{
@@ -42,9 +44,9 @@ public class RNAseqDiffExpWorkflow
 					for(String inputFile : par.getSamples().get(sampleEntryKey).get("Input").split(",")) 
 					{
 						if(inputFile.toLowerCase().endsWith("gtf"))
-							sampleGTFs.put(sampleNum, pbsMode ? new File(inputFile).getAbsolutePath() : new File(inputFile).getName());
+							sampleGTFs.put(sampleNum, runOptions.contains(RunOptions.PBSMODE) ? new File(inputFile).getAbsolutePath() : new File(inputFile).getName());
 						if(inputFile.toLowerCase().endsWith("bam"))
-							sampleBams.put(sampleNum, pbsMode ? new File(inputFile).getAbsolutePath() : new File(inputFile).getName());
+							sampleBams.put(sampleNum, runOptions.contains(RunOptions.PBSMODE) ? new File(inputFile).getAbsolutePath() : new File(inputFile).getName());
 					}
 				}
 			}
@@ -89,11 +91,8 @@ public class RNAseqDiffExpWorkflow
 			{
 				dax.saveAsDot("rnaseqdiffexp_dax.dot");
 				dax.saveAsSimpleDot("rnaseqdiffexp_dax_simple.dot");
-				if(pbsMode)
-				{
-					par.getWorkFlowArgsMap().put("WorkflowName", label);
-					dax.runWorkflow(dryrun);
-				}
+				par.getWorkFlowArgsMap().put("WorkflowName", label);
+				dax.runWorkflow(runOptions);
 				dax.saveAsXML("rnaseqdiffexp_dax.xml");
 			}
 		}

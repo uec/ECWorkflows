@@ -3,11 +3,13 @@ package edu.usc.epigenome.workflow.generator;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.griphyn.vdl.dax.Filename;
 
+import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
@@ -38,7 +40,7 @@ public class RNAseqWorkflow
 	 */
 	public static String WorkflowName = "rnaseq";
 	
-	public static void createWorkFlow(String sample, GAParams par,Boolean pbsMode, Boolean dryrun)
+	public static void createWorkFlow(String sample, GAParams par,EnumSet<RunOptions> runOptions)
 	{
 		try
 		{
@@ -65,14 +67,14 @@ public class RNAseqWorkflow
 			List<TopHatJob> tophatJobs = new LinkedList<TopHatJob>();
 			List<String> filterTrimCountFiles = new LinkedList<String>();
 			
-			String laneInputFileNameR1 = pbsMode ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
+			String laneInputFileNameR1 = runOptions.contains(RunOptions.PBSMODE) ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
 			String laneInputFileNameR2 = null;
 			//split Fastq Job. handle paired end and non pbs
 			int splitSize = 1; //tophat cant merge bams.
 			FastQConstantSplitJob fastqSplitJob = null;
 			if(isPE)
 			{
-				laneInputFileNameR2 = pbsMode ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
+				laneInputFileNameR2 = runOptions.contains(RunOptions.PBSMODE) ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
 				System.out.println("Creating rnaseq PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 			}
@@ -218,11 +220,8 @@ public class RNAseqWorkflow
 			{
 				dax.saveAsDot("rnaseq_dax_" + label + ".dot");
 				dax.saveAsSimpleDot("rnaseq_dax_simple_" + label + ".dot");
-				if(pbsMode)
-				{
-					par.getWorkFlowArgsMap().put("WorkflowName", label);
-					dax.runWorkflow(dryrun);
-				}
+				par.getWorkFlowArgsMap().put("WorkflowName", label);
+				dax.runWorkflow(runOptions);
 				dax.saveAsXML("rnaseq_dax_" +label+".xml");
 			}
 		} 

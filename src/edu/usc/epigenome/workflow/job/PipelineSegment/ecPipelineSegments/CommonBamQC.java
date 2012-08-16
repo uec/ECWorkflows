@@ -46,23 +46,28 @@ public class CommonBamQC extends PipelineSegment
 		dax.addJob(methLevelAveragesMetricJob);
 		dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
 		
-		//create  50k BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
-		dax.addJob(binDepthsMetricJob50k);
-		dax.addChild(binDepthsMetricJob50k.getID(),  mergebams.getID());
+//		//create  50k BinDepths gatk job
+//		GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
+//		dax.addJob(binDepthsMetricJob50k);
+//		dax.addChild(binDepthsMetricJob50k.getID(),  mergebams.getID());
 		
 		//create  5k BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv");
+		GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv",mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig");
 		dax.addJob(binDepthsMetricJob5k);
 		dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 		
-		//create  50k downsample 5m BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
-		dax.addJob(binDepthsMetricJob50kds5);
-		dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
+		//create  30 BinDepths gatk job
+		GATKMetricJob binDepthsMetricJob30 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 30 -dumpv", mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig");
+		dax.addJob(binDepthsMetricJob30);
+		dax.addChild(binDepthsMetricJob30.getID(),  mergebams.getID());
 		
+//		//create  50k downsample 5m BinDepths gatk job
+//		GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
+//		dax.addJob(binDepthsMetricJob50kds5);
+//		dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
+//		
 		//create  5k downsample 5m BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv");
+		GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv",".p5000000winsize50000dumpv.BinDepths.metric.wig");
 		dax.addJob(binDepthsMetricJob5kds5);
 		dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
 		

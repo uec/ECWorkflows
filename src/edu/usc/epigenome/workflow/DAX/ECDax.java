@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,6 +26,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.ECWorkflowParams.ECParams;
 
 
@@ -370,8 +372,16 @@ public class ECDax extends ADAG
 	 * run the workflow on pbs (porting to sge would be easy)
 	 * @param isDryrun if true, a test run, if false really run on pbs
 	 */
-	public void runWorkflow(Boolean isDryrun)
+	public void runWorkflow(EnumSet<RunOptions> runOptions)
 	{
+		if(!runOptions.contains(RunOptions.PBSMODE))
+			return;
+		else if(runOptions.contains(RunOptions.SINGLEMACHINE))
+		{
+			runWorkflowLinear(runOptions);
+			return;
+		}
+		
 		parseDAX();
 
 		//check job deps and run ready jobs until nothing left to run
@@ -381,14 +391,14 @@ public class ECDax extends ADAG
 			{
 				if (checkJobDepsOK(job))
 				{					
-					runPBSJob(job, isDryrun);
+					runPBSJob(job, runOptions);
 					hasParents.remove(job);
 					break;
 				}
 			}
 		}
 		//release holds
-		if(!isDryrun)
+		if(!runOptions.contains(RunOptions.DRYRUN))
 		{
 			for(String job : heldJobIDs.keySet())
 			{
@@ -406,13 +416,103 @@ public class ECDax extends ADAG
 			}
 		}
 	}
+	
+	
+	/**
+	 * run the workflow on pbs all steps in ONE JOB 
+	 * @param isDryrun if true, a test run, if false really run on pbs
+	 */
+	public void runWorkflowLinear(EnumSet<RunOptions> runOptions)
+	{
+		parseDAX();
+		String AllJobs = new String();
+
+		//check job deps and run ready jobs until nothing left to run
+		while (!checkAllProcessed())
+		{
+			for (String job : hasParents.keySet())
+			{
+				if (checkJobDepsOK(job))
+				{					
+					//runPBSJob(job, isDryrun);
+					System.err.println(job + " job dep satisfied");
+					String jobScript = new String(pbsScriptTemplate);
+					jobScript = jobScript.replace("DAXPBS_QUEUE", workFlowParams.getSetting("queue"));
+					jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName"));
+					jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
+					jobScript = jobScript.replace("DAXPBS_CPU", "PBS -l nodes=1:ppn=8:dx340");
+					// COPYIN
+					String copyin = new String();
+					for (String s : hasInputs.get(job))
+					{
+						File f = new File(s);
+						if(f.isAbsolute())
+						{
+							copyin += "ln -s " + s + "\n";
+						}
+						else
+							copyin += "ln -s " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/" + f.getName() + "\n";
+					}
+					jobScript = jobScript.replace("#DAXPBS_COPYIN", copyin);
+
+					// RUN
+					jobScript = jobScript.replace("#DAXPBS_RUN", hasCmdLine.get(job));
+
+					// COPYOUT
+					String copyout = new String();
+					for (String s : hasOutputs.get(job))
+					{
+						File f = new File(s);
+						copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
+					}
+					jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
+					
+					
+					
+					hasParents.remove(job);
+					jobIDs.put(job, String.valueOf(tmpNum++));
+					AllJobs+=jobScript;
+					break;
+				}
+			}
+		}
+		
+		try
+		{
+			
+			Runtime thisApp = java.lang.Runtime.getRuntime();
+			// copy to tmp
+			File tmpFile;
+			tmpFile = File.createTempFile("uec_" + workFlowParams.getSetting("FlowCellName"), ".sh");
+			tmpFile.deleteOnExit();
+			BufferedWriter out = new BufferedWriter(new FileWriter(tmpFile));
+			out.write(AllJobs);
+			out.close();
+			System.err.println(AllJobs);
+			
+			if(!runOptions.contains(RunOptions.DRYRUN))
+			{	
+				// exec
+				String execCmd = "qsub -l nodes=1:ppn=8:dx340" + tmpFile.getAbsolutePath();
+				Process p = thisApp.exec(execCmd);
+			}
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+	}
+	
+	
+	
 
 	/**
 	 * run a given job on pbs. capture the job id for dependency resolution
 	 * @param job the job_id to run
 	 * @param isDryrun true if testing, false if really running
 	 */
-	private void runPBSJob(String job, Boolean isDryrun)
+	private void runPBSJob(String job, EnumSet<RunOptions> runOptions)
 	{
 		String jobScript;
 		Boolean hasNoDeps = false;
@@ -479,7 +579,7 @@ public class ECDax extends ADAG
 		// execute and get jobID
 
 		// do not run, just display
-		if (isDryrun)
+		if (runOptions.contains(RunOptions.DRYRUN))
 		{
 			jobIDs.put(job, String.valueOf(tmpNum++));
 			try

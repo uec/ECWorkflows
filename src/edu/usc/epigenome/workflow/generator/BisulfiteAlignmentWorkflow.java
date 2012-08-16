@@ -2,12 +2,14 @@ package edu.usc.epigenome.workflow.generator;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.griphyn.vdl.dax.Filename;
 
 
+import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
@@ -37,7 +39,7 @@ public class BisulfiteAlignmentWorkflow
 	 */	
 	public static String WorkflowName = "bisulfite";
 	
-	public static void createWorkFlow(String sample, GAParams par,Boolean pbsMode, Boolean dryrun)
+	public static void createWorkFlow(String sample, GAParams par, EnumSet<RunOptions> runOptions)
 	{
 		try
 		{
@@ -64,14 +66,14 @@ public class BisulfiteAlignmentWorkflow
 			List<ECJob> bsmapJobs = new LinkedList<ECJob>();
 			List<String> filterTrimCountFiles = new LinkedList<String>();
 			
-			String laneInputFileNameR1 = pbsMode ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
+			String laneInputFileNameR1 = runOptions.contains(RunOptions.PBSMODE) ? new File(fileInput.split(",")[0]).getAbsolutePath() : new File(fileInput.split(",")[0]).getName();
 			String laneInputFileNameR2 = null;
 			//split Fastq Job. handle paired end and non pbs
 			int splitSize = Integer.parseInt(workFlowParams.getSetting("ClusterSize"));
 			FastQConstantSplitJob fastqSplitJob = null;
 			if(isPE)
 			{
-				laneInputFileNameR2 = pbsMode ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
+				laneInputFileNameR2 = runOptions.contains(RunOptions.PBSMODE) ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
 				System.out.println("Creating BiS PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 			}
@@ -245,11 +247,8 @@ public class BisulfiteAlignmentWorkflow
 			{
 				dax.saveAsDot("bisulfite_dax_" + label + ".dot");
 				dax.saveAsSimpleDot("bisulfite_dax_simple_" + label + ".dot");
-				if(pbsMode)
-				{
-					par.getWorkFlowArgsMap().put("WorkflowName", label);
-					dax.runWorkflow(dryrun);
-				}
+				par.getWorkFlowArgsMap().put("WorkflowName", label);
+				dax.runWorkflow(runOptions);
 				dax.saveAsXML("bisulfite_dax_" + label + ".xml");
 			}
 			dax.release();
