@@ -436,7 +436,16 @@ public class ECDax extends ADAG
 				{					
 					//runPBSJob(job, isDryrun);
 					System.err.println(job + " job dep satisfied");
-					String jobScript = new String(pbsScriptTemplate);
+					String jobScript;
+					try
+					{
+						jobScript = new String(workFlowParams.getSetting("JobTemplate"));
+					}
+					// otherwise use hardcoded internal value
+					catch (Exception e)
+					{
+						jobScript = new String(pbsScriptTemplate);
+					}
 					jobScript = jobScript.replace("DAXPBS_QUEUE", workFlowParams.getSetting("queue"));
 					jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName"));
 					jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
