@@ -217,11 +217,11 @@ public class RegularBWAAlignmentWorkflow
 
 			if(dax.getChildCount() > 0)
 			{
-				dax.saveAsDot("basicAlignment_dax_" + label + ".dot");
-				dax.saveAsSimpleDot("basicAlignment_dax_simple_" + label + ".dot");
+				dax.saveAsDot("regularAlignment_dax_" + label + ".dot");
+				dax.saveAsSimpleDot("regularAlignment_dax_simple_" + label + ".dot");
 				par.getWorkFlowArgsMap().put("WorkflowName", label);
 				dax.runWorkflow(runOptions);
-				dax.saveAsXML("basicAlignment_dax_" + label + ".xml");
+				dax.saveAsXML("regularAlignment_dax_" + label + ".xml");
 			}
 			dax.release();
 			

@@ -40,7 +40,7 @@ public class MinimalBWAAligmentWorkflow
 	 * Creates an AlignPileUp workflow from an empty dax object 
 	 * @param dax The ECDAX to which processing jobs will be added
 	 */	
-	public static String WorkflowName = "regular";
+	public static String WorkflowName = "minimal";
 	
 	public static void createWorkFlow(String sample, GAParams par, EnumSet<RunOptions> runOptions)
 	{
