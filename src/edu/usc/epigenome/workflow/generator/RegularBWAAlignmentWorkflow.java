@@ -33,7 +33,7 @@ import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
 import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
 
 
-public class BasicBWAAlignmentWorkflow
+public class RegularBWAAlignmentWorkflow
 {
 	/**
 	 * Creates an AlignPileUp workflow from an empty dax object 

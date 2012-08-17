@@ -10,7 +10,8 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 //import edu.usc.epigenome.workflow.deprecated.MultiFileBSWorkflow;
 //import edu.usc.epigenome.workflow.deprecated.SimpleBasicAlignmentWorkflow;
 //import edu.usc.epigenome.workflow.deprecated.SimpleFastAlignmentWorkflow;
-import edu.usc.epigenome.workflow.generator.BasicBWAAlignmentWorkflow;
+import edu.usc.epigenome.workflow.generator.MinimalBWAAligmentWorkflow;
+import edu.usc.epigenome.workflow.generator.RegularBWAAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteMergeWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqBWAWorkflow;
@@ -66,7 +67,8 @@ public class SequencingPipeline
 		{
 			String workflow  = par.getSamples().get(sampleEntryKey).get("Workflow");
 			
-			if(workflow.toLowerCase().equals("regular")) 		BasicBWAAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			if(workflow.toLowerCase().equals("regular")) 		RegularBWAAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			if(workflow.toLowerCase().equals("minimal")) 		MinimalBWAAligmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().contains("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("chipseq")) 		ChipSeqBWAWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
