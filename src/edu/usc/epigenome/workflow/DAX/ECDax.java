@@ -449,7 +449,7 @@ public class ECDax extends ADAG
 					jobScript = jobScript.replace("DAXPBS_QUEUE", workFlowParams.getSetting("queue"));
 					jobScript = jobScript.replace("DAXPBS_RESULTSDIR", workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName"));
 					jobScript = jobScript.replace("DAXPBS_TMPDIR", workFlowParams.getSetting("tmpDir"));
-					jobScript = jobScript.replace("DAXPBS_CPU", "PBS -l nodes=1:ppn=8:dx340");
+					jobScript = jobScript.replace("DAXPBS_CPU", "PBS -l nodes=1:ppn=12:hexcore");
 					// COPYIN
 					String copyin = new String();
 					for (String s : hasInputs.get(job))
@@ -502,7 +502,7 @@ public class ECDax extends ADAG
 			if(!runOptions.contains(RunOptions.DRYRUN))
 			{	
 				// exec
-				String execCmd = "qsub -l nodes=1:ppn=8:dx340" + tmpFile.getAbsolutePath();
+				String execCmd = "qsub " + tmpFile.getAbsolutePath();
 				Process p = thisApp.exec(execCmd);
 			}
 		}
