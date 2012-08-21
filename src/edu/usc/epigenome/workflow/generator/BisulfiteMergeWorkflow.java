@@ -89,11 +89,11 @@ public class BisulfiteMergeWorkflow
 			
 			if(dax.getChildCount() > 0)
 			{
-				dax.saveAsDot("bisulfite_dax_" + label + ".dot");
-				dax.saveAsSimpleDot("bisulfite_dax_simple_" + label + ".dot");
+				dax.saveAsDot("bisulfite_merge_dax_" + label + ".dot");
+				dax.saveAsSimpleDot("bisulfite_merge_dax_simple_" + label + ".dot");
 				par.getWorkFlowArgsMap().put("WorkflowName", label);
 				dax.runWorkflow(runOptions);
-				dax.saveAsXML("bisulfite_dax_" + label + ".xml");
+				dax.saveAsXML("bisulfite_merge_dax_" + label + ".xml");
 			}
 			dax.release();
 			
