@@ -52,7 +52,7 @@ public class CommonBamQC extends PipelineSegment
 //		dax.addChild(binDepthsMetricJob50k.getID(),  mergebams.getID());
 		
 		//create  5k BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv",mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig");
+		GATKMetricJob binDepthsMetricJob5k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 5000 -dumpv",mergebams.getBam() + ".winsize5000dumpv.BinDepths.metric.wig");
 		dax.addJob(binDepthsMetricJob5k);
 		dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 		

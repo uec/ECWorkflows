@@ -99,8 +99,8 @@ public class RNAseqWorkflow
 				dax.addChild(filterContamJob.getID(), fastqSplitJob.getID());
 				filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
 				
-				if(!isPE)
-					splitFileName = filterContamJob.getNoContamOutputFileName();					
+				//if(!isPE)
+					//splitFileName = filterContamJob.getNoContamOutputFileName();					
 				
 				splitFiles.add(splitFileName);
 				splitIDs.add(filterContamJob.getID());

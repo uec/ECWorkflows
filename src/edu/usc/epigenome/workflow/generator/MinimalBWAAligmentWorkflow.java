@@ -99,8 +99,8 @@ public class MinimalBWAAligmentWorkflow
 				filterTrimCountFiles.add(filterContamJob.getContamAdapterTrimCountsOutputFileName());
 				
 				//filter contam job, cant do with PE since it messes up order
-				if(!isPE)
-					splitFileName = filterContamJob.getNoContamOutputFileName();
+				//if(!isPE)
+					//splitFileName = filterContamJob.getNoContamOutputFileName();
 				
 				splitFiles.add(splitFileName);
 				splitIDs.add(filterContamJob.getID());
