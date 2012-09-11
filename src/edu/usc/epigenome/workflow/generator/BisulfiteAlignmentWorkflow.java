@@ -220,7 +220,7 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(methLevelAveragesChrmMetricJob.getID(),  mergebams.getID());
 			
 			//create BISSNP JOB
-			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome);
+			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"));
 			dax.addJob(bissnp);
 			dax.addChild(bissnp.getID(),  mergebams.getID());
 			
