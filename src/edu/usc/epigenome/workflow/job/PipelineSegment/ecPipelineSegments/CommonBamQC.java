@@ -9,6 +9,7 @@ import edu.usc.epigenome.workflow.job.ecjob.BamCPGCoverageJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
+import edu.usc.epigenome.workflow.job.ecjob.WigToBigWigJob;
 
 public class CommonBamQC extends PipelineSegment
 {
@@ -56,10 +57,20 @@ public class CommonBamQC extends PipelineSegment
 		dax.addJob(binDepthsMetricJob5k);
 		dax.addChild(binDepthsMetricJob5k.getID(),  mergebams.getID());
 		
+		//convert to bigwig
+		WigToBigWigJob bigwig5k = new WigToBigWigJob(mergebams.getBam() + ".winsize5000dumpv.BinDepths.metric.wig",mergebams.getBam() + ".winsize5000dumpv.BinDepths.metric.wig.bw");
+		dax.addJob(bigwig5k);
+		dax.addChild(bigwig5k.getID(),binDepthsMetricJob5k.getID());
+		
 		//create  30 BinDepths gatk job
 		GATKMetricJob binDepthsMetricJob30 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 30 -dumpv", mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig");
 		dax.addJob(binDepthsMetricJob30);
 		dax.addChild(binDepthsMetricJob30.getID(),  mergebams.getID());
+		
+		//convert to bigwig
+		WigToBigWigJob bigwig30 = new WigToBigWigJob(mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig",mergebams.getBam() + ".winsize30dumpv.BinDepths.metric.wig.bw");
+		dax.addJob(bigwig30);
+		dax.addChild(bigwig30.getID(),binDepthsMetricJob30.getID());
 		
 //		//create  50k downsample 5m BinDepths gatk job
 //		GATKMetricJob binDepthsMetricJob50kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 50000 -dumpv");
