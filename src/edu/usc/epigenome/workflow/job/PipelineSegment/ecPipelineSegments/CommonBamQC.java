@@ -6,6 +6,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.PipelineSegment.PipelineSegment;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BamCPGCoverageJob;
+import edu.usc.epigenome.workflow.job.ecjob.CoverageExtrapJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
@@ -121,6 +122,11 @@ public class CommonBamQC extends PipelineSegment
 		BamCPGCoverageJob bamcov = new BamCPGCoverageJob(mergebams.getBam(), mergebams.getBai(), "/home/rcf-40/bberman/tumor/genomic-data-misc/CGIs/Takai_Jones_from_Fei_122007.fixed.PROMOTERONLY.oriented.hg19.bed", mergebams.getBam() + ".CPGvsRandomCov.metric.txt");
 		dax.addJob(bamcov);
 		dax.addChild(bamcov.getID(),  mergebams.getID());
+		
+		//lc_extrap vs randam cov job
+		CoverageExtrapJob lcexrap = new CoverageExtrapJob(mergebams.getBam(),mergebams.getBam() + ".CoverageProjection.metric.txt");
+		dax.addJob(lcexrap);
+		dax.addChild(lcexrap.getID(),  mergebams.getID());
 		
 		//create  read length cigar parser gatk job
 		GATKMetricJob readlen = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "ReadLength", "");
