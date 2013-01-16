@@ -15,6 +15,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
@@ -64,12 +65,12 @@ public class BisQuickAlignmentWorkflow
 			{
 				laneInputFileNameR2 = runOptions.contains(RunOptions.PBSMODE) ? new File(fileInput.split(",")[1]).getAbsolutePath() : new File(fileInput.split(",")[1]).getName();
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, laneInputFileNameR2, splitSize);
-				System.out.println("Creating BiS PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
+				System.out.println("Creating BiSQUICK PE Processing workflow for lane " + label + ": " + laneInputFileNameR1 + " " + laneInputFileNameR2 );
 			}
 			else
 			{
 				fastqSplitJob = new FastQConstantSplitJob(laneInputFileNameR1, splitSize);
-				System.out.println("Creating BiS SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
+				System.out.println("Creating BiSQUICK SR Processing workflow for lane " + label + ": " + laneInputFileNameR1);
 			}						
 			dax.addJob(fastqSplitJob);
 
@@ -157,7 +158,10 @@ public class BisQuickAlignmentWorkflow
 			for (ECJob job : bsmapJobs)
 				dax.addChild(mergebams.getID(), job.getID());
 			
-			
+			//cleanup garbage job
+			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
+			dax.addJob(cleanup);
+			dax.addChild(cleanup.getID(),mergebams.getID());
 		
 			
 			
