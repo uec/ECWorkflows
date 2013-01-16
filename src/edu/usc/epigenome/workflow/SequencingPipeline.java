@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.EnumSet;
 
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
+import edu.usc.epigenome.workflow.generator.BisQuickAlignmentWorkflow;
 //import edu.usc.epigenome.workflow.deprecated.BasicAlignmentWorkflow;
 //import edu.usc.epigenome.workflow.deprecated.ChipSeqWorkflow;
 //import edu.usc.epigenome.workflow.deprecated.ChipseqMapMergeWorkflow;
@@ -70,6 +71,7 @@ public class SequencingPipeline
 			
 			if(workflow.toLowerCase().equals("regular")) 		RegularBWAAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("minimal")) 		MinimalBWAAligmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			if(workflow.toLowerCase().equals("bisquick")) 		BisQuickAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().contains("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("chipseq")) 		ChipSeqBWAWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
