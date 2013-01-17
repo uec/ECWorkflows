@@ -20,6 +20,7 @@ import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
+import edu.usc.epigenome.workflow.job.ecjob.CountInvertedDupsJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
@@ -197,6 +198,12 @@ public class RegularBWAAlignmentWorkflow
 			dax.addChild(cleanup.getID(),qcjob.getID());
 			dax.addChild(cleanup.getID(),countFastQJob.getID());
 			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
+			
+			
+			//inverted dups count using yapins fastq analyzer
+			CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
+			dax.addJob(dupsjob);
+			dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
 			
 			
 			//CollectAlignmentMetrics

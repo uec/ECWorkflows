@@ -39,9 +39,9 @@ public class CommonBamQC extends PipelineSegment
 		
 		
 		
-		GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
-		dax.addJob(dupReadPairsMetricJob);
-		dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
+		//GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
+		//dax.addJob(dupReadPairsMetricJob);
+		//dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
 		
 		//create MethLevelAverages gatk job
 		GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
