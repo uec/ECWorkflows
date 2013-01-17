@@ -23,6 +23,8 @@ public class FastQConstantSplitJob extends ECJob
 		{
 			File inFile = new File(inputFile);
 			String outFile = new String(inFile.getName());
+			outFile = outFile.replace(".gz", "");
+			outFile = outFile.replace(".bz2", "");
 			outFile = outFile.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + i + "$2");
 			Filename output = new Filename(outFile, LFN.OUTPUT);
 			output.setRegister(false);
@@ -50,12 +52,16 @@ public class FastQConstantSplitJob extends ECJob
 			File inFileR2 = new File(inputFileR2);
 			
 			String outFileR1 = new String(inFileR1.getName());
+			outFileR1 = outFileR1.replace(".gz", "");
+			outFileR1 = outFileR1.replace(".bz2", "");
 			outFileR1 = outFileR1.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + i + "$2");
 			Filename outputR1 = new Filename(outFileR1, LFN.OUTPUT);
 			outputR1.setRegister(false);
 			this.addUses(outputR1);
 			
 			String outFileR2 = new String(inFileR2.getName());
+			outFileR2 = outFileR2.replace(".gz", "");
+			outFileR2 = outFileR2.replace(".bz2", "");
 			outFileR2 = outFileR2.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + i + "$2");
 			Filename outputR2 = new Filename(outFileR2, LFN.OUTPUT);
 			outputR2.setRegister(false);
