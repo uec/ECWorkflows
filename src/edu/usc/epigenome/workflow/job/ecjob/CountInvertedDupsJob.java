@@ -17,9 +17,7 @@ public class CountInvertedDupsJob extends ECJob
 		inputR1.setRegister(false);
 		this.addUses(inputR1);
 		
-		Filename inputR2 = new Filename(inputFileR2, LFN.INPUT);
-		inputR2.setRegister(false);
-		this.addUses(inputR2);
+		
 
 		// construct the output filenames for job
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
@@ -31,7 +29,14 @@ public class CountInvertedDupsJob extends ECJob
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(inputR1);
 		this.addArgument(new PseudoText(" "));
-		this.addArgument(inputR2);
+		if(inputFileR2 !=null)
+		{
+			Filename inputR2 = new Filename(inputFileR2, LFN.INPUT);
+			inputR2.setRegister(false);
+			this.addUses(inputR2);
+			this.addArgument(inputR2);
+		}
+			
 		
 	}
 }
