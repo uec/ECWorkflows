@@ -188,25 +188,17 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(qcjob.getID(), mergebams.getID());
 
 			
-			//create nmercount for 3, child of mapmerge
-			CountNmerJob count3mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 3);
+			//create nmercount for 3,5,10, child of mapmerge
+			CountNmerJob count3mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber));
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),mergebams.getID());
 			
-			//create nmercount for 5, child of nmer
-			CountNmerJob count5mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 5);
-			dax.addJob(count5mer);
-			dax.addChild(count5mer.getID(), count3mer.getID());
 			
-			//create nmercount for 10, child of nmer
-			CountNmerJob count10mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber), 10);
-			dax.addJob(count10mer);
-			dax.addChild(count10mer.getID(),  count3mer.getID());
 			
 			//cleanup garbage job
 			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
 			dax.addJob(cleanup);
-			dax.addChild(cleanup.getID(),count10mer.getID());
+			dax.addChild(cleanup.getID(),count3mer.getID());
 			dax.addChild(cleanup.getID(),qcjob.getID());
 			dax.addChild(cleanup.getID(),countFastQJob.getID());
 			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
