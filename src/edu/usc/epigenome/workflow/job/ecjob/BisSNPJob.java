@@ -109,6 +109,20 @@ public class BisSNPJob extends ECJob
 			Filename outputCPGRaw= new Filename(outputCPGRawName, LFN.OUTPUT);
 			outputCPGRaw.setRegister(false);
 			this.addUses(outputCPGRaw);
+			
+			
+			//output cg raw wig
+			String outputCGRawWigName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.raw_coverage.wig");
+			Filename outputCGRawWig= new Filename(outputCGRawWigName, LFN.OUTPUT);
+			outputCGRawWig.setRegister(false);
+			this.addUses(outputCGRawWig);
+						
+			//output cg raw wig
+			String outputCGRawTDFName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.raw_coverage.tdf");
+			Filename outputCGRawTDF= new Filename(outputCGRawTDFName, LFN.OUTPUT);
+			outputCGRawTDF.setRegister(false);
+			this.addUses(outputCGRawTDF);
+						
 						
 			//output bed 
 			String outputBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.6plus2.bed");
