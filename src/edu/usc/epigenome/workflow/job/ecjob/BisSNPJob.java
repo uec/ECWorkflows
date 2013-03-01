@@ -122,10 +122,9 @@ public class BisSNPJob extends ECJob
 			Filename outputCGRawTDF= new Filename(outputCGRawTDFName, LFN.OUTPUT);
 			outputCGRawTDF.setRegister(false);
 			this.addUses(outputCGRawTDF);
-						
-						
-			//output bed 
-			String outputBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.6plus2.bed");
+			
+			//output filtered bed 
+			String outputBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.6plus2.bed");
 			Filename outputBed= new Filename(outputBedName, LFN.OUTPUT);
 			outputBed.setRegister(false);
 			this.addUses(outputBed);
