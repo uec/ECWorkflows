@@ -11,6 +11,7 @@ import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.MethLevelAveragesJob;
 import edu.usc.epigenome.workflow.job.ecjob.SamToolsJob;
 
 public class LambdaPhageBisAlnQC extends PipelineSegment
@@ -55,12 +56,13 @@ public class LambdaPhageBisAlnQC extends PipelineSegment
 			dax.addChild(mergelambdabams.getID(),removeUnAln.getID());
 			
 			//methlevelavgs for lambdaphage
-			GATKMetricJob methLevelLambdaAveragesMetricJob = new GATKMetricJob(mergelambdabams.getBam(), mergelambdabams.getBai(), "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "MethLevelAverages", "-cph");
-			dax.addJob(methLevelLambdaAveragesMetricJob);
-			dax.addChild(methLevelLambdaAveragesMetricJob.getID(),  mergelambdabams.getID());
+			//create MethLevelAverages CHROM M gatk job
+			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergelambdabams.getBam(), mergelambdabams.getBai(),  mergelambdabams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt", "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "");
+			dax.addJob(methlevels);
+			dax.addChild(methlevels.getID(),  mergelambdabams.getID());
 			
 			
-			endPoint =  methLevelLambdaAveragesMetricJob;
+			endPoint =  methlevels;
 		}
 		catch (Exception e)
 		{

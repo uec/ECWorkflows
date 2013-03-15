@@ -123,11 +123,17 @@ public class BisSNPJob extends ECJob
 			outputCGRawTDF.setRegister(false);
 			this.addUses(outputCGRawTDF);
 			
-			//output filtered bed 
+			//output raw bed 
 			String outputBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.6plus2.bed");
 			Filename outputBed= new Filename(outputBedName, LFN.OUTPUT);
 			outputBed.setRegister(false);
 			this.addUses(outputBed);
+			
+			//output filtered bed 
+			String outputFiltBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.6plus2.bed");
+			Filename outputFilterBed= new Filename(outputFiltBedName, LFN.OUTPUT);
+			outputFilterBed.setRegister(false);
+			this.addUses(outputFilterBed);
 			
 			//output methylation tdf 
 			String outputMethTDFName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.tdf");
