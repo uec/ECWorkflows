@@ -637,6 +637,16 @@ public class ECDax extends ADAG
 					 
 				}
 				System.out.print("\n##attempting to qsub############\n" + jobScript);
+				
+				//pause for 1/4 of second to keep pbs from getting overrun.
+				try
+				{
+					Thread.sleep(250);
+				} catch (InterruptedException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				Process p = thisApp.exec(execCmd);
 				
 				
