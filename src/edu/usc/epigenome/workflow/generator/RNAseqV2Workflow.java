@@ -137,12 +137,12 @@ public class RNAseqV2Workflow
 			TopHat2Job tophat = tophatJobs.get(0);
 			
 			//sort
-			PicardJob picardSortJob = new PicardJob(tophat.getBamFile(), "SortSam", "SORT_ORDER=coordinate", tophat.getBamFile() + ".sorted.bam");
+			PicardJob picardSortJob = new PicardJob(tophat.getBamFile(), "SortSam", "VALIDATION_STRINGENCY=SILENT SORT_ORDER=coordinate", tophat.getBamFile() + ".sorted.bam");
 			dax.addJob(picardSortJob);
 			dax.addChild(picardSortJob.getID(),  tophat.getID());
 			
 			//reorder contigs
-			PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "REFERENCE=" + referenceGenome + ".fa", picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
+			PicardJob picardReorderContigsJob = new PicardJob(picardSortJob.getSingleOutputFile().getFilename(), "ReorderSam", "VALIDATION_STRINGENCY=SILENT REFERENCE=" + referenceGenome + ".fa", picardSortJob.getSingleOutputFile().getFilename() + ".reorder.bam");
 			dax.addJob(picardReorderContigsJob);
 			dax.addChild(picardReorderContigsJob.getID(), picardSortJob.getID());
 						
