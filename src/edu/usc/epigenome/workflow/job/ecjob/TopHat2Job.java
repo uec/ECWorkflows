@@ -50,6 +50,11 @@ public class TopHat2Job extends ECJob
 		outputDelBed.setRegister(true);
 		this.addUses(outputDelBed);
 		
+		String outFileUnaln = inputFile + ".unmapped.bam";
+		Filename unaln = new Filename(outFileUnaln, LFN.OUTPUT);
+		unaln.setRegister(true);
+		this.addUses(unaln);
+		
 		// add the arguments to the job
 		this.addArgument(new PseudoText("-p 11 " + referenceGenomeFile + " "));
 		this.addArgument(input);
