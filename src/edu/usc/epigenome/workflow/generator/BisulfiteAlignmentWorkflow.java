@@ -225,10 +225,10 @@ public class BisulfiteAlignmentWorkflow
 			dax.addJob(bissnp);
 			dax.addChild(bissnp.getID(),  mergebams.getID());
 			
-			//inverted dups count using yapins fastq analyzer
-			CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
-			dax.addJob(dupsjob);
-			dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
+			//inverted dups count using yapins fastq analyzer (NOT WORKING FOR NOW)
+			//CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
+			//dax.addJob(dupsjob);
+			//dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
 			
 			
 			

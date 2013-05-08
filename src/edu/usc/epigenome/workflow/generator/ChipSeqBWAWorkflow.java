@@ -23,11 +23,10 @@ import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.FindPeaksJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
+
 
 
 public class ChipSeqBWAWorkflow

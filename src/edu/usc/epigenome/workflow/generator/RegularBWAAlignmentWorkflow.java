@@ -15,23 +15,16 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.OrgContamCheckQC;
-import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountInvertedDupsJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.FindPeaksJob;
-import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
-import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
 
 
 public class RegularBWAAlignmentWorkflow
@@ -190,10 +183,10 @@ public class RegularBWAAlignmentWorkflow
 			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
 			
 			
-			//inverted dups count using yapins fastq analyzer
-			CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
-			dax.addJob(dupsjob);
-			dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
+			//inverted dups count using yapins fastq analyzer (NOT WORKING FOR NOW)
+			//CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
+			//dax.addJob(dupsjob);
+			//dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
 			
 			
 			//CollectAlignmentMetrics

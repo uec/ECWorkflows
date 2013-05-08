@@ -200,10 +200,10 @@ public class RNAseqV2Workflow
 			dax.addChild(cleanup.getID(),count3mer.getID());
 			dax.addChild(cleanup.getID(),qcjob.getID());
 
-			//inverted dups count using yapins fastq analyzer
-			CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
-			dax.addJob(dupsjob);
-			dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
+			//inverted dups count using yapins fastq analyzer (NOT WORKING FOR NOW)
+			//CountInvertedDupsJob dupsjob = new CountInvertedDupsJob(laneInputFileNameR1,laneInputFileNameR2,mergebams.getBam() + ".InvertedReadPairDups.metric.txt");
+			//dax.addJob(dupsjob);
+			//dax.addChild(dupsjob.getID(),  fastqSplitJob.getID());
 			
 			if(dax.getChildCount() > 0)
 			{
