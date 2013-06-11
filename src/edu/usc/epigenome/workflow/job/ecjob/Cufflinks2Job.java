@@ -33,7 +33,7 @@ public class Cufflinks2Job extends ECJob
 		outgtf.setRegister(true);
 		this.addUses(outgtf);
 		
-		String outTransName = inputFile + ".cufflinks_transcripts.expr";
+		String outTransName = inputFile + ".cufflinks_isoforms.expr";
 		Filename outTrans = new Filename(outTransName, LFN.OUTPUT);
 		outTrans.setRegister(true);
 		this.addUses(outTrans);
