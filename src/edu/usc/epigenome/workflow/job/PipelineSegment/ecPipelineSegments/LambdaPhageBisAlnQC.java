@@ -57,7 +57,7 @@ public class LambdaPhageBisAlnQC extends PipelineSegment
 			
 			//methlevelavgs for lambdaphage
 			//create MethLevelAverages CHROM M gatk job
-			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergelambdabams.getBam(), mergelambdabams.getBai(),  mergelambdabams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt", "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "");
+			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergelambdabams.getBam(), mergelambdabams.getBai(),  mergelambdabams.getBam() + ".MethLevelAverages.metric.txt", "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "");
 			dax.addJob(methlevels);
 			dax.addChild(methlevels.getID(),  mergelambdabams.getID());
 			

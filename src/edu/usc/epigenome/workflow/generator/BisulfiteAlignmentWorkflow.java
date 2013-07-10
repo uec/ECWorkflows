@@ -210,12 +210,12 @@ public class BisulfiteAlignmentWorkflow
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
 			//create MethLevelAverages CHROM M gatk job
-			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt", referenceGenome, "");
+			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".MethLevelAverages.metric.txt", referenceGenome, "");
 			dax.addJob(methlevels);
 			dax.addChild(methlevels.getID(),  mergebams.getID());
 			
 			//create MethLevelAverages CHROM M gatk job
-			MethLevelAveragesJob methlevelsM = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt", referenceGenome, "chrM");
+			MethLevelAveragesJob methlevelsM = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".MethLevelAverages.metric.txt", referenceGenome, "chrM");
 			dax.addJob(methlevelsM);
 			dax.addChild(methlevelsM.getID(),  mergebams.getID());
 			
