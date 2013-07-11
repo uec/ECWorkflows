@@ -9,8 +9,8 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
 import edu.usc.epigenome.workflow.job.ecjob.BisSNPJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
-import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.MethLevelAveragesJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
@@ -41,9 +41,7 @@ public class BisulfiteMergeWorkflow
 			String referenceGenome = par.getSamples().get(sample).get("Reference");
 			String sampleWorkflow = par.getSamples().get(sample).get("Workflow");
 			String label = flowcellID + "_" + laneNumber + "_" + sampleName;
-			
-
-			
+						
 			
 			ArrayList<String> splitBams = new ArrayList<String>();
 			for(String bam : fileInput.split(","))
@@ -69,10 +67,15 @@ public class BisulfiteMergeWorkflow
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
-			//create MethLevelAverages CHROM M gatk job
-			GATKMetricJob methLevelAveragesChrmMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-L chrM -cph");
-			dax.addJob(methLevelAveragesChrmMetricJob);
-			dax.addChild(methLevelAveragesChrmMetricJob.getID(),  mergebams.getID());
+			//create MethLevelAverages (yaping) job
+			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".MethLevelAverages.metric.txt", referenceGenome, "");
+			dax.addJob(methlevels);
+			dax.addChild(methlevels.getID(),  mergebams.getID());
+			
+			//create MethLevelAverages CHROM M  (yaping) job
+			MethLevelAveragesJob methlevelsM = new MethLevelAveragesJob(mergebams.getBam(), mergebams.getBai(),  mergebams.getBam() + ".MethLevelAverages.metric.txt", referenceGenome, "chrM");
+			dax.addJob(methlevelsM);
+			dax.addChild(methlevelsM.getID(),  mergebams.getID());
 			
 			//create BISSNP JOB
 			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"));
