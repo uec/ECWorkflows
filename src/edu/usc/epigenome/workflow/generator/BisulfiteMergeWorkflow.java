@@ -15,6 +15,7 @@ import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 
 
+
 public class BisulfiteMergeWorkflow
 {
 	/**
