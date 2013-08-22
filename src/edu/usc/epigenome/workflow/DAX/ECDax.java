@@ -471,9 +471,12 @@ public class ECDax extends ADAG
 					String copyout = new String();
 					for (String s : hasOutputs.get(job))
 					{
-						File f = new File(s);
-						copyout += "test -e " + f.getName() + " || echo " + f.getName() + " : " + job + " not created >>" + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/errors.log\n";
-						copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
+						if(!s.equals("none"))
+						{
+							File f = new File(s);
+							copyout += "test -e " + f.getName() + " || echo " + f.getName() + " : " + job + " not created >>" + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/errors.log\n";
+							copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
+						}
 					}
 					jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
 					
@@ -581,9 +584,12 @@ public class ECDax extends ADAG
 		String copyout = new String();
 		for (String s : hasOutputs.get(job))
 		{
-			File f = new File(s);
-			copyout += "test -e " + f.getName() + " || echo " + f.getName() + " : " + job + " not created >>" + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/errors.log\n";
-			copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
+			if(!s.equals("none"))
+			{
+				File f = new File(s);
+				copyout += "test -e " + f.getName() + " || echo " + f.getName() + " : " + job + " not created >>" + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "/errors.log\n";
+				copyout += "mv " + f.getName() + " " + workFlowParams.getSetting("tmpDir") + "/" + workFlowParams.getSetting("FlowCellName") + "/" + workFlowParams.getSetting("WorkflowName") + "\n";
+			}
 		}
 		jobScript = jobScript.replace("#DAXPBS_COPYOUT", copyout);
 
