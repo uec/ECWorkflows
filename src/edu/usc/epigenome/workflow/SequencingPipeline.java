@@ -77,7 +77,7 @@ public class SequencingPipeline
 			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("rnaseqv2")) 		RNAseqV2Workflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("unaligned")) 		UnalignedWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
-			if(workflow.toLowerCase().equals("bismerge")) 		BisulfiteMergeWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			if(workflow.toLowerCase().contains("bismerge")) 		BisulfiteMergeWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			//if(workflow.toLowerCase().equals("maqchipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			//if(workflow.toLowerCase().equals("chipseqmerge"))	ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			//if(workflow.toLowerCase().equals("maqregular")) 		BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
