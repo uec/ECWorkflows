@@ -88,6 +88,34 @@ public class BisSNPJob extends ECJob
 			this.addUses(outputCovGCHTDF);
 			
 			
+			//WIGS
+			
+			//output methylation bw 
+			String outputMethBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cytosine.filtered.sort.HCG.bw");
+			Filename outputMethBW= new Filename(outputMethBWName, LFN.OUTPUT);
+			outputMethBW.setRegister(false);
+			this.addUses(outputMethBW);
+			
+			//output coverage bw 
+			String outputCovBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cytosine.filtered.sort.HCG.ct_coverage.bw");
+			Filename outputCovBW= new Filename(outputCovBWName, LFN.OUTPUT);
+			outputCovBW.setRegister(false);
+			this.addUses(outputCovBW);
+
+			//output methylation GCH bw 
+			String outputMethGCHBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cytosine.filtered.sort.GCH.bw");
+			Filename outputMethGCHBW= new Filename(outputMethGCHBWName, LFN.OUTPUT);
+			outputMethGCHBW.setRegister(false);
+			this.addUses(outputMethGCHBW);
+
+			//output coverage bw 
+			String outputCovGCHBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cytosine.filtered.sort.GCH.ct_coverage.bw");
+			Filename outputCovGCHBW= new Filename(outputCovGCHBWName, LFN.OUTPUT);
+			outputCovGCHBW.setRegister(false);
+			this.addUses(outputCovGCHBW);
+			
+			
+			
 			//output methylation summary txt 
 			String outputMethSummaryName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cytosine.raw.vcf.MethySummarizeList.txt");
 			Filename outputMethSummary= new Filename(outputMethSummaryName, LFN.OUTPUT);
@@ -117,12 +145,6 @@ public class BisSNPJob extends ECJob
 			outputCGRawWig.setRegister(false);
 			this.addUses(outputCGRawWig);
 						
-			//output cg raw wig
-			String outputCGRawTDFName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.raw_coverage.tdf");
-			Filename outputCGRawTDF= new Filename(outputCGRawTDFName, LFN.OUTPUT);
-			outputCGRawTDF.setRegister(false);
-			this.addUses(outputCGRawTDF);
-			
 			//output raw bed 
 			String outputBedName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.6plus2.bed");
 			Filename outputBed= new Filename(outputBedName, LFN.OUTPUT);
@@ -134,6 +156,13 @@ public class BisSNPJob extends ECJob
 			Filename outputFilterBed= new Filename(outputFiltBedName, LFN.OUTPUT);
 			outputFilterBed.setRegister(false);
 			this.addUses(outputFilterBed);
+			
+			//TDF
+			//output cg raw wig
+			String outputCGRawTDFName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.raw_coverage.tdf");
+			Filename outputCGRawTDF= new Filename(outputCGRawTDFName, LFN.OUTPUT);
+			outputCGRawTDF.setRegister(false);
+			this.addUses(outputCGRawTDF);
 			
 			//output methylation tdf 
 			String outputMethTDFName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.tdf");
@@ -147,6 +176,26 @@ public class BisSNPJob extends ECJob
 			outputCovTDF.setRegister(false);
 			this.addUses(outputCovTDF);
 
+			//BW
+			//output cg raw wig
+			String outputCGRawBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.sort.CG.raw_coverage.bw");
+			Filename outputCGRawBW= new Filename(outputCGRawBWName, LFN.OUTPUT);
+			outputCGRawBW.setRegister(false);
+			this.addUses(outputCGRawBW);
+			
+			//output methylation bw 
+			String outputMethBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.bw");
+			Filename outputMethBW= new Filename(outputMethBWName, LFN.OUTPUT);
+			outputMethBW.setRegister(false);
+			this.addUses(outputMethBW);
+			
+			//output coverage bw 
+			String outputCovBWName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.filtered.sort.CG.ct_coverage.bw");
+			Filename outputCovBW= new Filename(outputCovBWName, LFN.OUTPUT);
+			outputCovBW.setRegister(false);
+			this.addUses(outputCovBW);
+			
+			
 			//output methylation summary txt 
 			String outputMethSummaryName = outputBamName.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "cpg.raw.vcf.MethySummarizeList.txt");
 			Filename outputMethSummary= new Filename(outputMethSummaryName, LFN.OUTPUT);

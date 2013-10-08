@@ -13,25 +13,18 @@ import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
-import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.OrgContamCheckQC;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
-import edu.usc.epigenome.workflow.job.ecjob.BamCPGCoverageJob;
 import edu.usc.epigenome.workflow.job.ecjob.BwaJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.FindPeaksJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
-import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
-import edu.usc.epigenome.workflow.job.ecjob.WigToTdfJob;
+
 
 
 public class MinimalBWAAligmentWorkflow

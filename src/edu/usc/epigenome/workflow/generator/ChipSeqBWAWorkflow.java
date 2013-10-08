@@ -175,14 +175,8 @@ public class ChipSeqBWAWorkflow
 			//FindPeaksJob findpeaks = new FindPeaksJob(mergebams.getBam(),200);
 			//dax.addJob(findpeaks);
 			//dax.addChild(findpeaks.getID(), mergebams.getID());
-			
-			//wig to tdf (IGVTOOLS )job child of pileup to wig
-			//for(String wig : findpeaks.getWigFiles())
-			//{
-			//	WigToTdfJob fpwigtotdf = new WigToTdfJob(wig,referenceGenome);
-			//	dax.addJob(fpwigtotdf);
-			//	dax.addChild(fpwigtotdf.getID(),findpeaks.getID());
-			//}
+			//We would then convert to bigwig
+
 			
 			//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob, , child of mapmerge
 			CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  flowcellID, Integer.parseInt(laneNumber));
