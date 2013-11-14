@@ -65,7 +65,7 @@ public class GAParams extends ECParams
 		setDefault("MaqPileupQ", "30");
 		setDefault("randomSubset", "1000000");
 		setDefault("ReadyToRun", "true");
-		setDefault("ClusterSize", "256");
+		setDefault("ClusterSize", "1");
 		setDefault("MaqTrimEnd1", "0");
 		setDefault("MaqTrimEnd2", "0");
 		setDefault("WigWindSize","300");
