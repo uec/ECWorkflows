@@ -33,6 +33,9 @@ causes the workflow to be executed in pbs mode, otherwise only an xml file will 
 -dryun
 if specfied, no execution actually takes place, you can use this to verify that the workflow is generating the correct dependencies and commands. this only makes sense when used with the -pbs flag
 
+-linear
+run each samples job one-by-one on a single node
+
 parameterFile.txt
 you may pass in a parameter file that contains experimental input settings (lane settings, flowcell ID etc..)
 
