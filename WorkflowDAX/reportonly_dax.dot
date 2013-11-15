@@ -1,0 +1,582 @@
+digraph g {
+"Parameters" [
+shape = "Mrecord"
+ label = "{ Parameters  | Lane.5.AlignmentType=regular | Lane.8.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | MinMismatches=2 | Lane.5.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::sol2sanger:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_sol2sanger.pl | FlowCellName=300ABCAAXX | Lane.7.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.Input=s_4_sequence.pileup.gz | Lane.1.Eland.Genome=/srv/data/slxa/GENOMES/phi-X174/ | Lane.7.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | queue=laird | uscec::readcount:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | Lane.6.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::featurepileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | randomSubset=300000 | uscec::genecdax:1.0=/usr/bin/java | Lane.3.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | uscec::mapMerge:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapmerge.pl | Lane.8.AlignmentType=regular | uscec::pileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_pileup.pl | Lane.2.AlignmentType=regular | uscec::readdepth:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | Lane.3.Input=s_3_sequence.pileup.gz | uscec::chr21:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/maqindex | Lane.4.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | Lane.8.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | Lane.1.Input=s_1_sequence.pileup.gz | Lane.2.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | uscec::fastqSplit:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/fastqSplit.pl | BisulfiteSplitFactor=250000 | Lane.5.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | uscec::pileupwig:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | uscec::countfastq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | Lane.1.AlignmentType=regular | Lane.3.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.4.AlignmentType=regular | uscec::remotebustard:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/remotebustard.pl | uscec::map:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_map.pl | Lane.4.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/hg18_unmasked/hg18_unmasked.plusContam.bfa | Lane.6.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | uscec::gzip:1.0=/bin/gzip | uscec::filterContams:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/solexaFilterContams.pl | referenceLane=1 | Lane.2.Eland.Genome=/srv/data/slxa/GENOMES/hg18_unmasked/ | Lane.2.Input=s_2_sequence.pileup.gz | uscec::fast2bfq:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_fastq2bfq.pl | uscec::mapview:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_maq_mapview.pl | Eland.webdir=http://gastorage2.usc.edu/slxa_runs/incoming/ | LFN=PFN | Lane.1.ReferenceBFA=/home/rcf-proj2/jak/bberman/genomes/phi-X174/phi_plus_SNPs.bfa | RegularSplitFactor=1000 | Lane.3.AlignmentType=regular | Lane.6.Input=s_6_sequence.pileup.gz | Lane.5.Input=s_5_sequence.pileup.gz | Lane.7.Input=s_7_sequence.pileup.gz | tmpDir=/home/uec-00/ramjan/tmp | Eland.username=zack | Lane.6.AlignmentType=regular | MaqPileupQ=30 | uscec::countpileup:1.0=/home/uec-00/ramjan/software/alignPileup/perl_utils_usc/wrap_java_report.pl | Lane.8.Input=s_8_sequence.pileup.gz | Lane.7.AlignmentType=regular | PegasusTC=tc.data}" ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_7_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX21600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.wig</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX115000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_1_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX2" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_2_maq.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX1" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_1_maq.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX705000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_7_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX415000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_4_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX205000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_2_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX81600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.wig</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX61600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.wig</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX105000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_1_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_7_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX7" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_7_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX31600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.wig</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX6" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_6_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_7_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX41600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.wig</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX8" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_8_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX715000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_7_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.pileup_maq_mononucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_5_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX505000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_5_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_7_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_2_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX815000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_8_maq_5000.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX605000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_6_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX805000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_8_maq_5000.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX5" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_5_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX6RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_6.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8kg-tssNoncgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.kg-tssNoncgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1kg-tssCgi11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.kg-tssCgi.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX8RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_8.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX4" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_4_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_1_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX315000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_3_maq_5000.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX11600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.wig</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.pileup_ch_dinucleotide.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_6_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX215000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_2_maq_5000.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX305000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_3_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7kim2007-ctcf11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.kim2007-ctcf.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4kg-exon11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.kg-exon.aligned.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX405000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden0_300ABCAAXX_4_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2Ku2008-H3K2711000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.Ku2008-H3K27.aligned.csv</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX71600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.wig</font></td></tr></table>> ];
+"pileupwig_300ABCAAXX51600" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::pileupwig</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.wig</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.pileup_cg_dinucleotide.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX515000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_5_maq_5000.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_4_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"readcount_300ABCAAXX3" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readcount</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadCounts_300ABCAAXX_3_maq.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX2Ku2008-Ring1B11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_2.coverage.m1.q0.Ku2008-Ring1B.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX3RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_3.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_3_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"readdepth_300ABCAAXX615000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::readdepth</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: ReadDepths_maxIden1_300ABCAAXX_6_maq_5000.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4RepeatMaskerLINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.RepeatMaskerLINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX1guelen2008-LADs11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_1.coverage.m1.q0.guelen2008-LADs.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX4RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_4.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::countpileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: s_8_sequence.pileup_referenceGenome.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX5RepeatMaskerSINE11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_5.coverage.m1.q0.RepeatMaskerSINE.aligned.csv</font></td></tr></table>> ];
+"featurepileup_300ABCAAXX7TJGG-exonNoTss11000" [
+shape = "Mrecord"
+label =<<table border="0" cellborder="0" cellspacing="0" cellpadding="4"><tr><td bgcolor="navy"><font color="white">uscec::featurepileup</font></td></tr><tr><td align="left"><font color="brown4"> input: /Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz</font></td></tr><tr><td align="left"><font color="darkgreen"> output: 300ABCAAXX_s_7.coverage.m1.q0.TJGG-exonNoTss.aligned.csv</font></td></tr></table>> ];
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8kg-exon11000"
+Start -> "featurepileup_300ABCAAXX6Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX3kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX5kim2007-ctcf11000"
+Start -> "pileupwig_300ABCAAXX21600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX115000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX4Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7kg-tssCgi11000"
+Start -> "readcount_300ABCAAXX2"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX5kg-tssNoncgi11000"
+Start -> "readcount_300ABCAAXX1"
+Start -> "readdepth_300ABCAAXX705000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX3Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX6TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX6kg-tssCgi11000"
+Start -> "readdepth_300ABCAAXX415000"
+Start -> "featurepileup_300ABCAAXX6kg-exon11000"
+Start -> "featurepileup_300ABCAAXX5TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX6kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-tssCgi11000"
+Start -> "readdepth_300ABCAAXX205000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX3TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX8Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7kg-exon11000"
+Start -> "featurepileup_300ABCAAXX1kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX1kg-exon11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX7kg-tssNoncgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX81600"
+Start -> "featurepileup_300ABCAAXX4guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX1Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX2kg-tssNoncgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX61600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX4Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX2kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX4kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX6guelen2008-LADs11000"
+Start -> "readdepth_300ABCAAXX105000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-cgonly"
+Start -> "readcount_300ABCAAXX7"
+Start -> "featurepileup_300ABCAAXX7RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX4TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX3RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX5Ku2008-H3K2711000"
+Start -> "featurepileup_300ABCAAXX6kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX1TJGG-exonNoTss11000"
+Start -> "featurepileup_300ABCAAXX8kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX1RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX3kg-exon11000"
+Start -> "pileupwig_300ABCAAXX31600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX5RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX8kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX6RepeatMaskerLINE11000"
+Start -> "readcount_300ABCAAXX6"
+Start -> "featurepileup_300ABCAAXX8TJGG-exonNoTss11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-refComposition"
+Start -> "pileupwig_300ABCAAXX41600"
+Start -> "featurepileup_300ABCAAXX2kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX5kg-exon11000"
+Start -> "featurepileup_300ABCAAXX3guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX3kg-tssNoncgi11000"
+Start -> "readcount_300ABCAAXX8"
+Start -> "featurepileup_300ABCAAXX1RepeatMaskerSINE11000"
+Start -> "readdepth_300ABCAAXX715000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz"
+Start -> "featurepileup_300ABCAAXX6Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX8guelen2008-LADs11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-chonly"
+Start -> "featurepileup_300ABCAAXX1Ku2008-Ring1B11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_5_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX505000"
+Start -> "featurepileup_300ABCAAXX8Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_7_sequence.pileup.gz-chonly"
+Start -> "featurepileup_300ABCAAXX3kg-tssCgi11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_2_sequence.pileup.gz-chonly"
+Start -> "readdepth_300ABCAAXX815000"
+Start -> "readdepth_300ABCAAXX605000"
+Start -> "featurepileup_300ABCAAXX5kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX3Ku2008-H3K2711000"
+Start -> "readdepth_300ABCAAXX805000"
+Start -> "readcount_300ABCAAXX5"
+Start -> "featurepileup_300ABCAAXX2RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX7RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX2kg-exon11000"
+Start -> "featurepileup_300ABCAAXX1kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX6RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX8kg-tssNoncgi11000"
+Start -> "featurepileup_300ABCAAXX1kg-tssCgi11000"
+Start -> "featurepileup_300ABCAAXX8RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX5guelen2008-LADs11000"
+Start -> "readcount_300ABCAAXX4"
+Start -> "featurepileup_300ABCAAXX7Ku2008-H3K2711000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_1_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX315000"
+Start -> "pileupwig_300ABCAAXX11600"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-cgonly"
+Start -> "featurepileup_300ABCAAXX2TJGG-exonNoTss11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-chonly"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_6_sequence.pileup.gz-refComposition"
+Start -> "readdepth_300ABCAAXX215000"
+Start -> "readdepth_300ABCAAXX305000"
+Start -> "featurepileup_300ABCAAXX7kim2007-ctcf11000"
+Start -> "featurepileup_300ABCAAXX4kg-exon11000"
+Start -> "readdepth_300ABCAAXX405000"
+Start -> "featurepileup_300ABCAAXX2guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX2RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX2Ku2008-H3K2711000"
+Start -> "pileupwig_300ABCAAXX71600"
+Start -> "pileupwig_300ABCAAXX51600"
+Start -> "featurepileup_300ABCAAXX7Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX7guelen2008-LADs11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-cgonly"
+Start -> "readdepth_300ABCAAXX515000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_4_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX5Ku2008-Ring1B11000"
+Start -> "readcount_300ABCAAXX3"
+Start -> "featurepileup_300ABCAAXX2Ku2008-Ring1B11000"
+Start -> "featurepileup_300ABCAAXX3RepeatMaskerLINE11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_3_sequence.pileup.gz-refComposition"
+Start -> "readdepth_300ABCAAXX615000"
+Start -> "featurepileup_300ABCAAXX4RepeatMaskerLINE11000"
+Start -> "featurepileup_300ABCAAXX1guelen2008-LADs11000"
+Start -> "featurepileup_300ABCAAXX4RepeatMaskerSINE11000"
+Start -> "countpileup_/Users/zack/devel/WorkflowDAX/s_8_sequence.pileup.gz-refComposition"
+Start -> "featurepileup_300ABCAAXX5RepeatMaskerSINE11000"
+Start -> "featurepileup_300ABCAAXX7TJGG-exonNoTss11000"
+Parameters -> Start
+}
