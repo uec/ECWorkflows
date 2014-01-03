@@ -50,6 +50,7 @@ hpc     uscec::cufflinks2:1.0               /home/uec-00/shared/production/softw
 hpc     uscec::lcextrap:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_lc_extrap.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 hpc     uscec::invertdup:1.0               /home/uec-00/shared/production/software/perl_utils_usc/invert_dups_check.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 hpc     uscec::methlevels:1.0               /home/uec-00/shared/production/software/perl_utils_usc/bissnp_trinuc_sample.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
+hpc     uscec::macs:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_macs.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 
 
 
