@@ -64,7 +64,7 @@ public class BisulfiteMergeWorkflow
 			dax.addChild(cleanup.getID(),qcjob.getID());
 			
 			//PICARD CollectAlignmentMetrics
-			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=true REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getMdupsBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=true REFERENCE_SEQUENCE=" + referenceGenome,mergebams.getMdupsBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			

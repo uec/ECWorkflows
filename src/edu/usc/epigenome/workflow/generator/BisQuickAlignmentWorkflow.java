@@ -8,18 +8,17 @@ import java.util.List;
 
 import org.griphyn.vdl.dax.Filename;
 
-
 import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
-
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.NovoAlignBisJob;
+import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 
 public class BisQuickAlignmentWorkflow
 {
@@ -144,8 +143,6 @@ public class BisQuickAlignmentWorkflow
 				}
 			}
 			
-	
-			
 			ArrayList<String> splitBams = new ArrayList<String>();
 			for(ECJob job : bsmapJobs)
 				splitBams.add(job.getSingleOutputFile().getFilename());
@@ -153,6 +150,11 @@ public class BisQuickAlignmentWorkflow
 			// for each lane create a map merge job
 			MergeBamsJob mergebams = new MergeBamsJob(splitBams,"ResultCount_" + flowcellID + "_" + laneNumber + "_" + sampleName + "." + new File(referenceGenome).getName() + ".bam");
 			dax.addJob(mergebams);
+			
+			//PICARD CollectAlignmentMetrics
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getMdupsBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=true REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getMdupsBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			dax.addJob(collectAlignmentMetricsJob);
+			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
 			// mapmerge is child to all the map jobs
 			for (ECJob job : bsmapJobs)

@@ -24,13 +24,13 @@ import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.CufflinksJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATKGenotyperJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.OrgContamCheckJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
 import edu.usc.epigenome.workflow.job.ecjob.SampleNReadsJob;
-
 import edu.usc.epigenome.workflow.job.ecjob.TopHatJob;
 
 public class RNAseqWorkflow
@@ -166,7 +166,7 @@ public class RNAseqWorkflow
 			
 			
 			//CollectAlignmentMetrics
-			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome + ".fa", mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getMdupsBam(), "CollectAlignmentSummaryMetrics", "IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome + ".fa", mergebams.getMdupsBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 	
@@ -204,6 +204,12 @@ public class RNAseqWorkflow
 			CountNmerJob count3mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber));
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),mergebams.getID());
+			
+			//gatk genotyper job, child of mergebams
+			GATKGenotyperJob genotyper = new GATKGenotyperJob(mergebams.getBam(),mergebams.getBai(),referenceGenome + ".fa");
+			dax.addJob(genotyper);
+			dax.addChild(genotyper.getID(), mergebams.getID());
+			
 			
 			//cleanup garbage job
 			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);

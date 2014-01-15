@@ -21,6 +21,7 @@ import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATKGenotyperJob;
 import edu.usc.epigenome.workflow.job.ecjob.MACSJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
@@ -182,6 +183,12 @@ public class ChipSeqBWAWorkflow
 			dax.addJob(macs);
 			dax.addChild(macs.getID(), mergebams.getID());
 			
+			//gatk genotyper job, child of mergebams
+			GATKGenotyperJob genotyper = new GATKGenotyperJob(mergebams.getBam(),mergebams.getBai(),referenceGenome);
+			dax.addJob(genotyper);
+			dax.addChild(genotyper.getID(), mergebams.getID());
+			
+			
 			//countAdapterTrimJob needs all the adapterCount filenames from FilterContamsJob, , child of mapmerge
 			CountAdapterTrimJob countAdapterTrim = new CountAdapterTrimJob(filterTrimCountFiles,  flowcellID, Integer.parseInt(laneNumber));
 			dax.addJob(countAdapterTrim);
@@ -199,7 +206,7 @@ public class ChipSeqBWAWorkflow
 			dax.addChild(qcjob.getID(), mergebams.getID());
 
 			
-			//create nmercount for 3,5,10, child of mapmerge
+			//create nmercount for 3,5,10, child of bammerge
 			CountNmerJob count3mer = new CountNmerJob(splitFiles.toArray(new String[0]), flowcellID, Integer.parseInt(laneNumber));
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),mergebams.getID());
@@ -213,7 +220,7 @@ public class ChipSeqBWAWorkflow
 			dax.addChild(cleanup.getID(),countAdapterTrim.getID());
 			
 			//CollectAlignmentMetrics
-			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getMdupsBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getMdupsBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 		

@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.griphyn.vdl.dax.Filename;
 
-
 import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
@@ -22,6 +21,7 @@ import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATKGenotyperJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
 import edu.usc.epigenome.workflow.job.ecjob.QCMetricsJob;
@@ -174,6 +174,11 @@ public class RegularBWAAlignmentWorkflow
 			dax.addJob(count3mer);
 			dax.addChild(count3mer.getID(),mergebams.getID());
 			
+			//gatk genotyper job, child of mergebams
+			GATKGenotyperJob genotyper = new GATKGenotyperJob(mergebams.getBam(),mergebams.getBai(),referenceGenome);
+			dax.addJob(genotyper);
+			dax.addChild(genotyper.getID(), mergebams.getID());
+			
 			//cleanup garbage job
 			CleanUpFilesJob cleanup = new CleanUpFilesJob(workFlowParams.getSetting("tmpDir") + "/" + flowcellID + "/" + label);
 			dax.addJob(cleanup);
@@ -190,7 +195,7 @@ public class RegularBWAAlignmentWorkflow
 			
 			
 			//CollectAlignmentMetrics
-			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
+			PicardJob collectAlignmentMetricsJob = new PicardJob(mergebams.getMdupsBam(), "CollectAlignmentSummaryMetrics", "VALIDATION_STRINGENCY=SILENT IS_BISULFITE_SEQUENCED=false REFERENCE_SEQUENCE=" + referenceGenome, mergebams.getMdupsBam() + ".CollectAlignmentSummaryMetrics.metric.txt");
 			dax.addJob(collectAlignmentMetricsJob);
 			dax.addChild(collectAlignmentMetricsJob.getID(),  mergebams.getID());
 			
