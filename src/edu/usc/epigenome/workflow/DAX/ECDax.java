@@ -625,7 +625,7 @@ public class ECDax extends ADAG
 				String jobName = workFlowParams.getWorkFlowArgsMap().containsKey("FlowCellName") ? workFlowParams.getSetting("FlowCellName") + "_" + workFlowParams.getSetting("WorkflowName") : "job";
 				tmpFile = File.createTempFile("uec_" + jobName + "_" + hasExecName.get(job).replace("::", "_"), ".sh");
 				tmpFile.deleteOnExit();
-				
+				System.err.println("qsub (PBS) " + jobName + "_" + hasExecName.get(job).replace("::", "_"));
 				System.out.print("############\n# " + tmpFile.getName() + ":\n");
 				
 				FileWriter log = new FileWriter("pbsrun.log.txt", true);

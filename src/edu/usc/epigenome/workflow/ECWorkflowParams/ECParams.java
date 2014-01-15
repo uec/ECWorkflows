@@ -147,7 +147,7 @@ public class ECParams
 	{
 		if (!(this.workFlowArgsMap.containsKey(key)))
 		{
-			System.err.println("Using default: " + key + " = " + value);
+			System.out.println("Using default: " + key + " = " + value);
 			this.workFlowArgsMap.put(key, value);
 		}
 	}
