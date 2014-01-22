@@ -58,7 +58,7 @@ while(@samples)
 }
 
 unlink("$workflow\.current");
-
+unlink("$workflow\.incomplete");
 
 
 

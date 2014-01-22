@@ -7,9 +7,11 @@ import edu.usc.epigenome.workflow.job.PipelineSegment.PipelineSegment;
 import edu.usc.epigenome.workflow.job.ecjob.ApplicationStackJob;
 import edu.usc.epigenome.workflow.job.ecjob.BamCPGCoverageJob;
 import edu.usc.epigenome.workflow.job.ecjob.CoverageExtrapJob;
+import edu.usc.epigenome.workflow.job.ecjob.GATK2MetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.PicardJob;
+import edu.usc.epigenome.workflow.job.ecjob.RnaSeqMetricsJob;
 import edu.usc.epigenome.workflow.job.ecjob.WigToBigWigJob;
 
 public class CommonBamQC extends PipelineSegment
@@ -37,8 +39,6 @@ public class CommonBamQC extends PipelineSegment
 		if(! referenceGenome.toLowerCase().endsWith("fa"))
 			referenceGenome = referenceGenome + ".fa";
 		
-		
-		
 		GATKMetricJob dupReadPairsMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "InvertedReadPairDups", "");
 		dax.addJob(dupReadPairsMetricJob);
 		dax.addChild(dupReadPairsMetricJob.getID(),  mergebams.getID());
@@ -47,6 +47,11 @@ public class CommonBamQC extends PipelineSegment
 		GATKMetricJob methLevelAveragesMetricJob = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "MethLevelAverages", "-cph");
 		dax.addJob(methLevelAveragesMetricJob);
 		dax.addChild(methLevelAveragesMetricJob.getID(),  mergebams.getID());
+		
+		//create GATK2 job that counts unique reads
+		GATK2MetricJob countUnique = new GATK2MetricJob(mergebams.getMdupsBam(), mergebams.getMdupsBai(), referenceGenome, "FlagStat", "-rf NumberHitsEqualsOne");
+		dax.addJob(countUnique);
+		dax.addChild(countUnique.getID(),  mergebams.getID());
 		
 //		//create  50k BinDepths gatk job
 //		GATKMetricJob binDepthsMetricJob50k = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-winsize 50000 -dumpv");
@@ -132,6 +137,10 @@ public class CommonBamQC extends PipelineSegment
 		GATKMetricJob readlen = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "ReadLength", "");
 		dax.addJob(readlen);
 		dax.addChild(readlen.getID(),  mergebams.getID());
+		
+		RnaSeqMetricsJob rnaseqmetrics  = new RnaSeqMetricsJob(mergebams.getMdupsBam(), referenceGenome, mergebams.getMdupsBam() + ".CollectRnaSeqMetrics.metric.txt");
+		dax.addJob(rnaseqmetrics);
+		dax.addChild(rnaseqmetrics.getID(),  mergebams.getID());
 		
 		endPoint = appstack; 		
 	}
