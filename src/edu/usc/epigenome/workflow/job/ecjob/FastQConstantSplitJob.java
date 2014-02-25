@@ -29,7 +29,13 @@ public class FastQConstantSplitJob extends ECJob
 			Filename output = new Filename(outFile, LFN.OUTPUT);
 			output.setRegister(false);
 			this.addUses(output);
+			
 		}
+		
+		//Filename metrics = new Filename("inputreads.metric.txt", LFN.OUTPUT);
+		//metrics.setRegister(false);
+		//this.addUses(metrics);
+		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(numberOfPieces + " "));
 		this.addArgument(input);
@@ -67,6 +73,11 @@ public class FastQConstantSplitJob extends ECJob
 			outputR2.setRegister(false);
 			this.addUses(outputR2);
 		}
+		
+		//Filename metrics = new Filename("inputreads.metric.txt", LFN.OUTPUT);
+		//metrics.setRegister(false);
+		//this.addUses(metrics);
+		
 		// add the arguments to the job
 		this.addArgument(new PseudoText(numberOfPieces + " "));
 		this.addArgument(inputR1);

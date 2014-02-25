@@ -62,6 +62,7 @@ unlink("$workflow\.incomplete");
 
 
 
+
 sub writeSample
 {
 	my $fileName = shift @_;
@@ -89,7 +90,7 @@ sub checkParam
 	while(my $line = <INCHECK>)
 	{
 		$foundCS = 1 if $line =~ /ClusterSize\s*\=\s*\d+/;
-		$foundFC = 1 if $line =~ /FlowCellName\s*\=\s*\S+/;
+		$foundFC = 1 if $line =~ /FlowCellName\s*\=\s*\S+/ && $line !~ /_/;
 		$foundQ = 1 if $line =~ /queue\s*\=\s*\S+/;
 
 		if($line =~ /^\s*(.+?)\s*\=\s*(.+)\s*$/)
@@ -101,17 +102,17 @@ sub checkParam
 			if($param =~ /Sample.+input/i)
 			{
 				my @files = split(",", $val);
-				-e $_ || print "INPUT FILE \t $_ \tspecified in params file but not found!\n" for @files;
+				-e $_ || warn "INPUT FILE \t $_ \tspecified in params file but not found!\n" for @files;
 			}
 
 			if($param =~ /Sample.+efer/i)
 			{
-				-e $val || -e "$val.fa" ||  print "REFERENCE GENOME \t $val  \t specified in param file but not found!\n";
+				-e $val || -e "$val.fa" ||  die "REFERENCE GENOME \t $val  \t specified in param file but not found!\n";
 			}
 		}
 	}
-	print "MISSING ClusterSize! (ex: ClusterSize = 1)\n" if(!$foundCS);
-	print "MISSING FlowCellName! (ex: FlowCellName = ZXC123XX)\n" if(!$foundFC);
-	print "MISSING queue! (ex: queue = laird)\n" if(!$foundQ);	
+	die "MISSING ClusterSize! (ex: ClusterSize = 1)\n" if(!$foundCS);
+	die "MISSING/INCORRECT FlowCellName! (ex: FlowCellName = ZXC123XX)\n" if(!$foundFC);
+	die "MISSING queue! (ex: queue = laird)\n" if(!$foundQ);	
 	close INCHECK;
 }
