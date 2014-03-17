@@ -175,7 +175,7 @@ public class RegularBWAAlignmentWorkflow
 			dax.addChild(count3mer.getID(),mergebams.getID());
 			
 			//gatk genotyper job, child of mergebams
-			GATKGenotyperJob genotyper = new GATKGenotyperJob(mergebams.getBam(),mergebams.getBai(),referenceGenome);
+			GATKGenotyperJob genotyper = new GATKGenotyperJob(mergebams.getMdupsBam(),mergebams.getMdupsBai(),referenceGenome);
 			dax.addJob(genotyper);
 			dax.addChild(genotyper.getID(), mergebams.getID());
 			
