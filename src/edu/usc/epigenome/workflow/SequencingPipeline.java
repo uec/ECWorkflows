@@ -18,7 +18,7 @@ import edu.usc.epigenome.workflow.generator.BisulfiteAlignmentWorkflow;
 import edu.usc.epigenome.workflow.generator.BisulfiteMergeWorkflow;
 import edu.usc.epigenome.workflow.generator.ChipSeqBWAWorkflow;
 import edu.usc.epigenome.workflow.generator.RNAseqDiffExpWorkflow;
-import edu.usc.epigenome.workflow.generator.RNAseqWorkflow;
+import edu.usc.epigenome.workflow.generator.SomaticMutationPipeline;
 import edu.usc.epigenome.workflow.generator.UnalignedWorkflow;
 
 public class SequencingPipeline
@@ -74,10 +74,12 @@ public class SequencingPipeline
 			if(workflow.toLowerCase().equals("bisquick")) 		BisQuickAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().contains("bisulfite"))	BisulfiteAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("chipseq")) 		ChipSeqBWAWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
-			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
-			if(workflow.toLowerCase().equals("rnaseqv2")) 		RNAseqV2Workflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqV2Workflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().equals("unaligned")) 		UnalignedWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			if(workflow.toLowerCase().contains("bismerge")) 		BisulfiteMergeWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+			
+			//OLD workflows
+			//if(workflow.toLowerCase().equals("rnaseq")) 		RNAseqWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
 			//if(workflow.toLowerCase().equals("maqchipseq")) 	ChipSeqWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			//if(workflow.toLowerCase().equals("chipseqmerge"))	ChipseqMapMergeWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
 			//if(workflow.toLowerCase().equals("maqregular")) 		BasicAlignmentWorkflow.createWorkFlow(sampleEntryKey, par, pbsMode, dryrun);
@@ -94,6 +96,11 @@ public class SequencingPipeline
 			if(workflow.toLowerCase().equals("rnaseqdiff"))
 			{
 				RNAseqDiffExpWorkflow.createWorkFlow(sampleEntryKey, par, runOptions);
+				break;
+			}
+			if(workflow.toLowerCase().contains("omatic"))
+			{
+				SomaticMutationPipeline.createWorkFlow(sampleEntryKey, par, runOptions);
 				break;
 			}
 		}

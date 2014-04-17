@@ -54,7 +54,7 @@ hpc     uscec::methlevels:1.0               /home/uec-00/shared/production/softw
 hpc     uscec::macs:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_macs.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 hpc     uscec::gatkgenotyper:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_gatk_genotyper.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 hpc     uscec::rnaseqmetrics:1.0               /home/uec-00/shared/production/software/perl_utils_usc/wrap_rnaseq_metrics.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
-
+hpc     uscec::mutect:1.0               /home/uec-00/shared/production/software/mutect/default/wrap_mutect.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8:dx340"
 
 
 
