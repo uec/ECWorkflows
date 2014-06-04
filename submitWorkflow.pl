@@ -81,6 +81,7 @@ sub writeSample
 sub checkParam
 {
 	my $file = shift @_;
+	die "Param filename should look someting like \"workFlowParams*\", $file not valid name" unless $file =~ /aram/;
 	open(INCHECK, "<$file");
 	my $foundCS;
 	my $foundFC;
