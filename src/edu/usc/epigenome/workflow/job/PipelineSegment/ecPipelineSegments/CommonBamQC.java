@@ -89,7 +89,7 @@ public class CommonBamQC extends PipelineSegment
 //		dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
 		
 		//create  5k downsampleCoverage
-		GATK2MetricJob downsampleCoverage = new GATK2MetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleCoverageWalker", "",mergebams.getBam() +".DownsampleCoverage.metric.wig");
+		GATK2MetricJob downsampleCoverage = new GATK2MetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleCoverageWalker", "",mergebams.getBam() +".DownsampleCoverage.metric.txt");
 		dax.addJob(downsampleCoverage);
 		dax.addChild(downsampleCoverage.getID(),  mergebams.getID());
 		
