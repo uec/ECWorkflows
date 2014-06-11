@@ -1,24 +1,21 @@
 ClusterSize = 1
 queue = laird
-FlowCellName = C37BMACXX
+FlowCellName = D010BB
+MinMismatches = 2
+MaqPileupQ = 30
+referenceLane = 1
+randomSubset = 300000
 
-#Sample: Exome_AA (Shibata Sequencing of Homo sapiens)
-Sample.30.SampleID = SHI1310A82
-Sample.30.Lane = 3
-Sample.30.Input = /home/rcf-17/ramjan/flowcells/C37BMACXX/results/C37BMACXX/C37BMACXX_3_SHI1310A82/ResultCount_C37BMACXX_3_SHI1310A82.hg19_rCRSchrm.fa.mdups.bam
-Sample.30.Workflow = somaticTumor
-Sample.30.Reference = /home/uec-00/shared/production/genomes/hg19_rCRSchrm/hg19_rCRSchrm.fa
+#Sample: DS05-1-10TAGCTT
+Sample.1.SampleID = DS05-1-10TAGCTT
+Sample.1.Lane = 1
+Sample.1.Input = /export/uec-gs1/laird/shared/production/ga/external_analysis/ShibataExome/DS05/mutect/ResultCount_DS05SAMPLES_1_DS05-1-10TAGCTT.male.hg19.fa.mdups.bam
+Sample.1.Workflow = somaticTumor
+Sample.1.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
 
-#Sample: Exome_AB (Shibata Sequencing of Homo sapiens)
-Sample.31.SampleID = SHI1310A83
-Sample.31.Lane = 3
-Sample.31.Input = /home/rcf-17/ramjan/flowcells/C37BMACXX/results/C37BMACXX/C37BMACXX_3_SHI1310A83/ResultCount_C37BMACXX_3_SHI1310A83.hg19_rCRSchrm.fa.mdups.bam
-Sample.31.Workflow = somaticTumor
-Sample.31.Reference = /home/uec-00/shared/production/genomes/hg19_rCRSchrm/hg19_rCRSchrm.fa
-
-#Sample: Exome_AN (Shibata Sequencing of Homo sapiens)
-Sample.32.SampleID = SHI1310A84
-Sample.32.Lane = 3
-Sample.32.Input = /home/rcf-17/ramjan/flowcells/C37BMACXX/results/C37BMACXX/C37BMACXX_5_SHI1310A84/ResultCount_C37BMACXX_5_SHI1310A84.hg19_rCRSchrm.fa.mdups.bam
-Sample.32.Workflow = somaticNormal
-Sample.32.Reference = /home/uec-00/shared/production/genomes/hg19_rCRSchrm/hg19_rCRSchrm.fa
+#Sample: DS05-1-1ATCACG
+Sample.3.SampleID = DS05-1-1ATCACG
+Sample.3.Lane = 1
+Sample.3.Input = /export/uec-gs1/laird/shared/production/ga/external_analysis/ShibataExome/DS05/mutect/ResultCount_DS05SAMPLES_1_DS05-1-1ATCACG.male.hg19.fa.mdups.bam
+Sample.3.Workflow = somaticNormal
+Sample.3.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
