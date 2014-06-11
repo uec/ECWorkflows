@@ -83,10 +83,15 @@ public class CommonBamQC extends PipelineSegment
 //		dax.addJob(binDepthsMetricJob50kds5);
 //		dax.addChild(binDepthsMetricJob50kds5.getID(),  mergebams.getID());
 //		
-		//create  5k downsample 5m BinDepths gatk job
-		GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv",mergebams.getBam() +".p5000000winsize50000dumpv.BinDepths.metric.wig");
-		dax.addJob(binDepthsMetricJob5kds5);
-		dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
+//		//create  5k downsample 5m BinDepths gatk job
+//		GATKMetricJob binDepthsMetricJob5kds5 = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "BinDepths", "-p 5000000 -winsize 5000 -dumpv",mergebams.getBam() +".p5000000winsize50000dumpv.BinDepths.metric.wig");
+//		dax.addJob(binDepthsMetricJob5kds5);
+//		dax.addChild(binDepthsMetricJob5kds5.getID(),  mergebams.getID());
+		
+		//create  5k downsampleCoverage
+		GATK2MetricJob downsampleCoverage = new GATK2MetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleCoverageWalker", "",mergebams.getBam() +".DownsampleCoverage.metric.wig");
+		dax.addJob(downsampleCoverage);
+		dax.addChild(downsampleCoverage.getID(),  mergebams.getID());
 		
 		//create  5m Downsample dups gatk job
 		GATKMetricJob dsdups = new GATKMetricJob(mergebams.getBam(), mergebams.getBai(), referenceGenome, "DownsampleDups", "-p 5000000 -trials 100 -nt 8");
