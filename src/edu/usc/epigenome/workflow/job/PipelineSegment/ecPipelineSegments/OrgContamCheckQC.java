@@ -36,6 +36,7 @@ public class OrgContamCheckQC extends PipelineSegment
 				  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.fa",
 				  "/home/uec-00/shared/production/genomes/salmon/salmosalar.fa",
 				  "/home/uec-00/shared/production/genomes/rRNA/rRNA.fa",
+				  "/home/uec-00/shared/production/genomes/chinese_hamster/criGri1.fa",
 				  "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa"};
 		
 		OrgContamCheckJob bwaTestContam = new OrgContamCheckJob(laneInputFileNameR1,5000000,organisms);

@@ -529,6 +529,13 @@ public class ECDax extends ADAG
 	{
 		String jobScript;
 		Boolean hasNoDeps = false;
+		
+		//placeholder for the case where we want to merge single-dep/single-parent jobs into a single pbs qsub
+		
+		//for(String myJob = job; hasChildren.get(myJob).size() == 1 && hasParents.get(hasChildren.get(myJob).get(0)).size() == 1; myJob = hasChildren.get(myJob).get(0))
+		//{
+			//System.err.println(myJob + " has single dep child " +  hasChildren.get(myJob).get(0));
+		//}
 
 		// See if we have a template file
 		try

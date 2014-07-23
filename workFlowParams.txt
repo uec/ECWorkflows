@@ -9,13 +9,7 @@ randomSubset = 300000
 #Sample: DS05-1-10TAGCTT
 Sample.1.SampleID = DS05-1-10TAGCTT
 Sample.1.Lane = 1
-Sample.1.Input = /export/uec-gs1/laird/shared/production/ga/external_analysis/ShibataExome/DS05/mutect/ResultCount_DS05SAMPLES_1_DS05-1-10TAGCTT.male.hg19.fa.mdups.bam
-Sample.1.Workflow = somaticTumor
+Sample.1.Input = a1.fastq,a2.fastq
+Sample.1.Workflow = bisulfite
 Sample.1.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
 
-#Sample: DS05-1-1ATCACG
-Sample.3.SampleID = DS05-1-1ATCACG
-Sample.3.Lane = 1
-Sample.3.Input = /export/uec-gs1/laird/shared/production/ga/external_analysis/ShibataExome/DS05/mutect/ResultCount_DS05SAMPLES_1_DS05-1-1ATCACG.male.hg19.fa.mdups.bam
-Sample.3.Workflow = somaticNormal
-Sample.3.Reference = /home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa
