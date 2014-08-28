@@ -25,12 +25,16 @@ public class BisSNPJob extends ECJob
 		
 		//output bam
 		String outputBamName = inputBam.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "realign.mdups.recal.bam");
+		if(isRRBS)
+			outputBamName = inputBam.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "realign.withdups.recal.bam");
 		Filename outputBam= new Filename(outputBamName, LFN.OUTPUT);
 		outputBam.setRegister(false);
 		this.addUses(outputBam);
 		
 		//output bai
 		String outputBaiName = inputBam.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "realign.mdups.recal.bai");
+		if(isRRBS)
+			outputBaiName = inputBam.replaceAll("^(.+?)(\\.\\w+)$", "$1\\." + "realign.withdups.recal.bai");
 		Filename outputBai= new Filename(outputBaiName, LFN.OUTPUT);
 		outputBai.setRegister(false);
 		this.addUses(outputBai);
