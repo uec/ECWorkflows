@@ -79,7 +79,7 @@ public class BisulfiteMergeWorkflow
 			dax.addChild(methlevelsM.getID(),  mergebams.getID());
 			
 			//create BISSNP JOB
-			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"));
+			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"),sampleWorkflow.contains("rrbs"));
 			dax.addJob(bissnp);
 			dax.addChild(bissnp.getID(),  mergebams.getID());
 			

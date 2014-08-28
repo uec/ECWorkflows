@@ -221,7 +221,7 @@ public class BisulfiteAlignmentWorkflow
 			
 			
 			//create BISSNP JOB
-			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"));
+			BisSNPJob bissnp = new BisSNPJob(mergebams.getBam(),mergebams.getBai(), referenceGenome, sampleWorkflow.contains("nomeseq"),sampleWorkflow.contains("rbs"));
 			dax.addJob(bissnp);
 			dax.addChild(bissnp.getID(),  mergebams.getID());
 			

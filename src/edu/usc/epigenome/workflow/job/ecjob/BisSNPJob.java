@@ -11,7 +11,7 @@ import edu.usc.epigenome.workflow.job.ECJob;
 
 public class BisSNPJob extends ECJob
 {
-	public BisSNPJob(String inputBam, String inputBai, String genome, Boolean isGnomeSeq)
+	public BisSNPJob(String inputBam, String inputBai, String genome, Boolean isGnomeSeq, Boolean isRRBS)
 	{
 		super(WorkflowConstants.NAMESPACE, "bissnp", WorkflowConstants.VERSION, "bissnp_" + new File(inputBam).getName());
 		
@@ -223,6 +223,8 @@ public class BisSNPJob extends ECJob
 		this.addArgument(new PseudoText(" "));
 		this.addArgument(new PseudoText(genome));
 		if(isGnomeSeq)
-			this.addArgument(new PseudoText(" GNOME"));
+			this.addArgument(new PseudoText(" NOME"));
+		if(isRRBS)
+			this.addArgument(new PseudoText(" RRBS"));
 	}
 }
