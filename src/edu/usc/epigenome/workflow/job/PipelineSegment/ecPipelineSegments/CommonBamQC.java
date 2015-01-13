@@ -129,7 +129,7 @@ public class CommonBamQC extends PipelineSegment
 		dax.addChild(appstack.getID(), mergebams.getID());
 		
 		//CPG vs randam cov job
-		BamCPGCoverageJob bamcov = new BamCPGCoverageJob(mergebams.getBam(), mergebams.getBai(), "/home/rcf-40/bberman/tumor/genomic-data-misc/CGIs/Takai_Jones_from_Fei_122007.fixed.PROMOTERONLY.oriented.hg19.bed", mergebams.getBam() + ".CPGvsRandomCov.metric.txt");
+		BamCPGCoverageJob bamcov = new BamCPGCoverageJob(mergebams.getBam(), mergebams.getBai(), "/home/uec-00/shared/production/genomic-data-misc/CGIs/Takai_Jones_from_Fei_122007.fixed.PROMOTERONLY.oriented.hg19.bed", mergebams.getBam() + ".CPGvsRandomCov.metric.txt");
 		dax.addJob(bamcov);
 		dax.addChild(bamcov.getID(),  mergebams.getID());
 		
