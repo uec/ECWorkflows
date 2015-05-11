@@ -5,10 +5,7 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.griphyn.vdl.dax.Filename;
-
-
 import edu.usc.epigenome.workflow.RunOptions;
 import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
@@ -16,16 +13,14 @@ import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.CommonBamQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.LambdaPhageBisAlnQC;
 import edu.usc.epigenome.workflow.job.PipelineSegment.ecPipelineSegments.OrgContamCheckQC;
-import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.BWAMethJob;
 import edu.usc.epigenome.workflow.job.ecjob.BisSNPJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountAdapterTrimJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountFastQJob;
-import edu.usc.epigenome.workflow.job.ecjob.CountInvertedDupsJob;
 import edu.usc.epigenome.workflow.job.ecjob.CountNmerJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
-import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
 import edu.usc.epigenome.workflow.job.ecjob.MethLevelAveragesJob;
 import edu.usc.epigenome.workflow.job.ecjob.NovoAlignBisJob;
@@ -125,11 +120,12 @@ public class BisulfiteAlignmentWorkflow
 					}
 					else
 					{
-						BSMapJob bsmap = new BSMapJob(read1, read2,referenceGenome, read1 + ".bam");
-						dax.addJob(bsmap);
-						dax.addChild(bsmap.getID(),parentJobEnd1);
-						dax.addChild(bsmap.getID(),parentJobEnd2);
-						bsmapJobs.add(bsmap);
+						//BSMapJob bisAlignment = new BSMapJob(read1, read2,referenceGenome, read1 + ".bam");
+						BWAMethJob bisAlignment = new BWAMethJob(read1,read2,referenceGenome);
+						dax.addJob(bisAlignment);
+						dax.addChild(bisAlignment.getID(),parentJobEnd1);
+						dax.addChild(bisAlignment.getID(),parentJobEnd2);
+						bsmapJobs.add(bisAlignment);
 					}
 				}
 				
@@ -149,16 +145,15 @@ public class BisulfiteAlignmentWorkflow
 					}
 					else
 					{
-						BSMapJob bsmap = new BSMapJob(read1, null,referenceGenome, read1 + ".bam");
-						dax.addJob(bsmap);
-						dax.addChild(bsmap.getID(),parentJobEnd1);
-						bsmapJobs.add(bsmap);
+						//BSMapJob bisAlignment = new BSMapJob(read1, null,referenceGenome, read1 + ".bam");
+						BWAMethJob bisAlignment = new BWAMethJob(read1,referenceGenome);
+						dax.addJob(bisAlignment);
+						dax.addChild(bisAlignment.getID(),parentJobEnd1);
+						bsmapJobs.add(bisAlignment);
 					}
 				}
 			}
-			
-	
-			
+					
 			ArrayList<String> splitBams = new ArrayList<String>();
 			for(ECJob job : bsmapJobs)
 				splitBams.add(job.getSingleOutputFile().getFilename());
