@@ -61,7 +61,7 @@ public class BWAMethJob extends ECJob {
 		this.addUses(inputR2);
 
 		// construct the output filenames for job
-		String outputFile = new String(inputFileR1);
+		String outputFile = new File(inputFileR1).getName();
 		outputFile = outputFile.replaceAll("^(.+?)(\\.\\w+)$", "$1." + refGenomeBasename + ".bam");
 		Filename output = new Filename(outputFile, LFN.OUTPUT);
 		output.setRegister(false);
