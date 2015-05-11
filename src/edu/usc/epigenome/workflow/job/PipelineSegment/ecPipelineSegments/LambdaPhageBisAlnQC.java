@@ -8,6 +8,7 @@ import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.PipelineSegment.PipelineSegment;
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.BWAMethJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.GATKMetricJob;
 import edu.usc.epigenome.workflow.job.ecjob.MergeBamsJob;
@@ -39,7 +40,8 @@ public class LambdaPhageBisAlnQC extends PipelineSegment
 			String laneInputFileNameR2 = fileInput.contains(",") ? new File(fileInput.split(",")[1]).getAbsolutePath() : null;
 			
 			//map to lambaphage
-			BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName().replace(".txt", ".1.txt") + ".NC_001416.fa.bam");
+			BWAMethJob lambdaphage = new BWAMethJob(laneInputFileNameR1,laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa");
+			//BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName().replace(".txt", ".1.txt") + ".NC_001416.fa.bam");
 			dax.addJob(lambdaphage);
 			dax.addChild(lambdaphage.getID(), fastqSplitJob.getID());
 			
