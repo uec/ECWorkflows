@@ -26,7 +26,7 @@ public class SomaticMutationPipeline
 			
 			
 			String label = workFlowParams.getSetting("FlowCellName") + "_somaticMutation"; 
-			String genome = "/home/uec-00/shared/production/genomes/encode_hg19_mf/male.hg19.fa";
+			String genome = "/primary/vari/genomicdata/genomes/encode_hg19_mf/male.hg19.fa";
 			
 			ArrayList<String> normalBams = new ArrayList<String>();
 			ArrayList<String> tumorBams = new ArrayList<String>();

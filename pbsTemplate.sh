@@ -1,13 +1,13 @@
 #PBS -q DAXPBS_QUEUE
 #PBS -S /bin/bash
-#PBS -l walltime=900:00:00
+#PBS -l walltime=400:00:00
 #DAXPBS_MEM
 #DAXPBS_CPU
 #Note: DAXPBS comments will be replaced with job specific data
 #DAXPBS_DEPS
 umask 002
-export PATH=/home//home/uec-00/shared/production/software/perl_utils_usc:/home/uec-00/shared/production/software/samtools:$PATH
-export CLASSPATH=/home/uec-00/shared/production/software/genomeLibs/apps-live.jar:/home/uec-00/shared/production/software/genomeLibs/biojava-live.jar:/home/uec-00/shared/production/software/genomeLibs/bytecode.jar:/home/uec-00/shared/production/software/genomeLibs/commons-cli.jar:/home/uec-00/shared/production/software/genomeLibs/commons-collections-2.1.jar:/home/uec-00/shared/production/software/genomeLibs/commons-dbcp-1.1.jar:/home/uec-00/shared/production/software/genomeLibs/commons-math-1.1.jar:/home/uec-00/shared/production/software/genomeLibs/commons-pool-1.1.jar:/home/uec-00/shared/production/software/genomeLibs/demos-live.jar:/home/uec-00/shared/production/software/genomeLibs/genomeLibs.jar:/home/uec-00/shared/production/software/genomeLibs/jgrapht-jdk1.5.jar:/home/uec-00/shared/production/software/genomeLibs/junit-4.4.jar:/home/uec-00/shared/production/software/genomeLibs/charts4j-1.2.jar:/home/uec-00/shared/production/software/genomeLibs/heatMap.jar:/home/uec-00/shared/production/software/genomeLibs/UscKeck.jar
+export PATH=/home//primary/vari/software/perl_utils_usc:/primary/vari/software/samtools:$PATH
+export CLASSPATH=/primary/vari/software/genomeLibs/apps-live.jar:/primary/vari/software/genomeLibs/biojava-live.jar:/primary/vari/software/genomeLibs/bytecode.jar:/primary/vari/software/genomeLibs/commons-cli.jar:/primary/vari/software/genomeLibs/commons-collections-2.1.jar:/primary/vari/software/genomeLibs/commons-dbcp-1.1.jar:/primary/vari/software/genomeLibs/commons-math-1.1.jar:/primary/vari/software/genomeLibs/commons-pool-1.1.jar:/primary/vari/software/genomeLibs/demos-live.jar:/primary/vari/software/genomeLibs/genomeLibs.jar:/primary/vari/software/genomeLibs/jgrapht-jdk1.5.jar:/primary/vari/software/genomeLibs/junit-4.4.jar:/primary/vari/software/genomeLibs/charts4j-1.2.jar:/primary/vari/software/genomeLibs/heatMap.jar:/primary/vari/software/genomeLibs/UscKeck.jar
 export RESULTS_DIR=DAXPBS_RESULTSDIR
 export TMP=DAXPBS_TMPDIR
 mkdir -p $RESULTS_DIR

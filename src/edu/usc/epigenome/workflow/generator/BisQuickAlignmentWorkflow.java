@@ -13,6 +13,7 @@ import edu.usc.epigenome.workflow.DAX.ECDax;
 import edu.usc.epigenome.workflow.ECWorkflowParams.specialized.GAParams;
 import edu.usc.epigenome.workflow.job.ECJob;
 import edu.usc.epigenome.workflow.job.ecjob.BSMapJob;
+import edu.usc.epigenome.workflow.job.ecjob.BWAMethJob;
 import edu.usc.epigenome.workflow.job.ecjob.CleanUpFilesJob;
 import edu.usc.epigenome.workflow.job.ecjob.FastQConstantSplitJob;
 import edu.usc.epigenome.workflow.job.ecjob.FilterContamsJob;
@@ -102,21 +103,20 @@ public class BisQuickAlignmentWorkflow
 					String read2 = splitFiles.get(h+1);
 					String parentJobEnd1 = splitIDs.get(h);
 					String parentJobEnd2 = splitIDs.get(h+1);
-					if(sampleWorkflow.contains("novo"))
-					{
-						NovoAlignBisJob novobis = new NovoAlignBisJob(read1, read2,referenceGenome, read1 + ".bam");
-						dax.addJob(novobis);
-						dax.addChild(novobis.getID(),parentJobEnd1);
-						dax.addChild(novobis.getID(),parentJobEnd2);
-						bsmapJobs.add(novobis);
-					}
-					else
+					if(sampleWorkflow.contains("bsmap"))
 					{
 						BSMapJob bsmap = new BSMapJob(read1, read2,referenceGenome, read1 + ".bam");
 						dax.addJob(bsmap);
 						dax.addChild(bsmap.getID(),parentJobEnd1);
 						dax.addChild(bsmap.getID(),parentJobEnd2);
 						bsmapJobs.add(bsmap);
+					}
+					else
+					{
+						BWAMethJob bisAlignment = new BWAMethJob(read1,referenceGenome);
+						dax.addJob(bisAlignment);
+						dax.addChild(bisAlignment.getID(),parentJobEnd1);
+						bsmapJobs.add(bisAlignment);
 					}
 				}						
 			}
@@ -126,19 +126,19 @@ public class BisQuickAlignmentWorkflow
 				{
 					String read1 = splitFiles.get(h);
 					String parentJobEnd1 = splitIDs.get(h);
-					if(sampleWorkflow.contains("novo"))
-					{
-						NovoAlignBisJob novobis = new NovoAlignBisJob(read1, null,referenceGenome, read1 + ".bam");
-						dax.addJob(novobis);
-						dax.addChild(novobis.getID(),parentJobEnd1);
-						bsmapJobs.add(novobis);
-					}
-					else
+					if(sampleWorkflow.contains("bsmap"))
 					{
 						BSMapJob bsmap = new BSMapJob(read1, null,referenceGenome, read1 + ".bam");
 						dax.addJob(bsmap);
 						dax.addChild(bsmap.getID(),parentJobEnd1);
 						bsmapJobs.add(bsmap);
+					}
+					else
+					{
+						BWAMethJob bisAlignment = new BWAMethJob(read1,referenceGenome);
+						dax.addJob(bisAlignment);
+						dax.addChild(bisAlignment.getID(),parentJobEnd1);
+						bsmapJobs.add(bisAlignment);
 					}
 				}
 			}

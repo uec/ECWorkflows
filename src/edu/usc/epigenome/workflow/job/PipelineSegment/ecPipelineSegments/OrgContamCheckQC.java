@@ -27,17 +27,17 @@ public class OrgContamCheckQC extends PipelineSegment
 		String laneInputFileNameR1 = new File(fileInput.split(",")[0]).getAbsolutePath();
 		
 		//Contam tests
-		String[] organisms = {"/home/uec-00/shared/production/genomes/encode_hg19_mf/female.hg19.fa", 
-				  "/home/uec-00/shared/production/genomes/sacCer1/sacCer1.fa",
-				  "/home/uec-00/shared/production/genomes/phi-X174/phi_plus_SNPs.fa",
-				  "/home/uec-00/shared/production/genomes/arabidopsis/tair8.pluscontam.fa",
-				  "/home/uec-00/shared/production/genomes/mm9_unmasked/mm9_unmasked.fa",
-				  "/home/uec-00/shared/production/genomes/Ecoli/EcoliIHE3034.fa",
-				  "/home/uec-00/shared/production/genomes/rn4_unmasked/rn4.fa",
-				  "/home/uec-00/shared/production/genomes/salmon/salmosalar.fa",
-				  "/home/uec-00/shared/production/genomes/rRNA/rRNA.fa",
-				  "/home/uec-00/shared/production/genomes/chinese_hamster/criGri1.fa",
-				  "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa"};
+		String[] organisms = {"/primary/vari/genomicdata/genomes/encode_hg19_mf/female.hg19.fa", 
+				  "/primary/vari/genomicdata/genomes/sacCer1/sacCer1.fa",
+				  "/primary/vari/genomicdata/genomes/phi-X174/phi_plus_SNPs.fa",
+				  "/primary/vari/genomicdata/genomes/arabidopsis/tair8.pluscontam.fa",
+				  "/primary/vari/genomicdata/genomes/mm9_unmasked/mm9_unmasked.fa",
+				  "/primary/vari/genomicdata/genomes/Ecoli/EcoliIHE3034.fa",
+				  "/primary/vari/genomicdata/genomes/rn4_unmasked/rn4.fa",
+				  "/primary/vari/genomicdata/genomes/salmon/salmosalar.fa",
+				  "/primary/vari/genomicdata/genomes/rRNA/rRNA.fa",
+				  "/primary/vari/genomicdata/genomes/chinese_hamster/criGri1.fa",
+				  "/primary/vari/genomicdata/genomes/lambdaphage/NC_001416.fa"};
 		
 		OrgContamCheckJob bwaTestContam = new OrgContamCheckJob(laneInputFileNameR1,5000000,organisms);
 		dax.addJob(bwaTestContam);

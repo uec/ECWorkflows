@@ -40,7 +40,7 @@ public class LambdaPhageBisAlnQC extends PipelineSegment
 			String laneInputFileNameR2 = fileInput.contains(",") ? new File(fileInput.split(",")[1]).getAbsolutePath() : null;
 			
 			//map to lambaphage
-			BWAMethJob lambdaphage = new BWAMethJob(laneInputFileNameR1,laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa");
+			BWAMethJob lambdaphage = new BWAMethJob(laneInputFileNameR1,laneInputFileNameR2,"/primary/vari/genomicdata/genomes/lambdaphage/NC_001416.fa");
 			//BSMapJob lambdaphage = new BSMapJob(laneInputFileNameR1, laneInputFileNameR2,"/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", new File(laneInputFileNameR1).getName().replace(".txt", ".1.txt") + ".NC_001416.fa.bam");
 			dax.addJob(lambdaphage);
 			dax.addChild(lambdaphage.getID(), fastqSplitJob.getID());
@@ -59,7 +59,7 @@ public class LambdaPhageBisAlnQC extends PipelineSegment
 			
 			//methlevelavgs for lambdaphage
 			//create MethLevelAverages CHROM M gatk job
-			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergelambdabams.getBam(), mergelambdabams.getBai(),  mergelambdabams.getBam() + ".MethLevelAverages.metric.txt", "/home/uec-00/shared/production/genomes/lambdaphage/NC_001416.fa", "");
+			MethLevelAveragesJob methlevels = new MethLevelAveragesJob(mergelambdabams.getBam(), mergelambdabams.getBai(),  mergelambdabams.getBam() + ".MethLevelAverages.metric.txt", "/primary/vari/genomicdata/genomes/lambdaphage/NC_001416.fa", "");
 			dax.addJob(methlevels);
 			dax.addChild(methlevels.getID(),  mergelambdabams.getID());
 			
