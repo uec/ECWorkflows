@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
-$SOFTWAREROOT = "/primary/vari/software"
-my $workflowCmd = "java -Xms4096m -Xmx4096m -cp $SOFTWAREROOT/ECWorkflow/ECWorkFlow.v4.jar:$SOFTWAREROOT/ECWorkflow/pegasus.jar edu.usc.epigenome.workflow.SequencingPipeline -pbs ";
+$SOFTWAREROOT = "/primary/vari/software/ECWorkflow/default";
+my $workflowCmd = "java -Xms4096m -Xmx4096m -cp $SOFTWAREROOT/WorkFlow.v4.jar:$SOFTWAREROOT/pegasus.jar edu.usc.epigenome.workflow.SequencingPipeline -pbs ";
 
 my $workflow = shift @ARGV;
 -e $workflow || die "workflow not found";
