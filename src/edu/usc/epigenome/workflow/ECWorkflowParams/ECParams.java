@@ -29,9 +29,9 @@ public class ECParams
 	//initialize from nothing! use defaults
 	public ECParams()
 	{
-		if(new File("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt").exists())
+		if(new File("/primary/vari/software/ECWorkflow/default/workFlowParamsGlobalDefaults.txt").exists())
 		{
-			processFileSettings("/home/uec-00/shared/production/software/ECWorkflow/workFlowParamsGlobalDefaults.txt");
+			processFileSettings("/primary/vari/software/ECWorkflow/default/workFlowParamsGlobalDefaults.txt");
 		}
 		setDefaults();
 		processPegasusTC();
@@ -198,9 +198,9 @@ public class ECParams
 			e.printStackTrace();
 		}
 		
-		setDefault("JobTemplate", "/home/uec-00/shared/production/software/ECWorkflow/pbsTemplate.sh");
-		setDefault("PegasusTC", "/home/uec-00/shared/production/software/ECWorkflow/tc.data");
-		setDefault("queue", "laird");
+		setDefault("JobTemplate", "/primary/vari/software/ECWorkflow/default/pbsTemplate.sh");
+		setDefault("PegasusTC", "/primary/vari/software/ECWorkflow/default/tc.data");
+		setDefault("queue", "default");
 		setDefault("ClusterSize", "1");
 	}
 
