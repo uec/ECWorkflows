@@ -42,7 +42,7 @@ hpc     uscec::bwabam:1.0                /primary/vari/software/perl_utils_usc/w
 hpc     uscec::orgcontamcheck:1.0        /primary/vari/software/perl_utils_usc/orgcontamcheck.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="12"
 hpc     uscec::cleanup:1.0        /primary/vari/software/perl_utils_usc/cleanPipelineParts.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
 hpc     uscec::samtools:1.0        /primary/vari/software/perl_utils_usc/wrap_samtools.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
-hpc     uscec::bissnp:1.0        /primary/vari/software/bissnp/bissnp_pipeline.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="22000mb";PEGASUS::NUMCPUS="12"
+hpc     uscec::bissnp:1.0        /primary/vari/software/perl_utils_usc/bissnp_pipeline.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="22000mb";PEGASUS::NUMCPUS="28"
 hpc     uscec::cpgcov:1.0        /primary/vari/software/perl_utils_usc/bamToElementEnrichment.pl       INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="12"
 hpc     uscec::novobis:1.0              /primary/vari/software/perl_utils_usc/wrap_novo_bis.pl            INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1";PEGASUS::MAXMEM="22000mb";PEGASUS::NUMCPUS="12"
 hpc     uscec::wigtobigwig:1.0              /primary/vari/software/perl_utils_usc/wrap_wigToBigWig.pl            INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="1";PEGASUS::MAXMEM="22000mb";PEGASUS::NUMCPUS="12"
@@ -54,8 +54,8 @@ hpc     uscec::methlevels:1.0               /primary/vari/software/perl_utils_us
 hpc     uscec::macs:1.0               /primary/vari/software/perl_utils_usc/wrap_macs.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
 hpc     uscec::gatkgenotyper:1.0               /primary/vari/software/perl_utils_usc/wrap_gatk_genotyper.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
 hpc     uscec::rnaseqmetrics:1.0               /primary/vari/software/perl_utils_usc/wrap_rnaseq_metrics.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
-hpc     uscec::mutect:1.0               /primary/vari/software/mutect/default/wrap_mutect.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
-hpc     uscec::bwameth:1.0               /primary/vari/software/mutect/default/wrap_bwameth.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
+hpc     uscec::mutect:1.0               /primary/vari/software/perl_utils_usc/wrap_mutect.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="8"
+hpc     uscec::bwameth:1.0               /primary/vari/software/perl_utils_usc/wrap_bwameth.pl           INSTALLED   INTEL64::LINUX    ENV::EMAILID="ramjan@usc.edu";PEGASUS::collapse="5";PEGASUS::MAXMEM="15000mb";PEGASUS::NUMCPUS="20"
 
 
 
